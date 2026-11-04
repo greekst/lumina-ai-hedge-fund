@@ -173,6 +173,18 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
             verdict = c_res.get("verdict", {})
             dialogues = c_res.get("council_dialogues", [])
 
+            # Source-tagged report (hard rule 5): every number shows [SOURCED FACT|MODEL ASSUMPTION · source, as_of]
+            with st.expander("🧾 Source-tagged report (every number with source & as-of date)", expanded=False):
+                try:
+                    from core.reporting.council_report import build_from_council
+                    _rep = build_from_council(c_res)
+                    _md = _rep.to_markdown()
+                    st.markdown(_md)
+                    st.download_button("⬇️ Download report (.md)", _md,
+                                       file_name=f"{sym}_{_rep.as_of}_council_report.md", mime="text/markdown")
+                except Exception as _rep_err:
+                    st.error(f"Report could not be built without untagged numbers: {_rep_err}")
+
             # Summary Metrics Row
             m1, m2, m3, m4, m5, m6 = st.columns(6)
             m1.metric(t("current_price"), f"{price:,.2f} {curr}")

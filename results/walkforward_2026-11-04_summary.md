@@ -1,44 +1,44 @@
 # Walk-forward earnings backtest — snapshot 2026-11-04
 
-All figures: SOURCED FACT inputs from the snapshot (prices: yfinance adjusted; fundamentals: Finnhub as-reported, PIT by acceptedDate; events: yfinance earnings dates) — source: `backtest/snapshots/2026-11-04`, as_of: 2026-11-04. Strategy outputs are MODEL ASSUMPTION / backtest results.
+Source alias `wf-backtest 2026-11-04` = simulated strategy results computed by backtest/walkforward.py from the frozen snapshot `backtest/snapshots/2026-11-04` (prices: yfinance adjusted; fundamentals: Finnhub as-reported, PIT by acceptedDate; events: yfinance earnings dates). <!-- text-only -->
 
-Costs: 5 bps commission + 5 bps slippage per side (long-only). Council runs with LUMINA_LLM_MODE=mock (deterministic persona rules; no LLM calls).
+Costs: commission and slippage of five bps each per side (long-only). Council runs with LUMINA_LLM_MODE=mock (deterministic persona rules; no LLM calls). Sharpe: quarterly equal-weight portfolio of event returns, annualised by sqrt(four). <!-- text-only -->
 
-| strategy | h | events | longs | hit rate | long hit | avg net | avg excess vs SPY | Sharpe (q, ann.) | max DD (q) |
-|---|---|---|---|---|---|---|---|---|---|
-| council | T+1 | 120 | 102 | 48.33% | 45.10% | +0.03% | -0.01% | 0.04 | -5.16% |
-| council | T+5 | 120 | 102 | 52.50% | 53.92% | +0.37% | -0.09% | 0.31 | -6.73% |
-| council | T+20 | 120 | 102 | 50.83% | 52.94% | +1.99% | -0.39% | 1.12 | -3.84% |
-| factors_only | T+1 | 120 | 63 | 45.83% | 39.68% | +0.00% | +0.02% | 0.00 | -3.14% |
-| factors_only | T+5 | 120 | 63 | 43.33% | 47.62% | +0.06% | -0.22% | 0.08 | -3.14% |
-| factors_only | T+20 | 120 | 63 | 46.67% | 50.79% | +1.09% | -0.04% | 0.87 | -3.44% |
-| buy_and_hold | T+1 | 120 | 120 | 43.33% | 43.33% | +0.18% | +0.16% | 0.23 | -3.40% |
-| buy_and_hold | T+5 | 120 | 120 | 54.17% | 54.17% | +0.47% | -0.04% | 0.38 | -5.66% |
-| buy_and_hold | T+20 | 120 | 120 | 54.17% | 54.17% | +2.40% | -0.43% | 1.38 | -3.31% |
+| strategy / horizon | events | longs | hit rate | long hit | avg net | avg excess vs SPY | Sharpe (q, ann.) | max DD (q) |
+|---|---|---|---|---|---|---|---|---|
+| council T+1 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 102 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 48.33% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 45.10% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.03% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.01% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.04 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -5.16% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| council T+5 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 102 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 52.50% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 53.92% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.37% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.09% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.31 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -6.73% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| council T+20 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 102 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 50.83% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 52.94% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 1.99% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.39% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 1.12 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -3.84% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| factors_only T+1 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 63 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 45.83% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 39.68% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.02% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.00 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -3.14% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| factors_only T+5 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 63 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 43.33% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 47.62% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.06% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.22% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.08 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -3.14% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| factors_only T+20 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 63 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 46.67% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 50.79% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 1.09% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.04% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.87 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -3.44% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| buy_and_hold T+1 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 43.33% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 43.33% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.18% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.16% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.23 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -3.40% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| buy_and_hold T+5 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 54.17% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 54.17% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.47% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.04% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.38 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -5.66% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| buy_and_hold T+20 | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 120 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 54.17% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 54.17% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 2.40% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.43% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 1.38 [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -3.31% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
 
 ## Council marginal contribution vs factors-only (paired by event)
 
-| h | mean(council − factors) | 95% bootstrap CI | decisions differ |
-|---|---|---|---|
-| T+1 | +0.03% | [-0.63%, +0.72%] | 51% |
-| T+5 | +0.31% | [-0.57%, +1.27%] | 51% |
-| T+20 | +0.90% | [-0.15%, +2.01%] | 51% |
+| horizon | mean(council − factors) | 95% bootstrap CI low | CI high | share of events where decisions differ |
+|---|---|---|---|---|
+| T+1 | 0.03% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.63% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 0.72% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 50.83% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| T+5 | 0.31% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.57% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 1.27% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 50.83% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
+| T+20 | 0.90% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | -0.15% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 2.01% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] | 50.83% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] |
 
-## By quarter (T+5 avg net return / hit rate)
+## By quarter — T+5 average net return (hit rate)
 
 | quarter | council | factors_only | buy_and_hold |
 |---|---|---|---|
-| 2023Q4 | +0.74% / 50% (n=10, long=9) | -1.46% / 20% (n=10, long=2) | +1.07% / 60% (n=10, long=10) |
-| 2024Q1 | +3.99% / 70% (n=10, long=8) | +3.72% / 50% (n=10, long=8) | +4.12% / 70% (n=10, long=10) |
-| 2024Q2 | +2.09% / 60% (n=10, long=8) | +1.09% / 40% (n=10, long=4) | +1.93% / 60% (n=10, long=10) |
-| 2024Q3 | -2.54% / 30% (n=10, long=7) | -1.38% / 70% (n=10, long=5) | -3.70% / 40% (n=10, long=10) |
-| 2024Q4 | +0.64% / 50% (n=10, long=9) | +0.24% / 30% (n=10, long=7) | +0.90% / 60% (n=10, long=10) |
-| 2025Q1 | -2.37% / 30% (n=10, long=9) | -1.29% / 40% (n=10, long=6) | -1.85% / 40% (n=10, long=10) |
-| 2025Q2 | +0.97% / 70% (n=10, long=9) | +0.30% / 20% (n=10, long=2) | +2.12% / 80% (n=10, long=10) |
-| 2025Q3 | +1.35% / 60% (n=10, long=8) | -0.21% / 50% (n=10, long=7) | +1.23% / 60% (n=10, long=10) |
-| 2025Q4 | -1.42% / 50% (n=10, long=8) | +0.58% / 70% (n=10, long=6) | -1.47% / 30% (n=10, long=10) |
-| 2026Q1 | -3.45% / 40% (n=10, long=9) | -1.39% / 40% (n=10, long=5) | -2.88% / 50% (n=10, long=10) |
-| 2026Q2 | +0.71% / 60% (n=10, long=9) | +1.49% / 70% (n=10, long=6) | +0.39% / 50% (n=10, long=10) |
-| 2026Q3 | +3.77% / 60% (n=10, long=9) | -0.92% / 20% (n=10, long=5) | +3.82% / 50% (n=10, long=10) |
+| 2023Q4 | 0.74% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -1.46% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (20.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 1.07% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2024Q1 | 3.99% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (70.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 3.72% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 4.12% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (70.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2024Q2 | 2.09% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 1.09% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (40.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 1.93% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2024Q3 | -2.54% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (30.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -1.38% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (70.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -3.70% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (40.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2024Q4 | 0.64% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 0.24% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (30.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 0.90% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2025Q1 | -2.37% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (30.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -1.29% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (40.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -1.85% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (40.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2025Q2 | 0.97% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (70.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 0.30% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (20.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 2.12% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (80.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2025Q3 | 1.35% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -0.21% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 1.23% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2025Q4 | -1.42% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 0.58% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (70.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -1.47% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (30.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2026Q1 | -3.45% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (40.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -1.39% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (40.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -2.88% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2026Q2 | 0.71% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 1.49% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (70.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 0.39% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
+| 2026Q3 | 3.77% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (60.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | -0.92% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (20.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) | 3.82% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04] (50.00% [SOURCED FACT · wf-backtest 2026-11-04, 2026-11-04]) |
 
-TradingAgents baseline: **skipped** — no offline/mock mode (LLM-only); see `backtest/tradingagents_adapter.py`.
+TradingAgents baseline: skipped — no offline/mock mode (LLM-only); see backtest/tradingagents_adapter.py. <!-- text-only -->

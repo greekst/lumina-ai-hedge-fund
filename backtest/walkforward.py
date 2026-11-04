@@ -308,41 +308,53 @@ def summarize(df: pd.DataFrame) -> Dict[str, Any]:
     return out
 
 
-def _fmt(x: Any, pct: bool = True) -> str:
-    if x is None or (isinstance(x, float) and not np.isfinite(x)):
-        return "n/a"
-    return f"{x * 100:+.2f}%" if pct else f"{x:.2f}"
+def _fmt(x: Any, pct: bool = True, src: str = "", as_of: str = "", decimals: int = 2) -> str:
+    """Tagged cell: `value [SOURCED FACT · src, as_of]` (hard rule 5)."""
+    from core.reporting.tagged import fact
+    v = None if x is None or (isinstance(x, float) and not np.isfinite(x)) else (x * 100 if pct else x)
+    t = fact(v, src, as_of, unit="%" if pct else "", decimals=decimals)
+    return t.render(with_label=False)
 
 
 def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, Any]) -> str:
+    src = f"wf-backtest {snap_id}"
+    F = lambda x, pct=True: _fmt(x, pct, src, snap_id)  # noqa: E731
+    N = lambda x: _fmt(x, False, src, snap_id, decimals=0)  # noqa: E731  (counts)
     L = [f"# Walk-forward earnings backtest — snapshot {snap_id}", "",
-         "All figures: SOURCED FACT inputs from the snapshot (prices: yfinance adjusted; fundamentals: Finnhub "
-         "as-reported, PIT by acceptedDate; events: yfinance earnings dates) — "
-         f"source: `backtest/snapshots/{snap_id}`, as_of: {snap_id}. Strategy outputs are MODEL ASSUMPTION / backtest results.",
-         "", "Costs: 5 bps commission + 5 bps slippage per side (long-only). Council runs with LUMINA_LLM_MODE=mock "
-         "(deterministic persona rules; no LLM calls).", "",
-         "| strategy | h | events | longs | hit rate | long hit | avg net | avg excess vs SPY | Sharpe (q, ann.) | max DD (q) |",
-         "|---|---|---|---|---|---|---|---|---|---|"]
+         f"Source alias `{src}` = simulated strategy results computed by backtest/walkforward.py from the frozen snapshot "
+         f"`backtest/snapshots/{snap_id}` (prices: yfinance adjusted; fundamentals: Finnhub as-reported, PIT by acceptedDate; "
+         "events: yfinance earnings dates). <!-- text-only -->", "",
+         "Costs: commission and slippage of five bps each per side (long-only). Council runs with LUMINA_LLM_MODE=mock "
+         "(deterministic persona rules; no LLM calls). Sharpe: quarterly equal-weight portfolio of event returns, "
+         "annualised by sqrt(four). <!-- text-only -->", "",
+         "| strategy / horizon | events | longs | hit rate | long hit | avg net | avg excess vs SPY | Sharpe (q, ann.) | max DD (q) |",
+         "|---|---|---|---|---|---|---|---|---|"]
     for key, m in summary["overall"].items():
         strat, h = key.split("|")
-        L.append(f"| {strat} | T+{h} | {m['n_events']} | {m['n_long']} | {_fmt(m['hit_rate'])[1:]} | "
-                 f"{_fmt(m['long_hit_rate'])[1:] if m['long_hit_rate'] is not None else 'n/a'} | {_fmt(m['avg_net_ret'])} | "
-                 f"{_fmt(m['avg_excess_ret'])} | {_fmt(m['sharpe_quarterly_ann'], pct=False)} | {_fmt(m['max_drawdown_quarterly'])} |")
+        L.append(f"| {strat} T+{h} | {N(m['n_events'])} | {N(m['n_long'])} | {F(m['hit_rate'])} | "
+                 f"{F(m['long_hit_rate'])} | {F(m['avg_net_ret'])} | {F(m['avg_excess_ret'])} | "
+                 f"{F(m['sharpe_quarterly_ann'], False)} | {F(m['max_drawdown_quarterly'])} |")
     L += ["", "## Council marginal contribution vs factors-only (paired by event)", "",
-          "| h | mean(council − factors) | 95% bootstrap CI | decisions differ |", "|---|---|---|---|"]
+          "| horizon | mean(council − factors) | 95% bootstrap CI low | CI high | share of events where decisions differ |",
+          "|---|---|---|---|---|"]
     for h, m in summary["council_minus_factors"].items():
-        L.append(f"| T+{h} | {_fmt(m['mean_diff'])} | [{_fmt(m['ci95_bootstrap'][0])}, {_fmt(m['ci95_bootstrap'][1])}] | "
-                 f"{m['share_events_decisions_differ'] * 100:.0f}% |")
-    L += ["", "## By quarter (T+5 avg net return / hit rate)", "",
+        L.append(f"| T+{h} | {F(m['mean_diff'])} | {F(m['ci95_bootstrap'][0])} | {F(m['ci95_bootstrap'][1])} | "
+                 f"{F(m['share_events_decisions_differ'])} |")
+    L += ["", "## By quarter — T+5 average net return (hit rate)", "",
           "| quarter | " + " | ".join(STRATEGIES) + " |", "|---|" + "---|" * len(STRATEGIES)]
     for qtr in sorted(summary["by_quarter"]):
         cells = []
-        for s in STRATEGIES:
-            m = summary["by_quarter"][qtr].get(f"{s}|5")
-            cells.append(f"{_fmt(m['avg_net_ret'])} / {m['hit_rate'] * 100:.0f}% (n={m['n']}, long={m['n_long']})" if m else "")
+        for s_ in STRATEGIES:
+            m = summary["by_quarter"][qtr].get(f"{s_}|5")
+            cells.append(f"{F(m['avg_net_ret'])} ({F(m['hit_rate'])})" if m else "")
         L.append(f"| {qtr} | " + " | ".join(cells) + " |")
-    L += ["", "TradingAgents baseline: **skipped** — no offline/mock mode (LLM-only); see `backtest/tradingagents_adapter.py`.", ""]
-    return "\n".join(L)
+    L += ["", "TradingAgents baseline: skipped — no offline/mock mode (LLM-only); see backtest/tradingagents_adapter.py. <!-- text-only -->", ""]
+    md = "\n".join(L)
+    from core.reporting.tagged import untagged_numbers
+    bad = untagged_numbers(md)
+    if bad:
+        raise ValueError(f"untagged numbers in summary: {bad[:5]}")
+    return md
 
 
 def write_outputs(result: Dict[str, Any], out_dir: str, snap: Snapshot) -> Dict[str, str]:

@@ -332,6 +332,8 @@ class HedgeFundCouncil:
             "chronos_forecast": chronos_forecast,
             "dual_quantum": dual_quantum,
             "graph_lessons": graph_lessons,
+            "deterministic_metrics": det_metrics,
+            "qlib_alpha158": alpha158_summary,
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
         }
 

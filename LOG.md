@@ -37,3 +37,13 @@ Times are UTC (container clock). Budget proxy: elapsed wall time (no cost readou
 - TradingAgents baseline skipped (LLM-only, no mock mode, conflicting pandas pin, LLM training-data look-ahead) — `backtest/tradingagents_adapter.py`.
 - GitHub Actions: no runs are recorded for this branch (forks have Actions disabled by default) → CI verified locally only. Owner action: enable Actions on the fork.
 - Next: Phase 3 source-tagged reporting.
+
+## 2026-11-04 18:20 — Phase 3 checkpoint
+- `core/reporting/tagged.py`: `Tagged(value, source, as_of, kind)` refuses to exist without a source and an ISO date. It renders as `value [SOURCED FACT|MODEL ASSUMPTION · source, YYYY-MM-DD]`. `untagged_numbers()` is the validator: it skips headings, label cells and table header rows, and flags every other number.
+- `core/reporting/council_report.py`: `Report` and `Section` reject raw numbers. `to_markdown()` raises if any untagged number survives. Model prose (LLM or persona) has its digits redacted to ‹n›, because a number in prose has no verifiable source. Builders: `build_from_council(ai_res)` (live, tagged `yfinance Ticker.info`, as_of = fetch date, with a "not point-in-time" banner) and `build_from_pit(snapshot, ticker, i)` (offline, deterministic, outcome section kept separate).
+- The Streamlit council view has a new "Source-tagged report" expander with a .md download. The walk-forward summary Markdown is also fully tagged. Example reports: `reports/examples/`.
+- Forecasts ("TimesFM" heuristic, Chronos, LightGBM synthetic gate), agent scores, CRO and PM outputs are all labelled `MODEL ASSUMPTION`.
+- Tests: `tests/test_report_tagging.py` (7). It fails on any untagged number in the live or PIT reports, or in any committed `reports/**/*.md` or `results/*_summary.md`. Suite: 47 passed, 1 skipped. UI smoke: 1 passed. flake8 hard errors: 0.
+- Walk-forward output changed only in summary formatting; the new digest `2233f1c1…` reproduced twice.
+- Legacy content generators (`fund_content_generator`, `quant_reporter`, note/X drafts) are NOT converted. They are marketing/social outputs, now unpublishable (kill switch), and are listed in HANDOFF as remaining work.
+- Next: Phase 4 stretch decision.

@@ -78,7 +78,7 @@ flowchart TD
 | L3 | `langgraph_council.node_cro_review` | `max_position_size_pct`, `stop_loss_pct` | CIO allocation / stop | **P0** | **Fixed** (Phase 1): numeric fields stripped, deterministic CRO values used |
 | L4 | `langgraph_council.node_cio_synthesis` | `conviction_score`, `target_allocation_pct`, `stop_loss_pct` | Final verdict bundle | **P0** | **Fixed** (Phase 1): numbers recomputed deterministically; LLM keeps only stance + prose |
 | L5 | `news_feed.audit_and_quarantine_news` | `credibility_score` | Quarantine → CRO veto | P1 | **Fixed** (Phase 1): guard derives score from categorical quarantine flag |
-| L6 | Agent `dialogue`, thesis, CIO summary | prose that quotes numbers ("must cite numbers") | Displayed / published | P1 | Labelled as MODEL TEXT in reports (Phase 3) |
+| L6 | Agent `dialogue`, thesis, CIO summary | prose that quotes numbers ("must cite numbers") | Displayed / published | P1 | **Fixed** (Phase 3): numbers in model prose are redacted (‹n›) in source-tagged reports |
 | L7 | `alpha_researcher`, `adversarial_simulator`, `reflexion_engine`, `master_policy_memory`, `graph_rag_extractor`, `fund_content_generator`, `translation_engine` | prose / hypotheses | Not on the decision path for sizing (verified by grep) | P2 | Documented |
 
 ## 3. Every place future data can leak into a past decision (Hard rule 4)
@@ -107,7 +107,7 @@ flowchart TD
 ### P1
 - **P1-1 LLM key never read.** Settings default dict uses `gemini_api_key` but 14 call sites read `google_api_key` → LLM path silently disabled unless `config/settings.json` has that key. Consequence: every agent returns `is_degraded_fallback=True` → PM's degraded mode forces **HOLD / 0% allocation for every symbol**. → **Fixed** (Phase 1): `core/llm_mode.py::get_llm_api_key()` (both keys + env), `LUMINA_LLM_MODE=live|mock|off`.
 - **P1-2 No offline/mock mode** → tests and backtests depend on network/LLM. → **Fixed** (Phase 1): `LUMINA_LLM_MODE=mock` deterministic seeded responses.
-- **P1-3 "Google TimesFM" is not TimesFM** — it is a momentum + analyst-target heuristic. "Amazon Chronos" falls back to a heuristic when `chronos` isn't installed (it isn't in requirements). Labels mislead. → Outputs tagged `MODEL ASSUMPTION`, engine name reported honestly (`engine: heuristic_drift`).
+- **P1-3 "Google TimesFM" is not TimesFM** — it is a momentum + analyst-target heuristic. "Amazon Chronos" falls back to a heuristic when `chronos` isn't installed (it isn't in requirements). Labels mislead. → **Fixed** (Phase 3): reports tag these outputs `MODEL ASSUMPTION` and name the engine honestly ("heuristic 'TimesFM'"). The forecasters are excluded from the walk-forward backtest.
 - **P1-4 Idempotency reservation leak**: `place_order` returns on insufficient balance / closed market (EU/US branches) without `guard.record_completed`, leaving a stale reservation that blocks retries. → **Fixed** (Phase 1) + test.
 - **P1-5 SQLite DB path** uses `%APPDATA%`; on Linux `APPDATA` is unset → `./LuminaAI/` relative to CWD. → **Fixed** (Phase 1): `LUMINA_DATA_DIR` env, default `~/.lumina`.
 - **P1-6 `Alpha158Engine.compute_symbol_summary` does not exist**; call in `hedge_fund_council.py:147` always raises (swallowed). Factors never reach the council. → **Fixed** (Phase 1): method implemented on top of `get_latest_factors`.
