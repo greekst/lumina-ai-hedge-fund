@@ -1487,6 +1487,61 @@
  {
   "actual": {
    "label": "SOURCED FACT",
+   "ret_1d_pct": 1.0936,
+   "ret_20d_pct": 5.4679,
+   "ret_5d_pct": 3.4444,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.6634,
+   "spy_20d_pct": 4.1879,
+   "spy_5d_pct": 1.629
+  },
+  "announced_at_et": "2024-05-30 07:00",
+  "decision_date": "2024-05-29",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.734,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 88,
+    "cathie_wood": 58,
+    "cis_trader": 74,
+    "george_soros": 63,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 66,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.49,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "COST"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
    "ret_1d_pct": -19.7371,
    "ret_20d_pct": -6.9104,
    "ret_5d_pct": -12.9188,

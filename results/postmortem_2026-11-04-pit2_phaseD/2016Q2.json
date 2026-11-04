@@ -1047,6 +1047,61 @@
  {
   "actual": {
    "label": "SOURCED FACT",
+   "ret_1d_pct": 0.9692,
+   "ret_20d_pct": -1.4641,
+   "ret_5d_pct": -0.5911,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.7948,
+   "spy_20d_pct": 1.895,
+   "spy_5d_pct": -0.2957
+  },
+  "announced_at_et": "2016-05-02 07:00",
+  "decision_date": "2016-04-29",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.0096,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 69,
+    "cathie_wood": 63,
+    "cis_trader": 74,
+    "george_soros": 67,
+    "graham": 93,
+    "michael_burry": 84,
+    "william_oneil": 70
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BULLISH",
+    "michael_burry": "BULLISH",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 70,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 0.96,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BRK.B"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
    "ret_1d_pct": -0.1334,
    "ret_20d_pct": -2.0753,
    "ret_5d_pct": 3.6016,
