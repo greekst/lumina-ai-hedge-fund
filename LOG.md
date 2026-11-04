@@ -334,3 +334,10 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
   FRED, Hugging Face, Finnhub, Gemini). Yahoo keeps no history for delisted tickers; Finnhub candles are 403 on this plan. Phase A
   therefore keeps the documented gap and sizes it from EDGAR data only (`backtest/delisted_gap.py`, results/delisted_gap_2026-11-04.md).
 - Fresh container: venv rebuilt on Python 3.12 from the pinned set; `pytest -q` → 100 passed, 1 skipped (baseline before any change).
+
+## 2026-11-04 23:05 UTC — Phase A result: delisted gap sized from EDGAR (no prices)
+- `results/delisted_gap_2026-11-04.md`: 28 gap companies (public-float top 150 in some year, no current listing, plausible float).
+  Lost top-100 events in the H1 window, estimated from the latest public float vs the PIT 100th-largest cap on the float date:
+  **82 (1.7%)**, upper bound (150th-largest) **147 (3.1%)**, against 4,661 H1 events. Concentrated 2015Q2–2019Q3 (up to ~11 per
+  season, ~10% of a season); near zero since 2020. Largest: Shire 11, Celgene 10, Allergan 8, Walgreens 8, Monsanto 8, Time Warner 7.
+- No delisted company could be added to the candidate pool (no prices). Direction of the bias stays unknown.

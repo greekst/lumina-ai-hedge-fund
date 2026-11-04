@@ -1,0 +1,1989 @@
+{
+ "by_season": [
+  {
+   "h1_events": 97,
+   "lost_est": 3,
+   "lost_upper": 4,
+   "season": "2015Q1"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 7,
+   "lost_upper": 18,
+   "season": "2015Q2"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 7,
+   "lost_upper": 18,
+   "season": "2015Q3"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 1,
+   "lost_upper": 2,
+   "season": "2015Q4"
+  },
+  {
+   "h1_events": 97,
+   "lost_est": 3,
+   "lost_upper": 3,
+   "season": "2016Q1"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 11,
+   "lost_upper": 16,
+   "season": "2016Q2"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 8,
+   "lost_upper": 13,
+   "season": "2016Q3"
+  },
+  {
+   "h1_events": 96,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2016Q4"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 2,
+   "lost_upper": 2,
+   "season": "2017Q1"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 10,
+   "lost_upper": 14,
+   "season": "2017Q2"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 7,
+   "lost_upper": 10,
+   "season": "2017Q3"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2017Q4"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 3,
+   "lost_upper": 3,
+   "season": "2018Q1"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 5,
+   "lost_upper": 10,
+   "season": "2018Q2"
+  },
+  {
+   "h1_events": 97,
+   "lost_est": 3,
+   "lost_upper": 8,
+   "season": "2018Q3"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 1,
+   "lost_upper": 1,
+   "season": "2018Q4"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2019Q1"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 4,
+   "lost_upper": 6,
+   "season": "2019Q2"
+  },
+  {
+   "h1_events": 97,
+   "lost_est": 3,
+   "lost_upper": 5,
+   "season": "2019Q3"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2019Q4"
+  },
+  {
+   "h1_events": 101,
+   "lost_est": 0,
+   "lost_upper": 1,
+   "season": "2020Q1"
+  },
+  {
+   "h1_events": 102,
+   "lost_est": 0,
+   "lost_upper": 1,
+   "season": "2020Q2"
+  },
+  {
+   "h1_events": 102,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2020Q3"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2020Q4"
+  },
+  {
+   "h1_events": 102,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2021Q1"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 0,
+   "lost_upper": 1,
+   "season": "2021Q2"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 0,
+   "lost_upper": 1,
+   "season": "2021Q3"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2021Q4"
+  },
+  {
+   "h1_events": 96,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2022Q1"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 1,
+   "season": "2022Q2"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 0,
+   "lost_upper": 1,
+   "season": "2022Q3"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2022Q4"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2023Q1"
+  },
+  {
+   "h1_events": 101,
+   "lost_est": 1,
+   "lost_upper": 3,
+   "season": "2023Q2"
+  },
+  {
+   "h1_events": 101,
+   "lost_est": 1,
+   "lost_upper": 3,
+   "season": "2023Q3"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 1,
+   "lost_upper": 1,
+   "season": "2023Q4"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 1,
+   "lost_upper": 1,
+   "season": "2024Q1"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2024Q2"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2024Q3"
+  },
+  {
+   "h1_events": 103,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2024Q4"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2025Q1"
+  },
+  {
+   "h1_events": 105,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2025Q2"
+  },
+  {
+   "h1_events": 98,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2025Q3"
+  },
+  {
+   "h1_events": 99,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2025Q4"
+  },
+  {
+   "h1_events": 97,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2026Q1"
+  },
+  {
+   "h1_events": 101,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2026Q2"
+  },
+  {
+   "h1_events": 100,
+   "lost_est": 0,
+   "lost_upper": 0,
+   "season": "2026Q3"
+  }
+ ],
+ "events": [
+  {
+   "accepted_at_et": "2015-05-11 06:36:10",
+   "cik": 1578845,
+   "decision_date": "2015-05-08",
+   "float_as_of": "2014-06-30",
+   "float_usd": 38723000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-08-06 07:15:22",
+   "cik": 1578845,
+   "decision_date": "2015-08-05",
+   "float_as_of": "2014-06-30",
+   "float_usd": 38723000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-05-10 07:45:26",
+   "cik": 1578845,
+   "decision_date": "2016-05-09",
+   "float_as_of": "2015-06-30",
+   "float_usd": 119000000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-08-08 07:30:34",
+   "cik": 1578845,
+   "decision_date": "2016-08-05",
+   "float_as_of": "2015-06-30",
+   "float_usd": 119000000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-05-09 07:15:28",
+   "cik": 1578845,
+   "decision_date": "2017-05-08",
+   "float_as_of": "2016-06-30",
+   "float_usd": 91300000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-08-03 08:10:33",
+   "cik": 1578845,
+   "decision_date": "2017-08-02",
+   "float_as_of": "2016-06-30",
+   "float_usd": 91300000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-04-30 07:15:33",
+   "cik": 1578845,
+   "decision_date": "2018-04-27",
+   "float_as_of": "2017-06-30",
+   "float_usd": 81000000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2018Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-07-26 06:45:28",
+   "cik": 1578845,
+   "decision_date": "2018-07-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 81000000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2018Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-05-07 07:16:35",
+   "cik": 1578845,
+   "decision_date": "2019-05-06",
+   "float_as_of": "2018-06-30",
+   "float_usd": 56500000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2019Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-08-06 08:52:03",
+   "cik": 1578845,
+   "decision_date": "2019-08-05",
+   "float_as_of": "2018-06-30",
+   "float_usd": 56500000000.0,
+   "name": "ALLERGAN PLC",
+   "season": "2019Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-30 07:35:13",
+   "cik": 816284,
+   "decision_date": "2015-04-29",
+   "float_as_of": "2014-06-30",
+   "float_usd": 68638903046.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-07-23 07:40:19",
+   "cik": 816284,
+   "decision_date": "2015-07-22",
+   "float_as_of": "2014-06-30",
+   "float_usd": 68638903046.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-28 07:35:15",
+   "cik": 816284,
+   "decision_date": "2016-04-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 91555862650.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-07-28 07:35:27",
+   "cik": 816284,
+   "decision_date": "2016-07-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 91555862650.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-04-27 07:32:45",
+   "cik": 816284,
+   "decision_date": "2017-04-26",
+   "float_as_of": "2016-06-30",
+   "float_usd": 76439256026.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-07-27 07:35:29",
+   "cik": 816284,
+   "decision_date": "2017-07-26",
+   "float_as_of": "2016-06-30",
+   "float_usd": 76439256026.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-05-04 07:37:26",
+   "cik": 816284,
+   "decision_date": "2018-05-03",
+   "float_as_of": "2017-06-30",
+   "float_usd": 101580696211.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2018Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-07-26 07:38:17",
+   "cik": 816284,
+   "decision_date": "2018-07-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 101580696211.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2018Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-04-25 16:53:43",
+   "cik": 816284,
+   "decision_date": "2019-04-25",
+   "float_as_of": "2018-06-30",
+   "float_usd": 55804979945.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2019Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-07-30 07:42:49",
+   "cik": 816284,
+   "decision_date": "2019-07-29",
+   "float_as_of": "2018-06-30",
+   "float_usd": 55804979945.0,
+   "name": "CELGENE CORP /DE/",
+   "season": "2019Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-01-07 07:05:31",
+   "cik": 1618921,
+   "decision_date": "2016-01-06",
+   "float_as_of": "2015-02-28",
+   "float_usd": 71600000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2016Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-05 07:06:06",
+   "cik": 1618921,
+   "decision_date": "2016-04-04",
+   "float_as_of": "2015-02-28",
+   "float_usd": 71600000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-01-05 07:07:02",
+   "cik": 1618921,
+   "decision_date": "2017-01-04",
+   "float_as_of": "2016-02-29",
+   "float_usd": 73000000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2017Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-04-05 07:06:04",
+   "cik": 1618921,
+   "decision_date": "2017-04-04",
+   "float_as_of": "2016-02-29",
+   "float_usd": 73000000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-01-04 07:06:03",
+   "cik": 1618921,
+   "decision_date": "2018-01-03",
+   "float_as_of": "2017-02-28",
+   "float_usd": 73000000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2018Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-03-28 07:09:03",
+   "cik": 1618921,
+   "decision_date": "2018-03-27",
+   "float_as_of": "2017-02-28",
+   "float_usd": 73000000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2018Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-12-20 07:05:35",
+   "cik": 1618921,
+   "decision_date": "2018-12-19",
+   "float_as_of": "2018-02-28",
+   "float_usd": 58200000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2018Q4",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-04-02 07:06:34",
+   "cik": 1618921,
+   "decision_date": "2019-04-01",
+   "float_as_of": "2018-02-28",
+   "float_usd": 58200000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2019Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2020-01-08 07:05:10",
+   "cik": 1618921,
+   "decision_date": "2020-01-07",
+   "float_as_of": "2019-02-28",
+   "float_usd": 54500000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2020Q1",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2020-04-02 07:05:54",
+   "cik": 1618921,
+   "decision_date": "2020-04-01",
+   "float_as_of": "2019-02-28",
+   "float_usd": 54500000000.0,
+   "name": "WALGREENS BOOTS ALLIANCE, INC.",
+   "season": "2020Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-29 08:19:34",
+   "cik": 1105705,
+   "decision_date": "2015-04-28",
+   "float_as_of": "2014-06-30",
+   "float_usd": 58280000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-08-05 08:06:36",
+   "cik": 1105705,
+   "decision_date": "2015-08-04",
+   "float_as_of": "2014-06-30",
+   "float_usd": 58280000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-05-04 07:26:02",
+   "cik": 1105705,
+   "decision_date": "2016-05-03",
+   "float_as_of": "2015-06-30",
+   "float_usd": 68960000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-08-03 07:20:56",
+   "cik": 1105705,
+   "decision_date": "2016-08-02",
+   "float_as_of": "2015-06-30",
+   "float_usd": 68960000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-05-03 07:26:03",
+   "cik": 1105705,
+   "decision_date": "2017-05-02",
+   "float_as_of": "2016-06-30",
+   "float_usd": 56860000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-08-02 07:23:57",
+   "cik": 1105705,
+   "decision_date": "2017-08-01",
+   "float_as_of": "2016-06-30",
+   "float_usd": 56860000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-04-26 08:20:55",
+   "cik": 1105705,
+   "decision_date": "2018-04-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 78170000000.0,
+   "name": "TIME WARNER INC.",
+   "season": "2018Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-23 07:56:04",
+   "cik": 29915,
+   "decision_date": "2015-04-22",
+   "float_as_of": "2014-06-30",
+   "float_usd": 61400000000.0,
+   "name": "DOW CHEMICAL CO /DE/",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-07-23 08:05:21",
+   "cik": 29915,
+   "decision_date": "2015-07-22",
+   "float_as_of": "2014-06-30",
+   "float_usd": 61400000000.0,
+   "name": "DOW CHEMICAL CO /DE/",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-28 08:31:55",
+   "cik": 29915,
+   "decision_date": "2016-04-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 59100000000.0,
+   "name": "DOW CHEMICAL CO /DE/",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-07-28 07:58:51",
+   "cik": 29915,
+   "decision_date": "2016-07-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 59100000000.0,
+   "name": "DOW CHEMICAL CO /DE/",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-04-27 08:19:56",
+   "cik": 29915,
+   "decision_date": "2017-04-26",
+   "float_as_of": "2016-06-30",
+   "float_usd": 55800000000.0,
+   "name": "DOW CHEMICAL CO /DE/",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-07-27 07:49:49",
+   "cik": 29915,
+   "decision_date": "2017-07-26",
+   "float_as_of": "2016-06-30",
+   "float_usd": 55800000000.0,
+   "name": "DOW CHEMICAL CO /DE/",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-28 16:26:01",
+   "cik": 1532063,
+   "decision_date": "2015-04-28",
+   "float_as_of": "2014-06-30",
+   "float_usd": 51583566968.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-07-28 16:16:59",
+   "cik": 1532063,
+   "decision_date": "2015-07-28",
+   "float_as_of": "2014-06-30",
+   "float_usd": 51583566968.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-25 16:14:36",
+   "cik": 1532063,
+   "decision_date": "2016-04-25",
+   "float_as_of": "2015-06-30",
+   "float_usd": 59987373540.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-07-25 16:06:04",
+   "cik": 1532063,
+   "decision_date": "2016-07-25",
+   "float_as_of": "2015-06-30",
+   "float_usd": 59987373540.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-04-24 16:06:04",
+   "cik": 1532063,
+   "decision_date": "2017-04-24",
+   "float_as_of": "2016-06-30",
+   "float_usd": 47641763395.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-07-25 16:08:03",
+   "cik": 1532063,
+   "decision_date": "2017-07-25",
+   "float_as_of": "2016-06-30",
+   "float_usd": 47641763395.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-05-02 16:34:03",
+   "cik": 1532063,
+   "decision_date": "2018-05-02",
+   "float_as_of": "2017-06-30",
+   "float_usd": 36773795228.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2018Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-08-01 16:07:05",
+   "cik": 1532063,
+   "decision_date": "2018-08-01",
+   "float_as_of": "2017-06-30",
+   "float_usd": 36773795228.0,
+   "name": "Express Scripts Holding Co.",
+   "season": "2018Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-01-07 08:31:06",
+   "cik": 1110783,
+   "decision_date": "2015-01-06",
+   "float_as_of": "2014-02-28",
+   "float_usd": 57500000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2015Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-01 08:15:33",
+   "cik": 1110783,
+   "decision_date": "2015-03-31",
+   "float_as_of": "2014-02-28",
+   "float_usd": 57500000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2015Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-01-06 08:10:59",
+   "cik": 1110783,
+   "decision_date": "2016-01-05",
+   "float_as_of": "2015-02-28",
+   "float_usd": 58000000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2016Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-06 08:16:21",
+   "cik": 1110783,
+   "decision_date": "2016-04-05",
+   "float_as_of": "2015-02-28",
+   "float_usd": 58000000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-01-05 08:20:41",
+   "cik": 1110783,
+   "decision_date": "2017-01-04",
+   "float_as_of": "2016-02-29",
+   "float_usd": 39200000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2017Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-04-05 08:08:42",
+   "cik": 1110783,
+   "decision_date": "2017-04-04",
+   "float_as_of": "2016-02-29",
+   "float_usd": 39200000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-01-04 08:13:59",
+   "cik": 1110783,
+   "decision_date": "2018-01-03",
+   "float_as_of": "2017-02-28",
+   "float_usd": 49800000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2018Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-04-05 08:13:25",
+   "cik": 1110783,
+   "decision_date": "2018-04-04",
+   "float_as_of": "2017-02-28",
+   "float_usd": 49800000000.0,
+   "name": "MONSANTO CO /NEW/",
+   "season": "2018Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-04-25 16:29:00",
+   "cik": 773910,
+   "decision_date": "2019-04-25",
+   "float_as_of": "2018-06-30",
+   "float_usd": 37200000000.0,
+   "name": "Anadarko Petroleum Corp",
+   "season": "2019Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2019-07-26 16:22:02",
+   "cik": 773910,
+   "decision_date": "2019-07-26",
+   "float_as_of": "2018-06-30",
+   "float_usd": 37200000000.0,
+   "name": "Anadarko Petroleum Corp",
+   "season": "2019Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-02-12 07:31:46",
+   "cik": 936402,
+   "decision_date": "2015-02-11",
+   "float_as_of": "2014-06-30",
+   "float_usd": 45900000000.0,
+   "name": "Shire plc",
+   "season": "2015Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-30 07:48:42",
+   "cik": 936402,
+   "decision_date": "2015-04-29",
+   "float_as_of": "2014-06-30",
+   "float_usd": 45900000000.0,
+   "name": "Shire plc",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-07-23 07:16:55",
+   "cik": 936402,
+   "decision_date": "2015-07-22",
+   "float_as_of": "2014-06-30",
+   "float_usd": 45900000000.0,
+   "name": "Shire plc",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-10-23 07:09:35",
+   "cik": 936402,
+   "decision_date": "2015-10-22",
+   "float_as_of": "2015-06-30",
+   "float_usd": 47300000000.0,
+   "name": "Shire plc",
+   "season": "2015Q4",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-02-11 08:35:10",
+   "cik": 936402,
+   "decision_date": "2016-02-10",
+   "float_as_of": "2015-06-30",
+   "float_usd": 47300000000.0,
+   "name": "Shire plc",
+   "season": "2016Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-29 07:16:14",
+   "cik": 936402,
+   "decision_date": "2016-04-28",
+   "float_as_of": "2015-06-30",
+   "float_usd": 47300000000.0,
+   "name": "Shire plc",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-08-02 07:17:04",
+   "cik": 936402,
+   "decision_date": "2016-08-01",
+   "float_as_of": "2015-06-30",
+   "float_usd": 47300000000.0,
+   "name": "Shire plc",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-05-02 07:04:21",
+   "cik": 936402,
+   "decision_date": "2017-05-01",
+   "float_as_of": "2016-06-30",
+   "float_usd": 55500000000.0,
+   "name": "Shire plc",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-08-03 07:02:19",
+   "cik": 936402,
+   "decision_date": "2017-08-02",
+   "float_as_of": "2016-06-30",
+   "float_usd": 55500000000.0,
+   "name": "Shire plc",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-04-26 07:03:43",
+   "cik": 936402,
+   "decision_date": "2018-04-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 50100000000.0,
+   "name": "Shire plc",
+   "season": "2018Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-07-31 07:02:35",
+   "cik": 936402,
+   "decision_date": "2018-07-30",
+   "float_as_of": "2017-06-30",
+   "float_usd": 50100000000.0,
+   "name": "Shire plc",
+   "season": "2018Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-22 06:52:05",
+   "cik": 790070,
+   "decision_date": "2015-04-21",
+   "float_as_of": "2014-06-30",
+   "float_usd": 53268882932.0,
+   "name": "EMC CORP",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-07-22 06:50:59",
+   "cik": 790070,
+   "decision_date": "2015-07-21",
+   "float_as_of": "2014-06-30",
+   "float_usd": 53268882932.0,
+   "name": "EMC CORP",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-20 06:53:49",
+   "cik": 790070,
+   "decision_date": "2016-04-19",
+   "float_as_of": "2015-06-30",
+   "float_usd": 50627600803.0,
+   "name": "EMC CORP",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-07-18 16:18:19",
+   "cik": 790070,
+   "decision_date": "2016-07-18",
+   "float_as_of": "2015-06-30",
+   "float_usd": 50627600803.0,
+   "name": "EMC CORP",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-30 07:09:35",
+   "cik": 1377013,
+   "decision_date": "2015-04-29",
+   "float_as_of": "2014-06-30",
+   "float_usd": 41100000000.0,
+   "name": "TIME WARNER CABLE INC.",
+   "season": "2015Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-07-30 07:09:05",
+   "cik": 1377013,
+   "decision_date": "2015-07-29",
+   "float_as_of": "2014-06-30",
+   "float_usd": 41100000000.0,
+   "name": "TIME WARNER CABLE INC.",
+   "season": "2015Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-28 07:12:09",
+   "cik": 1377013,
+   "decision_date": "2016-04-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 50400000000.0,
+   "name": "TIME WARNER CABLE INC.",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-04-26 07:26:07",
+   "cik": 1275283,
+   "decision_date": "2016-04-25",
+   "float_as_of": "2015-06-30",
+   "float_usd": 31000000000.0,
+   "name": "REYNOLDS AMERICAN INC",
+   "season": "2016Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-07-26 07:25:02",
+   "cik": 1275283,
+   "decision_date": "2016-07-25",
+   "float_as_of": "2015-06-30",
+   "float_usd": 31000000000.0,
+   "name": "REYNOLDS AMERICAN INC",
+   "season": "2016Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-05-03 07:17:03",
+   "cik": 1275283,
+   "decision_date": "2017-05-02",
+   "float_as_of": "2016-06-30",
+   "float_usd": 44000000000.0,
+   "name": "REYNOLDS AMERICAN INC",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-04-28 06:36:37",
+   "cik": 1122304,
+   "decision_date": "2015-04-27",
+   "float_as_of": "2014-06-30",
+   "float_usd": 27900000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-08-04 06:25:13",
+   "cik": 1122304,
+   "decision_date": "2015-08-03",
+   "float_as_of": "2014-06-30",
+   "float_usd": 27900000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-04-28 06:29:35",
+   "cik": 1122304,
+   "decision_date": "2016-04-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 43200000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2016Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2016-08-02 06:50:42",
+   "cik": 1122304,
+   "decision_date": "2016-08-01",
+   "float_as_of": "2015-06-30",
+   "float_usd": 43200000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2016Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-05-02 06:51:57",
+   "cik": 1122304,
+   "decision_date": "2017-05-01",
+   "float_as_of": "2016-06-30",
+   "float_usd": 41800000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2017Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2017-08-03 06:54:15",
+   "cik": 1122304,
+   "decision_date": "2017-08-02",
+   "float_as_of": "2016-06-30",
+   "float_usd": 41800000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2017Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2018-05-01 06:33:11",
+   "cik": 1122304,
+   "decision_date": "2018-04-30",
+   "float_as_of": "2017-06-30",
+   "float_usd": 49200000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2018Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-08-02 06:36:15",
+   "cik": 1122304,
+   "decision_date": "2018-08-01",
+   "float_as_of": "2017-06-30",
+   "float_usd": 49200000000.0,
+   "name": "AETNA INC /PA/",
+   "season": "2018Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-23 07:05:37",
+   "cik": 1047122,
+   "decision_date": "2015-04-22",
+   "float_as_of": "2014-06-27",
+   "float_usd": 29200000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-07-23 07:05:19",
+   "cik": 1047122,
+   "decision_date": "2015-07-22",
+   "float_as_of": "2014-06-27",
+   "float_usd": 29200000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-04-28 07:01:28",
+   "cik": 1047122,
+   "decision_date": "2016-04-27",
+   "float_as_of": "2015-06-26",
+   "float_usd": 29600000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2016Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-07-28 06:58:01",
+   "cik": 1047122,
+   "decision_date": "2016-07-27",
+   "float_as_of": "2015-06-26",
+   "float_usd": 29600000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2016Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-04-27 07:04:37",
+   "cik": 1047122,
+   "decision_date": "2017-04-26",
+   "float_as_of": "2016-07-01",
+   "float_usd": 39700000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2017Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-07-27 06:59:04",
+   "cik": 1047122,
+   "decision_date": "2017-07-26",
+   "float_as_of": "2016-07-01",
+   "float_usd": 39700000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2017Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-04-26 06:58:27",
+   "cik": 1047122,
+   "decision_date": "2018-04-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 46800000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2018Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-07-26 06:58:20",
+   "cik": 1047122,
+   "decision_date": "2018-07-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 46800000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2018Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2019-04-25 06:58:38",
+   "cik": 1047122,
+   "decision_date": "2019-04-24",
+   "float_as_of": "2018-06-29",
+   "float_usd": 55000000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2019Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2019-07-25 06:59:28",
+   "cik": 1047122,
+   "decision_date": "2019-07-24",
+   "float_as_of": "2018-06-29",
+   "float_usd": 55000000000.0,
+   "name": "RAYTHEON CO/",
+   "season": "2019Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-29 07:05:11",
+   "cik": 884905,
+   "decision_date": "2015-04-28",
+   "float_as_of": "2014-06-30",
+   "float_usd": 39000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-07-29 06:39:15",
+   "cik": 884905,
+   "decision_date": "2015-07-28",
+   "float_as_of": "2014-06-30",
+   "float_usd": 39000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-04-29 06:25:46",
+   "cik": 884905,
+   "decision_date": "2016-04-28",
+   "float_as_of": "2015-06-30",
+   "float_usd": 34000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2016Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-07-28 06:53:26",
+   "cik": 884905,
+   "decision_date": "2016-07-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 34000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2016Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-04-27 06:29:14",
+   "cik": 884905,
+   "decision_date": "2017-04-26",
+   "float_as_of": "2016-06-30",
+   "float_usd": 32000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2017Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-07-27 06:24:57",
+   "cik": 884905,
+   "decision_date": "2017-07-26",
+   "float_as_of": "2016-06-30",
+   "float_usd": 32000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2017Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-04-26 06:02:56",
+   "cik": 884905,
+   "decision_date": "2018-04-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 38000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2018Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-07-26 06:30:25",
+   "cik": 884905,
+   "decision_date": "2018-07-25",
+   "float_as_of": "2017-06-30",
+   "float_usd": 38000000000.0,
+   "name": "PRAXAIR INC",
+   "season": "2018Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-05-07 11:24:06",
+   "cik": 6769,
+   "decision_date": "2015-05-06",
+   "float_as_of": "2014-06-30",
+   "float_usd": 38470137875.0,
+   "name": "APACHE CORPORATION",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-08-06 11:24:53",
+   "cik": 6769,
+   "decision_date": "2015-08-05",
+   "float_as_of": "2014-06-30",
+   "float_usd": 38470137875.0,
+   "name": "APACHE CORPORATION",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-05-04 16:09:41",
+   "cik": 718877,
+   "decision_date": "2017-05-04",
+   "float_as_of": "2016-06-30",
+   "float_usd": 27884568790.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2017Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-08-03 16:10:05",
+   "cik": 718877,
+   "decision_date": "2017-08-03",
+   "float_as_of": "2016-06-30",
+   "float_usd": 27884568790.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2017Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-05-03 15:27:03",
+   "cik": 718877,
+   "decision_date": "2018-05-02",
+   "float_as_of": "2017-06-30",
+   "float_usd": 42587342045.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2018Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2018-08-02 16:14:55",
+   "cik": 718877,
+   "decision_date": "2018-08-02",
+   "float_as_of": "2017-06-30",
+   "float_usd": 42587342045.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2018Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2019-05-02 16:14:11",
+   "cik": 718877,
+   "decision_date": "2019-05-02",
+   "float_as_of": "2018-06-30",
+   "float_usd": 57447460580.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2019Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2019-08-08 16:11:01",
+   "cik": 718877,
+   "decision_date": "2019-08-08",
+   "float_as_of": "2018-06-30",
+   "float_usd": 57447460580.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2019Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2021-05-04 16:14:27",
+   "cik": 718877,
+   "decision_date": "2021-05-04",
+   "float_as_of": "2020-06-30",
+   "float_usd": 58006915377.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2021Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2021-08-03 16:37:20",
+   "cik": 718877,
+   "decision_date": "2021-08-03",
+   "float_as_of": "2020-06-30",
+   "float_usd": 58006915377.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2021Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2022-04-25 07:31:25",
+   "cik": 718877,
+   "decision_date": "2022-04-22",
+   "float_as_of": "2021-06-30",
+   "float_usd": 73721746854.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2022Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2022-08-01 16:08:48",
+   "cik": 718877,
+   "decision_date": "2022-08-01",
+   "float_as_of": "2021-06-30",
+   "float_usd": 73721746854.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2022Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2023-04-26 10:44:49",
+   "cik": 718877,
+   "decision_date": "2023-04-25",
+   "float_as_of": "2022-06-30",
+   "float_usd": 60436471136.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2023Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2023-07-19 08:38:35",
+   "cik": 718877,
+   "decision_date": "2023-07-18",
+   "float_as_of": "2022-06-30",
+   "float_usd": 60436471136.0,
+   "name": "ACTIVISION BLIZZARD, INC.",
+   "season": "2023Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-23 17:01:06",
+   "cik": 899866,
+   "decision_date": "2015-04-23",
+   "float_as_of": "2014-06-30",
+   "float_usd": 30706252188.0,
+   "name": "ALEXION PHARMACEUTICALS, INC.",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-07-30 17:09:02",
+   "cik": 899866,
+   "decision_date": "2015-07-30",
+   "float_as_of": "2014-06-30",
+   "float_usd": 30706252188.0,
+   "name": "ALEXION PHARMACEUTICALS, INC.",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-04-28 17:14:24",
+   "cik": 899866,
+   "decision_date": "2016-04-28",
+   "float_as_of": "2015-06-30",
+   "float_usd": 39491560848.0,
+   "name": "ALEXION PHARMACEUTICALS, INC.",
+   "season": "2016Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-07-28 09:18:23",
+   "cik": 899866,
+   "decision_date": "2016-07-27",
+   "float_as_of": "2015-06-30",
+   "float_usd": 39491560848.0,
+   "name": "ALEXION PHARMACEUTICALS, INC.",
+   "season": "2016Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-28 16:07:04",
+   "cik": 1545158,
+   "decision_date": "2015-04-28",
+   "float_as_of": "2014-06-28",
+   "float_usd": 35000000000.0,
+   "name": "KRAFT FOODS GROUP, INC.",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-07-28 08:28:02",
+   "cik": 79958,
+   "decision_date": "2015-07-27",
+   "float_as_of": "2014-09-26",
+   "float_usd": 34132467040.0,
+   "name": "PRECISION CASTPARTS CORP",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-10-22 07:16:01",
+   "cik": 79958,
+   "decision_date": "2015-10-21",
+   "float_as_of": "2014-09-26",
+   "float_usd": 34132467040.0,
+   "name": "PRECISION CASTPARTS CORP",
+   "season": "2015Q4",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-05-05 13:27:53",
+   "cik": 1465112,
+   "decision_date": "2015-05-04",
+   "float_as_of": "2014-06-30",
+   "float_usd": 34022895210.0,
+   "name": "DIRECTV",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-21 16:15:55",
+   "cik": 1011006,
+   "decision_date": "2015-04-21",
+   "float_as_of": "2014-06-30",
+   "float_usd": 32432060475.0,
+   "name": "YAHOO INC",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-07-21 16:15:38",
+   "cik": 1011006,
+   "decision_date": "2015-07-21",
+   "float_as_of": "2014-06-30",
+   "float_usd": 32432060475.0,
+   "name": "YAHOO INC",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-04-19 16:10:40",
+   "cik": 1011006,
+   "decision_date": "2016-04-19",
+   "float_as_of": "2015-06-30",
+   "float_usd": 34070929391.0,
+   "name": "YAHOO INC",
+   "season": "2016Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2016-07-18 16:50:57",
+   "cik": 1011006,
+   "decision_date": "2016-07-18",
+   "float_as_of": "2015-06-30",
+   "float_usd": 34070929391.0,
+   "name": "YAHOO INC",
+   "season": "2016Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2017-04-18 16:20:55",
+   "cik": 1011006,
+   "decision_date": "2017-04-18",
+   "float_as_of": "2016-06-30",
+   "float_usd": 32522108074.0,
+   "name": "YAHOO INC",
+   "season": "2017Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-04-21 16:07:12",
+   "cik": 1393612,
+   "decision_date": "2015-04-21",
+   "float_as_of": "2014-06-30",
+   "float_usd": 28651886813.0,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-07-22 16:05:30",
+   "cik": 1393612,
+   "decision_date": "2015-07-22",
+   "float_as_of": "2014-06-30",
+   "float_usd": 28651886813.0,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2023-04-19 16:15:31",
+   "cik": 1393612,
+   "decision_date": "2023-04-19",
+   "float_as_of": "2022-12-31",
+   "float_usd": 82497990080.0,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "season": "2023Q2",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2023-07-19 16:16:07",
+   "cik": 1393612,
+   "decision_date": "2023-07-19",
+   "float_as_of": "2022-12-31",
+   "float_usd": 82497990080.0,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "season": "2023Q3",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2023-10-18 16:15:46",
+   "cik": 1393612,
+   "decision_date": "2023-10-18",
+   "float_as_of": "2022-12-31",
+   "float_usd": 82497990080.0,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "season": "2023Q4",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2024-01-17 16:15:52",
+   "cik": 1393612,
+   "decision_date": "2024-01-17",
+   "float_as_of": "2022-12-31",
+   "float_usd": 82497990080.0,
+   "name": "DISCOVER FINANCIAL SERVICES",
+   "season": "2024Q1",
+   "top100_est": true
+  },
+  {
+   "accepted_at_et": "2015-05-07 16:07:24",
+   "cik": 813828,
+   "decision_date": "2015-05-07",
+   "float_as_of": "2014-06-30",
+   "float_usd": 32764308589.0,
+   "name": "Paramount Global",
+   "season": "2015Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-08-05 16:04:29",
+   "cik": 813828,
+   "decision_date": "2015-08-05",
+   "float_as_of": "2014-06-30",
+   "float_usd": 32764308589.0,
+   "name": "Paramount Global",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-08-04 17:00:17",
+   "cik": 1038357,
+   "decision_date": "2015-08-04",
+   "float_as_of": "2014-06-30",
+   "float_usd": 32612539563.0,
+   "name": "PIONEER NATURAL RESOURCES CO",
+   "season": "2015Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2023-04-26 16:22:51",
+   "cik": 1038357,
+   "decision_date": "2023-04-26",
+   "float_as_of": "2022-06-30",
+   "float_usd": 53223207626.0,
+   "name": "PIONEER NATURAL RESOURCES CO",
+   "season": "2023Q2",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2023-08-01 16:41:12",
+   "cik": 1038357,
+   "decision_date": "2023-08-01",
+   "float_as_of": "2022-06-30",
+   "float_usd": 53223207626.0,
+   "name": "PIONEER NATURAL RESOURCES CO",
+   "season": "2023Q3",
+   "top100_est": false
+  },
+  {
+   "accepted_at_et": "2015-01-22 08:05:29",
+   "cik": 1385187,
+   "decision_date": "2015-01-21",
+   "float_as_of": "2014-03-28",
+   "float_usd": 32604000000.0,
+   "name": "COVIDIEN PLC",
+   "season": "2015Q1",
+   "top100_est": false
+  }
+ ],
+ "gap_companies": 28,
+ "h1_events": 4661,
+ "lost_est": 82,
+ "lost_upper": 147,
+ "per_company": [
+  {
+   "best_float_rank": 37,
+   "cik": 1578845,
+   "events_8k_since_2015": 21,
+   "events_top100_est": 8,
+   "events_top150_float_bound": 10,
+   "name": "ALLERGAN PLC"
+  },
+  {
+   "best_float_rank": 56,
+   "cik": 816284,
+   "events_8k_since_2015": 20,
+   "events_top100_est": 10,
+   "events_top150_float_bound": 10,
+   "name": "CELGENE CORP /DE/"
+  },
+  {
+   "best_float_rank": 66,
+   "cik": 1618921,
+   "events_8k_since_2015": 42,
+   "events_top100_est": 8,
+   "events_top150_float_bound": 10,
+   "name": "WALGREENS BOOTS ALLIANCE, INC."
+  },
+  {
+   "best_float_rank": 76,
+   "cik": 1105705,
+   "events_8k_since_2015": 14,
+   "events_top100_est": 7,
+   "events_top150_float_bound": 7,
+   "name": "TIME WARNER INC."
+  },
+  {
+   "best_float_rank": 79,
+   "cik": 29915,
+   "events_8k_since_2015": 11,
+   "events_top100_est": 6,
+   "events_top150_float_bound": 6,
+   "name": "DOW CHEMICAL CO /DE/"
+  },
+  {
+   "best_float_rank": 86,
+   "cik": 104207,
+   "events_8k_since_2015": 0,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 0,
+   "name": "WALGREEN CO"
+  },
+  {
+   "best_float_rank": 86,
+   "cik": 1532063,
+   "events_8k_since_2015": 16,
+   "events_top100_est": 6,
+   "events_top150_float_bound": 8,
+   "name": "Express Scripts Holding Co."
+  },
+  {
+   "best_float_rank": 90,
+   "cik": 1110783,
+   "events_8k_since_2015": 14,
+   "events_top100_est": 8,
+   "events_top150_float_bound": 8,
+   "name": "MONSANTO CO /NEW/"
+  },
+  {
+   "best_float_rank": 92,
+   "cik": 773910,
+   "events_8k_since_2015": 7,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 2,
+   "name": "Anadarko Petroleum Corp"
+  },
+  {
+   "best_float_rank": 94,
+   "cik": 936402,
+   "events_8k_since_2015": 16,
+   "events_top100_est": 11,
+   "events_top150_float_bound": 11,
+   "name": "Shire plc"
+  },
+  {
+   "best_float_rank": 95,
+   "cik": 790070,
+   "events_8k_since_2015": 7,
+   "events_top100_est": 4,
+   "events_top150_float_bound": 4,
+   "name": "EMC CORP"
+  },
+  {
+   "best_float_rank": 104,
+   "cik": 850693,
+   "events_8k_since_2015": 1,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 0,
+   "name": "ALLERGAN INC."
+  },
+  {
+   "best_float_rank": 108,
+   "cik": 1377013,
+   "events_8k_since_2015": 6,
+   "events_top100_est": 3,
+   "events_top150_float_bound": 3,
+   "name": "TIME WARNER CABLE INC."
+  },
+  {
+   "best_float_rank": 113,
+   "cik": 1275283,
+   "events_8k_since_2015": 10,
+   "events_top100_est": 1,
+   "events_top150_float_bound": 3,
+   "name": "REYNOLDS AMERICAN INC"
+  },
+  {
+   "best_float_rank": 118,
+   "cik": 1122304,
+   "events_8k_since_2015": 16,
+   "events_top100_est": 4,
+   "events_top150_float_bound": 8,
+   "name": "AETNA INC /PA/"
+  },
+  {
+   "best_float_rank": 125,
+   "cik": 1047122,
+   "events_8k_since_2015": 21,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 10,
+   "name": "RAYTHEON CO/"
+  },
+  {
+   "best_float_rank": 126,
+   "cik": 884905,
+   "events_8k_since_2015": 15,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 8,
+   "name": "PRAXAIR INC"
+  },
+  {
+   "best_float_rank": 129,
+   "cik": 6769,
+   "events_8k_since_2015": 25,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 2,
+   "name": "APACHE CORPORATION"
+  },
+  {
+   "best_float_rank": 129,
+   "cik": 718877,
+   "events_8k_since_2015": 35,
+   "events_top100_est": 2,
+   "events_top150_float_bound": 12,
+   "name": "ACTIVISION BLIZZARD, INC."
+  },
+  {
+   "best_float_rank": 130,
+   "cik": 899866,
+   "events_8k_since_2015": 26,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 4,
+   "name": "ALEXION PHARMACEUTICALS, INC."
+  },
+  {
+   "best_float_rank": 140,
+   "cik": 1545158,
+   "events_8k_since_2015": 2,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 1,
+   "name": "KRAFT FOODS GROUP, INC."
+  },
+  {
+   "best_float_rank": 142,
+   "cik": 79958,
+   "events_8k_since_2015": 4,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 2,
+   "name": "PRECISION CASTPARTS CORP"
+  },
+  {
+   "best_float_rank": 143,
+   "cik": 1465112,
+   "events_8k_since_2015": 2,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 1,
+   "name": "DIRECTV"
+  },
+  {
+   "best_float_rank": 146,
+   "cik": 1011006,
+   "events_8k_since_2015": 10,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 5,
+   "name": "YAHOO INC"
+  },
+  {
+   "best_float_rank": 146,
+   "cik": 1393612,
+   "events_8k_since_2015": 42,
+   "events_top100_est": 4,
+   "events_top150_float_bound": 6,
+   "name": "DISCOVER FINANCIAL SERVICES"
+  },
+  {
+   "best_float_rank": 147,
+   "cik": 813828,
+   "events_8k_since_2015": 43,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 2,
+   "name": "Paramount Global"
+  },
+  {
+   "best_float_rank": 148,
+   "cik": 1038357,
+   "events_8k_since_2015": 37,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 3,
+   "name": "PIONEER NATURAL RESOURCES CO"
+  },
+  {
+   "best_float_rank": 149,
+   "cik": 1385187,
+   "events_8k_since_2015": 1,
+   "events_top100_est": 0,
+   "events_top150_float_bound": 1,
+   "name": "COVIDIEN PLC"
+  }
+ ],
+ "snapshot": "2026-11-04-pit-r1"
+}
