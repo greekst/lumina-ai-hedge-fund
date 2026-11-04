@@ -1,3 +1,4 @@
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import json
 import os
 import re
@@ -89,9 +90,20 @@ class BaseInvestmentAgent:
             fb["degraded_reason"] = BaseInvestmentAgent._circuit_reason or "CIRCUIT_BREAKER_OPEN"
             return fb
 
+        from core.llm_mode import is_mock
+        if is_mock():
+            # Offline deterministic mode: persona rules stand in for the LLM, but are not "degraded".
+            res = cls._rule_based_fallback(stock_data, context_data)
+            res["is_degraded_fallback"] = False
+            res["llm_mode"] = "mock"
+            return res
+
         prompt = cls._build_evaluation_prompt(stock_data, context_data)
         result = cls._call_gemini_json(prompt)
-        if result and isinstance(result, dict) and "score" in result:
+        if result and isinstance(result, dict) and ("stance" in result or "score" in result):
+            from core.ai_hedge_fund.llm_guard import sanitize_agent_output
+            result = sanitize_agent_output(result)
+            result["llm_mode"] = "live"
             BaseInvestmentAgent._consecutive_api_failures = 0
             # Ensure identifiers are correct
             result["agent_id"] = cls.agent_id
@@ -205,14 +217,14 @@ class BaseInvestmentAgent:
             return None
         try:
             cfg = load_app_settings()
-            api_key = cfg.get("google_api_key", "")
+            api_key = get_llm_api_key()
             if not api_key:
                 return None
             
             from google import genai
             from google.genai import types
             
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
             config = types.GenerateContentConfig(
                 system_instruction=cls.get_system_prompt(),
                 temperature=0.7,

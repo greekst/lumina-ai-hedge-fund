@@ -8,6 +8,7 @@ Provides:
 3. AI-powered ticker extraction to discover promising stocks for the custom watchlist.
 """
 
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import time
 import json
 import re
@@ -278,14 +279,14 @@ class NewsFeed:
         try:
             from core.state_manager import load_app_settings
             cfg = load_app_settings()
-            api_key = cfg.get("google_api_key", "")
+            api_key = get_llm_api_key()
             if not api_key:
                 return []
 
             from google import genai
             from google.genai import types
 
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
             config = types.GenerateContentConfig(
                 temperature=0.3,
                 response_mime_type="application/json"
@@ -341,12 +342,12 @@ class NewsFeed:
         try:
             from core.state_manager import load_app_settings
             cfg = load_app_settings()
-            api_key = cfg.get("google_api_key", "")
+            api_key = get_llm_api_key()
             if api_key:
                 from google import genai
                 from google.genai import types
 
-                client = genai.Client(api_key=api_key)
+                client = make_genai_client(api_key=api_key)
                 prompt = f"""あなたは自律型ヘッジファンド専属の情報監査官（Anti-Fake News & Intelligence Auditor）です。
 対象銘柄: {company_name} ({symbol})
 
@@ -382,7 +383,12 @@ class NewsFeed:
                     if raw.endswith("```"):
                         raw = raw[:-3]
                     parsed = json.loads(raw.strip())
-                    if isinstance(parsed, dict) and "credibility_score" in parsed:
+                    if isinstance(parsed, dict) and ("credibility_score" in parsed or "is_quarantined" in parsed):
+                        # Hard rule 3: score is derived from the categorical flag, not the LLM's number.
+                        from core.ai_hedge_fund.llm_guard import credibility_from_flag
+                        parsed["llm_raw_credibility_score"] = parsed.get("credibility_score")
+                        parsed["is_quarantined"] = parsed.get("is_quarantined") is True
+                        parsed["credibility_score"] = credibility_from_flag(parsed["is_quarantined"])
                         return parsed
         except Exception as e:
             print(f"[NewsFeed] Audit error: {e}")

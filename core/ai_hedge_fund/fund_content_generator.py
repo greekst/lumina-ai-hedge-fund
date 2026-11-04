@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import os
 import json
 import time
@@ -96,12 +97,12 @@ class FundContentGenerator:
         try:
             from core.state_manager import load_app_settings
             cfg = load_app_settings()
-            api_key = cfg.get("google_api_key", "")
+            api_key = get_llm_api_key()
             if not api_key:
                 return ""
             from google import genai
             from google.genai import types
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
             config = types.GenerateContentConfig(
                 system_instruction=system_instruction if system_instruction else None,
                 temperature=0.7

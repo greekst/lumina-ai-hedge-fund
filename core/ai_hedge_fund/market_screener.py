@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import os
 import time
 import json
@@ -436,13 +437,13 @@ class MarketScreener:
         try:
             from core.state_manager import load_app_settings
             cfg = load_app_settings()
-            api_key = cfg.get("google_api_key", "")
+            api_key = get_llm_api_key()
             if not api_key:
                 return cls._default_brief()
 
             from google import genai
             from google.genai import types
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
             prompt = """現在の日本株・米国株市場において、AIヘッジファンドが注目すべき「今週のホットテーマ3選」と「買い推奨セクター」を簡潔にまとめてください。
 以下のJSONフォーマットのみを出力してください:
 {

@@ -20,8 +20,14 @@ def load_app_settings():
 
 def save_app_settings(settings):
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
+    # Holds credentials in plaintext: create owner-only (0600) and keep git-ignored (security audit).
+    fd = os.open(STATE_FILE, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
         json.dump(settings, f, ensure_ascii=False, indent=2)
+    try:
+        os.chmod(STATE_FILE, 0o600)
+    except OSError:
+        pass
 
 def get_stock_report_scheduler_settings():
     return {"enabled": False, "frequency": "once_daily_2000"}

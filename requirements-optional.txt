@@ -1,0 +1,15 @@
+# Optional integrations — not needed for tests, backtests or the dashboard.
+# Unpinned on purpose; install only what you use.
+neo4j>=5.15.0            # Graphiti temporal memory (falls back to SQLite)
+ib_insync>=0.9.86        # IBKR adapter — live order routing is DISABLED in this fork
+chronos-forecasting      # real Amazon Chronos (else heuristic fallback)
+torch
+feedparser
+jpholiday
+statsmodels
+quantstats
+seaborn
+langfuse
+requests-oauthlib        # X posting — DISABLED in this fork
+openai
+anthropic

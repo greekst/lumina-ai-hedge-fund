@@ -189,9 +189,10 @@ class Alpha158Engine:
         # 一括DataFrame構築（辞書からの構築でメモリ断片化ゼロ）
         factors = pd.DataFrame(f_dict, index=df.index)
         
-        # 欠損値・無限大のクリーニング (NaNは0埋め、クリッピング)
+        # Clean inf/NaN. Point-in-time rule: only forward-fill (past -> future).
+        # The upstream `.bfill()` copied FUTURE factor values into warm-up rows (look-ahead, P0).
         factors = factors.replace([np.inf, -np.inf], np.nan)
-        factors = factors.ffill().bfill().fillna(0.0)
+        factors = factors.ffill().fillna(0.0)
         
         return factors
 
@@ -203,3 +204,24 @@ class Alpha158Engine:
             return {}
         latest_row = factors_df.iloc[-1]
         return {col: float(val) for col, val in latest_row.items()}
+
+    @classmethod
+    def compute_symbol_summary(cls, symbol: str, period: str = "1y", df: Optional[pd.DataFrame] = None) -> Dict[str, Any]:
+        """Summary consumed by HedgeFundCouncil (was called upstream but never implemented).
+        Pass `df` (already truncated to the decision time) for point-in-time use; otherwise
+        fetches `period` of history from yfinance ending today (live use only)."""
+        if df is None:
+            import yfinance as yf
+            df = yf.Ticker(symbol).history(period=period, auto_adjust=False)
+        if df is None or df.empty or len(df) < 61:
+            return {"symbol": symbol, "status": "INSUFFICIENT_HISTORY", "factor_count": 0}
+        latest = cls.get_latest_factors(df)
+        key = ["ROC5", "ROC20", "ROC60", "MA20", "STD20", "RSV20", "BETA20", "RSQR20", "VSUMD20", "CORR20"]
+        return {
+            "symbol": symbol,
+            "status": "SUCCESS",
+            "factor_count": len(latest),
+            "as_of": str(df.index[-1])[:10],
+            "source": "yfinance OHLCV -> Alpha158Engine",
+            "key_factors": {k: round(latest[k], 6) for k in key if k in latest},
+        }

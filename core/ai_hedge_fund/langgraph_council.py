@@ -6,6 +6,7 @@ Google TimesFM × Amazon Chronos の数理合意シグナルを受け取り、
 CRO（リスク管理官）による証拠審査ループ ➔ CIOルミナの最終統括決議を自動オーケストレーション。
 """
 
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import os
 import json
 import time
@@ -50,10 +51,10 @@ class LuminaLangGraphCouncil:
     @classmethod
     def _get_genai_client(cls):
         cfg = load_app_settings()
-        api_key = cfg.get("google_api_key", "")
+        api_key = get_llm_api_key()
         if not api_key:
             return None
-        return genai.Client(api_key=api_key)
+        return make_genai_client(api_key=api_key)
 
     # ----------------------------------------------------
     # Node 1: Gather Dual Quantum Forecast + Lead-Lag + LightGBM Gate
@@ -253,11 +254,13 @@ class LuminaLangGraphCouncil:
         turns = state.get("debate_turns", [])
         current_round = state.get("debate_round", 1)
 
+        stock_data = state.get("stock_data", {}) or {}
+        dyn_stop = stock_data.get("dynamic_stop_pct")
         default_cro = {
             "verdict": "APPROVED",
             "risk_level": "MODERATE",
             "max_position_size_pct": 5.0,
-            "stop_loss_pct": -3.5,
+            "stop_loss_pct": -float(dyn_stop) if dyn_stop else -3.5,
             "comment": "リスク許容範囲内と判断。CIOへ最終決議を委任。"
         }
 
@@ -294,7 +297,9 @@ class LuminaLangGraphCouncil:
                 config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.3)
             )
             data = json.loads(res.text.strip())
-            return {"cro_verdict": data}
+            # Hard rule 3: LLM supplies only verdict/risk category + comment.
+            from core.ai_hedge_fund.llm_guard import sanitize_cro_verdict
+            return {"cro_verdict": sanitize_cro_verdict(data, default_cro)}
         except Exception:
             return {"cro_verdict": default_cro}
 
@@ -393,7 +398,9 @@ CROコメント: {cro.get('comment')}
                 contents=prompt,
                 config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.7)
             )
-            cio_res = json.loads(res.text.strip())
+            # Hard rule 3: conviction/allocation/stop stay deterministic; LLM supplies prose only.
+            from core.ai_hedge_fund.llm_guard import sanitize_cio_verdict
+            cio_res = sanitize_cio_verdict(json.loads(res.text.strip()), default_cio)
         except Exception:
             cio_res = default_cio
 

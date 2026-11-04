@@ -1,3 +1,4 @@
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import json
 import time
 import os
@@ -144,7 +145,7 @@ class HedgeFundCouncil:
         alpha158_summary = {}
         try:
             from core.ai_hedge_fund.alpha158_engine import Alpha158Engine
-            alpha158_summary = Alpha158Engine.compute_symbol_summary(symbol)
+            alpha158_summary = Alpha158Engine.compute_symbol_summary(symbol)  # implemented in this fork (was missing)
         except Exception as a158e:
             print(f"[HedgeFundCouncil] Alpha158Engine warning: {a158e}")
 
@@ -331,6 +332,8 @@ class HedgeFundCouncil:
             "chronos_forecast": chronos_forecast,
             "dual_quantum": dual_quantum,
             "graph_lessons": graph_lessons,
+            "deterministic_metrics": det_metrics,
+            "qlib_alpha158": alpha158_summary,
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
         }
 
@@ -444,12 +447,12 @@ class HedgeFundCouncil:
             }
 
         cfg = load_app_settings()
-        api_key = cfg.get("google_api_key", "")
+        api_key = get_llm_api_key()
         if not api_key:
             return {"occurred": False, "reason": "APIキー未設定のため直接討論をスキップ"}
 
         try:
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
             name = stock_data.get("name") or stock_data.get("company_name", "対象銘柄")
             symbol = stock_data.get("symbol", "")
             price = stock_data.get("current_price", 100.0)
@@ -535,8 +538,10 @@ class HedgeFundCouncil:
             
             t2_data = json.loads(raw_text)
             turn2_defense = t2_data.get("defense", "イノベーションの将来価値は現在の指標では測れないが、短期のボラティリティは注視する。")
-            adjusted_score = int(t2_data.get("adjusted_score", bull_score))
-            adjusted_score = max(0, min(100, adjusted_score))
+            # Hard rule 3: the LLM's adjusted_score is recorded for audit but never used.
+            from core.ai_hedge_fund.llm_guard import deterministic_debate_adjustment
+            llm_raw_adjusted = t2_data.get("adjusted_score")
+            adjusted_score = deterministic_debate_adjustment(bull_score, bear_score)
             rationale = t2_data.get("adjustment_rationale", "相手の指摘を踏まえスコアを再検討。")
 
             # Update the bull agent's score and dialogue in analyst_results
@@ -561,7 +566,9 @@ class HedgeFundCouncil:
                 "turn2_defense": turn2_defense,
                 "adjusted_score": adjusted_score,
                 "score_delta": adjusted_score - bull_score,
-                "adjustment_rationale": rationale
+                "adjustment_rationale": rationale,
+                "llm_raw_adjusted_score": llm_raw_adjusted,
+                "adjusted_score_source": "llm_guard.deterministic_debate_adjustment"
             }
         except Exception as e:
             print(f"[HedgeFundCouncil] Cross-Debate execution error: {e}")

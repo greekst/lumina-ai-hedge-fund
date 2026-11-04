@@ -6,6 +6,7 @@ risk tolerance, and operational mandates across all AI agents (The Seven Legends
 Prevents agent drift, eliminates rogue trading, and ensures personalized alignment.
 """
 
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import os
 import sqlite3
 import json
@@ -161,7 +162,7 @@ class MasterPolicyMemory:
         If a new core rule, preference, or constraint is identified, indexes it as a mandate.
         """
         cfg = load_app_settings()
-        api_key = cfg.get("google_api_key", "")
+        api_key = get_llm_api_key()
         if not api_key or len(user_message.strip()) < 5:
             return None
 
@@ -182,7 +183,7 @@ class MasterPolicyMemory:
   "priority": "ABSOLUTE" / "CRITICAL" / "HIGH" / "NORMAL"
 }}"""
         try:
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
             res = client.models.generate_content(
                 model="gemini-3.8-flash",
                 contents=prompt,

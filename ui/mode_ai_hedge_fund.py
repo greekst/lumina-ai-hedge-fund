@@ -4,6 +4,7 @@ import streamlit as st
 import json
 import time
 import os
+import html as _html  # escape LLM/news text before unsafe_allow_html (security audit)
 from typing import Dict, Any, List, Optional
 
 from core.ai_hedge_fund.market_data_feed import MarketDataFeed
@@ -171,6 +172,18 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
             stock_data = c_res.get("stock_data", {})
             verdict = c_res.get("verdict", {})
             dialogues = c_res.get("council_dialogues", [])
+
+            # Source-tagged report (hard rule 5): every number shows [SOURCED FACT|MODEL ASSUMPTION · source, as_of]
+            with st.expander("🧾 Source-tagged report (every number with source & as-of date)", expanded=False):
+                try:
+                    from core.reporting.council_report import build_from_council
+                    _rep = build_from_council(c_res)
+                    _md = _rep.to_markdown()
+                    st.markdown(_md)
+                    st.download_button("⬇️ Download report (.md)", _md,
+                                       file_name=f"{sym}_{_rep.as_of}_council_report.md", mime="text/markdown")
+                except Exception as _rep_err:
+                    st.error(f"Report could not be built without untagged numbers: {_rep_err}")
 
             # Summary Metrics Row
             m1, m2, m3, m4, m5, m6 = st.columns(6)
@@ -358,17 +371,17 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                     f'<div style="display: flex; align-items: center; gap: 10px;">'
                     f'<span style="font-size: 24px;">{d.get("avatar", "👤")}</span>'
                     f'<div>'
-                    f'<span style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF;">{d.get("name")}</span>'
-                    f'<span style="font-size: 11px; color: #94a3b8; margin-left: 6px;">({d.get("title")})</span>'
+                    f'<span style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF;">{_html.escape(str(d.get("name")))}</span>'
+                    f'<span style="font-size: 11px; color: #94a3b8; margin-left: 6px;">({_html.escape(str(d.get("title")))})</span>'
                     f'</div>'
                     f'</div>'
                     f'<div style="display: flex; align-items: center; gap: 8px;">'
                     f'<span style="font-size: 11px; background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 4px; color: #cbd5e1;">{score_str}</span>'
-                    f'<span style="background: {badge_color}; color: #ffffff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">{d.get("stance")}</span>'
+                    f'<span style="background: {badge_color}; color: #ffffff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">{_html.escape(str(d.get("stance")))}</span>'
                     f'</div>'
                     f'</div>'
                     f'<div style="color: #e2e8f0; font-size: 0.92rem; line-height: 1.6; padding-left: 34px;">'
-                    f'{d.get("dialogue")}'
+                    f'{_html.escape(str(d.get("dialogue"))).replace(chr(10), "<br>")}'
                     f'</div>'
                     f'</div>'
                 )
@@ -679,7 +692,7 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                                         st.markdown(f"<div style='text-align: right;'><span style='background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 8px; border-radius: 6px; font-weight: bold; font-size: 12px;'>{score_txt}</span></div>", unsafe_allow_html=True)
                                         st.markdown(f"<div style='text-align: right; font-weight: bold; font-size: 13px; color: #f8fafc; margin-top: 2px;'>{item['current_price']:,.2f} {item['currency']}</div>", unsafe_allow_html=True)
                                     
-                                    st.markdown(f"<div style='font-size: 11px; color: #94a3b8; line-height: 1.4; margin: 4px 0 8px 0;'>💡 {item['thesis']}</div>", unsafe_allow_html=True)
+                                    st.markdown(f"<div style='font-size: 11px; color: #94a3b8; line-height: 1.4; margin: 4px 0 8px 0;'>💡 {_html.escape(str(item['thesis']))}</div>", unsafe_allow_html=True)
                                     
                                     if lang == "en":
                                         m_pbr = f"PBR: {item['pb']:.2f}x" if item.get('pb') else ""
@@ -3054,7 +3067,7 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                         "**To unlock the 3D Causal Knowledge Graph & Supply Chain GraphRAG visualizer:**\n"
                         "Run this 1-line Docker command in your terminal:\n"
                         "```bash\n"
-                        "docker run -d -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/LuminaAI_2026_Secure neo4j:latest\n"
+                        "docker run -d -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 -e NEO4J_AUTH=neo4j/$NEO4J_PASSWORD neo4j:5.26\n"
                         "```\n"
                         "Then refresh this page (F5) to automatically connect."
                     )
@@ -3065,7 +3078,7 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                         "**3D因果ナレッジグラフ＆サプライチェーンGraphRAGを体験したい場合:**\n"
                         "ターミナルで以下のDockerコマンドを1行実行してください：\n"
                         "```bash\n"
-                        "docker run -d -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/LuminaAI_2026_Secure neo4j:latest\n"
+                        "docker run -d -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 -e NEO4J_AUTH=neo4j/$NEO4J_PASSWORD neo4j:5.26\n"
                         "```\n"
                         "起動後にブラウザをリロード（F5）すると自動接続されます。"
                     )
@@ -3633,7 +3646,9 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                         import urllib.request
                         cfg = load_app_settings()
                         wh_url = cfg.get("discord_settings", {}).get("webhook_url", "")
-                        if not wh_url:
+                        if os.getenv("LUMINA_ENABLE_SOCIAL_POSTING", "") != "1":
+                            st.warning("Posting is disabled in this research fork (preview only).")
+                        elif not wh_url:
                             st.warning("Discord Webhook URL is not configured in settings." if lang == "en" else "システム設定でDiscord Webhook URLが未設定です。")
                         else:
                             req = urllib.request.Request(

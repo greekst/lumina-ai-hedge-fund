@@ -29,3 +29,6 @@ medium_article.html
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Read-only third-party clones (not part of this project)
+vendor/

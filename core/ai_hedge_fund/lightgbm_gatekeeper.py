@@ -81,7 +81,10 @@ class LightGBMGatekeeper:
                 "learning_rate": 0.08,
                 "feature_fraction": 0.85,
                 "verbose": -1,
-                "seed": 42
+                "seed": 42,
+                "deterministic": True,
+                "force_row_wise": True,
+                "num_threads": 1
             }
             cls._model = lgb.train(params, train_data, num_boost_round=45)
             return cls._model
@@ -229,5 +232,10 @@ class LightGBMGatekeeper:
                 "chronos_ret": chr_ret,
                 "roe": roe_val
             },
-            "summary_text": summary_text
+            "summary_text": summary_text,
+            # Audit P0 (F4): the model is fit on np.random features with a hand-written logit.
+            # Its "win probability" is NOT an empirical hit rate and must be labelled as such.
+            "is_empirical": False,
+            "evidence_label": "MODEL ASSUMPTION",
+            "evidence_note": "Synthetic calibration (random features + hand-written logit); not an empirical win rate.",
         }

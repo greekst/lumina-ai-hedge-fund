@@ -23,6 +23,9 @@ class HedgeFundNotifier:
     @classmethod
     def _send_payload(cls, payload: Dict[str, Any]) -> bool:
         """Send Discord message via Bot Token REST API or Webhook URL safely"""
+        import os
+        if os.getenv("LUMINA_ENABLE_SOCIAL_POSTING", "") != "1":
+            return False  # Hard rule 1: outbound posting disabled in this research fork
         try:
             cfg = get_discord_settings()
             token = cfg.get("bot_token", "").strip()
