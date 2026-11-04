@@ -1,10 +1,10 @@
 # Survivorship-biased vs point-in-time universe — Session 2 window (snapshot 2026-11-04-pit2)
 
-Same harness, same decision-date window (`2023-10-09` to `2026-09-30`, twelve earnings seasons), council in LUMINA_LLM_MODE=mock. Each cell: mean, then the 95% bootstrap CI clustered by earnings season in brackets. Column A is Session 2 as published (S&P 100 proxy: today's hundred largest S&P 500 members, Session 2 data, last twelve events per ticker). Column B is today's hundred largest recomputed on the Session 3 data (point-in-time candidate pool, EDGAR shares x close on the last session), every event in the window. Column C is the point-in-time universe: an event counts only if its company was in the top hundred by market cap at the close of D-1. B versus C isolates the universe effect on identical data. <!-- text-only -->
+Same harness, same decision-date window (`2023-10-09` to `2026-09-30`, twelve earnings seasons), council in LUMINA_LLM_MODE=mock. Each cell: mean, then the 95% bootstrap CI clustered by earnings season in brackets. Column A is Session 2 as published (S&P 100 proxy: today's hundred largest S&P 500 members, Session 2 data, last twelve events per ticker). Column B is today's hundred largest recomputed on snapshot 2026-11-04-pit2 (point-in-time candidate pool, EDGAR shares x close on the last session), every event in the window. Column C is the point-in-time universe: an event counts only if its company was in the top hundred by market cap at the close of D-1. B versus C isolates the universe effect on identical data. <!-- text-only -->
 Session 4: columns B and C use snapshot `2026-11-04-pit2` (ranking rules v2 and event rules v2 in the base; same prices as `2026-11-04-pit`). Column A is unchanged. <!-- text-only -->
 
 
-| | A: Session 2 (biased) | B: today's top hundred, Session 3 data (biased) | C: point-in-time |
+| | A: Session 2 (biased) | B: today's top hundred, new base snapshot (biased) | C: point-in-time |
 |---|---|---|---|
 | events | 1,183 [SOURCED FACT · wf-backtest 2026-11-04-sp100, 2026-11-04] | 1,171 [SOURCED FACT · wf-backtest 2026-11-04-pit2_biased_today_top100, 2026-11-04] | 1,201 [SOURCED FACT · wf-backtest 2026-11-04-pit2_pit_s2window, 2026-11-04] |
 | tickers with events | 100 [SOURCED FACT · wf-backtest 2026-11-04-sp100, 2026-11-04] | 99 [SOURCED FACT · wf-backtest 2026-11-04-pit2_biased_today_top100, 2026-11-04] | 135 [SOURCED FACT · wf-backtest 2026-11-04-pit2_pit_s2window, 2026-11-04] |

@@ -122,7 +122,7 @@ about 0.98% (not 0.76%) and the pre-registered "about 1.0%" corresponds to about
 Session 4 rerun (2026-11-04 UTC; the exact command above with ONLY the snapshot id changed to `2026-11-04-pit2`, nothing above the
 RESULTS line edited). The new base snapshot folds in ranking rules v2 (review P1-1..P1-3) and event rules v2 (review P2-1: 8-K-only
 events in vendor-series gaps, e.g. BLK 2015-2022; P2-2: vendor-only 10-Q/10-K dates re-timed or dropped); prices are byte-identical
-to `2026-11-04-pit`. Exclusion 3 still applies: no delisted-price source was available (estimated 82 lost events, upper bound 147;
+to `2026-11-04-pit`. Exclusion 3 still applies: no delisted-price source was available (estimated 84 lost events, partial upper bound 159 after the review fix;
 results/delisted_gap_2026-11-04.md). Two runs started in parallel at 23:15 UTC on the final snapshot (manifest sha256 `8fbf7d7c…`):
 identical output sha256 `8337e6b57c733c879bb27733c6a49b2d3f1da8a40403cea409649245b7977371`. Tagged report: `results/h1_rerun_2026-11-04-pit2.md`.
 

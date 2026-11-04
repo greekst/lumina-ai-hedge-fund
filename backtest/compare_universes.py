@@ -92,6 +92,8 @@ def markdown(res: Dict[str, Any]) -> str:
          "| | A: Session 2 (biased) | B: today's top hundred, Session 3 data (biased) | C: point-in-time |", "|---|---|---|---|"]
     if sid != "2026-11-04-pit":
         L[0] += f" (snapshot {sid})"
+        L = [x.replace("recomputed on the Session 3 data", f"recomputed on snapshot {sid}")
+             .replace("today's top hundred, Session 3 data (biased)", "today's top hundred, new base snapshot (biased)") for x in L]
         L.insert(3, f"Session 4: columns B and C use snapshot `{sid}` (ranking rules v2 and event rules v2 in the base; same prices as "
                     "`2026-11-04-pit`). Column A is unchanged. <!-- text-only -->")
         L.insert(4, "")

@@ -374,3 +374,15 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
   MDE 0.79% (S units) / 1.01% (effect units). H1 sample change: +64 events (BLK 30, COP 13, ...), −33 (RPAY 7, SHW 2, ...).
   **Nothing changed in substance.**
 - **Remaining survivorship gap:** the delisted companies only (Phase A: ~82 events, ≤147, 1.7–3.1%, mostly 2015–2019); direction unknown.
+
+## 2026-11-04 23:58 UTC — Phase D: independent review, fixes, handoff
+- Fresh general-purpose subagent started ~23:29 UTC (after the Phase C commits), given only the repo path, venv/test/offline-rebuild
+  hints, a scratch dir, the SEC rate limit, "change no repo files, no live LLM calls", and the brief's instruction verbatim. Report saved
+  verbatim with responses: `results/independent_review_session4.md`. It reproduced the H1 rerun digest `8337e6b5…` and the snapshot.
+- **No P0.** P1-1 (delisted-gap search incomplete; "upper bound" not one): fixed in `delisted_gap.find_gaps` — estimate 84 events (1.8%),
+  partial upper bound 159 (3.3%), plus 21CF/VMware not findable by a float screen (supersedes the Phase A figures 82/147 above).
+  P2-5 labels fixed. P2-1..P2-4 (spin-offs as splits, adjusted-Close artifacts, early pre-market timing, event identification using later
+  filings) open and disclosed; the reviewer's measured effects move S to at most +0.091%, never changing the decision. No rerun needed.
+- CI: runs on 1ca98af..5c33527 failed the flake8 F821 check (`np` in a string annotation in `snapshot_pit.py`); fixed in ce48f64
+  (module-level import; snapshot rebuild unchanged). The reviewer's "other process" note refers to that fix.
+- HANDOFF.md: Session 4 section added.
