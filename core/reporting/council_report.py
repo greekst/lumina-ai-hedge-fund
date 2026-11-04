@@ -148,19 +148,22 @@ def build_from_council(ai_res: Dict[str, Any]) -> Report:
     rep = Report(f"Council report — {sym}", as_of, header_notes=[
         "Live mode: market data are snapshots fetched at report time (yfinance Ticker.info). "
         "Not point-in-time; do not use for backtesting."])
-    info = "yfinance Ticker.info"
+    srcs = sd.get("data_sources", {}) or {}
+    src = lambda k, d="yfinance Ticker.info": srcs.get(k, d)  # noqa: E731  per-field provenance (Finnhub or yfinance)
     hist = "computed from yfinance 1y daily history"
     m = rep.section("Market & fundamentals — SOURCED FACT")
-    m.add("price", fact(ai_res.get("current_price") or sd.get("current_price"), info, as_of))
+    m.add("price", fact(ai_res.get("current_price") or sd.get("current_price"), src("current_price"), as_of))
     m.text("currency", str(sd.get("currency", "")))
-    m.add("market cap", fact(sd.get("market_cap"), info, as_of, decimals=0))
-    m.add("P/E (trailing)", fact(sd.get("pe_trailing"), info, as_of, decimals=1))
-    m.add("P/B", fact(sd.get("pb_ratio"), info, as_of))
-    m.add("ROE", fact(sd.get("roe"), info, as_of, unit="%", decimals=1))
-    m.add("revenue growth (YoY)", fact(sd.get("revenue_growth"), info, as_of, unit="%", decimals=1))
-    m.add("dividend yield", fact(sd.get("dividend_yield"), info, as_of, unit="%"))
+    m.add("market cap", fact(sd.get("market_cap"), src("market_cap"), as_of, decimals=0))
+    m.add("P/E (trailing)", fact(sd.get("pe_trailing"), src("pe_trailing"), as_of, decimals=1))
+    m.add("P/B", fact(sd.get("pb_ratio"), src("pb_ratio"), as_of))
+    m.add("ROE", fact(sd.get("roe"), src("roe"), as_of, unit="%", decimals=1))
+    m.add("revenue growth (YoY)", fact(sd.get("revenue_growth"), src("revenue_growth"), as_of, unit="%", decimals=1))
+    m.add("dividend yield", fact(sd.get("dividend_yield"), src("dividend_yield"), as_of, unit="%"))
     hm = sd.get("history_metrics", {}) or {}
     m.add("ATR(14) % of price", fact(hm.get("atr_pct"), hist, as_of))
+    for line in sd.get("data_source_log", []) or []:
+        rep.header_notes.append(f"data source: {line}")
     det = (ai_res.get("deterministic_metrics") or {})
     if det:
         _risk_metric_rows(rep.section("Risk metrics — SOURCED FACT (deterministic)"), det, "DeterministicMetrics on yfinance history", as_of)

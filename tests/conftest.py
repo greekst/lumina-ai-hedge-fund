@@ -13,6 +13,7 @@ if ROOT not in sys.path:
 # Must be set before core modules read them.
 os.environ["LUMINA_LLM_MODE"] = "mock"
 os.environ["LUMINA_TEST_MODE"] = "1"
+os.environ["LUMINA_DATA_PROVIDER"] = "yfinance"  # no live Finnhub calls from tests (adapter tests mock HTTP)
 os.environ.pop("LUMINA_ALLOW_LIVE_BROKER", None)
 os.environ.pop("LUMINA_ENABLE_SOCIAL_POSTING", None)
 

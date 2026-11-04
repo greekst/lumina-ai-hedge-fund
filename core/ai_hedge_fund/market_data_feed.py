@@ -295,6 +295,13 @@ class MarketDataFeed:
             if now - entry["cached_at"] < cls.CACHE_TTL_SECONDS:
                 return entry["data"]
 
+        # Phase 4(a): Finnhub first (quote/profile/fundamentals), yfinance fallback per field.
+        from core.ai_hedge_fund.data_sources import FinnhubSource, get_provider
+        provider = get_provider()
+        fh_fields, fh_sources, fh_log = ({}, {}, [])
+        if provider == "finnhub":
+            fh_fields, fh_sources, fh_log = FinnhubSource.stock_snapshot(norm_sym)
+
         ticker = yf.Ticker(norm_sym)
         try:
             info = ticker.info or {}
@@ -308,8 +315,12 @@ class MarketDataFeed:
             hist = None
 
         current_price = info.get("currentPrice") or info.get("regularMarketPrice")
+        price_source = "yfinance Ticker.info"
+        if fh_fields.get("current_price"):
+            current_price, price_source = fh_fields["current_price"], fh_sources["current_price"]
         if not current_price and hist is not None and not hist.empty:
             current_price = float(hist["Close"].iloc[-1])
+            price_source = "yfinance history (last close)"
 
         currency = info.get("currency", "JPY" if norm_sym.endswith(".T") else "USD")
         company_name = info.get("longName") or info.get("shortName") or norm_sym
@@ -421,6 +432,21 @@ class MarketDataFeed:
             "business_summary": info.get("longBusinessSummary", ""),
             "fetched_at": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(now))
         }
+
+        # Per-field provenance (hard rule 5) + Finnhub overlay
+        sources = {k: "yfinance Ticker.info" for k, v in data.items()
+                   if not isinstance(v, (dict, list)) and k not in ("symbol", "fetched_at")}
+        for k in ("atr_14", "atr_pct", "dynamic_stop_pct", "dynamic_stop_loss_price", "graham_number"):
+            sources[k] = "computed from yfinance 1y daily history" if k != "graham_number" else "computed from yfinance Ticker.info EPS/BPS"
+        for k, v in fh_fields.items():
+            if k == "current_price":
+                continue  # already applied before technicals
+            data[k] = v
+            sources[k] = fh_sources[k]
+        sources["current_price"] = price_source
+        data["data_provider"] = provider
+        data["data_sources"] = sources
+        data["data_source_log"] = fh_log
 
         # Cache result
         cls._cache[norm_sym] = {

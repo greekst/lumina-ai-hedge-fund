@@ -47,3 +47,12 @@ Times are UTC (container clock). Budget proxy: elapsed wall time (no cost readou
 - Walk-forward output changed only in summary formatting; the new digest `2233f1c1…` reproduced twice.
 - Legacy content generators (`fund_content_generator`, `quant_reporter`, note/X drafts) are NOT converted. They are marketing/social outputs, now unpublishable (kill switch), and are listed in HANDOFF as remaining work.
 - Next: Phase 4 stretch decision.
+
+## 2026-11-04 18:45 — Phase 4 checkpoint (stretch: option a, Finnhub adapter)
+- Why (a): it improves traceability more than the other options. The sandbox also showed it is needed: yfinance `Ticker.info` returns HTTP 401 here, so the upstream app gets **no fundamentals at all** (PE/ROE all None, and agents fall back to defaults). Finnhub `/quote`, `/stock/profile2` and `/stock/metric` work on the free tier; `/stock/candle` returns 403. (b) needs no live data and is less central. (c) is large with low trust impact. (d) adds scraping and robots.txt risk for little backtest value (no PIT news archive).
+- `core/ai_hedge_fund/data_sources.py`: `LUMINA_DATA_PROVIDER=finnhub|yfinance` (default finnhub when a key exists). Finnhub is tried first per field group; on HTTP 403 (memoised per endpoint for the process), error or missing value, the field comes from yfinance. Non-US symbols go straight to yfinance. Every field gets `data_sources[field]`, and fallbacks are written to `data_source_log` and the `lumina.data_sources` logger.
+- `MarketDataFeed.get_stock_data` overlays Finnhub before computing technicals. The council report now tags each value with the source that actually produced it, and lists fallbacks in its header.
+- Live check (AAPL): price from finnhub /quote, P/E and ROE from finnhub /stock/metric, candles 403 → yfinance history. 7203.T → yfinance.
+- Tests: `tests/test_data_sources.py` (5, mocked HTTP). Suite: 52 passed, 1 skipped; UI smoke passed; legacy 19/19 (zero-cost env); flake8 hard errors 0. Tests pin `LUMINA_DATA_PROVIDER=yfinance` so no test calls Finnhub live.
+- Not verified: yfinance `dividendYield` units (upstream multiplies by 100; newer yfinance may already return percent). `.info` is 401 here, so this could not be checked. Flagged in HANDOFF.
+- Next: Phase 5 handoff.
