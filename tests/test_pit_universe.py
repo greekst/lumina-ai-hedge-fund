@@ -33,7 +33,7 @@ def test_shares_series_is_keyed_by_acceptance_and_picks_quarter():
     subs = [{"accessionNumber": "A1", "acceptanceDateTime": "2024-05-01T20:05:00.000Z", "form": "10-Q"}]
     s = PU.shares_series(facts, subs)
     assert s == [{"accepted_at": "2024-05-01 16:05:00", "as_of": "2024-04-20", "shares": 1.0e9,
-                  "method": "dei cover shares", "form": "10-Q", "accn": "A1"}]
+                  "method": "dei cover shares", "form": "10-Q", "accn": "A1", "assets": None}]
     # strictly before the cutoff
     assert PU.shares_at(s, pd.Timestamp("2024-05-01 16:05:00")) is None
     assert PU.shares_at(s, pd.Timestamp("2024-05-01 16:05:01"))["shares"] == 1.0e9
@@ -109,4 +109,5 @@ def test_unconfirmed_share_jump_is_held_back_until_confirmed():
 def test_float_cross_check():
     assert PU.float_check_ok(100.0, 50.0) and PU.float_check_ok(100.0, None)
     assert not PU.float_check_ok(1e12, 1e7)            # cap 1e5 x the float: ADS-ratio / unit junk
-    assert PU.float_check_ok(1e12, 0.9e9)              # float tagged in thousands (x1000 ~ cap)
+    assert PU.float_check_ok(1e12, 0.9e9, shares_confirmed=True)   # float tagged in thousands, shares confirmed
+    assert not PU.float_check_ok(1e12, 0.9e9)                       # same signature, single-tag share count

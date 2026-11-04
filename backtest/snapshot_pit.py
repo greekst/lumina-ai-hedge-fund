@@ -209,6 +209,8 @@ def build(snapshot_id: str, start: str, end: str, events_from: str, only: List[s
         floats = PU.public_floats(b["facts"], b["subs"], since=EDGAR_SINCE)
         sic = int(top.get("sic") or 0)
         exclude = EXCLUDE_SIC.get(sic, "") or (
+            "only listed security is a preferred share / unit / warrant, not common stock"
+            if "-" in ysym and ysym not in PU.DASH_OK else "") or (
             "limited partnership units (MLP), not common stock" if re.search(r"(\bL\.?P\.?$|PARTNERS,? L\.?P)", c["name"].upper()) else "")
         sector = SECTOR_OVERRIDE.get(t) or gics.get(ysym) or sic_sector(top.get("sic"))
         members.append({"ticker": t, "cik": int(c["cik"]), "ciks": ciks, "name": c["name"], "seed": c["seed"],

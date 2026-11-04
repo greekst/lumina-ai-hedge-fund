@@ -135,6 +135,11 @@ def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str 
             if r.get("form") in PERIODIC_FORMS and r.get("filed", "") >= since:
                 yield r
 
+    for r in rows(gaap.get("Assets"), "USD"):
+        if not r.get("start"):
+            cur = by[r["accn"]].get("assets")
+            if cur is None or r["end"] > cur["end"]:
+                by[r["accn"]]["assets"] = r
     for r in rows(dei.get(DEI), "shares"):
         cur = by[r["accn"]].get("dei")
         if cur is None or r["end"] > cur["end"]:
@@ -165,7 +170,8 @@ def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str 
             continue
         as_of = d["dei"]["end"] if method.startswith("dei") else to_et(sub["acceptanceDateTime"])[:10]
         out.append({"accepted_at": to_et(sub["acceptanceDateTime"]), "as_of": as_of, "shares": float(val),
-                    "method": method, "form": sub.get("form"), "accn": accn})
+                    "method": method, "form": sub.get("form"), "accn": accn,
+                    "assets": float(d["assets"]["val"]) if d.get("assets") else None})
     out.sort(key=lambda x: (x["accepted_at"], x["accn"]))
     return out
 
@@ -216,7 +222,8 @@ def split_factor_after(splits: List[Dict[str, float]], when: str) -> float:
 
 
 JUMP = 3.0          # a share count > 3x away from the last accepted one needs confirmation by the next filing
-FLOAT_MAX_RATIO = 10.0   # market cap > 10x the latest public float (10-K cover) -> not rankable that day
+FLOAT_MAX_RATIO = 10.0
+MAX_CAP_TO_ASSETS = 100.0   # unchecked share count (no float, single tag): cap > 100x total assets -> not rankable   # market cap > 10x the latest public float (10-K cover) -> not rankable that day
 
 
 def accepted_series(series: List[Dict[str, Any]], splits: List[Dict[str, float]]) -> List[Dict[str, Any]]:
@@ -254,12 +261,14 @@ def float_at(floats: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[flo
     return float(rec["value"])
 
 
-def float_check_ok(cap: float, flt: Optional[float]) -> bool:
-    """False if cap > FLOAT_MAX_RATIO x public float, unless the float is evidently tagged in thousands
-    (float x 1000 within a factor of three of the cap)."""
+def float_check_ok(cap: float, flt: Optional[float], shares_confirmed: bool = False) -> bool:
+    """False if cap > FLOAT_MAX_RATIO x public float. Exception: the float looks tagged in thousands (float x 1000
+    within a factor of three of the cap) AND the share count is confirmed by two tags of the same filing (cover
+    count agrees with the weighted count; e.g. Duke Energy 2023). A share count tagged x1000 (small banks such as
+    NKSH, RRBI) has the same cap/float signature but rests on a single tag, so it stays excluded."""
     if not flt or flt <= 0 or cap <= FLOAT_MAX_RATIO * flt:
         return True
-    return 1 / 3 <= (flt * 1000.0) / cap <= 3
+    return shares_confirmed and 1 / 3 <= (flt * 1000.0) / cap <= 3
 
 
 def market_caps_on(snap, day: pd.Timestamp, tickers: Optional[List[str]] = None) -> Dict[str, float]:
@@ -288,8 +297,12 @@ def market_caps_on(snap, day: pd.Timestamp, tickers: Optional[List[str]] = None)
         px = float(df.at[day, "CloseSplitAdj"])
         k = split_factor_after(snap.splits.get(t, []), rec["as_of"])
         cap = rec["shares"] * k * px * PRICE_MULT.get(t.replace(".", "-"), 1.0)
-        if not float_check_ok(cap, float_at(floats.get(t, []), cutoff)):
+        flt = float_at(floats.get(t, []), cutoff)
+        confirmed = rec.get("method") == "dei cover shares"
+        if not float_check_ok(cap, flt, confirmed):
             continue
+        if flt is None and not confirmed and rec.get("assets") and cap > MAX_CAP_TO_ASSETS * rec["assets"]:
+            continue   # single-tag share count, no float to check it against, implausible vs assets (RRBI 2019: x1000 tag)
         out[t] = cap
     return out
 
@@ -514,6 +527,19 @@ def gaps(cands: Dict[str, Any], ed: Optional[EdgarClient] = None) -> List[Dict[s
             g["years"].append(y)
             g["best_float_rank"] = min(g["best_float_rank"], i + 1)
             g["max_public_float_usd"] = max(g["max_public_float_usd"], r["val"])
+    # Plausibility: public float <= 15x total assets (us-gaap Assets, any year-end frame). Many small filers tag the
+    # float in thousands (x1000 too large); their float is then hundreds of times their assets.
+    assets: Dict[int, float] = {}
+    for y in range(2013, 2026):
+        try:
+            for r in ed.get_json(f"https://data.sec.gov/api/xbrl/frames/us-gaap/Assets/USD/CY{y}Q4I.json")["data"]:
+                assets[r["cik"]] = max(assets.get(r["cik"], 0.0), float(r["val"]))
+        except Exception:  # noqa: BLE001
+            pass
+    for g in found.values():
+        a = assets.get(g["cik"])
+        g["max_total_assets_usd"] = a
+        g["plausible"] = bool(a and g["max_public_float_usd"] <= 15.0 * a)
     return sorted(found.values(), key=lambda g: (g["best_float_rank"], g["cik"]))
 
 

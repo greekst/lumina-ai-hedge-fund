@@ -49,7 +49,7 @@ def build() -> Dict[str, Any]:
         turnover.append({"from": a, "to": b, "entered": sorted(set(tops[b]) - set(tops[a])),
                          "left": sorted(set(tops[a]) - set(tops[b]))})
     # completeness: public-float top 150 not in the candidate pool, classified
-    g = PU.gaps(cand, EdgarClient(offline=True))
+    g = PU.gaps(cand, EdgarClient())
     pred = {c for v in PREDECESSOR_CIKS.values() for c in v}
     exch = json.loads(PU._read_gz(os.path.join(PU.PDIR, "sec_company_tickers_exchange.json.gz")))
     live = {int(r[0]) for r in exch["data"]}
@@ -70,7 +70,7 @@ def markdown(r: Dict[str, Any]) -> str:
         return fact(x, src, AS_OF, decimals=0).render(with_label=False)
 
     def B(x, src):
-        return fact(x / 1e9, src, AS_OF, unit=" bn USD", decimals=1).render(with_label=False)
+        return fact(x / 1e9, src, AS_OF, unit="bn", decimals=1).render(with_label=False)
 
     cand, uni = r["candidates"], r["universe"]
     S_c = "backtest/universe/pit/candidates.json"
@@ -85,23 +85,23 @@ def markdown(r: Dict[str, Any]) -> str:
          "weighted count, else the weighted count, else net income over diluted EPS) x split factor x split-adjusted close of D-1. "
          "Membership is computed inside the harness from snapshot data, so the poisoned-future tests cover it. <!-- text-only -->", "",
          "## Candidate pool", "",
-         f"- Seed one: every S&P 500 member on any date since `2014-01-01` in the fja05680/sp500 historical components file "
+         f"- Seed one: every S&P five hundred member on any date since `2014-01-01` in the fja05680/sp500 historical components file "
          f"(sha256 of the raw file in candidates.json; last row `{cand['inputs']['sp500_history']['last_date']}`): "
          f"{N(cand['inputs']['sp500_history']['tickers_since_2014'], S_c)} tickers, of which "
          f"{N(len(cand['sp500_history_tickers_without_live_listing']), S_c)} have no current NYSE/Nasdaq listing (delisted, acquired or renamed).",
          f"- Seed two: every company listed today on NYSE/Nasdaq/CBOE (SEC company_tickers_exchange.json) with a hundred million "
-         f"or more shares in any EDGAR frame since `2013`. Pool: {N(cand['pool']['total'], S_c)} companies.",
-         f"- Screen: EDGAR frames share counts x yfinance month-end closes at every quarter end `2014Q1` to `2026Q3`; candidate "
+         f"or more shares in any EDGAR frame since `2013-01-01`. Pool: {N(cand['pool']['total'], S_c)} companies.",
+         f"- Screen: EDGAR frames share counts x yfinance month-end closes at every quarter end in `2014-03-31..2026-09-30`; candidate "
          f"if ranked two hundred or better at any quarter end (screen values can be overstated, which only enlarges the pool).",
          "- Seed three: listed companies ranked one hundred fifty or better by public float (dei EntityPublicFloat, a USD market value "
-         "on every 10-K cover, needs no prices) in any year `2014`-`2025`. This catches multi-class filers with no usable "
+         "on every 10-K cover, needs no prices) in any year in `2014-01-01..2025-12-31`. This catches multi-class filers with no usable "
          "share count in the frames (Visa) and high-priced names below the share threshold (MercadoLibre). <!-- text-only -->",
-         f"- Candidates: {N(len(cand['candidates']), S_c)} (S&P 500 history {N(seeds.get('sp500_history', 0), S_c)}, "
+         f"- Candidates: {N(len(cand['candidates']), S_c)} (S&P five hundred history {N(seeds.get('sp500_history', 0), S_c)}, "
          f"listed sweep {N(seeds.get('listed_sweep', 0), S_c)}, public-float seed {N(seeds.get('public_float', 0), S_c)}). "
          f"In the snapshot: {N(len(uni['members']), S_s)} with prices and EDGAR data; flagged or dropped "
-         f"{N(len(uni['flagged']), S_s)} (list in snapshot universe.json; foreign 20-F/40-F filers are dropped here).",
+         f"{N(len(uni['flagged']), S_s)} (list in snapshot universe.json; foreign private issuers filing annual reports only are dropped here).",
          "", "## Membership over time", "",
-         f"- Distinct companies in the top hundred at any quarter-end session since `2014-06`: {N(len(r['ever']), S_s)}. "
+         f"- Distinct companies in the top hundred at any quarter-end session since `2014-06-30`: {N(len(r['ever']), S_s)}. "
          f"Today's top hundred (session `{r['last']}`): {N(len(r['today']), S_s)}.",
          f"- Companies in the top hundred at some quarter end but NOT in today's top hundred: "
          f"{N(len(set(r['ever']) - in_today), S_s)}. These are what a today's-list universe silently drops: "
@@ -118,7 +118,7 @@ def markdown(r: Dict[str, Any]) -> str:
           "- Re-registrations (new CIK, same company) are merged with their predecessor CIK(s): "
           + "; ".join(f"{k} <- {v}" for k, v in sorted(PREDECESSOR_CIKS.items())) + ". <!-- text-only -->",
           "", "## Completeness check and known gaps", "",
-          f"Every company ranked one hundred fifty or better by public float in any year `2014`-`2025` "
+          f"Every company ranked one hundred fifty or better by public float in any year in `2014-01-01..2025-12-31` "
           f"({S_f}) that is not a candidate: {N(len(r['gaps']), S_f)}. Classified: "
           f"predecessor CIKs already merged {N(sum(1 for x in r['gaps'] if x['class'].startswith('predecessor')), S_f)}; "
           f"listed today but not candidates {N(sum(1 for x in r['gaps'] if x['class'].startswith('listed')), S_f)} "
@@ -127,13 +127,11 @@ def markdown(r: Dict[str, Any]) -> str:
           "**Known gaps: companies that were large and have no price history here** (Yahoo keeps none for delisted tickers; "
           "Stooq, Nasdaq, Tiingo, Polygon, Alpha Vantage and stockanalysis.com are blocked by this sandbox's network policy and "
           "Finnhub candles return 403 on this plan). Listed when the best public-float rank is fifty or better or the float "
-          "exceeds twenty billion USD; the float understates market cap for controlled companies. <!-- text-only -->", "",
-          "| company (EDGAR name) | CIK | years in public-float top 150 | best float rank | max public float |", "|---|---|---|---|---|"]
+          "exceeds twenty billion USD (rows whose float exceeds fifteen times the company's largest reported total assets are dropped: tagging errors, float reported in thousands); the float understates market cap for controlled companies. Values in billion USD. <!-- text-only -->", "",
+          "| company (EDGAR name) | CIK | first..last year in public-float top hundred fifty | years | best float rank | max public float |", "|---|---|---|---|---|---|"]
     for x in r["dead"]:
-        if x["best_float_rank"] <= 50 or x["max_public_float_usd"] >= 2e10:
-            if x["max_public_float_usd"] > 6e12:
-                continue  # unit error (float tagged in thousands), not a large company
-            L.append(f"| {x['name']} | `{x['cik']}` | `{','.join(str(y) for y in x['years'])}` | {N(x['best_float_rank'], S_f)} | "
+        if x["plausible"] and (x["best_float_rank"] <= 50 or x["max_public_float_usd"] >= 2e10):
+            L.append(f"| {x['name']} | {N(x['cik'], S_f)} | `{min(x['years'])}-01-01..{max(x['years'])}-12-31` | {N(len(x['years']), S_f)} | {N(x['best_float_rank'], S_f)} | "
                      f"{B(x['max_public_float_usd'], S_f)} |")
     L += ["", "**Effect of the gaps.** Missing names cannot enter the ranking, so the hundredth slot goes to the next company "
           "(the universe is complete in size but slightly too small in average cap), and their events are absent. Most are "
