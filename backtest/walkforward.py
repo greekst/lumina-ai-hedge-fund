@@ -39,6 +39,7 @@ import pandas as pd
 os.environ.setdefault("LUMINA_LLM_MODE", "mock")
 
 from backtest.pit import Snapshot, decision_session, pit_fundamentals, pit_history_metrics  # noqa: E402
+from backtest.stats import describe  # noqa: E402
 from core.ai_hedge_fund.alpha158_engine import Alpha158Engine  # noqa: E402
 from core.ai_hedge_fund.cost_model import CostModel  # noqa: E402
 from core.ai_hedge_fund.deterministic_metrics import DeterministicMetrics  # noqa: E402
@@ -46,6 +47,16 @@ from core.ai_hedge_fund.deterministic_metrics import DeterministicMetrics  # noq
 HORIZONS = (1, 5, 20)
 STRATEGIES = ("council", "factors_only", "buy_and_hold")
 VIX_TURBULENCE = 30.0
+VIX_BUCKETS = ((0.0, 15.0, "VIX<15"), (15.0, 25.0, "VIX15-25"), (25.0, float("inf"), "VIX>25"))
+
+
+def vix_bucket(v: Optional[float]) -> str:
+    if v is None or not np.isfinite(v):
+        return "n/a"
+    for lo, hi, name in VIX_BUCKETS:
+        if lo <= v < hi:
+            return name
+    return "n/a"
 SEED = 20261104
 RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")
 
@@ -103,12 +114,15 @@ def _quiet():
     return contextlib.redirect_stdout(io.StringIO())
 
 
-def decide_council(inp: Dict[str, Any]) -> Dict[str, Any]:
+def decide_council(inp: Dict[str, Any], analyst_override: Optional[Dict[str, Dict[str, Any]]] = None) -> Dict[str, Any]:
+    """Mock council. `analyst_override` (agent_id -> sanitized analyst result) replaces individual
+    persona outputs, e.g. with live-LLM stances; every other step is identical and deterministic."""
     from core.ai_hedge_fund.agents import ALL_ANALYST_AGENTS, PortfolioManagerAgent, RiskManagerAgent
     from core.ai_hedge_fund.hedge_fund_council import HedgeFundCouncil
     stock, ctx = dict(inp["stock"]), dict(inp["context"])
+    over = analyst_override or {}
     with pit_market_turbulence(inp["vix"]), _quiet():
-        analysts = [a.evaluate(stock, ctx) for a in ALL_ANALYST_AGENTS]
+        analysts = [dict(over[a.agent_id]) if a.agent_id in over else a.evaluate(stock, ctx) for a in ALL_ANALYST_AGENTS]
         debate = HedgeFundCouncil._run_cross_debate(stock, analysts, ctx)
         risk = RiskManagerAgent.evaluate_risk(stock, analysts, ctx)
         syn = PortfolioManagerAgent.synthesize_verdict(stock, analysts, risk, ctx, cross_debate=debate)
@@ -154,6 +168,8 @@ def score(snap: Snapshot, ticker: str, D: pd.Timestamp, strategy: str, decision:
     i0 = sessions.get_loc(D)
     entry = snap.close_on(ticker, D)
     spy_entry = snap.close_on("SPY", D)
+    etf = (snap.universe.get(ticker) or {}).get("sector_etf")
+    etf_entry = snap.close_on(etf, D) if etf else None
     out: Dict[str, Any] = {"entry_close": entry}
     lows = snap.prices[ticker]["Low"]
     for h in HORIZONS:
@@ -172,6 +188,9 @@ def score(snap: Snapshot, ticker: str, D: pd.Timestamp, strategy: str, decision:
         out[f"spy_ret_{h}"] = spy
         out[f"net_ret_{h}"] = net
         out[f"excess_ret_{h}"] = (net - spy) if decision["long"] else 0.0
+        sec = (snap.close_on(etf, exit_day) / etf_entry - 1.0) if etf else float("nan")
+        out[f"sector_ret_{h}"] = sec
+        out[f"excess_sector_{h}"] = (net - sec) if decision["long"] else 0.0
         out[f"hit_{h}"] = int((und > 0) if decision["long"] else (und <= 0))
         stop = decision.get("stop_loss_price")
         window_low = float(lows.iloc[i0 + 1: i0 + h + 1].min())
@@ -218,6 +237,9 @@ def run(snapshot_root: str, n_events: int = 12, tickers: Optional[List[str]] = N
                     "cro_veto": dec["veto"], "degraded": dec["degraded"],
                     "pe_trailing": inp["stock"]["pe_trailing"], "roe": inp["stock"]["roe"],
                     "revenue_growth": inp["stock"]["revenue_growth"], "vix_d1": inp["vix"],
+                    "vix_bucket": vix_bucket(inp["vix"]),
+                    "sector": (snap.universe.get(t) or {}).get("sector", "n/a"),
+                    "sector_etf": (snap.universe.get(t) or {}).get("sector_etf", ""),
                     **sc,
                 })
             postmortems.setdefault(quarter, []).append(_postmortem_entry(t, D, ev, inp, decisions, rows[-len(STRATEGIES):]))
@@ -305,7 +327,39 @@ def summarize(df: pd.DataFrame) -> Dict[str, Any]:
             "share_events_decisions_differ": float((df[df.strategy == "council"].long.to_numpy()
                                                     != df[df.strategy == "factors_only"].long.to_numpy()).mean()),
         }
+    if "sector" in df.columns and (df["sector"] != "n/a").any():
+        out["cells"] = summarize_cells(df)
     return out
+
+
+CELL_METRICS = ("net_ret", "excess_ret", "excess_sector")
+
+
+def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
+    d: Dict[str, Any] = {"n_events": int((sub.strategy == "council").sum())}
+    for strat in STRATEGIES:
+        s = sub[sub.strategy == strat]
+        for h in HORIZONS:
+            for m in CELL_METRICS:
+                d[f"{strat}|{h}|{m}"] = describe(s[f"{m}_{h}"].to_numpy(), s["month"].to_numpy())
+    a = sub[sub.strategy == "council"].set_index(["ticker", "event_no"])
+    b = sub[sub.strategy == "factors_only"].set_index(["ticker", "event_no"])
+    for h in HORIZONS:
+        diff = (a[f"net_ret_{h}"] - b[f"net_ret_{h}"]).dropna()
+        d[f"council_minus_factors|{h}"] = describe(diff.to_numpy(), a.loc[diff.index, "month"].to_numpy())
+    return d
+
+
+def summarize_cells(df: pd.DataFrame) -> Dict[str, Any]:
+    """Session 2: overall / VIX(D-1) regime / GICS sector cells with iid and month-clustered
+    bootstrap CIs and minimum detectable effects. Clusters = calendar month of the decision date."""
+    df = df.assign(month=df["decision_date"].str[:7])
+    res: Dict[str, Any] = {"overall": _cell(df), "by_regime": {}, "by_sector": {}}
+    for name, g in sorted(df.groupby("vix_bucket"), key=lambda kv: kv[0]):
+        res["by_regime"][name] = _cell(g)
+    for name, g in sorted(df.groupby("sector"), key=lambda kv: kv[0]):
+        res["by_sector"][name] = _cell(g)
+    return res
 
 
 def _fmt(x: Any, pct: bool = True, src: str = "", as_of: str = "", decimals: int = 2) -> str:
@@ -348,6 +402,8 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
             m = summary["by_quarter"][qtr].get(f"{s_}|5")
             cells.append(f"{F(m['avg_net_ret'])} ({F(m['hit_rate'])})" if m else "")
         L.append(f"| {qtr} | " + " | ".join(cells) + " |")
+    if "cells" in summary:
+        L += cells_markdown(summary["cells"], F, N)
     L += ["", "TradingAgents baseline: skipped — no offline/mock mode (LLM-only); see backtest/tradingagents_adapter.py. <!-- text-only -->", ""]
     md = "\n".join(L)
     from core.reporting.tagged import untagged_numbers
@@ -355,6 +411,47 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
     if bad:
         raise ValueError(f"untagged numbers in summary: {bad[:5]}")
     return md
+
+
+def _ci(F, m: Dict[str, Any], kind: str = "cluster") -> str:
+    c = m.get(kind) or {}
+    if m.get("mean") is None:
+        return "n/a"
+    lo, hi = c.get("lo"), c.get("hi")
+    return f"{F(m['mean'])} [{F(lo)} … {F(hi)}]" if lo is not None else F(m["mean"])
+
+
+def cells_markdown(cells: Dict[str, Any], F, N) -> List[str]:
+    L = ["", "## Session 2 — inference with uncertainty", "",
+         "Each cell: mean, then the 95% month-clustered bootstrap CI in brackets (events in the same calendar month "
+         "share market moves and overlapping windows, so i.i.d. CIs would be too narrow). Excess vs sector = net return "
+         "minus the matching SPDR sector ETF over the same window; a flat (not long) decision has zero excess. "
+         "MDE = minimum detectable effect at five percent two-sided and eighty percent power, from the clustered SE. "
+         "<!-- text-only -->", "",
+         "### Overall, all horizons", "",
+         "| strategy / horizon | events | avg net | excess vs SPY | excess vs sector ETF | MDE (excess vs sector) |",
+         "|---|---|---|---|---|---|"]
+    o = cells["overall"]
+    for strat in STRATEGIES:
+        for h in HORIZONS:
+            ms = o[f"{strat}|{h}|excess_sector"]
+            L.append(f"| {strat} T+{h} | {N(ms['n'])} | {_ci(F, o[f'{strat}|{h}|net_ret'])} | "
+                     f"{_ci(F, o[f'{strat}|{h}|excess_ret'])} | {_ci(F, ms)} | {F(ms['mde80'])} |")
+    L += ["", "### Council minus factors-only (paired by event)", "",
+          "| horizon | events | mean diff [clustered CI] | i.i.d. CI low | i.i.d. CI high | MDE |", "|---|---|---|---|---|---|"]
+    for h in HORIZONS:
+        m = o[f"council_minus_factors|{h}"]
+        L.append(f"| T+{h} | {N(m['n'])} | {_ci(F, m)} | {F(m['iid']['lo'])} | {F(m['iid']['hi'])} | {F(m['mde80'])} |")
+    for title, key in (("By regime: VIX close on D-1", "by_regime"), ("By GICS sector", "by_sector")):
+        L += ["", f"### {title} — T+20", "",
+              "| cell | events | buy-and-hold excess vs sector | council excess vs sector | factors-only excess vs sector | council − factors | MDE (council − factors) |",
+              "|---|---|---|---|---|---|---|"]
+        for name, c in cells[key].items():
+            d = c["council_minus_factors|20"]
+            L.append(f"| {name} | {N(c['n_events'])} | {_ci(F, c['buy_and_hold|20|excess_sector'])} | "
+                     f"{_ci(F, c['council|20|excess_sector'])} | {_ci(F, c['factors_only|20|excess_sector'])} | "
+                     f"{_ci(F, d)} | {F(d['mde80'])} |")
+    return L
 
 
 def write_outputs(result: Dict[str, Any], out_dir: str, snap: Snapshot) -> Dict[str, str]:

@@ -34,6 +34,7 @@ class Snapshot:
     events: Dict[str, List[Dict[str, str]]] = field(default_factory=dict)
     splits: Dict[str, List[Dict[str, float]]] = field(default_factory=dict)
     manifest: Dict[str, Any] = field(default_factory=dict)
+    universe: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # ticker -> {sector, sector_etf, ...}
 
     @classmethod
     def load(cls, root: str) -> "Snapshot":
@@ -46,6 +47,10 @@ class Snapshot:
         if os.path.exists(sp):
             with open(sp, encoding="utf-8") as fh:
                 snap.splits = json.load(fh)
+        up = os.path.join(root, "universe.json")
+        if os.path.exists(up):
+            with open(up, encoding="utf-8") as fh:
+                snap.universe = {m["ticker"]: m for m in json.load(fh)["members"]}
         for t in snap.manifest["tickers"] + snap.manifest["benchmarks"]:
             df = pd.read_csv(os.path.join(root, "prices", f"{_safe(t)}.csv"), index_col="date", parse_dates=True)
             snap.prices[t] = df.sort_index()
@@ -124,14 +129,16 @@ def _ttm(avail: List[Dict[str, Any]], key: str) -> Optional[Dict[str, Any]]:
         return None
     cur = have[-1]
     if _is_fy(cur):
-        return {"value": cur[key], "end": cur["end"], "accepted_at": cur["accepted_at"], "method": "FY"}
+        return {"value": cur[key], "end": cur["end"], "accepted_at": cur["accepted_at"], "method": "FY",
+                "source": cur.get("source")}
     prior_end = pd.Timestamp(cur["end"]) - pd.DateOffset(years=1)
     prior = [f for f in have if _same_len(f, cur) and abs((pd.Timestamp(f["end"]) - prior_end).days) <= 10]
     fy = [f for f in have if _is_fy(f) and prior_end < pd.Timestamp(f["end"]) < pd.Timestamp(cur["end"])]
     if not prior or not fy:
         return None
     val = fy[-1][key] + cur[key] - prior[-1][key]
-    return {"value": val, "end": cur["end"], "accepted_at": cur["accepted_at"], "method": "FY+YTD-YTDprior"}
+    return {"value": val, "end": cur["end"], "accepted_at": cur["accepted_at"], "method": "FY+YTD-YTDprior",
+            "source": cur.get("source")}
 
 
 def _yoy_growth(avail: List[Dict[str, Any]], key: str) -> Optional[Dict[str, Any]]:
@@ -144,7 +151,8 @@ def _yoy_growth(avail: List[Dict[str, Any]], key: str) -> Optional[Dict[str, Any
     if not prior or not prior[-1][key]:
         return None
     g = (cur[key] / prior[-1][key] - 1.0) * 100.0
-    return {"value": g, "end": cur["end"], "accepted_at": cur["accepted_at"], "method": f"YoY {_days(cur)}d YTD"}
+    return {"value": g, "end": cur["end"], "accepted_at": cur["accepted_at"], "method": f"YoY {_days(cur)}d YTD",
+            "source": cur.get("source")}
 
 
 def _split_factor_after(splits: List[Dict[str, float]], when: str) -> float:
@@ -171,12 +179,12 @@ def pit_fundamentals(filings: List[Dict[str, Any]], cutoff: pd.Timestamp, price:
         if "diluted_shares" in f:
             f["diluted_shares"] = f["diluted_shares"] * k
         avail.append(f)
-    src = "finnhub financials-reported (SEC XBRL)"
     out: Dict[str, Any] = {"_tags": {}}
 
     def put(name: str, value: Optional[float], meta: Optional[Dict[str, Any]], note: str) -> None:
         out[name] = None if value is None or not np.isfinite(value) else round(float(value), 4)
         if meta:
+            src = meta.get("source") or "finnhub financials-reported (SEC XBRL)"
             out["_tags"][name] = {"source": f"{src}; {note}", "as_of": meta["accepted_at"][:10],
                                   "period_end": meta["end"], "method": meta.get("method", "")}
 
