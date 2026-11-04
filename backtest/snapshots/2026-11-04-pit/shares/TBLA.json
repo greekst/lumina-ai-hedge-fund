@@ -1,0 +1,151 @@
+{
+ "ciks": [
+  1840502
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2023-03-13 09:13:44",
+   "as_of": "2022-06-30",
+   "value": 427400000.0
+  },
+  {
+   "accepted_at": "2024-02-28 06:11:44",
+   "as_of": "2023-06-30",
+   "value": 676300000.0
+  },
+  {
+   "accepted_at": "2025-02-26 06:20:16",
+   "as_of": "2024-06-30",
+   "value": 684500000.0
+  },
+  {
+   "accepted_at": "2026-02-25 06:03:54",
+   "as_of": "2025-06-30",
+   "value": 608000000.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2023-03-13 09:13:44",
+   "accn": "0001140361-23-011303",
+   "as_of": "2023-03-13",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 254284781.0
+  },
+  {
+   "accepted_at": "2023-05-10 06:35:58",
+   "accn": "0001140361-23-023786",
+   "as_of": "2023-05-10",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 333424276.0
+  },
+  {
+   "accepted_at": "2023-08-09 06:11:18",
+   "accn": "0001140361-23-038686",
+   "as_of": "2023-08-09",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 347933333.3333334
+  },
+  {
+   "accepted_at": "2023-11-08 06:05:11",
+   "accn": "0001140361-23-051968",
+   "as_of": "2023-11-08",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 330514285.7142857
+  },
+  {
+   "accepted_at": "2024-02-28 06:11:44",
+   "accn": "0001140361-24-009866",
+   "as_of": "2024-02-22",
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 295463243.0
+  },
+  {
+   "accepted_at": "2024-05-08 06:13:45",
+   "accn": "0001140361-24-024776",
+   "as_of": "2024-05-08",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 345502643.0
+  },
+  {
+   "accepted_at": "2024-08-07 06:02:52",
+   "accn": "0001140361-24-035980",
+   "as_of": "2024-07-31",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 335676527.0
+  },
+  {
+   "accepted_at": "2024-11-07 06:06:36",
+   "accn": "0001140361-24-045484",
+   "as_of": "2024-10-31",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 336208207.0
+  },
+  {
+   "accepted_at": "2025-05-07 06:15:53",
+   "accn": "0001840502-25-000047",
+   "as_of": "2025-05-07",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 341960999.0
+  },
+  {
+   "accepted_at": "2025-08-06 06:09:07",
+   "accn": "0001840502-25-000076",
+   "as_of": "2025-08-06",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 313572282.0
+  },
+  {
+   "accepted_at": "2025-11-05 06:16:39",
+   "accn": "0001840502-25-000081",
+   "as_of": "2025-11-05",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 305679079.0
+  },
+  {
+   "accepted_at": "2026-02-25 06:03:54",
+   "accn": "0001840502-26-000004",
+   "as_of": "2026-02-25",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 325261538.46153843
+  },
+  {
+   "accepted_at": "2026-05-06 06:09:38",
+   "accn": "0001840502-26-000009",
+   "as_of": "2026-05-06",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 288764244.0
+  },
+  {
+   "accepted_at": "2026-08-05 06:19:38",
+   "accn": "0001840502-26-000012",
+   "as_of": "2026-08-05",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 291392907000.0
+  },
+  {
+   "accepted_at": "2026-11-04 06:07:45",
+   "accn": "0001840502-26-000018",
+   "as_of": "2026-11-04",
+   "form": "10-Q",
+   "method": "net income / diluted EPS (weighted count failed unit sanity check)",
+   "shares": 306083.3333333333
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "TBLA"
+}
