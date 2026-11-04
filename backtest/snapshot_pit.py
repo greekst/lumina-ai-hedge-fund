@@ -27,6 +27,7 @@ import os
 import time
 from typing import Any, Dict, List, Tuple
 
+import numpy as np
 import pandas as pd
 
 from backtest import pit_universe as PU
@@ -206,7 +207,6 @@ def _d_bus(ts: str) -> "np.datetime64":
     """Decision day for an announcement on the business-day calendar (weekends only; no holiday list — a session
     calendar is not available when events are built): after 16:00 -> that day (rolled back to a business day),
     otherwise the business day strictly before it. Mirrors `pit.decision_session`."""
-    import numpy as np
     d = np.datetime64(ts[:10])
     if ts[11:16] >= "16:00":
         return np.busday_offset(d, 0, roll="backward")
