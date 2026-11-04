@@ -72,8 +72,10 @@ def build_inputs(snap: Snapshot, ticker: str, D: pd.Timestamp, announced_at: str
     last_bar = prev[-1]
     bars = snap.bars_through(ticker, last_bar)
     px_val = float(bars["CloseSplitAdj"].iloc[-1])
-    fund = pit_fundamentals(snap.fundamentals.get(ticker, []), pd.Timestamp(announced_at), px_val,
-                            snap.splits.get(ticker, []))
+    # Filings must be public before the decision (close of D) AND before the announcement. For a
+    # pre-market release D is the previous session, so a filing accepted overnight is excluded.
+    cutoff = min(pd.Timestamp(announced_at), pd.Timestamp(f"{D.date()} 16:00:00"))
+    fund = pit_fundamentals(snap.fundamentals.get(ticker, []), cutoff, px_val, snap.splits.get(ticker, []))
     hm = pit_history_metrics(bars)
     det = DeterministicMetrics.compute_price_metrics(bars.tail(252))
     a158 = Alpha158Engine.get_latest_factors(bars.tail(300)[["Open", "High", "Low", "Close", "Volume"]])

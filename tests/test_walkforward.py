@@ -70,7 +70,10 @@ def test_future_data_cannot_change_a_decision():
         df.loc[fut, ["Open", "High", "Low", "Close", "CloseSplitAdj"]] *= rng.uniform(0.2, 5.0, (fut.sum(), 1))
         snap.prices[k] = df
     snap.fundamentals[t] = snap.fundamentals[t] + [
-        _f("2000-01-01", "2030-12-31", "2030-01-01 00:00", net_income=-1e15, equity=1.0, revenue=1e18, diluted_shares=1.0)]
+        _f("2000-01-01", "2030-12-31", "2030-01-01 00:00", net_income=-1e15, equity=1.0, revenue=1e18, diluted_shares=1.0),
+        # accepted after the close of D (the decision time) but before the announcement
+        _f("2000-01-01", D.strftime("%Y-%m-%d"), f"{D.date()} 16:01:00", net_income=-1e15, equity=1.0, revenue=1e18,
+           diluted_shares=1.0)]
     poisoned = wf.build_inputs(snap, t, D, ev["announced_at_et"])
     assert poisoned["stock"] == base["stock"]
     for s in wf.STRATEGIES:
@@ -93,3 +96,75 @@ def test_rerun_is_byte_identical(tmp_path):
 def test_snapshot_hashes_match_manifest():
     from backtest.snapshot import verify
     assert verify(SNAP) == []
+
+
+# ---------------------------------------------------------------- Session 2: EDGAR / S&P 100 snapshot
+SNAP2 = os.path.join(os.path.dirname(SNAP), "2026-11-04-sp100")
+needs_snap2 = pytest.mark.skipif(not os.path.exists(os.path.join(SNAP2, "manifest.json")), reason="sp100 snapshot not present")
+
+
+@needs_snap2
+@pytest.mark.parametrize("t", ["JPM", "XOM", "NVDA"])
+def test_edgar_snapshot_future_poison_cannot_change_a_decision(t):
+    """EDGAR fundamentals + 8-K event times + sector ETF: poison everything from D on, decisions must not move."""
+    snap = Snapshot.load(SNAP2)
+    ev = snap.events[t][-5]
+    D = decision_session(snap.sessions(t), ev["announced_at_et"])
+    base = wf.build_inputs(snap, t, D, ev["announced_at_et"])
+    ref = {s: wf.DECIDERS[s](base) for s in wf.STRATEGIES}
+    rng = np.random.default_rng(3)
+    etf = snap.universe[t]["sector_etf"]
+    for k in (t, "SPY", "^VIX", etf):
+        df = snap.prices[k].copy()
+        fut = df.index >= D
+        df.loc[fut, ["Open", "High", "Low", "Close", "CloseSplitAdj"]] *= rng.uniform(0.2, 5.0, (fut.sum(), 1))
+        snap.prices[k] = df
+    # a filing accepted one minute after the close of D (before a pre-market release, after the decision)
+    # and a far-future restatement
+    acc = pd.Timestamp(f"{D.date()} 16:01:00")
+    snap.fundamentals[t] = snap.fundamentals[t] + [
+        _f("2000-01-01", "2030-12-31", "2030-01-01 00:00", net_income=-1e15, equity=1.0, revenue=1e18, diluted_shares=1.0),
+        _f("2000-01-01", D.strftime("%Y-%m-%d"), acc.strftime("%Y-%m-%d %H:%M:%S"), net_income=-1e15, equity=1.0,
+           revenue=1e18, diluted_shares=1.0)]
+    poisoned = wf.build_inputs(snap, t, D, ev["announced_at_et"])
+    assert poisoned["stock"] == base["stock"]
+    for s in wf.STRATEGIES:
+        assert wf.DECIDERS[s](poisoned) == ref[s], s
+
+
+@needs_snap2
+def test_edgar_snapshot_rerun_identical_and_sector_benchmark(tmp_path):
+    kw = dict(n_events=3, tickers=["AAPL", "JPM", "XOM"])
+    a = wf.run(SNAP2, out_dir=str(tmp_path / "a"), **kw)
+    b = wf.run(SNAP2, out_dir=str(tmp_path / "b"), **kw)
+    assert wf.digest(a["paths"]) == wf.digest(b["paths"])
+    r = a["rows"]
+    assert set(r.sector_etf) == {"XLK", "XLF", "XLE"}
+    assert r.filter(like="sector_ret_").notna().all().all()
+    assert (pd.to_datetime(r.features_through) < pd.to_datetime(r.decision_date)).all()
+    assert "cells" in a["summary"]
+
+
+@needs_snap2
+def test_edgar_snapshot_hashes_match_manifest():
+    from backtest.snapshot import verify
+    assert verify(SNAP2) == []
+
+
+@needs_snap
+def test_overnight_filing_before_premarket_release_is_excluded():
+    """Pre-market release on day X -> D = X-1, entry at the close of D. A filing accepted at 16:01 on D is
+    public before the release but AFTER the decision: it must not be used (cutoff = min(release, close of D))."""
+    snap = Snapshot.load(SNAP)
+    t = "JPM"
+    ev = snap.events[t][-6]
+    sessions = snap.sessions(t)
+    D = decision_session(sessions, ev["announced_at_et"])
+    nxt = sessions[sessions.get_loc(D) + 1]
+    release = f"{nxt.date()} 07:00"
+    assert decision_session(sessions, release) == D
+    base = wf.build_inputs(snap, t, D, release)
+    snap.fundamentals[t] = snap.fundamentals[t] + [
+        _f("2000-01-01", D.strftime("%Y-%m-%d"), f"{D.date()} 16:01:00", net_income=-1e15, equity=1.0, revenue=1e18,
+           diluted_shares=1.0)]
+    assert wf.build_inputs(snap, t, D, release)["stock"] == base["stock"]
