@@ -190,15 +190,27 @@ def earnings_8k_events(k8: List[Dict[str, str]], periodic: List[Dict[str, str]])
     return sorted(out.values(), key=lambda e: e["accepted_at_et"])
 
 
-def eight_k_only_time(k8_time: str, prior_vendor_times: List[str]) -> Tuple[str, str]:
-    """Timestamp for an event known only from its 8-K. An 8-K can be accepted after the press release (SCHW ~9h,
-    Session 2), so an after-close acceptance is moved to pre-market of the same day when >= 75% of the issuer's
-    last eight earlier vendor times were pre-market (the issuer convention of the Session 2 review, P0-1). This can
-    only move D earlier (removes information). Without such evidence the acceptance time stands."""
-    prior = prior_vendor_times[-8:]
-    if k8_time[11:16] >= "16:00" and len(prior) >= 4 and sum(p[11:16] < "09:30" for p in prior) / len(prior) >= 0.75:
-        return f"{k8_time[:10]} 07:00", "8-K only; issuer convention: pre-market"
-    return k8_time, "8-K 2.02 only"
+def eight_k_only_time(k8_time: str) -> Tuple[str, str]:
+    """Timestamp for an event known only from its 8-K: pre-market (07:00) of the acceptance day, whatever the
+    acceptance time. An 8-K can be accepted hours after the press release (ADM: 07:00 release, 8-K after 16:00), so
+    the acceptance time itself would be one session late in 1.6% of the 22,869 events where vendor and 8-K agree
+    (results/pit2_changes_2026-11-04.md); pre-market of the acceptance day cuts that to 0.45%, and the issuer filter
+    (`eight_k_lag_ok`) removes the issuers whose 8-Ks trail by days. Only ever moves D earlier (removes information)."""
+    return min(k8_time[:16], f"{k8_time[:10]} 07:00"), "8-K only; pre-market of acceptance day"
+
+
+MAX_8K_LAG_RATE = 0.10   # issuer filter for 8-K-only events
+
+
+def eight_k_lag_ok(v1_events: List[Dict[str, Any]]) -> bool:
+    """True if the issuer's own 8-Ks are timely: among its events where vendor date and Item 2.02 8-K agree (>= 4),
+    at most 10% have the 8-K accepted on a later calendar day than the release. Issuers whose 8-Ks trail by days
+    (BBWI, CCB) get no 8-K-only events. A data-quality property of the issuer's filing habit, not an outcome."""
+    m = [e for e in v1_events if e.get("vendor_et") and e.get("edgar_8k_et")]
+    if len(m) < 4:
+        return False
+    late = sum(e["edgar_8k_et"][:10] > e["announced_at_et"][:10] for e in m)
+    return late / len(m) <= MAX_8K_LAG_RATE
 
 
 VENDOR_GAP_DAYS = 60     # ... and no vendor date within +-60 days (a quarter is ~91 days apart)
@@ -230,6 +242,7 @@ def resolve_events_v2(yfe: List[str], k8: List[Dict[str, str]], all_8k: List[Dic
     P2-1  an earnings 8-K with no vendor date within +-60 days and no event within +-45 days lies in a gap of the
           vendor series (BLK 2009-10..2022-07): it becomes an 8-K-only event, timed by `eight_k_only_time`."""
     v1 = resolve_events(yfe, k8, end, "0000-00-00")
+    lag_ok = eight_k_lag_ok(v1)
     e8 = [e for e in earnings_8k_events(k8, periodic) if e["accepted_at_et"][:10] < end]
     used = {e["accession"] for e in v1 if e["accession"]}
     vend = sorted(y for y in yfe if y[:10] < end)
@@ -247,7 +260,9 @@ def resolve_events_v2(yfe: List[str], k8: List[Dict[str, str]], all_8k: List[Dic
         if k["accession"] in used:
             continue                                   # duplicate of an existing event (LIN 2020-03-01)
         used.add(k["accession"])
-        ts, rule = eight_k_only_time(k["accepted_at_et"], [y for y in vend if y < k["accepted_at_et"]])
+        if not lag_ok:
+            continue                                   # mis-dated vendor date, but the 8-K cannot be trusted for timing
+        ts, rule = eight_k_only_time(k["accepted_at_et"])
         out.append({"announced_at_et": ts[:16], "rule": rule + " (vendor date mis-dated: " + e["vendor_et"] + ")",
                     "vendor_et": None, "edgar_8k_et": k["accepted_at_et"], "accession": k["accession"],
                     "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)"})
@@ -258,7 +273,9 @@ def resolve_events_v2(yfe: List[str], k8: List[Dict[str, str]], all_8k: List[Dic
         if any(abs((pd.Timestamp(x["announced_at_et"]) - t).days) <= GAP_DAYS for x in out) or \
                 any(abs((pd.Timestamp(y) - t).days) <= VENDOR_GAP_DAYS for y in vend):
             continue
-        ts, rule = eight_k_only_time(k["accepted_at_et"], [y for y in vend if y < k["accepted_at_et"]])
+        if not lag_ok:
+            continue
+        ts, rule = eight_k_only_time(k["accepted_at_et"])
         out.append({"announced_at_et": ts[:16], "rule": rule + " (vendor-series gap)", "vendor_et": None,
                     "edgar_8k_et": k["accepted_at_et"], "accession": k["accession"],
                     "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)"})
