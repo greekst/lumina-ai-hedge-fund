@@ -278,3 +278,18 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
   pigeonhole bootstrap, one-sided 5%: reject iff the bootstrap 5th percentile > 0. MDE ≈ 1.0% (one-sided, 80% power), from the
   Phase B SE (0.813%) scaled by sqrt(12/47). Disclosed: the 2023-10..2026-09 part (about a quarter of the sample) was seen in Phase B.
   No decision or return before 2023-10-09 had been computed when the file was committed.
+
+## 2026-11-04 21:57 UTC — Phase D: H1 run as pre-registered (P1-5 fixed, two-way clustering)
+- P1-5 (review): YoY revenue growth now uses the prior-year comparative inside the current filing (`edgar.fundamentals_from_companyfacts(comparatives=True)`,
+  `pit._yoy_growth(mode="comparative")`; same acceptance time, so PIT-safe; 99.1% of revenue filings since 2014-06 carry it; falls back to the
+  old method, labelled, otherwise). Unit test with a spin-off restatement (legacy −34% vs comparative +10%).
+- Two-way clustering: `stats.cluster_diff_2way` (season x ticker pigeonhole bootstrap, conservative), unit-tested on simulated data.
+- Extended history: events from 2015-01 on the PIT universe; the Phase B snapshot already covered 2013-01..2026-11 (no second download).
+  Snapshot frozen in Phase B; rebuild byte-identical. **Two reruns of the pre-registered command: identical sha256 `ccabc089…`.**
+- **H1 (confirmatory): S = +0.07%, one-sided lower bound −0.41%, CI [−0.54%, +0.65%], p = 0.41, n = 4,661 events / 47 seasons / 190 tickers.
+  Not rejected.** Unseen pre-2023-10 subsample: −0.05%.
+- Exploratory (`results/h1_phaseD_2026-11-04.md`): selection skill at T+1/T+20 for both strategies within ±0.4%, all CIs include zero;
+  no VIX regime or sector cell excludes zero. Buy-and-hold excess vs sector ETF on the PIT universe 2015–2026: T+20 −0.02% [−0.24, +0.18].
+  Council − factors-only T+20 +0.41% [+0.10, +0.72] and T+5 +0.16% [+0.01, +0.31]: exploratory, and explained by exposure (council long
+  67% vs factors-only 45%) in a rising market — both strategies trail their sector ETFs (council T+20 −0.16%, factors-only −0.24%).
+- Phase B PIT run reproduced: `63184c87…` twice.

@@ -100,3 +100,15 @@ season-only clustering, the pre-2023-10 subsample, legacy YoY, excess returns vs
 ---
 
 RESULTS (appended after the run)
+
+Run 2026-11-04 (UTC), the exact command above, twice: identical output sha256
+`ccabc08934c2651962ed2c2a47f562303b4db6943c942ef151cf9f6ab353c06d`. Full tagged report: `results/h1_phaseD_2026-11-04.md`
+(values there carry `[SOURCED FACT · wf-backtest 2026-11-04-pit_phaseD, 2026-11-04]`).
+
+- Sample: 4,661 events, D from 2015-01-13 to 2026-09-24, 47 seasons, 190 tickers; council long 3,142, flat 1,519.
+- **S = +0.07%**; one-sided 95% lower bound (5th percentile, two-way season x ticker bootstrap) **−0.41%**;
+  two-sided 95% CI [−0.54%, +0.65%]; one-sided bootstrap p = 0.405; SE 0.31%; realised MDE (one-sided, 80% power) 0.76%.
+- **Decision: H0 is not rejected.** No evidence that the mock council's long decisions pick better earnings events within a
+  ticker than its flat decisions, at T+5. The point estimate is also far below the 0.20% economic threshold.
+- Robustness (not part of the decision): season-only CI [−0.27%, +0.43%]; the subsample not seen before pre-registration
+  (D before 2023-10-09, 3,463 events) gives S = −0.05% [−0.66%, +0.48%].

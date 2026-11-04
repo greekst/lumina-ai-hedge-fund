@@ -74,12 +74,12 @@ def markdown(r: Dict[str, Any]) -> str:
          "## H1 (confirmatory): within-ticker selection skill of the council at T+5", "",
          f"- Sample: {N(r['n_events'])} events, decision dates `{r['date_range'][0]}` to `{r['date_range'][1]}`, "
          f"{N(h['n_c1'])} earnings seasons, {N(h['n_c2'])} tickers; council long on {N(h['n_in'])}, flat on {N(h['n_out'])}.",
-         f"- **S = {F(h['mean'])}** (long-event minus flat-event sector-relative T+5 return, demeaned within ticker).",
-         f"- Two-way (season x ticker) bootstrap: one-sided 95% lower bound (5th percentile) {F(h['p05'])}; "
-         f"two-sided 95% CI [{F(h['lo'])}, {F(h['hi'])}]; one-sided bootstrap p {F(h['p_one_sided'], False, 3)}; "
+         f"- **S = {F(h['mean'])}** (long-event minus flat-event sector-relative five-session return, demeaned within ticker).",
+         f"- Two-way (season x ticker) bootstrap: one-sided lower bound (fifth percentile) {F(h['p05'])}; "
+         f"two-sided ninety-five percent CI [{F(h['lo'])}, {F(h['hi'])}]; one-sided bootstrap p {F(h['p_one_sided'], False, 3)}; "
          f"SE {F(h['se'])}; MDE (one-sided, eighty percent power) {F(h['mde80_one_sided'])}.",
-         ("- **Decision: reject H0** (the 5th percentile is above zero)." if reject else
-          "- **Decision: do not reject H0.** The 5th percentile is not above zero: no evidence that the council picks better "
+         ("- **Decision: reject H0** (the fifth percentile is above zero). <!-- text-only -->" if reject else
+          "- **Decision: do not reject H0.** The fifth percentile is not above zero: no evidence that the council picks better "
           "earnings events within a ticker than it skips, at the pre-registered horizon. <!-- text-only -->"),
          ("- Economic check: the pre-registered threshold is twenty basis points (one round trip); see HYPOTHESIS.md. <!-- text-only -->"),
          f"- Season-only clustering (robustness, not the test): CI [{F(r['h1_season_only']['lo'])}, {F(r['h1_season_only']['hi'])}].",
