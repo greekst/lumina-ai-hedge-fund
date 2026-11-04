@@ -313,3 +313,11 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
 - P2 open: BLK events before 2022-07 missing (vendor dates), vendor-only non-earnings dates, today's GICS for history, jump-filter lag
   (KHC 2015–16, LIN 2018–19), IPO warm-up. P2-5 comment fixed. P2-6 provenance: the two Phase D runs were started ~21:22 UTC in parallel
   (two processes, ~6 min each), both sha256 `ccabc089…`.
+
+## 2026-11-04 22:16 UTC — Session 3 final
+- Final checks (22:02–22:12 UTC): pytest 100 passed, 1 skipped; UI smoke 1 passed; legacy suite 19/19; four snapshot manifests verify;
+  digests reproduced in fresh directories (Phase D `ccabc089…`, Session 2 sp100 `f5735aab…`, Phase B PIT `63184c87…`); base PIT snapshot
+  rebuilds byte-identically; secret scan of all tracked files OK; kill switches, broker adapters and social-posting code unchanged since the
+  Session 2 merge (`git diff 5529c83` on those files is empty). Live LLM calls this session: 0.
+- **GitHub Actions on `claude/kind-rubin-ahzsge`: run 41923015186 (commit ccb9c89) green on all four jobs** (secrets, test 3.12, test 3.13, ui-smoke).
+- Branch ready for a PR into `main`.

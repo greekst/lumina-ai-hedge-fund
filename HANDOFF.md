@@ -265,4 +265,4 @@ Run 2026-11-04 22:02–22:12 UTC on the final code:
 - Rerun digests in fresh directories: pre-registered Phase D `ccabc089…` (third identical run), Session 2 sp100 `f5735aab…` (unchanged
   since Session 2), Phase B PIT `63184c87…` (twice); base snapshot `2026-11-04-pit` rebuilds byte-identically from cache.
 - Secret scan of all tracked files OK with `SEC_USER_AGENT` present in the env. Kill switches, broker adapters and social posting untouched.
-- Live LLM calls this session: **0**. GitHub Actions on the branch: see LOG.md (final entry) for the run id and result.
+- Live LLM calls this session: **0**. GitHub Actions on the branch: run 41923015186 (commit ccb9c89) green on all four jobs; LOG.md has the final entry.
