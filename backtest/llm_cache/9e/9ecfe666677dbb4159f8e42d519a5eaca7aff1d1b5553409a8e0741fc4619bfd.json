@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Lululemon Athletica Inc.",
+    "ticker": "LULU"
+   },
+   {
+    "company": "Starbucks Corporation",
+    "ticker": "SBUX"
+   },
+   {
+    "company": "NIKE, Inc.",
+    "ticker": "NKE"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "9ecfe666677dbb4159f8e42d519a5eaca7aff1d1b5553409a8e0741fc4619bfd",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "b49f7cbd8df1225e4caf98f153f237c0d67355a8035dae601e312251c611f462",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"LULU\",\n      \"company\": \"Lululemon Athletica Inc.\"\n    },\n    {\n      \"ticker\": \"SBUX\",\n      \"company\": \"Starbucks Corporation\"\n    },\n    {\n      \"ticker\": \"NKE\",\n      \"company\": \"NIKE, Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

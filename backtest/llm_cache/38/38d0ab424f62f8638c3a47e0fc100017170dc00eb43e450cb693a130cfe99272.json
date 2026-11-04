@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "CrowdStrike Holdings, Inc.",
+    "ticker": "CRWD"
+   },
+   {
+    "company": "Datadog, Inc.",
+    "ticker": "DDOG"
+   },
+   {
+    "company": "Snowflake Inc.",
+    "ticker": "SNOW"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "38d0ab424f62f8638c3a47e0fc100017170dc00eb43e450cb693a130cfe99272",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "12abefee9d546dde12359923be2eec712c2a7ca6605fe18f96b756080e231f80",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"CRWD\",\n      \"company\": \"CrowdStrike Holdings, Inc.\"\n    },\n    {\n      \"ticker\": \"DDOG\",\n      \"company\": \"Datadog, Inc.\"\n    },\n    {\n      \"ticker\": \"SNOW\",\n      \"company\": \"Snowflake Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

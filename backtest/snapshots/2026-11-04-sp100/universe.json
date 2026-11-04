@@ -1,0 +1,829 @@
+{
+ "as_of": "2026-11-04",
+ "excluded": {
+  "GEV": "edgar: no periodic filing before 2022 (possible CIK change)",
+  "SNDK": "edgar: no periodic filing before 2022 (possible CIK change)"
+ },
+ "label": "S&P 100 PROXY (official list unreachable from sandbox)",
+ "market_cap_source": "Finnhub /stock/profile2 marketCapitalization, fetched 2026-11-04",
+ "members": [
+  {
+   "cik": 320193,
+   "market_cap_musd": 4843808.343143874,
+   "name": "Apple Inc.",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "AAPL"
+  },
+  {
+   "cik": 1551152,
+   "market_cap_musd": 505395.5441294488,
+   "name": "AbbVie",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "ABBV"
+  },
+  {
+   "cik": 1800,
+   "market_cap_musd": 189303.93939868742,
+   "name": "Abbott Laboratories",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "ABT"
+  },
+  {
+   "cik": 1467373,
+   "market_cap_musd": 150454.67561886716,
+   "name": "Accenture",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "ACN"
+  },
+  {
+   "cik": 6281,
+   "market_cap_musd": 203415.737546536,
+   "name": "Analog Devices",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "ADI"
+  },
+  {
+   "cik": 6951,
+   "market_cap_musd": 303090.72264538193,
+   "name": "Applied Materials",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "AMAT"
+  },
+  {
+   "cik": 2488,
+   "market_cap_musd": 789954.6344890189,
+   "name": "Advanced Micro Devices",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "AMD"
+  },
+  {
+   "cik": 318154,
+   "market_cap_musd": 249371.93164380145,
+   "name": "Amgen",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "AMGN"
+  },
+  {
+   "cik": 1018724,
+   "market_cap_musd": 2710745.5427239332,
+   "name": "Amazon",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "AMZN"
+  },
+  {
+   "cik": 1596532,
+   "market_cap_musd": 214294.6725820326,
+   "name": "Arista Networks",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "ANET"
+  },
+  {
+   "cik": 820313,
+   "market_cap_musd": 207887.09345786096,
+   "name": "Amphenol",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "APH"
+  },
+  {
+   "cik": 1730168,
+   "market_cap_musd": 1585465.7470341113,
+   "name": "Broadcom",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "AVGO"
+  },
+  {
+   "cik": 4962,
+   "market_cap_musd": 218264.68394645557,
+   "name": "American Express",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "AXP"
+  },
+  {
+   "cik": 12927,
+   "market_cap_musd": 137339.49625868123,
+   "name": "Boeing",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "BA"
+  },
+  {
+   "cik": 70858,
+   "market_cap_musd": 342664.376054771,
+   "name": "Bank of America",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "BAC"
+  },
+  {
+   "cik": 2012383,
+   "market_cap_musd": 188686.85256426028,
+   "name": "BlackRock",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "BLK"
+  },
+  {
+   "cik": 14272,
+   "market_cap_musd": 126140.5365863383,
+   "name": "Bristol Myers Squibb",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "BMY"
+  },
+  {
+   "cik": 1067983,
+   "market_cap_musd": 1193276.7677269292,
+   "name": "Berkshire Hathaway",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "BRK.B"
+  },
+  {
+   "cik": 1393818,
+   "market_cap_musd": 146958.0664276524,
+   "name": "Blackstone Inc.",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "BX"
+  },
+  {
+   "cik": 831001,
+   "market_cap_musd": 205838.26319775457,
+   "name": "Citigroup",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "C"
+  },
+  {
+   "cik": 18230,
+   "market_cap_musd": 286809.5334365053,
+   "name": "Caterpillar Inc.",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "CAT"
+  },
+  {
+   "cik": 896159,
+   "market_cap_musd": 140047.32280057552,
+   "name": "Chubb Limited",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "CB"
+  },
+  {
+   "cik": 927628,
+   "market_cap_musd": 125539.0675448816,
+   "name": "Capital One",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "COF"
+  },
+  {
+   "cik": 1163165,
+   "market_cap_musd": 173473.13419952607,
+   "name": "ConocoPhillips",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "ticker": "COP"
+  },
+  {
+   "cik": 909832,
+   "market_cap_musd": 451664.02565415483,
+   "name": "Costco",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "COST"
+  },
+  {
+   "cik": 1108524,
+   "market_cap_musd": 182870.59407807235,
+   "name": "Salesforce",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "CRM"
+  },
+  {
+   "cik": 1535527,
+   "market_cap_musd": 250536.36787080948,
+   "name": "CrowdStrike",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "CRWD"
+  },
+  {
+   "cik": 858877,
+   "market_cap_musd": 405390.8310235947,
+   "name": "Cisco",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "CSCO"
+  },
+  {
+   "cik": 93410,
+   "market_cap_musd": 445081.99563675676,
+   "name": "Chevron Corporation",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "ticker": "CVX"
+  },
+  {
+   "cik": 315189,
+   "market_cap_musd": 179524.67133824388,
+   "name": "Deere & Company",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "DE"
+  },
+  {
+   "cik": 1571996,
+   "market_cap_musd": 259665.92997703757,
+   "name": "Dell Technologies",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "DELL"
+  },
+  {
+   "cik": 313616,
+   "market_cap_musd": 161889.47849075505,
+   "name": "Danaher Corporation",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "DHR"
+  },
+  {
+   "cik": 1744489,
+   "market_cap_musd": 197153.1101238932,
+   "name": "Walt Disney Company (The)",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "DIS"
+  },
+  {
+   "cik": 1551182,
+   "market_cap_musd": 152136.2806527085,
+   "name": "Eaton Corporation",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "ETN"
+  },
+  {
+   "cik": 40545,
+   "market_cap_musd": 331364.96169886406,
+   "name": "GE Aerospace",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "GE"
+  },
+  {
+   "cik": 1996810,
+   "market_cap_musd": 243026.4792362173,
+   "name": "GE Vernova",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "GEV"
+  },
+  {
+   "cik": 882095,
+   "market_cap_musd": 207719.51143494656,
+   "name": "Gilead Sciences",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "GILD"
+  },
+  {
+   "cik": 1652044,
+   "market_cap_musd": 3442688.82,
+   "name": "Alphabet Inc. (Class A)",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "GOOGL"
+  },
+  {
+   "cik": 886982,
+   "market_cap_musd": 260915.7867656324,
+   "name": "Goldman Sachs",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "GS"
+  },
+  {
+   "cik": 354950,
+   "market_cap_musd": 332889.11806931935,
+   "name": "Home Depot (The)",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "HD"
+  },
+  {
+   "cik": 1381197,
+   "market_cap_musd": 131977.89719999998,
+   "name": "Interactive Brokers",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "IBKR"
+  },
+  {
+   "cik": 51143,
+   "market_cap_musd": 236317.9968340075,
+   "name": "IBM",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "IBM"
+  },
+  {
+   "cik": 50863,
+   "market_cap_musd": 321823.25655074866,
+   "name": "Intel",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "INTC"
+  },
+  {
+   "cik": 1035267,
+   "market_cap_musd": 152783.21227419772,
+   "name": "Intuitive Surgical",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "ISRG"
+  },
+  {
+   "cik": 200406,
+   "market_cap_musd": 640753.7774973509,
+   "name": "Johnson & Johnson",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "JNJ"
+  },
+  {
+   "cik": 19617,
+   "market_cap_musd": 898413.7632563094,
+   "name": "JPMorgan Chase",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "JPM"
+  },
+  {
+   "cik": 319201,
+   "market_cap_musd": 203522.72805728953,
+   "name": "KLA Corporation",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "KLAC"
+  },
+  {
+   "cik": 21344,
+   "market_cap_musd": 407820.34998026915,
+   "name": "Coca-Cola Company (The)",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "KO"
+  },
+  {
+   "cik": 1707925,
+   "market_cap_musd": 234844.28968939383,
+   "name": "Linde plc",
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "ticker": "LIN"
+  },
+  {
+   "cik": 59478,
+   "market_cap_musd": 1325867.1720413447,
+   "name": "Lilly (Eli)",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "LLY"
+  },
+  {
+   "cik": 936468,
+   "market_cap_musd": 147611.96971511777,
+   "name": "Lockheed Martin",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "LMT"
+  },
+  {
+   "cik": 60667,
+   "market_cap_musd": 119717.70260901023,
+   "name": "Lowe's",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "LOW"
+  },
+  {
+   "cik": 707549,
+   "market_cap_musd": 288208.7347594544,
+   "name": "Lam Research",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "LRCX"
+  },
+  {
+   "cik": 1141391,
+   "market_cap_musd": 564119.023958054,
+   "name": "Mastercard",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "MA"
+  },
+  {
+   "cik": 63908,
+   "market_cap_musd": 186138.02502986416,
+   "name": "McDonald's",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "MCD"
+  },
+  {
+   "cik": 1613103,
+   "market_cap_musd": 126484.32304119568,
+   "name": "Medtronic",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "MDT"
+  },
+  {
+   "cik": 1326801,
+   "market_cap_musd": 1587502.3306430376,
+   "name": "Meta Platforms",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "META"
+  },
+  {
+   "cik": 764180,
+   "market_cap_musd": 127984.83125245976,
+   "name": "Altria",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "MO"
+  },
+  {
+   "cik": 1510295,
+   "market_cap_musd": 120007.64742832635,
+   "name": "Marathon Petroleum",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "ticker": "MPC"
+  },
+  {
+   "cik": 310158,
+   "market_cap_musd": 356925.72130467906,
+   "name": "Merck & Co.",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "MRK"
+  },
+  {
+   "cik": 1835632,
+   "market_cap_musd": 150800.5004201629,
+   "name": "Marvell Technology",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "MRVL"
+  },
+  {
+   "cik": 895421,
+   "market_cap_musd": 292266.6731002993,
+   "name": "Morgan Stanley",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "MS"
+  },
+  {
+   "cik": 789019,
+   "market_cap_musd": 3868972.9498277055,
+   "name": "Microsoft",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "MSFT"
+  },
+  {
+   "cik": 723125,
+   "market_cap_musd": 967480.0246873689,
+   "name": "Micron Technology",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "MU"
+  },
+  {
+   "cik": 753308,
+   "market_cap_musd": 176865.80469933694,
+   "name": "NextEra Energy",
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "ticker": "NEE"
+  },
+  {
+   "cik": 1065280,
+   "market_cap_musd": 260423.20645747546,
+   "name": "Netflix",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "NFLX"
+  },
+  {
+   "cik": 1045810,
+   "market_cap_musd": 4981228.939813788,
+   "name": "Nvidia",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "NVDA"
+  },
+  {
+   "cik": 1341439,
+   "market_cap_musd": 381565.2603451817,
+   "name": "Oracle Corporation",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "ORCL"
+  },
+  {
+   "cik": 1327567,
+   "market_cap_musd": 286733.8175718856,
+   "name": "Palo Alto Networks",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "PANW"
+  },
+  {
+   "cik": 77476,
+   "market_cap_musd": 187063.46682905435,
+   "name": "PepsiCo",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "PEP"
+  },
+  {
+   "cik": 78003,
+   "market_cap_musd": 170990.2006208021,
+   "name": "Pfizer",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "PFE"
+  },
+  {
+   "cik": 80424,
+   "market_cap_musd": 375619.94029121206,
+   "name": "Procter & Gamble",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "PG"
+  },
+  {
+   "cik": 80661,
+   "market_cap_musd": 133135.81436431152,
+   "name": "Progressive Corporation",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "PGR"
+  },
+  {
+   "cik": 1045609,
+   "market_cap_musd": 125153.50965074122,
+   "name": "Prologis",
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "ticker": "PLD"
+  },
+  {
+   "cik": 1321655,
+   "market_cap_musd": 421496.4146679275,
+   "name": "Palantir Technologies",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "PLTR"
+  },
+  {
+   "cik": 1413329,
+   "market_cap_musd": 324247.12226475374,
+   "name": "Philip Morris International",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "PM"
+  },
+  {
+   "cik": 804328,
+   "market_cap_musd": 175584.84727556916,
+   "name": "Qualcomm",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "QCOM"
+  },
+  {
+   "cik": 101829,
+   "market_cap_musd": 275042.96415329364,
+   "name": "RTX Corporation",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "RTX"
+  },
+  {
+   "cik": 829224,
+   "market_cap_musd": 119448.27618813285,
+   "name": "Starbucks",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "SBUX"
+  },
+  {
+   "cik": 316709,
+   "market_cap_musd": 154395.08911004398,
+   "name": "Charles Schwab Corporation",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "SCHW"
+  },
+  {
+   "cik": 2023554,
+   "market_cap_musd": 160291.79473316486,
+   "name": "Sandisk",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "SNDK"
+  },
+  {
+   "cik": 64040,
+   "market_cap_musd": 135102.09797291865,
+   "name": "S&P Global",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "SPGI"
+  },
+  {
+   "cik": 1137789,
+   "market_cap_musd": 139201.26905013958,
+   "name": "Seagate Technology",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "STX"
+  },
+  {
+   "cik": 732717,
+   "market_cap_musd": 144093.1745949697,
+   "name": "AT&T",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "T"
+  },
+  {
+   "cik": 109198,
+   "market_cap_musd": 151389.42148529828,
+   "name": "TJX Companies",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "TJX"
+  },
+  {
+   "cik": 97745,
+   "market_cap_musd": 258746.06130973282,
+   "name": "Thermo Fisher Scientific",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "TMO"
+  },
+  {
+   "cik": 1283699,
+   "market_cap_musd": 163562.2733082749,
+   "name": "T-Mobile US",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "TMUS"
+  },
+  {
+   "cik": 1318605,
+   "market_cap_musd": 1575174.1141402742,
+   "name": "Tesla, Inc.",
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "ticker": "TSLA"
+  },
+  {
+   "cik": 97476,
+   "market_cap_musd": 285027.79816598515,
+   "name": "Texas Instruments",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "TXN"
+  },
+  {
+   "cik": 1543151,
+   "market_cap_musd": 136259.187782,
+   "name": "Uber",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "UBER"
+  },
+  {
+   "cik": 731766,
+   "market_cap_musd": 365294.176644,
+   "name": "UnitedHealth Group",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "UNH"
+  },
+  {
+   "cik": 100885,
+   "market_cap_musd": 180652.129883,
+   "name": "Union Pacific Corporation",
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "ticker": "UNP"
+  },
+  {
+   "cik": 1403161,
+   "market_cap_musd": 768738.89,
+   "name": "Visa Inc.",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "V"
+  },
+  {
+   "cik": 875320,
+   "market_cap_musd": 141654.24,
+   "name": "Vertex Pharmaceuticals",
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "ticker": "VRTX"
+  },
+  {
+   "cik": 732712,
+   "market_cap_musd": 185387.88,
+   "name": "Verizon",
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "ticker": "VZ"
+  },
+  {
+   "cik": 106040,
+   "market_cap_musd": 137043.49,
+   "name": "Western Digital",
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "ticker": "WDC"
+  },
+  {
+   "cik": 766704,
+   "market_cap_musd": 172104.87,
+   "name": "Welltower",
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "ticker": "WELL"
+  },
+  {
+   "cik": 72971,
+   "market_cap_musd": 250354.32,
+   "name": "Wells Fargo",
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "ticker": "WFC"
+  },
+  {
+   "cik": 104169,
+   "market_cap_musd": 979897,
+   "name": "Walmart",
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "ticker": "WMT"
+  },
+  {
+   "cik": 2115436,
+   "market_cap_musd": 763792.75,
+   "name": "ExxonMobil",
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "ticker": "XOM"
+  }
+ ],
+ "no_market_cap": [],
+ "rule": "100 largest S&P 500 members by Finnhub marketCapitalization, one share class per CIK",
+ "sector_etf": {
+  "Communication Services": "XLC",
+  "Consumer Discretionary": "XLY",
+  "Consumer Staples": "XLP",
+  "Energy": "XLE",
+  "Financials": "XLF",
+  "Health Care": "XLV",
+  "Industrials": "XLI",
+  "Information Technology": "XLK",
+  "Materials": "XLB",
+  "Real Estate": "XLRE",
+  "Utilities": "XLU"
+ },
+ "sp500_rows": 503,
+ "sp500_sha256": "941ec91edb922f802b7b9c14a4a006ac65606f74a2882ea57cabd5e0ff825ebc",
+ "sp500_source": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv"
+}

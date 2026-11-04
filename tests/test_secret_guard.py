@@ -26,3 +26,13 @@ def test_no_false_positive_on_prose():
 def test_repository_is_clean():
     # scans every tracked file with this process's real secret env values
     assert cns.main(["--all"]) == 0
+
+
+def test_detects_sec_user_agent_value(monkeypatch):
+    """Session 2 rule: the owner's SEC contact string must never land in a tracked file."""
+    fake = "Jane Researcher jane.researcher@example.org"
+    monkeypatch.setenv("SEC_USER_AGENT", fake)
+    env = cns._env_secret_values()
+    assert cns.scan_text("results/x.md", f"UA was {fake}", env)
+    assert cns.scan_text("LOG.md", "contact: jane.researcher@example.org", env)  # the e-mail part alone
+    assert not cns.scan_text("LOG.md", "SEC_USER_AGENT is read from the environment only", env)

@@ -1,0 +1,17 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "ok": true,
+  "word": "Serene"
+ },
+ "key": "cab8d0a189dcea6550cbe8dcbfcf0b6f1b0308f39d5d72b2b1f2c624b8a2477c",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "99056528c922e47b34b1eaa903d7fee2235dbaf8b2efe73c7031d0a5458a4a2c",
+ "purpose": "smoke",
+ "text": "{\"ok\": true, \"word\": \"Serene\"}"
+}

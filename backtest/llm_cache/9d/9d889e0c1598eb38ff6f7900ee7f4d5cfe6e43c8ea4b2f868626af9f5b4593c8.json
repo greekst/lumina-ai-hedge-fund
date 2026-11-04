@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "NextEra Energy, Inc.",
+    "ticker": "NEE"
+   },
+   {
+    "company": "Duke Energy Corporation",
+    "ticker": "DUK"
+   },
+   {
+    "company": "The Southern Company",
+    "ticker": "SO"
+   }
+  ],
+  "quarter": "Q2",
+  "year": 2024
+ },
+ "key": "9d889e0c1598eb38ff6f7900ee7f4d5cfe6e43c8ea4b2f868626af9f5b4593c8",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "20c754de46e8606164944ea6282eb1a71df408ee38d80e139557b543c17e74f6",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"NEE\",\n      \"company\": \"NextEra Energy, Inc.\"\n    },\n    {\n      \"ticker\": \"DUK\",\n      \"company\": \"Duke Energy Corporation\"\n    },\n    {\n      \"ticker\": \"SO\",\n      \"company\": \"The Southern Company\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q2\"\n}"
+}

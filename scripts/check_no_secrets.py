@@ -34,6 +34,9 @@ PATTERNS = {
     ),
 }
 SECRET_ENV = re.compile(r"(?:_API_KEY|_SECRET|_TOKEN|_PASSWORD|_SECRET_KEY)$")
+# Non-secret-looking env vars whose values are personal data and must never be committed
+# (SEC_USER_AGENT holds the owner's contact string for SEC fair access).
+PRIVATE_ENV = ("SEC_USER_AGENT",)
 ALLOW_FILES = {"scripts/check_no_secrets.py", "tests/test_secret_guard.py"}
 FORBIDDEN_PATHS = re.compile(r"(^|/)(\.env|\.env\.local|config/settings\.json)$|\.(db|sqlite3?)$")
 
@@ -47,6 +50,14 @@ def _env_secret_values() -> List[Tuple[str, str]]:
     for name, val in os.environ.items():
         if SECRET_ENV.search(name) and val and len(val) >= 12:
             out.append((name, val))
+    for name in PRIVATE_ENV:
+        val = os.environ.get(name, "")
+        if val and len(val) >= 6:
+            out.append((name, val))
+            # also catch the e-mail / contact parts on their own (e.g. "Name name@example.com")
+            for part in re.split(r"[\s<>()\[\],;]+", val):
+                if len(part) >= 6 and ("@" in part or "." in part):
+                    out.append((name + "[part]", part))
     return out
 
 

@@ -80,6 +80,11 @@ _VALUE = r"(?:n/a|[-+]?\d[\d,]*(?:\.\d+)?)[^\s\[\]|]{0,3}"
 _TAGGED_VALUE = re.compile(_VALUE + r" " + _TAG)
 _TAG_ONLY = re.compile(_TAG)
 _NUM = re.compile(r"(?<![\w.])[-+]?\d[\d,]*(?:\.\d+)?")
+# Identifiers, not metrics: an inline code span that is *only* a date, datetime, date range or
+# SEC accession number (e.g. `2025-01-30 16:30:23`, `2024-09-29..2024-12-28`, `0000320193-25-000007`).
+# Any other code span is checked like ordinary text, so a metric cannot hide in backticks.
+_ID_DATE = r"\d{4}-\d{2}-\d{2}(?:[ T]\d{2}:\d{2}(?::\d{2})?)?"
+_IDENT_SPAN = re.compile(r"`(?:" + _ID_DATE + r"(?:\.\." + _ID_DATE + r")?|\d{10}-\d{2}-\d{6}|(?:10-[QK]T?|8-K)(?:/A)?)`")
 
 
 def untagged_numbers(text: str) -> list:
@@ -104,6 +109,6 @@ def untagged_numbers(text: str) -> list:
             # first table cell is the code-defined label (e.g. "RSI 14", "52w high"), not data
             cells = s.strip("|").split("|")
             line = "|".join(cells[1:])
-        rest = _TAG_ONLY.sub(" ", _TAGGED_VALUE.sub(" ", line))
+        rest = _TAG_ONLY.sub(" ", _TAGGED_VALUE.sub(" ", _IDENT_SPAN.sub(" ", line)))
         bad += [(i, m.group(0)) for m in _NUM.finditer(rest)]
     return bad

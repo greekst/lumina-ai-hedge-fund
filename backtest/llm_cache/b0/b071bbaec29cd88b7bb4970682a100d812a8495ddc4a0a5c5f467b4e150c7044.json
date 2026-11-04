@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Bristol-Myers Squibb Company",
+    "ticker": "BMY"
+   },
+   {
+    "company": "Biogen Inc.",
+    "ticker": "BIIB"
+   },
+   {
+    "company": "Pfizer Inc.",
+    "ticker": "PFE"
+   }
+  ],
+  "quarter": "Q4",
+  "year": 2023
+ },
+ "key": "b071bbaec29cd88b7bb4970682a100d812a8495ddc4a0a5c5f467b4e150c7044",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "f21e43a5a7e12b2c2033653ce477307dd55ee0439496f5840594fb88882befbc",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"BMY\",\n      \"company\": \"Bristol-Myers Squibb Company\"\n    },\n    {\n      \"ticker\": \"BIIB\",\n      \"company\": \"Biogen Inc.\"\n    },\n    {\n      \"ticker\": \"PFE\",\n      \"company\": \"Pfizer Inc.\"\n    }\n  ],\n  \"year\": 2023,\n  \"quarter\": \"Q4\"\n}"
+}

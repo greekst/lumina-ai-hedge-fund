@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Chevron Corporation",
+    "ticker": "CVX"
+   },
+   {
+    "company": "Exxon Mobil Corporation",
+    "ticker": "XOM"
+   },
+   {
+    "company": "ConocoPhillips",
+    "ticker": "COP"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "ed4c23cc235d67417d2bb66ad236104a69dd4c1ed9683e974bd6c7b0c504dfc3",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "5af231fd02a8472e9123bc6f0baac5497dae66c6d119077c51604e45793aa027",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"CVX\",\n      \"company\": \"Chevron Corporation\"\n    },\n    {\n      \"ticker\": \"XOM\",\n      \"company\": \"Exxon Mobil Corporation\"\n    },\n    {\n      \"ticker\": \"COP\",\n      \"company\": \"ConocoPhillips\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

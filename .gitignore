@@ -32,3 +32,6 @@ Thumbs.db
 
 # Read-only third-party clones (not part of this project)
 vendor/
+
+# Response caches (SEC EDGAR, Finnhub, LLM) — reruns read these, never commit them
+backtest/cache/

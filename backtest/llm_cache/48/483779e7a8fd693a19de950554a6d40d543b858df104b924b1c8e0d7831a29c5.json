@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "The Kroger Co.",
+    "ticker": "KR"
+   },
+   {
+    "company": "Archer-Daniels-Midland Company",
+    "ticker": "ADM"
+   },
+   {
+    "company": "Tyson Foods, Inc.",
+    "ticker": "TSN"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "483779e7a8fd693a19de950554a6d40d543b858df104b924b1c8e0d7831a29c5",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "190fed104a52f8699d31c08a6f841ba024e3c8be74296e80e49129bef3e3c105",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"KR\",\n      \"company\": \"The Kroger Co.\"\n    },\n    {\n      \"ticker\": \"ADM\",\n      \"company\": \"Archer-Daniels-Midland Company\"\n    },\n    {\n      \"ticker\": \"TSN\",\n      \"company\": \"Tyson Foods, Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

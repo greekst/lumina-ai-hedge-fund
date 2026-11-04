@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "NVIDIA Corporation",
+    "ticker": "NVDA"
+   },
+   {
+    "company": "Palo Alto Networks, Inc.",
+    "ticker": "PANW"
+   },
+   {
+    "company": "Snowflake Inc.",
+    "ticker": "SNOW"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "614ac8f3a11f8bc864ef30825bed61d8ed45868dbf77f110b9cbb12d45439f14",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "7a5ac31713cbf94cb68e4ed05f6db1c322f9ac6559b9c9f85d5f86d670e39a3c",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"NVDA\",\n      \"company\": \"NVIDIA Corporation\"\n    },\n    {\n      \"ticker\": \"PANW\",\n      \"company\": \"Palo Alto Networks, Inc.\"\n    },\n    {\n      \"ticker\": \"SNOW\",\n      \"company\": \"Snowflake Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

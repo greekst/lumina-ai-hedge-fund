@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Eli Lilly and Company",
+    "ticker": "LLY"
+   },
+   {
+    "company": "Vertex Pharmaceuticals",
+    "ticker": "VRTX"
+   },
+   {
+    "company": "Regeneron Pharmaceuticals",
+    "ticker": "REGN"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "cbf11ba103579251ed8c25f9faa54be161c3c9f9a83584d94423348ec69c77e9",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "7e55390d2aeb27c98488551793a9b31f8febfff12dd5e2529753b5bc509d1db5",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"LLY\",\n      \"company\": \"Eli Lilly and Company\"\n    },\n    {\n      \"ticker\": \"VRTX\",\n      \"company\": \"Vertex Pharmaceuticals\"\n    },\n    {\n      \"ticker\": \"REGN\",\n      \"company\": \"Regeneron Pharmaceuticals\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Johnson & Johnson",
+    "ticker": "JNJ"
+   },
+   {
+    "company": "Bristol-Myers Squibb Company",
+    "ticker": "BMY"
+   },
+   {
+    "company": "Gilead Sciences, Inc.",
+    "ticker": "GILD"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "71829737b1e3d4fb87172d1d792d1f20132d0991b5dd1096a5673f3beff8a68e",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "1c657a136d6f6386b9d874c8cef52eb7427e42e455d751b84df1e64d1c3075fd",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"JNJ\",\n      \"company\": \"Johnson & Johnson\"\n    },\n    {\n      \"ticker\": \"BMY\",\n      \"company\": \"Bristol-Myers Squibb Company\"\n    },\n    {\n      \"ticker\": \"GILD\",\n      \"company\": \"Gilead Sciences, Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}
