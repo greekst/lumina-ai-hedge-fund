@@ -1,0 +1,558 @@
+{
+ "ciks": [
+  1467373
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2012-10-30 08:19:09",
+   "as_of": "2012-02-29",
+   "value": 38349195098.0
+  },
+  {
+   "accepted_at": "2013-10-29 16:51:03",
+   "as_of": "2013-02-28",
+   "value": 48317496293.0
+  },
+  {
+   "accepted_at": "2014-10-24 16:14:10",
+   "as_of": "2014-02-28",
+   "value": 52779948283.0
+  },
+  {
+   "accepted_at": "2015-10-30 13:09:18",
+   "as_of": "2015-02-28",
+   "value": 56398877445.0
+  },
+  {
+   "accepted_at": "2016-10-28 17:05:52",
+   "as_of": "2016-02-29",
+   "value": 62548022041.0
+  },
+  {
+   "accepted_at": "2017-10-26 16:27:21",
+   "as_of": "2017-02-28",
+   "value": 75959847390.0
+  },
+  {
+   "accepted_at": "2018-10-24 17:05:52",
+   "as_of": "2018-02-28",
+   "value": 99465708231.0
+  },
+  {
+   "accepted_at": "2019-10-29 06:53:24",
+   "as_of": "2019-02-28",
+   "value": 102946507918.0
+  },
+  {
+   "accepted_at": "2020-10-22 16:28:48",
+   "as_of": "2020-02-28",
+   "value": 115077476776.0
+  },
+  {
+   "accepted_at": "2021-10-15 06:54:29",
+   "as_of": "2021-02-26",
+   "value": 159483888262.0
+  },
+  {
+   "accepted_at": "2022-10-12 17:04:46",
+   "as_of": "2022-02-28",
+   "value": 200173941446.0
+  },
+  {
+   "accepted_at": "2023-10-12 06:54:36",
+   "as_of": "2022-02-28",
+   "value": 167632186277.0
+  },
+  {
+   "accepted_at": "2024-10-10 06:43:59",
+   "as_of": "2024-02-29",
+   "value": 235672170215.0
+  },
+  {
+   "accepted_at": "2025-10-10 06:53:53",
+   "as_of": "2025-02-28",
+   "value": 218315987018.0
+  },
+  {
+   "accepted_at": "2026-10-16 06:22:21",
+   "as_of": "2026-02-27",
+   "value": 128329638991.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2012-03-23 16:17:30",
+   "accn": "0001193125-12-129729",
+   "as_of": "2012-03-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 729036633.0
+  },
+  {
+   "accepted_at": "2012-06-29 09:19:53",
+   "accn": "0001467373-12-000009",
+   "as_of": "2012-06-29",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 728876260.0
+  },
+  {
+   "accepted_at": "2012-10-30 08:19:09",
+   "accn": "0001467373-12-000170",
+   "as_of": "2012-10-30",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 717827179.0
+  },
+  {
+   "accepted_at": "2012-12-20 07:05:08",
+   "accn": "0001467373-12-000263",
+   "as_of": "2012-12-20",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 716368102.0
+  },
+  {
+   "accepted_at": "2013-03-28 09:09:54",
+   "accn": "0001467373-13-000192",
+   "as_of": "2013-03-28",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 714807680.0
+  },
+  {
+   "accepted_at": "2013-06-28 06:51:07",
+   "accn": "0001467373-13-000331",
+   "as_of": "2013-06-28",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 714984161.0
+  },
+  {
+   "accepted_at": "2013-10-29 16:51:03",
+   "accn": "0001467373-13-000482",
+   "as_of": "2013-10-29",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 706256084.0
+  },
+  {
+   "accepted_at": "2013-12-19 16:22:52",
+   "accn": "0001467373-13-000578",
+   "as_of": "2013-12-19",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 697974850.0
+  },
+  {
+   "accepted_at": "2014-03-27 07:07:06",
+   "accn": "0001467373-14-000163",
+   "as_of": "2014-03-27",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 693209942.0
+  },
+  {
+   "accepted_at": "2014-06-26 16:09:16",
+   "accn": "0001467373-14-000303",
+   "as_of": "2014-06-26",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 691038145.0
+  },
+  {
+   "accepted_at": "2014-10-24 16:14:10",
+   "accn": "0001467373-14-000467",
+   "as_of": "2014-10-24",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 688345020.0
+  },
+  {
+   "accepted_at": "2014-12-18 16:03:44",
+   "accn": "0001467373-14-000566",
+   "as_of": "2014-12-18",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 682333149.0
+  },
+  {
+   "accepted_at": "2015-03-26 16:16:10",
+   "accn": "0001467373-15-000156",
+   "as_of": "2015-03-26",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 679165137.0
+  },
+  {
+   "accepted_at": "2015-06-25 16:06:38",
+   "accn": "0001467373-15-000294",
+   "as_of": "2015-06-25",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 677825768.0
+  },
+  {
+   "accepted_at": "2015-10-30 13:09:18",
+   "accn": "0001467373-15-000457",
+   "as_of": "2015-10-30",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 675749438.0
+  },
+  {
+   "accepted_at": "2015-12-17 16:15:04",
+   "accn": "0001467373-15-000591",
+   "as_of": "2015-12-17",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 671300744.0
+  },
+  {
+   "accepted_at": "2016-03-24 16:18:21",
+   "accn": "0001467373-16-000774",
+   "as_of": "2016-03-24",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 668125087.0
+  },
+  {
+   "accepted_at": "2016-06-23 16:18:49",
+   "accn": "0001467373-16-000915",
+   "as_of": "2016-06-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 666403323.0
+  },
+  {
+   "accepted_at": "2016-10-28 17:05:52",
+   "accn": "0001467373-16-001080",
+   "as_of": "2016-10-28",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 665365231.0
+  },
+  {
+   "accepted_at": "2016-12-21 16:17:46",
+   "accn": "0001467373-16-001180",
+   "as_of": "2016-12-21",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 663752830.0
+  },
+  {
+   "accepted_at": "2017-03-23 16:20:20",
+   "accn": "0001467373-17-000154",
+   "as_of": "2017-03-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 661079375.0
+  },
+  {
+   "accepted_at": "2017-06-22 16:22:07",
+   "accn": "0001467373-17-000277",
+   "as_of": "2017-06-22",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 658770425.0
+  },
+  {
+   "accepted_at": "2017-10-26 16:27:21",
+   "accn": "0001467373-17-000430",
+   "as_of": "2017-10-26",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 658384196.0
+  },
+  {
+   "accepted_at": "2017-12-21 06:41:51",
+   "accn": "0001467373-17-000506",
+   "as_of": "2017-12-21",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 656671417.0
+  },
+  {
+   "accepted_at": "2018-03-22 16:32:16",
+   "accn": "0001467373-18-000142",
+   "as_of": "2018-03-22",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 656118796.0
+  },
+  {
+   "accepted_at": "2018-06-28 16:19:09",
+   "accn": "0001467373-18-000228",
+   "as_of": "2018-06-28",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 654600026.0
+  },
+  {
+   "accepted_at": "2018-10-24 17:05:52",
+   "accn": "0001467373-18-000318",
+   "as_of": "2018-10-24",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 653960751.0
+  },
+  {
+   "accepted_at": "2018-12-20 16:24:56",
+   "accn": "0001467373-18-000424",
+   "as_of": "2018-12-20",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 652151450.0
+  },
+  {
+   "accepted_at": "2019-03-28 16:27:34",
+   "accn": "0001467373-19-000130",
+   "as_of": "2019-03-28",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 649170699.0
+  },
+  {
+   "accepted_at": "2019-06-27 16:18:02",
+   "accn": "0001467373-19-000217",
+   "as_of": "2019-06-27",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 649297717.0
+  },
+  {
+   "accepted_at": "2019-10-29 06:53:24",
+   "accn": "0001467373-19-000339",
+   "as_of": "2019-10-29",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 650523417.0
+  },
+  {
+   "accepted_at": "2019-12-19 06:54:55",
+   "accn": "0001467373-19-000395",
+   "as_of": "2019-12-19",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 649389444.0
+  },
+  {
+   "accepted_at": "2020-03-19 06:58:06",
+   "accn": "0001467373-20-000158",
+   "as_of": "2020-03-19",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 648833880.0
+  },
+  {
+   "accepted_at": "2020-06-25 07:11:26",
+   "accn": "0001467373-20-000251",
+   "as_of": "2020-06-25",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 645607914.0
+  },
+  {
+   "accepted_at": "2020-10-22 16:28:48",
+   "accn": "0001467373-20-000376",
+   "as_of": "2020-10-22",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 647867307.0
+  },
+  {
+   "accepted_at": "2020-12-17 07:08:14",
+   "accn": "0001467373-20-000431",
+   "as_of": "2020-12-17",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 646879735.0
+  },
+  {
+   "accepted_at": "2021-03-18 06:56:25",
+   "accn": "0001467373-21-000106",
+   "as_of": "2021-03-18",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 646321916.0
+  },
+  {
+   "accepted_at": "2021-06-24 07:04:06",
+   "accn": "0001467373-21-000161",
+   "as_of": "2021-06-24",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 645454021.0
+  },
+  {
+   "accepted_at": "2021-10-15 06:54:29",
+   "accn": "0001467373-21-000229",
+   "as_of": "2021-10-15",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 645287973.0
+  },
+  {
+   "accepted_at": "2021-12-16 06:59:22",
+   "accn": "0001467373-21-000297",
+   "as_of": "2021-12-16",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 644922661.0
+  },
+  {
+   "accepted_at": "2022-03-17 06:48:44",
+   "accn": "0001467373-22-000144",
+   "as_of": "2022-03-17",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 644127093.0
+  },
+  {
+   "accepted_at": "2022-06-23 06:56:40",
+   "accn": "0001467373-22-000201",
+   "as_of": "2022-06-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 641004741.0
+  },
+  {
+   "accepted_at": "2022-10-12 17:04:46",
+   "accn": "0001467373-22-000295",
+   "as_of": "2022-10-12",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 640914760.0
+  },
+  {
+   "accepted_at": "2022-12-16 06:50:53",
+   "accn": "0001467373-22-000370",
+   "as_of": "2022-12-16",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 638766821.0
+  },
+  {
+   "accepted_at": "2023-03-23 06:49:24",
+   "accn": "0001467373-23-000124",
+   "as_of": "2023-03-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 637735390.0
+  },
+  {
+   "accepted_at": "2023-06-22 06:50:30",
+   "accn": "0001467373-23-000221",
+   "as_of": "2023-06-22",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 638743434.0
+  },
+  {
+   "accepted_at": "2023-10-12 06:54:36",
+   "accn": "0001467373-23-000324",
+   "as_of": "2023-10-12",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 639249070.0
+  },
+  {
+   "accepted_at": "2023-12-19 07:02:06",
+   "accn": "0001467373-23-000403",
+   "as_of": "2023-12-19",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 637398361.0
+  },
+  {
+   "accepted_at": "2024-03-21 06:46:17",
+   "accn": "0001467373-24-000108",
+   "as_of": "2024-03-21",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 636797814.0
+  },
+  {
+   "accepted_at": "2024-06-20 06:44:37",
+   "accn": "0001467373-24-000196",
+   "as_of": "2024-06-20",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 635607597.0
+  },
+  {
+   "accepted_at": "2024-10-10 06:43:59",
+   "accn": "0001467373-24-000278",
+   "as_of": "2024-10-10",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 633883494.0
+  },
+  {
+   "accepted_at": "2024-12-19 06:48:37",
+   "accn": "0001467373-24-000352",
+   "as_of": "2024-12-19",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 634656410.0
+  },
+  {
+   "accepted_at": "2025-03-20 06:44:57",
+   "accn": "0001467373-25-000100",
+   "as_of": "2025-03-20",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 634211978.0
+  },
+  {
+   "accepted_at": "2025-06-20 06:44:48",
+   "accn": "0001467373-25-000169",
+   "as_of": "2025-06-20",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 630457461.0
+  },
+  {
+   "accepted_at": "2025-10-10 06:53:53",
+   "accn": "0001467373-25-000217",
+   "as_of": "2025-10-10",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 629418129.0
+  },
+  {
+   "accepted_at": "2025-12-18 06:44:29",
+   "accn": "0001467373-25-000222",
+   "as_of": "2025-12-18",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 626043040.0
+  },
+  {
+   "accepted_at": "2026-03-19 06:43:54",
+   "accn": "0001467373-26-000014",
+   "as_of": "2026-03-19",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 622640891.0
+  },
+  {
+   "accepted_at": "2026-06-18 06:42:48",
+   "accn": "0001467373-26-000032",
+   "as_of": "2026-06-18",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 615593409.0
+  },
+  {
+   "accepted_at": "2026-10-16 06:22:21",
+   "accn": "0001467373-26-000049",
+   "as_of": "2026-10-16",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 605283767.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "ACN"
+}

@@ -78,6 +78,7 @@ DASH_OK = {"BRK-B", "BF-B"}
 DEI = "EntityCommonStockSharesOutstanding"
 W_DIL = "WeightedAverageNumberOfDilutedSharesOutstanding"
 W_BAS = "WeightedAverageNumberOfSharesOutstandingBasic"
+W_BAD = "WeightedAverageNumberOfShareOutstandingBasicAndDiluted"   # loss-makers often tag basic = diluted
 
 
 def _sha(b: bytes) -> str:
@@ -104,9 +105,12 @@ def shares_from_filing(dei: Optional[float], w_dil: Optional[float], w_bas: Opti
                        ni: Optional[float], eps: Optional[float], require_check: bool = False) -> Tuple[Optional[float], str]:
     """Pick the share count for market cap from values reported in ONE filing (see module doc)."""
     w, wname = (w_dil, "weighted diluted") if w_dil else ((w_bas, "weighted basic") if w_bas else (None, ""))
-    implied = (ni / eps) if (ni and eps and abs(eps) > 1e-9 and ni / eps > 0) else None
-    if w and implied and abs(w / implied - 1.0) > 0.25:
-        w, wname = implied, "net income / diluted EPS (weighted count failed sanity check)"
+    # NI / EPS is noisy when EPS is small or rounded (WFC 2020Q1: EPS 0.01; preferred dividends), so it only
+    # (a) replaces a weighted count that is off by orders of magnitude (unit error, e.g. MCD tagged in millions)
+    # and (b) stands in when no weighted count exists.
+    implied = (ni / eps) if (ni and eps and abs(eps) >= 0.05 and ni / eps > 0) else None
+    if w and implied and not (1e-3 <= w / implied <= 1e3):
+        w, wname = implied, "net income / diluted EPS (weighted count failed unit sanity check)"
     if w is None and implied:
         w, wname = implied, "net income / diluted EPS"
     if dei and dei > 1:
@@ -135,8 +139,9 @@ def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str 
         cur = by[r["accn"]].get("dei")
         if cur is None or r["end"] > cur["end"]:
             by[r["accn"]]["dei"] = r
-    for key, concept, unit in (("w_dil", W_DIL, "shares"), ("w_bas", W_BAS, "shares"),
-                               ("ni", "NetIncomeLoss", "USD"), ("eps", "EarningsPerShareDiluted", "USD/shares")):
+    for key, concept, unit in (("w_dil", W_DIL, "shares"), ("w_dil", W_BAD, "shares"), ("w_bas", W_BAS, "shares"),
+                               ("ni", "NetIncomeLoss", "USD"), ("eps", "EarningsPerShareDiluted", "USD/shares"),
+                               ("eps", "EarningsPerShareBasicAndDiluted", "USD/shares")):
         for r in rows(gaap.get(concept), unit):
             if not r.get("start"):
                 continue
@@ -165,12 +170,73 @@ def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str 
     return out
 
 
+def public_floats(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str = "2012-01-01") -> List[Dict[str, Any]]:
+    """[{accepted_at, as_of, value}] dei:EntityPublicFloat (USD) from periodic filings, PIT key = acceptance."""
+    acc = {s["accessionNumber"]: s for s in subs}
+    out = []
+    for r in (((facts.get("facts") or {}).get("dei", {}) or {}).get("EntityPublicFloat") or {}).get("units", {}).get("USD", []):
+        sub = acc.get(r["accn"])
+        if sub and r.get("form") in PERIODIC_FORMS and r.get("filed", "") >= since and r.get("val"):
+            out.append({"accepted_at": to_et(sub["acceptanceDateTime"]), "as_of": r["end"], "value": float(r["val"])})
+    out.sort(key=lambda x: (x["accepted_at"], x["as_of"]))
+    return out
+
+
+def shares_from_public_float(facts: Dict[str, Any], subs: List[Dict[str, Any]], prices: pd.DataFrame,
+                             since: str = "2012-01-01") -> List[Dict[str, Any]]:
+    """Last-resort share count for filers that report neither a non-class cover count nor a weighted count nor EPS
+    (Visa reports all of them per class only): dei:EntityPublicFloat (USD, 10-K cover, as of the last business day
+    of the second fiscal quarter) / split-adjusted close on that date. The result is already on today's share
+    basis, so `as_of` is set past every split. PIT key = the 10-K's acceptanceDateTime. Public float excludes
+    affiliate holdings, so this understates shares for controlled companies (not the case for Visa)."""
+    acc = {s["accessionNumber"]: s for s in subs}
+    dei = (facts.get("facts") or {}).get("dei", {}) or {}
+    out = []
+    for r in ((dei.get("EntityPublicFloat") or {}).get("units") or {}).get("USD", []):
+        sub = acc.get(r["accn"])
+        if not sub or r.get("form") not in PERIODIC_FORMS or r.get("filed", "") < since:
+            continue
+        px = prices.loc[prices.index <= pd.Timestamp(r["end"]), "CloseSplitAdj"]
+        if px.empty or not r.get("val"):
+            continue
+        out.append({"accepted_at": to_et(sub["acceptanceDateTime"]), "as_of": "9999-12-31",
+                    "shares": float(r["val"]) / float(px.iloc[-1]),
+                    "method": f"public float / split-adjusted close on {r['end']} (no share count reported)",
+                    "form": sub.get("form"), "accn": r["accn"]})
+    out.sort(key=lambda x: (x["accepted_at"], x["accn"]))
+    return out
+
+
 def split_factor_after(splits: List[Dict[str, float]], when: str) -> float:
     f = 1.0
     for sp in splits or []:
         if sp["date"] > when[:10]:
             f *= float(sp["ratio"])
     return f
+
+
+JUMP = 3.0          # a share count > 3x away from the last accepted one needs confirmation by the next filing
+FLOAT_MAX_RATIO = 10.0   # market cap > 10x the latest public float (10-K cover) -> not rankable that day
+
+
+def accepted_series(series: List[Dict[str, Any]], splits: List[Dict[str, float]]) -> List[Dict[str, Any]]:
+    """Drop unconfirmed jumps. Each record's verdict uses only EARLIER records (PIT-safe): a record whose share
+    count (on today's split basis) differs from the last accepted one by more than JUMP x is held back; it is
+    accepted when the next record confirms its level (then both levels agree), e.g. a large stock merger is
+    recognised one filing late, while a one-off tagging error (WTTR, WFC 2020Q1) never enters."""
+    out: List[Dict[str, Any]] = []
+    last = pending = None
+    for r in series:
+        v = r["shares"] * split_factor_after(splits, r["as_of"])
+        if last is None or 1 / JUMP <= v / last <= JUMP:
+            out.append(r)
+            last, pending = v, None
+        elif pending is not None and 1 / JUMP <= v / pending <= JUMP:
+            out.append(r)
+            last, pending = v, None
+        else:
+            pending = v
+    return out
 
 
 def shares_at(series: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[Dict[str, Any]]:
@@ -180,22 +246,51 @@ def shares_at(series: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[Di
     return series[i - 1] if i > 0 else None
 
 
+def float_at(floats: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[float]:
+    """Latest public float (USD) from a 10-K accepted before `cutoff` and at most 15 months old."""
+    rec = shares_at(floats, cutoff)
+    if rec is None or (cutoff - pd.Timestamp(rec["accepted_at"])).days > 460:
+        return None
+    return float(rec["value"])
+
+
+def float_check_ok(cap: float, flt: Optional[float]) -> bool:
+    """False if cap > FLOAT_MAX_RATIO x public float, unless the float is evidently tagged in thousands
+    (float x 1000 within a factor of three of the cap)."""
+    if not flt or flt <= 0 or cap <= FLOAT_MAX_RATIO * flt:
+        return True
+    return 1 / 3 <= (flt * 1000.0) / cap <= 3
+
+
 def market_caps_on(snap, day: pd.Timestamp, tickers: Optional[List[str]] = None) -> Dict[str, float]:
     """PIT market caps at the close of `day` (a session): shares from filings accepted before 16:00 ET on
     `day`, prices up to and including `day` only."""
     cutoff = pd.Timestamp(f"{day.date()} 16:00:00")
     out: Dict[str, float] = {}
+    acc = getattr(snap, "_accepted_shares", None)
+    if acc is None or acc[0] is not snap.shares:
+        acc = (snap.shares, {t: accepted_series(v, snap.splits.get(t, [])) for t, v in snap.shares.items()})
+        try:
+            snap._accepted_shares = acc
+        except AttributeError:
+            pass
+    floats = getattr(snap, "floats", {}) or {}
     for t in sorted(tickers or snap.manifest["tickers"]):
         df = snap.prices.get(t)
-        ser = snap.shares.get(t)
+        ser = acc[1].get(t)
         if df is None or not ser or day not in df.index:
+            continue
+        if (snap.universe.get(t) or {}).get("exclude_reason"):
             continue
         rec = shares_at(ser, cutoff)
         if rec is None:
             continue
         px = float(df.at[day, "CloseSplitAdj"])
         k = split_factor_after(snap.splits.get(t, []), rec["as_of"])
-        out[t] = rec["shares"] * k * px * PRICE_MULT.get(t.replace(".", "-"), 1.0)
+        cap = rec["shares"] * k * px * PRICE_MULT.get(t.replace(".", "-"), 1.0)
+        if not float_check_ok(cap, float_at(floats.get(t, []), cutoff)):
+            continue
+        out[t] = cap
     return out
 
 

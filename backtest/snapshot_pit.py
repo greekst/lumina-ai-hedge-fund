@@ -20,6 +20,7 @@ timestamp = the earlier of the two, plus the issuer-convention fix from the Sess
 from __future__ import annotations
 
 import argparse
+import re
 import gzip
 import json
 import os
@@ -49,6 +50,7 @@ PREDECESSOR_CIKS: Dict[str, List[int]] = {
     "CI": [701221],        # Cigna Corp (old) -> Cigna Group holding company (2018, Express Scripts deal)
     "MDT": [64670],        # Medtronic, Inc. -> Medtronic plc (2015, Covidien)
     "GOOGL": [1288776],    # Google Inc. -> Alphabet Inc. (2015-10 holding-company reorganisation)
+    "MRVL": [1058057],     # Marvell Technology Group Ltd (Bermuda) -> Marvell Technology, Inc. (Delaware, 2021)
 }
 
 # GICS sector for candidates not in the current S&P 500 file (which gives GICS directly), by SIC code.
@@ -78,6 +80,9 @@ def sic_sector(sic: int) -> str:
         return "Consumer Discretionary"
     return "Industrials"
 
+
+# Not common stock of an operating company: never ranked (kept in the snapshot for transparency).
+EXCLUDE_SIC = {6221: "commodity/crypto trust (SIC 6221), not common stock"}
 
 # Hand overrides where SIC maps poorly to today's GICS (checked against the company's line of business).
 SECTOR_OVERRIDE: Dict[str, str] = {}
@@ -193,17 +198,24 @@ def build(snapshot_id: str, start: str, end: str, events_from: str, only: List[s
             problems[t] = f"not a domestic 10-K/10-Q filer (forms: {sorted(f for f in forms if f)[:6]})"
             continue
         shares = PU.shares_series(b["facts"], b["subs"], since=EDGAR_SINCE)
+        if not shares:   # e.g. Visa: share counts and EPS only per class
+            shares = PU.shares_from_public_float(b["facts"], b["subs"], px, since=EDGAR_SINCE)
         fund = fundamentals_from_companyfacts(b["facts"], b["subs"], since=EDGAR_SINCE, comparatives=True)
         k8 = [e for e in earnings_8k(b["subs"], since=EDGAR_SINCE) if e["accepted_at_et"][:10] < end]
         yfe = _yf_events(ysym)
         evs = resolve_events(yfe, k8, end, events_from)
         xcheck[t] = {"yfinance": [y for y in yfe if y[:10] < end],
                      "edgar_2_02": [{"accepted_at_et": e["accepted_at_et"], "accession": e["accession"]} for e in k8]}
+        floats = PU.public_floats(b["facts"], b["subs"], since=EDGAR_SINCE)
+        sic = int(top.get("sic") or 0)
+        exclude = EXCLUDE_SIC.get(sic, "") or (
+            "limited partnership units (MLP), not common stock" if re.search(r"(\bL\.?P\.?$|PARTNERS,? L\.?P)", c["name"].upper()) else "")
         sector = SECTOR_OVERRIDE.get(t) or gics.get(ysym) or sic_sector(top.get("sic"))
         members.append({"ticker": t, "cik": int(c["cik"]), "ciks": ciks, "name": c["name"], "seed": c["seed"],
                         "sector": sector, "sector_source": "S&P 500 file (GICS)" if ysym in gics and t not in SECTOR_OVERRIDE
                         else ("hand override" if t in SECTOR_OVERRIDE else f"SIC {top.get('sic')} map"),
-                        "sector_etf": SECTOR_ETF[sector], "price_multiplier": PU.PRICE_MULT.get(ysym, 1.0)})
+                        "sector_etf": SECTOR_ETF[sector], "price_multiplier": PU.PRICE_MULT.get(ysym, 1.0),
+                        "sic": sic, "exclude_reason": exclude})
         events[t] = evs
         splits[t] = sp
         _gz_csv(px, os.path.join(root, "prices", f"{_safe(t)}.csv.gz"))
@@ -212,7 +224,7 @@ def build(snapshot_id: str, start: str, end: str, events_from: str, only: List[s
                   "filings": fund})
         with open(os.path.join(root, "shares", f"{_safe(t)}.json"), "w", encoding="utf-8", newline="\n") as fh:
             json.dump({"ticker": t, "ciks": ciks, "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
-                       "shares": shares}, fh, indent=1, sort_keys=True)
+                       "shares": shares, "public_float": floats}, fh, indent=1, sort_keys=True)
         first_px = str(px.index.min().date())
         if not shares:
             problems[t] = "no share counts"

@@ -1,0 +1,88 @@
+{
+ "ciks": [
+  2023554
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2026-08-17 16:50:29",
+   "as_of": "2026-01-02",
+   "value": 40500000000.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2025-03-07 16:44:37",
+   "accn": "0002023554-25-000004",
+   "as_of": "2025-02-27",
+   "form": "10-Q",
+   "method": "dei cover shares (unchecked: no weighted count in filing)",
+   "shares": 114863251.0
+  },
+  {
+   "accepted_at": "2025-03-14 20:43:19",
+   "accn": "0002023554-25-000016",
+   "as_of": "2025-02-27",
+   "form": "10-Q/A",
+   "method": "dei cover shares (unchecked: no weighted count in filing)",
+   "shares": 144863251.0
+  },
+  {
+   "accepted_at": "2025-05-12 16:27:40",
+   "accn": "0002023554-25-000027",
+   "as_of": "2025-05-05",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 145299218.0
+  },
+  {
+   "accepted_at": "2025-08-20 20:31:19",
+   "accn": "0002023554-25-000034",
+   "as_of": "2025-08-13",
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 145805548.0
+  },
+  {
+   "accepted_at": "2025-11-07 16:59:35",
+   "accn": "0001628280-25-050698",
+   "as_of": "2025-10-31",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 146553179.0
+  },
+  {
+   "accepted_at": "2026-01-30 16:46:47",
+   "accn": "0001628280-26-004407",
+   "as_of": "2026-01-23",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 147567249.0
+  },
+  {
+   "accepted_at": "2026-05-01 16:56:23",
+   "accn": "0001628280-26-029401",
+   "as_of": "2026-04-24",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 148089758.0
+  },
+  {
+   "accepted_at": "2026-08-17 16:50:29",
+   "accn": "0001628280-26-057406",
+   "as_of": "2026-08-07",
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 146419001.0
+  },
+  {
+   "accepted_at": "2026-10-30 16:42:14",
+   "accn": "0001628280-26-068601",
+   "as_of": "2026-10-26",
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 142289365.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "SNDK"
+}

@@ -37,6 +37,7 @@ class Snapshot:
     manifest: Dict[str, Any] = field(default_factory=dict)
     universe: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # ticker -> {sector, sector_etf, ...}
     shares: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)  # ticker -> PIT share counts (Session 3)
+    floats: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)  # ticker -> PIT public float (Session 3)
 
     @classmethod
     def load(cls, root: str) -> "Snapshot":
@@ -69,7 +70,9 @@ class Snapshot:
             sp_ = os.path.join(root, "shares", f"{_safe(t)}.json")
             if os.path.exists(sp_):   # Session 3 PIT-universe snapshots: share counts keyed by acceptance
                 with open(sp_, encoding="utf-8") as fh:
-                    snap.shares[t] = json.load(fh)["shares"]
+                    d_ = json.load(fh)
+                snap.shares[t] = d_["shares"]
+                snap.floats[t] = d_.get("public_float", [])
         return snap
 
     @property

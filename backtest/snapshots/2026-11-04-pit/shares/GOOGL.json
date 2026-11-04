@@ -1,0 +1,498 @@
+{
+ "ciks": [
+  1288776,
+  1652044
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2012-01-26 17:12:25",
+   "as_of": "2011-06-30",
+   "value": 114824568582.0
+  },
+  {
+   "accepted_at": "2013-01-29 17:29:36",
+   "as_of": "2012-06-29",
+   "value": 134705433770.0
+  },
+  {
+   "accepted_at": "2014-02-11 18:08:25",
+   "as_of": "2013-06-28",
+   "value": 214573249181.0
+  },
+  {
+   "accepted_at": "2015-02-06 19:40:31",
+   "as_of": "2014-06-30",
+   "value": 290000000000.0
+  },
+  {
+   "accepted_at": "2017-02-02 18:13:47",
+   "as_of": "2016-06-30",
+   "value": 413800000000.0
+  },
+  {
+   "accepted_at": "2018-02-05 20:46:29",
+   "as_of": "2017-06-30",
+   "value": 554300000000.0
+  },
+  {
+   "accepted_at": "2019-02-04 21:06:38",
+   "as_of": "2018-06-29",
+   "value": 680000000000.0
+  },
+  {
+   "accepted_at": "2020-02-03 21:03:59",
+   "as_of": "2019-06-28",
+   "value": 663000000000.0
+  },
+  {
+   "accepted_at": "2021-02-02 20:12:25",
+   "as_of": "2020-06-30",
+   "value": 849700000000.0
+  },
+  {
+   "accepted_at": "2022-02-01 21:08:02",
+   "as_of": "2021-06-30",
+   "value": 1451100000000.0
+  },
+  {
+   "accepted_at": "2023-02-02 21:23:45",
+   "as_of": "2022-06-30",
+   "value": 1256100000000.0
+  },
+  {
+   "accepted_at": "2024-01-30 21:43:43",
+   "as_of": "2023-06-30",
+   "value": 1331200000000.0
+  },
+  {
+   "accepted_at": "2025-02-04 20:41:40",
+   "as_of": "2024-06-28",
+   "value": 2000000000000.0
+  },
+  {
+   "accepted_at": "2026-02-04 21:56:03",
+   "as_of": "2025-06-30",
+   "value": 1900000000000.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2012-01-26 17:12:25",
+   "accn": "0001193125-12-025336",
+   "as_of": "2012-01-26",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 327184139.7849462
+  },
+  {
+   "accepted_at": "2012-04-25 17:14:53",
+   "accn": "0001193125-12-182401",
+   "as_of": "2012-04-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 330285714.28571427
+  },
+  {
+   "accepted_at": "2012-07-24 17:29:19",
+   "accn": "0001193125-12-312575",
+   "as_of": "2012-07-24",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 330760095.01187646
+  },
+  {
+   "accepted_at": "2012-10-29 20:08:20",
+   "accn": "0001193125-12-440217",
+   "as_of": "2012-10-29",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 333231240.4287902
+  },
+  {
+   "accepted_at": "2013-01-29 17:29:36",
+   "accn": "0001193125-13-028362",
+   "as_of": "2013-01-29",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 332311977.7158774
+  },
+  {
+   "accepted_at": "2013-04-25 17:21:43",
+   "accn": "0001288776-13-000030",
+   "as_of": "2013-04-25",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 336663000.0
+  },
+  {
+   "accepted_at": "2013-07-25 17:24:54",
+   "accn": "0001288776-13-000055",
+   "as_of": "2013-07-25",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 338337000.0
+  },
+  {
+   "accepted_at": "2013-10-24 17:16:39",
+   "accn": "0001288776-13-000068",
+   "as_of": "2013-10-24",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 339235000.0
+  },
+  {
+   "accepted_at": "2014-02-11 18:08:25",
+   "accn": "0001288776-14-000020",
+   "as_of": "2014-02-11",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 338840807.7629163
+  },
+  {
+   "accepted_at": "2014-04-24 16:53:32",
+   "accn": "0001288776-14-000040",
+   "as_of": "2014-04-24",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 685212000.0
+  },
+  {
+   "accepted_at": "2014-07-24 19:25:49",
+   "accn": "0001288776-14-000065",
+   "as_of": "2014-07-24",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 686363000.0
+  },
+  {
+   "accepted_at": "2014-10-23 16:58:40",
+   "accn": "0001288776-14-000075",
+   "as_of": "2014-10-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 688215000.0
+  },
+  {
+   "accepted_at": "2015-02-06 19:40:31",
+   "accn": "0001288776-15-000008",
+   "as_of": "2015-02-06",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 687070000.0
+  },
+  {
+   "accepted_at": "2015-04-29 17:19:57",
+   "accn": "0001288776-15-000023",
+   "as_of": "2015-04-29",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 689498000.0
+  },
+  {
+   "accepted_at": "2017-05-02 16:25:09",
+   "accn": "0001652044-17-000014",
+   "as_of": "2017-05-02",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 701940491.5912031
+  },
+  {
+   "accepted_at": "2017-07-24 18:23:27",
+   "accn": "0001652044-17-000026",
+   "as_of": "2017-07-24",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 703393213.5728543
+  },
+  {
+   "accepted_at": "2017-10-26 17:49:09",
+   "accn": "0001652044-17-000042",
+   "as_of": "2017-10-26",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 703448275.8620689
+  },
+  {
+   "accepted_at": "2018-04-23 18:54:51",
+   "accn": "0001652044-18-000016",
+   "as_of": "2018-04-23",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 705251312.828207
+  },
+  {
+   "accepted_at": "2018-07-23 21:02:56",
+   "accn": "0001652044-18-000027",
+   "as_of": "2018-07-23",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 703744493.3920705
+  },
+  {
+   "accepted_at": "2018-10-25 17:41:36",
+   "accn": "0001652044-18-000035",
+   "as_of": "2018-10-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 703828483.9203675
+  },
+  {
+   "accepted_at": "2019-02-04 21:06:38",
+   "accn": "0001652044-19-000004",
+   "as_of": "2019-02-04",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 703340961.0983981
+  },
+  {
+   "accepted_at": "2019-04-29 19:32:43",
+   "accn": "0001652044-19-000015",
+   "as_of": "2019-04-29",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 700736842.1052631
+  },
+  {
+   "accepted_at": "2019-07-25 18:11:13",
+   "accn": "0001652044-19-000023",
+   "as_of": "2019-07-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 700000000.0
+  },
+  {
+   "accepted_at": "2019-10-28 19:02:44",
+   "accn": "0001652044-19-000032",
+   "as_of": "2019-10-28",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 698418972.3320159
+  },
+  {
+   "accepted_at": "2020-02-03 21:03:59",
+   "accn": "0001652044-20-000008",
+   "as_of": "2020-02-03",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 698596419.8535395
+  },
+  {
+   "accepted_at": "2020-04-28 18:52:33",
+   "accn": "0001652044-20-000021",
+   "as_of": "2020-04-28",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 692603850.0506586
+  },
+  {
+   "accepted_at": "2020-07-30 19:57:55",
+   "accn": "0001652044-20-000032",
+   "as_of": "2020-07-30",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 686969397.8282329
+  },
+  {
+   "accepted_at": "2020-10-29 19:30:04",
+   "accn": "0001652044-20-000050",
+   "as_of": "2020-10-29",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 685792682.9268293
+  },
+  {
+   "accepted_at": "2021-02-02 20:12:25",
+   "accn": "0001652044-21-000010",
+   "as_of": "2021-02-02",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 687067053.403856
+  },
+  {
+   "accepted_at": "2021-04-27 19:17:57",
+   "accn": "0001652044-21-000020",
+   "as_of": "2021-04-27",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 682008368.2008369
+  },
+  {
+   "accepted_at": "2021-07-27 20:16:30",
+   "accn": "0001652044-21-000047",
+   "as_of": "2021-07-27",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 679567131.327953
+  },
+  {
+   "accepted_at": "2021-10-26 19:47:06",
+   "accn": "0001652044-21-000057",
+   "as_of": "2021-10-26",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 676527331.1897106
+  },
+  {
+   "accepted_at": "2022-02-01 21:08:02",
+   "accn": "0001652044-22-000019",
+   "as_of": "2022-02-01",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 677655971.4795009
+  },
+  {
+   "accepted_at": "2022-04-26 20:51:20",
+   "accn": "0001652044-22-000029",
+   "as_of": "2022-04-26",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 667587327.376117
+  },
+  {
+   "accepted_at": "2022-07-26 19:29:36",
+   "accn": "0001652044-22-000071",
+   "as_of": "2022-07-26",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 13224793388.429752
+  },
+  {
+   "accepted_at": "2022-10-25 21:32:59",
+   "accn": "0001652044-22-000090",
+   "as_of": "2022-10-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 13122641509.433962
+  },
+  {
+   "accepted_at": "2023-02-02 21:23:45",
+   "accn": "0001652044-23-000016",
+   "as_of": "2023-02-02",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 13151754385.964914
+  },
+  {
+   "accepted_at": "2023-04-25 20:15:00",
+   "accn": "0001652044-23-000045",
+   "as_of": "2023-04-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 12864102564.102566
+  },
+  {
+   "accepted_at": "2023-07-25 19:13:26",
+   "accn": "0001652044-23-000070",
+   "as_of": "2023-07-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 12755555555.555555
+  },
+  {
+   "accepted_at": "2023-10-24 18:39:13",
+   "accn": "0001652044-23-000094",
+   "as_of": "2023-10-24",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 12702580645.16129
+  },
+  {
+   "accepted_at": "2024-01-30 21:43:43",
+   "accn": "0001652044-24-000022",
+   "as_of": "2024-01-30",
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 12723275862.068966
+  },
+  {
+   "accepted_at": "2024-04-25 20:22:11",
+   "accn": "0001652044-24-000053",
+   "as_of": "2024-04-25",
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 12519576719.57672
+  },
+  {
+   "accepted_at": "2024-07-23 19:12:07",
+   "accn": "0001652044-24-000079",
+   "as_of": "2024-07-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12495000000.0
+  },
+  {
+   "accepted_at": "2024-10-29 19:33:10",
+   "accn": "0001652044-24-000118",
+   "as_of": "2024-10-29",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12419000000.0
+  },
+  {
+   "accepted_at": "2025-02-04 20:41:40",
+   "accn": "0001652044-25-000014",
+   "as_of": "2025-02-04",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 12447000000.0
+  },
+  {
+   "accepted_at": "2025-04-24 21:05:29",
+   "accn": "0001652044-25-000043",
+   "as_of": "2025-04-24",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12291000000.0
+  },
+  {
+   "accepted_at": "2025-07-23 19:44:01",
+   "accn": "0001652044-25-000062",
+   "as_of": "2025-07-23",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12198000000.0
+  },
+  {
+   "accepted_at": "2025-10-29 21:55:01",
+   "accn": "0001652044-25-000091",
+   "as_of": "2025-10-29",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12203000000.0
+  },
+  {
+   "accepted_at": "2026-02-04 21:56:03",
+   "accn": "0001652044-26-000018",
+   "as_of": "2026-02-04",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 12230000000.0
+  },
+  {
+   "accepted_at": "2026-04-29 21:02:11",
+   "accn": "0001652044-26-000048",
+   "as_of": "2026-04-29",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12238000000.0
+  },
+  {
+   "accepted_at": "2026-07-22 21:15:54",
+   "accn": "0001652044-26-000071",
+   "as_of": "2026-07-22",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12309000000.0
+  },
+  {
+   "accepted_at": "2026-10-28 20:29:06",
+   "accn": "0001652044-26-000084",
+   "as_of": "2026-10-28",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12368000000.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "GOOGL"
+}

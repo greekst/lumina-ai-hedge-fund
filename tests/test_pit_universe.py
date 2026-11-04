@@ -47,11 +47,12 @@ class _Snap:
                        "BRK.B": pd.DataFrame({"CloseSplitAdj": [400.0, 400.0]}, index=idx)}
         self.shares = {"A": [{"accepted_at": "2024-01-01 08:00:00", "as_of": "2023-12-31", "shares": 100.0}],
                        "B": [{"accepted_at": "2024-01-01 08:00:00", "as_of": "2023-12-31", "shares": 100.0},
-                             {"accepted_at": "2024-05-01 17:00:00", "as_of": "2024-05-01", "shares": 1.0}],
+                             {"accepted_at": "2024-05-01 17:00:00", "as_of": "2024-05-01", "shares": 50.0}],
                        "BRK.B": [{"accepted_at": "2024-01-01 08:00:00", "as_of": "2023-12-31", "shares": 1.0}]}
         # A split 2:1 after its share date: 100 shares then = 200 on today's (price) basis
         self.splits = {"A": [{"date": "2024-03-01", "ratio": 2.0}]}
         self.manifest = {"tickers": ["A", "B", "BRK.B"]}
+        self.universe, self.floats = {}, {}
 
 
 def test_market_cap_uses_split_basis_class_multiplier_and_pit_shares():
@@ -89,3 +90,23 @@ def test_two_way_bootstrap_detects_effect_and_is_wider_than_one_way():
     eff = cluster_diff_2way(y + 0.5 * g, g, seas, tick, n_boot=500)
     assert eff["p05"] > 0 and eff["p_one_sided"] < 0.05
     assert eff["n_c1"] == n_s and eff["n_c2"] == n_t
+
+
+def test_unconfirmed_share_jump_is_held_back_until_confirmed():
+    ser = [{"accepted_at": "2020-01-01 08:00:00", "as_of": "2019-12-31", "shares": 100.0},
+           {"accepted_at": "2020-04-01 08:00:00", "as_of": "2020-03-31", "shares": 1e5},     # one-off tagging error
+           {"accepted_at": "2020-07-01 08:00:00", "as_of": "2020-06-30", "shares": 101.0},
+           {"accepted_at": "2020-10-01 08:00:00", "as_of": "2020-09-30", "shares": 400.0},   # real (stock merger)...
+           {"accepted_at": "2021-01-01 08:00:00", "as_of": "2020-12-31", "shares": 410.0}]   # ...confirmed next filing
+    kept = [r["shares"] for r in PU.accepted_series(ser, [])]
+    assert kept == [100.0, 101.0, 410.0]
+    # a split is not a jump: 100 shares then = 400 today after a 4:1 split
+    ser2 = [{"accepted_at": "2020-01-01 08:00:00", "as_of": "2019-12-31", "shares": 100.0},
+            {"accepted_at": "2020-07-01 08:00:00", "as_of": "2020-06-30", "shares": 400.0}]
+    assert len(PU.accepted_series(ser2, [{"date": "2020-03-01", "ratio": 4.0}])) == 2
+
+
+def test_float_cross_check():
+    assert PU.float_check_ok(100.0, 50.0) and PU.float_check_ok(100.0, None)
+    assert not PU.float_check_ok(1e12, 1e7)            # cap 1e5 x the float: ADS-ratio / unit junk
+    assert PU.float_check_ok(1e12, 0.9e9)              # float tagged in thousands (x1000 ~ cap)

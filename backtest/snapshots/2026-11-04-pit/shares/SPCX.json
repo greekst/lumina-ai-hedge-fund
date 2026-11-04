@@ -1,0 +1,26 @@
+{
+ "ciks": [
+  1181412
+ ],
+ "public_float": [],
+ "shares": [
+  {
+   "accepted_at": "2026-08-04 16:05:48",
+   "accn": "0001628280-26-052535",
+   "as_of": "2026-08-04",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 5864000000.0
+  },
+  {
+   "accepted_at": "2026-10-22 16:03:05",
+   "accn": "0001628280-26-066880",
+   "as_of": "2026-10-22",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 12475000000.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "SPCX"
+}

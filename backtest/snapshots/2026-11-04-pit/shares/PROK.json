@@ -1,0 +1,57 @@
+{
+ "ciks": [
+  1850270
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2022-03-23 17:32:20",
+   "as_of": "2021-07-02",
+   "value": 251250000.0
+  },
+  {
+   "accepted_at": "2023-03-28 16:40:34",
+   "as_of": "2022-06-30",
+   "value": 248750000000.0
+  },
+  {
+   "accepted_at": "2023-04-27 16:08:07",
+   "as_of": "2022-06-30",
+   "value": 248750000000.0
+  },
+  {
+   "accepted_at": "2024-03-21 19:36:19",
+   "as_of": "2023-06-30",
+   "value": 688858985.0
+  },
+  {
+   "accepted_at": "2025-03-17 17:22:28",
+   "as_of": "2024-06-30",
+   "value": 232629556.0
+  },
+  {
+   "accepted_at": "2026-03-18 16:01:34",
+   "as_of": "2025-06-30",
+   "value": 58869984.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2021-08-16 16:40:28",
+   "accn": "0001193125-21-247846",
+   "as_of": "2021-08-16",
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 5500000.0
+  },
+  {
+   "accepted_at": "2023-03-28 16:40:34",
+   "accn": "0000950170-23-010324",
+   "as_of": "2023-03-28",
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 61540231.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "PROK"
+}
