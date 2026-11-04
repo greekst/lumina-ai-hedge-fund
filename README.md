@@ -1,3 +1,5 @@
+> **Research fork notice (2026-11-04).** This fork was hardened for trustworthy, personal, non-commercial research. Paper trading only: live brokers and social posting are disabled. A point-in-time walk-forward test over 120 earnings events found **no edge** versus buy-and-hold. Several performance figures and claims below come from upstream and are not supported by this fork's audit; see [HANDOFF.md](HANDOFF.md), [AUDIT.md](AUDIT.md) and [AGENTS.md](AGENTS.md).
+
 <div align="center">
 
 # 🏛️ Lumina Capital (AI Hedge Fund Engine v6.6.5)

@@ -56,3 +56,8 @@ Times are UTC (container clock). Budget proxy: elapsed wall time (no cost readou
 - Tests: `tests/test_data_sources.py` (5, mocked HTTP). Suite: 52 passed, 1 skipped; UI smoke passed; legacy 19/19 (zero-cost env); flake8 hard errors 0. Tests pin `LUMINA_DATA_PROVIDER=yfinance` so no test calls Finnhub live.
 - Not verified: yfinance `dividendYield` units (upstream multiplies by 100; newer yfinance may already return percent). `.info` is 401 here, so this could not be checked. Flagged in HANDOFF.
 - Next: Phase 5 handoff.
+
+## 2026-11-04 19:00 — Phase 5 (final)
+- Wrote `HANDOFF.md` (changes, how to run, results with interpretation, limitations, next steps) and added a fork notice at the top of the README.
+- Final verification: pytest 52 passed, 1 skipped; UI smoke 1 passed; walk-forward rerun into a fresh dir → same sha256 2233f1c1…; secret scan of all tracked files OK.
+- Budget: about 2.5 h of the ~24 h window used. I stopped deliberately after Phase 4 (hard rule 6). The remaining items in HANDOFF §5 need owner decisions (enable Actions, SEC contact UA, universe size, LLM-test design) rather than more autonomous time.
