@@ -48,6 +48,7 @@ PREDECESSOR_CIKS: Dict[str, List[int]] = {
     "DIS": [1001039],      # TWDC Enterprises 18 (old Walt Disney Co) -> The Walt Disney Company (2019)
     "CI": [701221],        # Cigna Corp (old) -> Cigna Group holding company (2018, Express Scripts deal)
     "MDT": [64670],        # Medtronic, Inc. -> Medtronic plc (2015, Covidien)
+    "GOOGL": [1288776],    # Google Inc. -> Alphabet Inc. (2015-10 holding-company reorganisation)
 }
 
 # GICS sector for candidates not in the current S&P 500 file (which gives GICS directly), by SIC code.

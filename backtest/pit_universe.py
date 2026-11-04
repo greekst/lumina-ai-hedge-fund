@@ -27,7 +27,11 @@ Candidate pool (a superset; membership itself is decided PIT by rank):
     EDGAR frames show >= 100M shares at any quarter 2013-2026 (catches large non-index names, e.g. pre-
     inclusion IPOs),
   * screened with EDGAR frames x monthly yfinance closes at each quarter end 2014Q1-2026Q3: a company is a
-    candidate if it ranks <= 150 at any quarter end (margin of 50 over the target 100).
+    candidate if it ranks <= 200 at any quarter end (margin of 100 over the target 100). The screen needs a
+    quarterly us-gaap share count (drops 20-F/40-F filers, which report annually) and carries the last
+    value forward up to two quarters (10-Ks rarely tag a separate Q4). Frames hold the LATEST filed value for
+    a period (possibly restated for a later split), so screen caps can be overstated; that only enlarges the
+    superset. Completeness is checked separately against dei:EntityPublicFloat (`gaps`).
   Companies with no price history (delisted/acquired; Yahoo keeps no history for them) cannot be ranked.
   They are found and listed by `gaps()` from dei:EntityPublicFloat (a USD market value on every 10-K cover,
   needs no prices), and their effect is documented (LOG.md, results/pit_universe_*.md).
@@ -62,7 +66,7 @@ HIST_URL = ("https://raw.githubusercontent.com/fja05680/sp500/master/"
 EXCH_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 LISTED = {"NYSE", "Nasdaq", "CBOE", "TXSE"}
 TOP_N = 100
-SCREEN_RANK = 150
+SCREEN_RANK = 200
 SWEEP_MIN_SHARES = 1e8
 HIST_SINCE = "2014-01-01"
 SCREEN_QUARTERS = [(y, q) for y in range(2014, 2027) for q in (1, 2, 3, 4) if (y, q) <= (2026, 3)]
@@ -97,7 +101,7 @@ def _read_gz(path: str) -> bytes:
 # ---------------------------------------------------------------------------
 
 def shares_from_filing(dei: Optional[float], w_dil: Optional[float], w_bas: Optional[float],
-                       ni: Optional[float], eps: Optional[float]) -> Tuple[Optional[float], str]:
+                       ni: Optional[float], eps: Optional[float], require_check: bool = False) -> Tuple[Optional[float], str]:
     """Pick the share count for market cap from values reported in ONE filing (see module doc)."""
     w, wname = (w_dil, "weighted diluted") if w_dil else ((w_bas, "weighted basic") if w_bas else (None, ""))
     implied = (ni / eps) if (ni and eps and abs(eps) > 1e-9 and ni / eps > 0) else None
@@ -107,6 +111,8 @@ def shares_from_filing(dei: Optional[float], w_dil: Optional[float], w_bas: Opti
         w, wname = implied, "net income / diluted EPS"
     if dei and dei > 1:
         if w is None:
+            if require_check:
+                return None, ""
             return dei, "dei cover shares (unchecked: no weighted count in filing)"
         if 0.8 <= dei / w <= 1.25:
             return dei, "dei cover shares"
@@ -305,32 +311,44 @@ def screen(write: bool = True) -> Dict[str, Any]:
     prices = _monthly(sorted(set(ticker_of.values())))
     # rank at each quarter end
     ranks: Dict[int, Dict[str, int]] = defaultdict(dict)
-    for (y, q) in SCREEN_QUARTERS:
+    last: Dict[int, Tuple[int, float]] = {}   # cik -> (quarter index, shares)
+    for qi, (y, q) in enumerate(SCREEN_QUARTERS):
         qe = pd.Timestamp(year=y, month=3 * q, day=1)
         fr = frames[(y, q)]
         caps = {}
         for c in pool:
+            sh, _ = shares_from_filing(fr["dei"].get(c), fr["w_dil"].get(c), fr["w_bas"].get(c),
+                                       fr["ni"].get(c), fr["eps"].get(c), require_check=True)
+            if sh:
+                last[c] = (qi, sh)
+            elif c in last and qi - last[c][0] <= 2:
+                sh = last[c][1]
             t = ticker_of[c]
             df = prices.get(t)
-            if df is None or df.empty or qe not in df.index:
-                continue
-            sh, _ = shares_from_filing(fr["dei"].get(c), fr["w_dil"].get(c), fr["w_bas"].get(c),
-                                       fr["ni"].get(c), fr["eps"].get(c))
-            if not sh:
+            if not sh or df is None or df.empty or qe not in df.index:
                 continue
             k = float(np.prod([r for d, r in df["split"].items() if d > qe and r and r > 0])) if "split" in df else 1.0
             caps[c] = sh * k * float(df.at[qe, "close"]) * PRICE_MULT.get(t, 1.0)
         for i, (c, _) in enumerate(sorted(caps.items(), key=lambda kv: (-kv[1], kv[0]))):
             ranks[c][f"{y}Q{q}"] = i + 1
+    # Second seed, independent of share counts and of the 100M-share threshold (catches e.g. Visa, whose share
+    # counts are reported per class only, and high-priced names like MercadoLibre): listed companies ranked
+    # <= FLOAT_RANK by dei:EntityPublicFloat in any calendar year.
+    fr_rank = float_ranks(ed)
+    float_seed = {c for c, r in fr_rank.items() if c in by_cik and min(r.values()) <= FLOAT_RANK}
+    for c in sorted(float_seed - set(pool)):
+        ticker_of[c] = _choose_ticker([tk for tk, _, _ in by_cik[c]], latest)
     cands = []
-    for c in pool:
+    for c in sorted(set(pool) | float_seed):
         r = ranks.get(c, {})
         best = min(r.values()) if r else None
-        if best is not None and best <= SCREEN_RANK:
+        fbest = min(fr_rank[c].values()) if c in fr_rank else None
+        if (best is not None and best <= SCREEN_RANK) or c in float_seed:
             cands.append({"cik": c, "ticker": ticker_of[c], "name": by_cik[c][0][1], "exchange": by_cik[c][0][2],
                           "listings": sorted(tk for tk, _, _ in by_cik[c]),
-                          "seed": "sp500_history" if c in hist_cik else "listed_sweep",
-                          "best_screen_rank": best, "quarters_top100": sum(1 for v in r.values() if v <= TOP_N),
+                          "seed": "sp500_history" if c in hist_cik else ("listed_sweep" if c in sweep else "public_float"),
+                          "best_screen_rank": best, "best_public_float_rank": fbest,
+                          "quarters_top100": sum(1 for v in r.values() if v <= TOP_N),
                           "quarters_top150": sum(1 for v in r.values() if v <= SCREEN_RANK)})
     cands.sort(key=lambda d: d["ticker"])
     no_price = sorted(ticker_of[c] for c in pool if prices.get(ticker_of[c]) is None or prices[ticker_of[c]].empty)
@@ -352,6 +370,28 @@ def screen(write: bool = True) -> Dict[str, Any]:
     return meta
 
 
+FLOAT_RANK = 150
+
+
+def float_ranks(ed: EdgarClient) -> Dict[int, Dict[int, int]]:
+    """cik -> {year: rank by dei:EntityPublicFloat (max over the year's cover values)}. Some filers tag the float
+    in the wrong unit (e.g. thousands), which only adds harmless candidates."""
+    out: Dict[int, Dict[int, int]] = defaultdict(dict)
+    for y in range(2014, 2026):
+        best: Dict[int, float] = {}
+        for q in (1, 2, 3, 4):
+            try:
+                rows = ed.get_json(f"https://data.sec.gov/api/xbrl/frames/dei/EntityPublicFloat/USD/CY{y}Q{q}I.json")["data"]
+            except Exception:  # noqa: BLE001
+                rows = []
+            for r in rows:
+                best[r["cik"]] = max(best.get(r["cik"], 0.0), float(r["val"]))
+        for i, (c, _) in enumerate(sorted(best.items(), key=lambda kv: (-kv[1], kv[0]))):
+            if i < 400:
+                out[c][y] = i + 1
+    return out
+
+
 def gaps(cands: Dict[str, Any], ed: Optional[EdgarClient] = None) -> List[Dict[str, Any]]:
     """Companies in the top 100 by dei:EntityPublicFloat (10-K cover, USD, as of the last business day of the
     second fiscal quarter) in any calendar year 2014-2025 that are not candidates. Public float excludes
@@ -370,7 +410,7 @@ def gaps(cands: Dict[str, Any], ed: Optional[EdgarClient] = None) -> List[Dict[s
         for r in rows:
             if r["cik"] not in best or r["val"] > best[r["cik"]]["val"]:
                 best[r["cik"]] = r
-        top = sorted(best.values(), key=lambda r: (-r["val"], r["cik"]))[:TOP_N]
+        top = sorted(best.values(), key=lambda r: (-r["val"], r["cik"]))[:FLOAT_RANK]
         for i, r in enumerate(top):
             if r["cik"] in have:
                 continue
