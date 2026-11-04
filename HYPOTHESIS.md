@@ -112,3 +112,9 @@ Run 2026-11-04 (UTC), the exact command above, twice: identical output sha256
   ticker than its flat decisions, at T+5. The point estimate is also far below the 0.20% economic threshold.
 - Robustness (not part of the decision): season-only CI [−0.27%, +0.43%]; the subsample not seen before pre-registration
   (D before 2023-10-09, 3,463 events) gives S = −0.05% [−0.66%, +0.48%].
+
+Correction after the independent review (results/independent_review_session3.md, finding P1-4; the decision is unchanged):
+S as defined above is attenuated. It equals W x (a weighted average of within-ticker long-minus-flat gaps) with W = 0.78 in this
+sample (46 of 190 tickers are all-long or all-flat and add only to the denominators). In those effect units the realised MDE is
+about 0.98% (not 0.76%) and the pre-registered "about 1.0%" corresponds to about 1.3%. The ticker fixed-effects slope is +0.09%
+(exploratory). So the non-rejection means "no evidence of a within-ticker effect of about 1% or more at T+5".

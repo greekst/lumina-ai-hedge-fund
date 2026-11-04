@@ -41,6 +41,18 @@ class Snapshot:
 
     @classmethod
     def load(cls, root: str) -> "Snapshot":
+        with open(os.path.join(root, "manifest.json"), encoding="utf-8") as fh:
+            man = json.load(fh)
+        if man.get("base"):
+            # Session 3 review overlay: everything from the frozen base snapshot, share counts/floats from the overlay.
+            snap = cls.load(os.path.join(os.path.dirname(root), man["base"]))
+            snap.root, snap.manifest = root, dict(snap.manifest, **{k: v for k, v in man.items() if k != "sha256"})
+            snap.shares, snap.floats = {}, {}
+            for t in snap.manifest["tickers"]:
+                with open(os.path.join(root, "shares", f"{_safe(t)}.json"), encoding="utf-8") as fh:
+                    d_ = json.load(fh)
+                snap.shares[t], snap.floats[t] = d_["shares"], d_.get("public_float", [])
+            return snap
         snap = cls(root=root)
         with open(os.path.join(root, "manifest.json"), encoding="utf-8") as fh:
             snap.manifest = json.load(fh)

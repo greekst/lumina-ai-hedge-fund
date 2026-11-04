@@ -38,6 +38,23 @@ def skill(df: pd.DataFrame, strat: str, h: int) -> Dict[str, Any]:
             "season": cluster_diff(yd.to_numpy(), s["long"].to_numpy() == 1, seas)}
 
 
+def fe_slope(df: pd.DataFrame, strat: str = "council", h: int = 5) -> Dict[str, float]:
+    """Review P1-4 (exploratory): the ticker fixed-effects slope of y on the long indicator, and the weight sum W that
+    links it to the pre-registered S (S = W x a weighted average of within-ticker long-flat gaps; W < 1 attenuates S,
+    and tickers that are all-long or all-flat add only to the denominators)."""
+    s = df[df.strategy == strat]
+    y = s[f"underlying_ret_{h}"] - s[f"sector_ret_{h}"]
+    g = s["long"].astype(float)
+    yd = y - y.groupby(s["ticker"]).transform("mean")
+    gd = g - g.groupby(s["ticker"]).transform("mean")
+    n_l, n_f = float(g.sum()), float((1 - g).sum())
+    per = s.assign(g=g).groupby("ticker")["g"].agg(["sum", "count"])
+    w = (1 / n_l + 1 / n_f) * float((per["sum"] * (per["count"] - per["sum"]) / per["count"]).sum())
+    mixed = per[(per["sum"] > 0) & (per["sum"] < per["count"])]
+    return {"slope": float((gd * yd).sum() / (gd * gd).sum()), "W": w, "tickers_mixed": int(len(mixed)),
+            "tickers_all_one_side": int(len(per) - len(mixed))}
+
+
 def build() -> Dict[str, Any]:
     with open(os.path.join(ROOT, "results", f"walkforward_{TAG}_summary.json"), encoding="utf-8") as fh:
         summ = json.load(fh)
@@ -52,6 +69,7 @@ def build() -> Dict[str, Any]:
     out["pre_seen"] = {f"{s}|{h}": skill(pre, s, h) for s in ("council", "factors_only") for h in wf.HORIZONS}
     out["pre_seen_n"] = int((pre.strategy == "council").sum())
     out["overall"] = o
+    out["fe"] = fe_slope(df)
     out["by_regime"] = summ["cells"]["by_regime"]
     out["by_sector"] = summ["cells"]["by_sector"]
     return out
@@ -83,6 +101,11 @@ def markdown(r: Dict[str, Any]) -> str:
           "earnings events within a ticker than it skips, at the pre-registered horizon. <!-- text-only -->"),
          ("- Economic check: the pre-registered threshold is twenty basis points (one round trip); see HYPOTHESIS.md. <!-- text-only -->"),
          f"- Season-only clustering (robustness, not the test): CI [{F(r['h1_season_only']['lo'])}, {F(r['h1_season_only']['hi'])}].",
+         f"- Added after the independent review (attenuation finding; exploratory, does not change the decision): S is attenuated. It equals "
+         f"W x (a weighted average of within-ticker long-minus-flat gaps) with W = {F(r['fe']['W'], False, 2, 'derived from ' + SRC)}; "
+         f"{N(r['fe']['tickers_all_one_side'], 'derived from ' + SRC)} tickers are all-long or all-flat. The ticker fixed-effects "
+         f"slope is {F(r['fe']['slope'], src='derived from ' + SRC)}. In those effect units the MDE is about the reported MDE "
+         f"divided by W, i.e. close to one percent, not the reported figure.",
          "", "## Exploratory (not confirmatory; many cells, expect some false positives)", "",
          "### Within-ticker selection skill, all horizons (two-way clustered)", "",
          "| strategy / horizon | S | 95% CI low | 95% CI high | one-sided lower bound | longs | flats |", "|---|---|---|---|---|---|---|"]

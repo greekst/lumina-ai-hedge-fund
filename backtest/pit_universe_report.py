@@ -136,9 +136,10 @@ def markdown(r: Dict[str, Any]) -> str:
     L += ["", "**Effect of the gaps.** Missing names cannot enter the ranking, so the hundredth slot goes to the next company "
           "(the universe is complete in size but slightly too small in average cap), and their events are absent. Most are "
           "acquisitions (Celgene, Allergan, Monsanto, Time Warner, Express Scripts, EMC, Anadarko, Shire), Walgreens (taken private) "
-          "and Dow Chemical (DowDuPont merger). Acquired firms typically end with a takeover premium, so excluding them biases "
-          "buy-and-hold slightly DOWN; a strategy that would have been long into a takeover misses that gain, one that was flat "
-          "misses nothing. Their earnings events are a few percent of the sample at most. They are not recoverable without a "
+          "and Dow Chemical (DowDuPont merger). The direction of the bias is unknown: several were long decliners before they "
+          "left (Walgreens, Allergan, Celgene, Express Scripts), and a takeover premium lands on one announcement day, rarely "
+          "inside an earnings window (independent review P1-5). The reviewer estimates the missing events at a few percent of "
+          "the 2015-2026 sample; the within-ticker H1 statistic is largely immune. They are not recoverable without a "
           "delisted-price source (CRSP, Norgate, EODHD). <!-- text-only -->", "",
           "**Other known limitations.** Sectors: GICS from the current S&P 500 file where available, else an SIC-to-GICS map "
           f"(sector sources: {', '.join(f'{k} {N(v, S_s)}' for k, v in sorted(r['sector_sources'].items()))}); current sector "

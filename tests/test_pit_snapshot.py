@@ -19,7 +19,8 @@ from backtest import pit_universe as PU
 from backtest import walkforward as wf
 from backtest.pit import Snapshot
 
-SNAP = os.path.join(os.path.dirname(os.path.dirname(__file__)), "backtest", "snapshots", "2026-11-04-pit")
+SNAPS = os.path.join(os.path.dirname(os.path.dirname(__file__)), "backtest", "snapshots")
+SNAP = os.path.join(SNAPS, "2026-11-04-pit")
 pytestmark = pytest.mark.skipif(not os.path.exists(os.path.join(SNAP, "manifest.json")), reason="PIT snapshot not built")
 
 DECISION_COLS = ["ticker", "decision_date", "features_through", "strategy", "action", "long", "allocation_pct",
@@ -27,9 +28,13 @@ DECISION_COLS = ["ticker", "decision_date", "features_through", "strategy", "act
 DAYS = ["2016-04-25", "2020-07-27", "2024-10-29"]   # busy earnings sessions in three different regimes
 
 
-@pytest.fixture(scope="module")
-def snap():
-    return Snapshot.load(SNAP)
+# the pre-registered base snapshot (ranking rules v1) and the review overlay (rules v2)
+@pytest.fixture(scope="module", params=["2026-11-04-pit", "2026-11-04-pit-r1"])
+def snap(request):
+    root = os.path.join(SNAPS, request.param)
+    if not os.path.exists(os.path.join(root, "manifest.json")):
+        pytest.skip(f"{request.param} not built")
+    return Snapshot.load(root)
 
 
 def poisoned(snap: Snapshot, D: pd.Timestamp, seed: int = 7) -> Snapshot:
@@ -54,7 +59,7 @@ def poisoned(snap: Snapshot, D: pd.Timestamp, seed: int = 7) -> Snapshot:
 
 
 def _decisions(s: Snapshot, day: str) -> pd.DataFrame:
-    r = wf.run(SNAP, None, universe="pit", d_from=day, d_to=day, write=False, snap=s)
+    r = wf.run(s.root, None, universe="pit", d_from=day, d_to=day, write=False, snap=s)
     return r["rows"][DECISION_COLS].reset_index(drop=True)
 
 

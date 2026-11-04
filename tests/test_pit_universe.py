@@ -111,3 +111,10 @@ def test_float_cross_check():
     assert not PU.float_check_ok(1e12, 1e7)            # cap 1e5 x the float: ADS-ratio / unit junk
     assert PU.float_check_ok(1e12, 0.9e9, shares_confirmed=True)   # float tagged in thousands, shares confirmed
     assert not PU.float_check_ok(1e12, 0.9e9)                       # same signature, single-tag share count
+
+
+def test_v2_unit_band_and_v1_unchanged():
+    # COP-style: weighted count tagged exactly x1/1000 -> v1 (inclusive bounds, as pre-registered) keeps it, v2 replaces it
+    v1, _ = PU.shares_from_filing(None, 1.24e6, None, 2.48e9, 2.0)
+    v2, m2 = PU.shares_from_filing(None, 1.24e6, None, 2.48e9, 2.0, unit_band=200.0)
+    assert v1 == 1.24e6 and abs(v2 - 1.24e9) < 1 and "unit" in m2

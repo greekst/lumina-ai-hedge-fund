@@ -184,7 +184,13 @@ def verify(root: str) -> List[str]:
     """Return list of files whose hash no longer matches the manifest."""
     with open(os.path.join(root, "manifest.json"), encoding="utf-8") as fh:
         man = json.load(fh)
-    return [f for f, h in man["sha256"].items() if _sha256(os.path.join(root, f)) != h]
+    bad = [f for f, h in man["sha256"].items() if _sha256(os.path.join(root, f)) != h]
+    if man.get("base"):   # Session 3 review overlay: the base snapshot must be intact and the one it was built on
+        base = os.path.join(os.path.dirname(root), man["base"])
+        bad += [f"{man['base']}/{f}" for f in verify(base)]
+        if _sha256(os.path.join(base, "manifest.json")) != man.get("base_manifest_sha256"):
+            bad.append(f"{man['base']}/manifest.json (not the base this overlay was built on)")
+    return bad
 
 
 def main() -> None:

@@ -14,8 +14,12 @@ Universe on decision session D = the 100 largest US-listed domestic filers (10-K
                      is absent or partial in companyfacts);
                   2. else us-gaap weighted average diluted shares (basic if diluted is absent);
                   3. else net income / diluted EPS of the same filing.
-                  A weighted count that disagrees with NI / EPS by > 25% (unit errors, e.g. MCD in millions)
-                  is replaced by NI / EPS.
+                  A weighted count off from NI / EPS by orders of magnitude (unit errors, e.g. MCD in millions) is
+                  replaced by NI / EPS: outside [1/1000, 1000]x in rules v1 (pre-registered), outside [1/200, 200]x in v2.
+  Rules versions: "v1" = as pre-registered for H1 (snapshot 2026-11-04-pit). "v2" = after the Session 3 independent
+                review (overlay snapshot 2026-11-04-pit-r1): stricter unit band, cover count dated at acceptance when a split
+                falls between cover date and acceptance (SHW 2021), cap/assets guard always on, float check made at the
+                float's own date (no momentum bias), float values below 10M USD treated as unit-scaled (ignored).
   price         split-adjusted close (today's share basis), so shares are put on today's basis by the product
                 of splits after the shares' date (unit conversion only; a ratio, no look-ahead in the rank).
   multiplier    BRK-B x 1500 (Berkshire reports Class A-equivalent shares). Other multi-class companies use
@@ -102,14 +106,17 @@ def _read_gz(path: str) -> bytes:
 # ---------------------------------------------------------------------------
 
 def shares_from_filing(dei: Optional[float], w_dil: Optional[float], w_bas: Optional[float],
-                       ni: Optional[float], eps: Optional[float], require_check: bool = False) -> Tuple[Optional[float], str]:
+                       ni: Optional[float], eps: Optional[float], require_check: bool = False,
+                       unit_band: float = 1e3) -> Tuple[Optional[float], str]:
     """Pick the share count for market cap from values reported in ONE filing (see module doc)."""
     w, wname = (w_dil, "weighted diluted") if w_dil else ((w_bas, "weighted basic") if w_bas else (None, ""))
     # NI / EPS is noisy when EPS is small or rounded (WFC 2020Q1: EPS 0.01; preferred dividends), so it only
     # (a) replaces a weighted count that is off by orders of magnitude (unit error, e.g. MCD tagged in millions)
     # and (b) stands in when no weighted count exists.
     implied = (ni / eps) if (ni and eps and abs(eps) >= 0.05 and ni / eps > 0) else None
-    if w and implied and not (1e-3 <= w / implied <= 1e3):
+    unit_ok = (1e-3 <= w / implied <= 1e3) if (w and implied and unit_band == 1e3) else \
+        (1.0 / unit_band < w / implied < unit_band) if (w and implied) else True   # v1 bounds kept exactly (inclusive)
+    if w and implied and not unit_ok:
         w, wname = implied, "net income / diluted EPS (weighted count failed unit sanity check)"
     if w is None and implied:
         w, wname = implied, "net income / diluted EPS"
@@ -123,7 +130,8 @@ def shares_from_filing(dei: Optional[float], w_dil: Optional[float], w_bas: Opti
     return (w, wname) if w else (None, "")
 
 
-def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str = "2012-01-01") -> List[Dict[str, Any]]:
+def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str = "2012-01-01", rules: str = "v1",
+                  splits: Optional[List[Dict[str, float]]] = None) -> List[Dict[str, Any]]:
     """[{accepted_at, as_of, shares, method, form, accn}] from companyfacts, PIT key = acceptanceDateTime."""
     acc = {s["accessionNumber"]: s for s in subs}
     gaap = (facts.get("facts") or {}).get("us-gaap", {}) or {}
@@ -165,10 +173,15 @@ def shares_series(facts: Dict[str, Any], subs: List[Dict[str, Any]], since: str 
         same = ni and eps and ni["end"] == eps["end"] and ni["start"] == eps["start"]
         val, method = shares_from_filing(
             (d.get("dei") or {}).get("val"), (d.get("w_dil") or {}).get("val"), (d.get("w_bas") or {}).get("val"),
-            ni["val"] if same else None, eps["val"] if same else None)
+            ni["val"] if same else None, eps["val"] if same else None, unit_band=1e3 if rules == "v1" else 200.0)
         if not val:
             continue
-        as_of = d["dei"]["end"] if method.startswith("dei") else to_et(sub["acceptanceDateTime"])[:10]
+        acc_day = to_et(sub["acceptanceDateTime"])[:10]
+        as_of = d["dei"]["end"] if method.startswith("dei") else acc_day
+        if rules != "v1" and method.startswith("dei") and any(as_of < sp["date"] <= acc_day for sp in (splits or [])):
+            # review P1-2 (SHW 2021-04-28): the cover count agrees with the weighted count, which is restated for a
+            # split that took effect after the cover date but before acceptance -> it is on the post-split basis.
+            as_of = acc_day
         out.append({"accepted_at": to_et(sub["acceptanceDateTime"]), "as_of": as_of, "shares": float(val),
                     "method": method, "form": sub.get("form"), "accn": accn,
                     "assets": float(d["assets"]["val"]) if d.get("assets") else None})
@@ -222,8 +235,9 @@ def split_factor_after(splits: List[Dict[str, float]], when: str) -> float:
 
 
 JUMP = 3.0          # a share count > 3x away from the last accepted one needs confirmation by the next filing
-FLOAT_MAX_RATIO = 10.0
-MAX_CAP_TO_ASSETS = 100.0   # unchecked share count (no float, single tag): cap > 100x total assets -> not rankable   # market cap > 10x the latest public float (10-K cover) -> not rankable that day
+FLOAT_MAX_RATIO = 10.0     # market cap > 10x the latest public float (10-K cover) -> not rankable that day
+MAX_CAP_TO_ASSETS = 100.0  # cap > 100x total assets -> not rankable (v1: only when no float and a single-tag count; v2: always)
+MIN_FLOAT_USD = 1e7        # v2: a float below 10M USD for a candidate is a unit-scaled tag (e.g. DD "56.1") -> ignored
 
 
 def accepted_series(series: List[Dict[str, Any]], splits: List[Dict[str, float]]) -> List[Dict[str, Any]]:
@@ -253,12 +267,17 @@ def shares_at(series: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[Di
     return series[i - 1] if i > 0 else None
 
 
-def float_at(floats: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[float]:
-    """Latest public float (USD) from a 10-K accepted before `cutoff` and at most 15 months old."""
+def float_rec_at(floats: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[Dict[str, Any]]:
+    """Latest public-float record from a 10-K accepted before `cutoff` and at most 15 months old."""
     rec = shares_at(floats, cutoff)
     if rec is None or (cutoff - pd.Timestamp(rec["accepted_at"])).days > 460:
         return None
-    return float(rec["value"])
+    return rec
+
+
+def float_at(floats: List[Dict[str, Any]], cutoff: pd.Timestamp) -> Optional[float]:
+    rec = float_rec_at(floats, cutoff)
+    return float(rec["value"]) if rec else None
 
 
 def float_check_ok(cap: float, flt: Optional[float], shares_confirmed: bool = False) -> bool:
@@ -275,6 +294,7 @@ def market_caps_on(snap, day: pd.Timestamp, tickers: Optional[List[str]] = None)
     """PIT market caps at the close of `day` (a session): shares from filings accepted before 16:00 ET on
     `day`, prices up to and including `day` only."""
     cutoff = pd.Timestamp(f"{day.date()} 16:00:00")
+    rules = (getattr(snap, "manifest", {}) or {}).get("rank_rules", "v1")
     out: Dict[str, float] = {}
     acc = getattr(snap, "_accepted_shares", None)
     if acc is None or acc[0] is not snap.shares:
@@ -296,13 +316,26 @@ def market_caps_on(snap, day: pd.Timestamp, tickers: Optional[List[str]] = None)
             continue
         px = float(df.at[day, "CloseSplitAdj"])
         k = split_factor_after(snap.splits.get(t, []), rec["as_of"])
-        cap = rec["shares"] * k * px * PRICE_MULT.get(t.replace(".", "-"), 1.0)
-        flt = float_at(floats.get(t, []), cutoff)
+        mult = PRICE_MULT.get(t.replace(".", "-"), 1.0)
+        cap = rec["shares"] * k * px * mult
         confirmed = rec.get("method") == "dei cover shares"
-        if not float_check_ok(cap, flt, confirmed):
-            continue
-        if flt is None and not confirmed and rec.get("assets") and cap > MAX_CAP_TO_ASSETS * rec["assets"]:
-            continue   # single-tag share count, no float to check it against, implausible vs assets (RRBI 2019: x1000 tag)
+        if rules == "v1":
+            flt = float_at(floats.get(t, []), cutoff)
+            if not float_check_ok(cap, flt, confirmed):
+                continue
+            if flt is None and not confirmed and rec.get("assets") and cap > MAX_CAP_TO_ASSETS * rec["assets"]:
+                continue   # single-tag share count, no float to check it against, implausible vs assets (RRBI 2019)
+        else:
+            if rec.get("assets") and cap > MAX_CAP_TO_ASSETS * rec["assets"]:
+                continue   # review P1-1: always on (RPAY: shares and float both tagged x1000)
+            fr = float_rec_at(floats.get(t, []), cutoff)
+            if fr and float(fr["value"]) >= MIN_FLOAT_USD:
+                # review P1-3: compare like with like - the cap ON THE FLOAT'S DATE, not today's cap (no momentum bias)
+                pxf = df.loc[df.index <= pd.Timestamp(fr["as_of"]), "CloseSplitAdj"]
+                if len(pxf):
+                    cap_then = rec["shares"] * k * float(pxf.iloc[-1]) * mult
+                    if not float_check_ok(cap_then, float(fr["value"]), confirmed):
+                        continue
         out[t] = cap
     return out
 

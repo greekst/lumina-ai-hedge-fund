@@ -96,8 +96,10 @@ def markdown(res: Dict[str, Any]) -> str:
           f"{wf._fmt(surv, False, 'derived: C / B', '2026-11-04', decimals=2)}. "
           f"Previous session as published (A): {F(bh['A'], 'A')}.",
           "- The point-in-time universe still excludes companies that were delisted after acquisition and have no price "
-          "history in this sandbox (see results/pit_universe_2026-11-04.md, known gaps); acquired companies usually end "
-          "with a takeover premium, so their absence biases C's buy-and-hold slightly downward, not upward. <!-- text-only -->", ""]
+          "history in this sandbox (see results/pit_universe_2026-11-04.md, known gaps). The DIRECTION of that bias is "
+          "unknown: several were long decliners before they left (Walgreens, Allergan, Celgene, Express Scripts), and a "
+          "takeover premium lands on one announcement day, rarely inside an earnings window (corrected after the "
+          "independent review, P1-5; it was first stated as a downward bias). <!-- text-only -->", ""]
     md = "\n".join(L) + "\n"
     bad = untagged_numbers(md)
     if bad:
