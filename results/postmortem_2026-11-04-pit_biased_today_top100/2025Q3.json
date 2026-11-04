@@ -1322,61 +1322,6 @@
  {
   "actual": {
    "label": "SOURCED FACT",
-   "ret_1d_pct": -3.6959,
-   "ret_20d_pct": 13.4048,
-   "ret_5d_pct": -2.2175,
-   "source": "snapshot prices (yfinance adjusted close)",
-   "spy_1d_pct": -0.507,
-   "spy_20d_pct": 1.4418,
-   "spy_5d_pct": 0.7526
-  },
-  "announced_at_et": "2025-08-04 16:00",
-  "decision_date": "2025-08-04",
-  "diff": {
-   "abs_move_vs_atr_ratio": 0.8159,
-   "avoided_drawdown": 0,
-   "council_correct_1d": 0,
-   "council_correct_20d": 1,
-   "council_correct_5d": 0,
-   "factors_correct_1d": 1,
-   "factors_correct_20d": 0,
-   "factors_correct_5d": 1,
-   "missed_upside": 0,
-   "stop_breached_20d": 0
-  },
-  "expected": {
-   "agent_scores": {
-    "buffett": 85,
-    "cathie_wood": 52,
-    "cis_trader": 82,
-    "george_soros": 59,
-    "graham": 56,
-    "michael_burry": 57,
-    "william_oneil": 70
-   },
-   "agent_stances": {
-    "buffett": "BULLISH",
-    "cathie_wood": "NEUTRAL",
-    "cis_trader": "BULLISH",
-    "george_soros": "NEUTRAL",
-    "graham": "NEUTRAL",
-    "michael_burry": "CAUTION",
-    "william_oneil": "NEUTRAL"
-   },
-   "council_action": "ACCUMULATE",
-   "council_confidence": 65,
-   "council_long": 1,
-   "cro_veto": 0,
-   "factors_only_long": 0,
-   "implied_1d_move_pct_from_atr": 4.53,
-   "label": "MODEL ASSUMPTION",
-   "veto_reason": ""
-  },
-  "ticker": "CRD.A"
- },
- {
-  "actual": {
-   "label": "SOURCED FACT",
    "ret_1d_pct": -4.8508,
    "ret_20d_pct": -7.9351,
    "ret_5d_pct": -5.4124,
@@ -4233,6 +4178,61 @@
    "veto_reason": ""
   },
   "ticker": "RTX"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.2151,
+   "ret_20d_pct": -6.1945,
+   "ret_5d_pct": -2.969,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.1259,
+   "spy_20d_pct": 1.5584,
+   "spy_5d_pct": -1.1476
+  },
+  "announced_at_et": "2025-07-29 16:00",
+  "decision_date": "2025-07-29",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.0831,
+   "avoided_drawdown": 1,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 47,
+    "cis_trader": 81,
+    "george_soros": 56,
+    "graham": 43,
+    "michael_burry": 44,
+    "william_oneil": 59
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 55,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.59,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SBUX"
  },
  {
   "actual": {

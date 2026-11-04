@@ -1322,61 +1322,6 @@
  {
   "actual": {
    "label": "SOURCED FACT",
-   "ret_1d_pct": -28.1949,
-   "ret_20d_pct": -27.9553,
-   "ret_5d_pct": -36.7412,
-   "source": "snapshot prices (yfinance adjusted close)",
-   "spy_1d_pct": -0.9994,
-   "spy_20d_pct": 1.5913,
-   "spy_5d_pct": -0.1991
-  },
-  "announced_at_et": "2024-03-04 16:00",
-  "decision_date": "2024-03-04",
-  "diff": {
-   "abs_move_vs_atr_ratio": 6.4519,
-   "avoided_drawdown": 0,
-   "council_correct_1d": 0,
-   "council_correct_20d": 0,
-   "council_correct_5d": 0,
-   "factors_correct_1d": 1,
-   "factors_correct_20d": 1,
-   "factors_correct_5d": 1,
-   "missed_upside": 0,
-   "stop_breached_20d": 1
-  },
-  "expected": {
-   "agent_scores": {
-    "buffett": 53,
-    "cathie_wood": 69,
-    "cis_trader": 82,
-    "george_soros": 71,
-    "graham": 56,
-    "michael_burry": 57,
-    "william_oneil": 75
-   },
-   "agent_stances": {
-    "buffett": "NEUTRAL",
-    "cathie_wood": "NEUTRAL",
-    "cis_trader": "BULLISH",
-    "george_soros": "BULLISH",
-    "graham": "NEUTRAL",
-    "michael_burry": "CAUTION",
-    "william_oneil": "BULLISH"
-   },
-   "council_action": "ACCUMULATE",
-   "council_confidence": 68,
-   "council_long": 1,
-   "cro_veto": 0,
-   "factors_only_long": 0,
-   "implied_1d_move_pct_from_atr": 4.37,
-   "label": "MODEL ASSUMPTION",
-   "veto_reason": ""
-  },
-  "ticker": "CRD.A"
- },
- {
-  "actual": {
-   "label": "SOURCED FACT",
    "ret_1d_pct": 3.019,
    "ret_20d_pct": 0.6684,
    "ret_5d_pct": 1.3344,
@@ -4178,6 +4123,61 @@
    "veto_reason": ""
   },
   "ticker": "RTX"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.1161,
+   "ret_20d_pct": -0.5532,
+   "ret_5d_pct": 1.69,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.6317,
+   "spy_20d_pct": 3.131,
+   "spy_5d_pct": 0.6295
+  },
+  "announced_at_et": "2024-01-30 16:00",
+  "decision_date": "2024-01-30",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.786,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 70,
+    "cis_trader": 74,
+    "george_soros": 72,
+    "graham": 49,
+    "michael_burry": 51,
+    "william_oneil": 76
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 67,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.42,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SBUX"
  },
  {
   "actual": {

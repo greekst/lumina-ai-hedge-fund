@@ -259,3 +259,22 @@ Branch: `claude/kind-rubin-ahzsge` (assigned by the harness). Mock LLM mode thro
   columns unchanged. Meta-tests: the detector FAILS for a harness that ranks at D instead of D-1 and for one that sees share counts
   18 hours early. Session 2 regression: sp100 walk-forward rerun with the modified harness reproduces sha256 `f5735aab…`.
 - Tests: 91 passed, 1 skipped.
+
+## 2026-11-04 21:41 UTC — Phase B result: survivorship-biased vs point-in-time, Session 2 window
+Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..2026-09-30 (12 seasons), mock council, season-clustered CIs.
+- A = Session 2 as published (1,183 events, 100 tickers); B = today's top 100 recomputed on Session 3 data (1,171 events, 99 tickers);
+  C = point-in-time universe (1,198 events, 134 tickers).
+- **Buy-and-hold excess vs sector ETF, T+20: A +0.97% [+0.72, +1.24], B +0.95% [+0.64, +1.30], C +0.12% [−0.20, +0.42].**
+  B reproduces A on new data (data pipeline consistent); C keeps about 12% of it (C/B = 0.12), and the CI includes zero.
+  T+5: B +0.46% -> C −0.05%; T+1: B +0.39% -> C −0.10%. The Session 2 "about 1% per 20 sessions" was survivorship.
+- Council excess vs sector ETF T+20: B +0.27% -> C −0.22% [−0.60, +0.18]; factors-only B +0.15% -> C −0.26% [−0.53, −0.01].
+- Council − factors-only (paired) T+20 is unchanged at +0.74% in all three (C: [−0.02, +1.52]): it is the long-rate gap
+  (council long 71% vs 43% in C) times the market, not stock selection.
+- **Within-ticker selection skill stays at zero** in every universe and horizon; council T+5: A +0.08%, B −0.02%, C −0.02% [−1.06, +1.12].
+- Output digests: B `5c48ffbd…`, C `63184c87…` (rerun check in progress).
+
+## 2026-11-04 21:41 UTC — Phase C: HYPOTHESIS.md committed before Phase D
+- H1: within-ticker selection skill of the mock council at T+5 > 0 on the PIT universe, D >= 2015-01-01, two-way (season x ticker)
+  pigeonhole bootstrap, one-sided 5%: reject iff the bootstrap 5th percentile > 0. MDE ≈ 1.0% (one-sided, 80% power), from the
+  Phase B SE (0.813%) scaled by sqrt(12/47). Disclosed: the 2023-10..2026-09 part (about a quarter of the sample) was seen in Phase B.
+  No decision or return before 2023-10-09 had been computed when the file was committed.

@@ -91,10 +91,10 @@ def markdown(res: Dict[str, Any]) -> str:
     bh = {k: ov[k]["buy_and_hold|20|excess_sector"]["mean"] for k in "ABC"}
     surv = bh["C"] / bh["B"] if bh["B"] else float("nan")
     L += ["", "## How much of the buy-and-hold excess survives", "",
-          f"- Buy-and-hold excess vs sector ETF at T+20: biased universe on Session 3 data (B) {F(bh['B'], 'B')}, "
+          f"- Buy-and-hold excess vs sector ETF at the twenty-session horizon: biased universe on this session's data (B) {F(bh['B'], 'B')}, "
           f"point-in-time universe (C) {F(bh['C'], 'C')}. Share that survives (C / B): "
           f"{wf._fmt(surv, False, 'derived: C / B', '2026-11-04', decimals=2)}. "
-          f"Session 2 as published (A): {F(bh['A'], 'A')}.",
+          f"Previous session as published (A): {F(bh['A'], 'A')}.",
           "- The point-in-time universe still excludes companies that were delisted after acquisition and have no price "
           "history in this sandbox (see results/pit_universe_2026-11-04.md, known gaps); acquired companies usually end "
           "with a takeover premium, so their absence biases C's buy-and-hold slightly downward, not upward. <!-- text-only -->", ""]
@@ -105,8 +105,18 @@ def markdown(res: Dict[str, Any]) -> str:
     return md
 
 
+def from_files() -> Dict[str, Any]:
+    res = {}
+    for k, name in (("A", "2026-11-04-sp100"), ("B", "2026-11-04-pit_biased_today_top100"), ("C", "2026-11-04-pit_pit_s2window")):
+        with open(os.path.join(ROOT, "results", f"walkforward_{name}_summary.json"), encoding="utf-8") as fh:
+            res[k] = {"summary": json.load(fh)}
+    res["_last_session"] = str(Snapshot.load(PIT).sessions("SPY")[-1].date())
+    return res
+
+
 def main() -> None:
-    res = runs()
+    import sys
+    res = from_files() if "--from-files" in sys.argv else runs()
     md = markdown(res)
     out = os.path.join(ROOT, "results", "pit_vs_biased_2026-11-04.md")
     with open(out, "w", encoding="utf-8", newline="\n") as fh:
@@ -115,7 +125,8 @@ def main() -> None:
         json.dump({k: res[k]["summary"]["cells"]["overall"] for k in "ABC"} | {"last_session": res["_last_session"]},
                   fh, indent=1, sort_keys=True, default=lambda x: None if isinstance(x, float) and not np.isfinite(x) else x)
     for k in "BC":
-        print(k, json.dumps(res[k]["paths"]), "sha256", wf.digest(res[k]["paths"]))
+        if "paths" in res[k]:
+            print(k, json.dumps(res[k]["paths"]), "sha256", wf.digest(res[k]["paths"]))
     print("written", out)
 
 
