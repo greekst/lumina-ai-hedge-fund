@@ -63,17 +63,21 @@ def main():
         """, unsafe_allow_html=True)
 
         st.caption("🤖 **LLM Engine Providers**")
+        # Security (audit): never pre-fill secrets into the page; a password input's value
+        # is sent to the browser. Blank input -> server-side env/settings key is used.
+        env_key_present = bool(os.getenv("GEMINI_API_KEY", ""))
         gemini_key = st.text_input(
-            "Gemini API Key", 
-            value=os.getenv("GEMINI_API_KEY", ""), 
+            "Gemini API Key",
+            value="",
             type="password",
-            help="Required for LangGraph 7-agent debate & synthesis"
-        )
+            placeholder="configured on server" if env_key_present else "",
+            help="Leave blank to use GEMINI_API_KEY from the server environment. LUMINA_LLM_MODE=mock runs offline."
+        ) or os.getenv("GEMINI_API_KEY", "")
         openai_key = st.text_input(
-            "OpenAI API Key (Optional)", 
-            value=os.getenv("OPENAI_API_KEY", ""), 
+            "OpenAI API Key (Optional)",
+            value="",
             type="password"
-        )
+        ) or os.getenv("OPENAI_API_KEY", "")
 
         st.markdown("---")
         st.caption("🌐 **Interface Language / 言語**")

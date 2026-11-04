@@ -6,7 +6,7 @@ License: upstream is CC BY-NC 4.0. This fork is for **personal research only**. 
 
 ## Hard rules (never break)
 
-1. **Paper trading only.** Never configure, test against, or enable the IBKR (`IBKRBrokerClient`) or Kabu-Station (`KabuStationClient`) adapters with real credentials or a live gateway. Never set `LUMINA_ENABLE_SOCIAL_POSTING`, never call `XPublisher.post_tweet` for real, never enable any social posting or webhook publishing.
+1. **Paper trading only.** Never configure, test against, or enable the IBKR (`IBKRClient`) or Kabu-Station (`KabuStationClient`) adapters with real credentials or a live gateway. Never set `LUMINA_ENABLE_SOCIAL_POSTING`, never call `XPublisher.post_tweet` for real, never enable any social posting or webhook publishing.
 2. **No secrets in git.** `.env`, `config/settings.json`, `*.db` stay ignored. Run `python scripts/check_no_secrets.py` before every commit; it also runs in CI and fails loudly. Never print secret env vars (`env`, `printenv`); test presence with `[ -n "$X" ]`.
 3. **Models reason, software calculates.** No LLM-produced number may flow into a metric, signal, position size, stop, or report figure. LLM output is restricted to categorical stances and prose; every number is computed by deterministic code. LLM-returned numeric fields are discarded/clamped by `core/ai_hedge_fund/llm_guard.py`.
 4. **Point-in-time correctness.** A backtest decision at time T may only use data with an availability timestamp `< T` (prices up to the close of T-1, filings by their SEC `filed`/acceptance date, never `yfinance.Ticker.info` snapshots). Look-ahead bias is a **P0 bug**. Use `backtest/pit.py` (`PITSnapshot`) for anything historical.

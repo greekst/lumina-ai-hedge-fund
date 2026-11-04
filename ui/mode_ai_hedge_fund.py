@@ -4,6 +4,7 @@ import streamlit as st
 import json
 import time
 import os
+import html as _html  # escape LLM/news text before unsafe_allow_html (security audit)
 from typing import Dict, Any, List, Optional
 
 from core.ai_hedge_fund.market_data_feed import MarketDataFeed
@@ -358,17 +359,17 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                     f'<div style="display: flex; align-items: center; gap: 10px;">'
                     f'<span style="font-size: 24px;">{d.get("avatar", "👤")}</span>'
                     f'<div>'
-                    f'<span style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF;">{d.get("name")}</span>'
-                    f'<span style="font-size: 11px; color: #94a3b8; margin-left: 6px;">({d.get("title")})</span>'
+                    f'<span style="font-size: 1.05rem; font-weight: 700; color: #FFFFFF;">{_html.escape(str(d.get("name")))}</span>'
+                    f'<span style="font-size: 11px; color: #94a3b8; margin-left: 6px;">({_html.escape(str(d.get("title")))})</span>'
                     f'</div>'
                     f'</div>'
                     f'<div style="display: flex; align-items: center; gap: 8px;">'
                     f'<span style="font-size: 11px; background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 4px; color: #cbd5e1;">{score_str}</span>'
-                    f'<span style="background: {badge_color}; color: #ffffff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">{d.get("stance")}</span>'
+                    f'<span style="background: {badge_color}; color: #ffffff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">{_html.escape(str(d.get("stance")))}</span>'
                     f'</div>'
                     f'</div>'
                     f'<div style="color: #e2e8f0; font-size: 0.92rem; line-height: 1.6; padding-left: 34px;">'
-                    f'{d.get("dialogue")}'
+                    f'{_html.escape(str(d.get("dialogue"))).replace(chr(10), "<br>")}'
                     f'</div>'
                     f'</div>'
                 )
@@ -679,7 +680,7 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                                         st.markdown(f"<div style='text-align: right;'><span style='background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 8px; border-radius: 6px; font-weight: bold; font-size: 12px;'>{score_txt}</span></div>", unsafe_allow_html=True)
                                         st.markdown(f"<div style='text-align: right; font-weight: bold; font-size: 13px; color: #f8fafc; margin-top: 2px;'>{item['current_price']:,.2f} {item['currency']}</div>", unsafe_allow_html=True)
                                     
-                                    st.markdown(f"<div style='font-size: 11px; color: #94a3b8; line-height: 1.4; margin: 4px 0 8px 0;'>💡 {item['thesis']}</div>", unsafe_allow_html=True)
+                                    st.markdown(f"<div style='font-size: 11px; color: #94a3b8; line-height: 1.4; margin: 4px 0 8px 0;'>💡 {_html.escape(str(item['thesis']))}</div>", unsafe_allow_html=True)
                                     
                                     if lang == "en":
                                         m_pbr = f"PBR: {item['pb']:.2f}x" if item.get('pb') else ""
