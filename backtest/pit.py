@@ -13,6 +13,7 @@ Every value carries `source` and `as_of` so reports can tag it (hard rule 5).
 
 from __future__ import annotations
 
+import gzip
 import json
 import os
 from dataclasses import dataclass, field
@@ -35,6 +36,7 @@ class Snapshot:
     splits: Dict[str, List[Dict[str, float]]] = field(default_factory=dict)
     manifest: Dict[str, Any] = field(default_factory=dict)
     universe: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # ticker -> {sector, sector_etf, ...}
+    shares: Dict[str, List[Dict[str, Any]]] = field(default_factory=dict)  # ticker -> PIT share counts (Session 3)
 
     @classmethod
     def load(cls, root: str) -> "Snapshot":
@@ -52,13 +54,22 @@ class Snapshot:
             with open(up, encoding="utf-8") as fh:
                 snap.universe = {m["ticker"]: m for m in json.load(fh)["members"]}
         for t in snap.manifest["tickers"] + snap.manifest["benchmarks"]:
-            df = pd.read_csv(os.path.join(root, "prices", f"{_safe(t)}.csv"), index_col="date", parse_dates=True)
+            p = os.path.join(root, "prices", f"{_safe(t)}.csv")
+            p = p if os.path.exists(p) else p + ".gz"   # Session 3 snapshots store gzipped CSV
+            df = pd.read_csv(p, index_col="date", parse_dates=True)
             snap.prices[t] = df.sort_index()
         for t in snap.manifest["tickers"]:
             p = os.path.join(root, "fundamentals", f"{_safe(t)}.json")
             if os.path.exists(p):
                 with open(p, encoding="utf-8") as fh:
                     snap.fundamentals[t] = json.load(fh)["filings"]
+            elif os.path.exists(p + ".gz"):
+                with gzip.open(p + ".gz", "rt", encoding="utf-8") as fh:
+                    snap.fundamentals[t] = json.load(fh)["filings"]
+            sp_ = os.path.join(root, "shares", f"{_safe(t)}.json")
+            if os.path.exists(sp_):   # Session 3 PIT-universe snapshots: share counts keyed by acceptance
+                with open(sp_, encoding="utf-8") as fh:
+                    snap.shares[t] = json.load(fh)["shares"]
         return snap
 
     @property
@@ -141,11 +152,19 @@ def _ttm(avail: List[Dict[str, Any]], key: str) -> Optional[Dict[str, Any]]:
             "source": cur.get("source")}
 
 
-def _yoy_growth(avail: List[Dict[str, Any]], key: str) -> Optional[Dict[str, Any]]:
+def _yoy_growth(avail: List[Dict[str, Any]], key: str, mode: str = "legacy") -> Optional[Dict[str, Any]]:
+    """mode="legacy" (Sessions 1-2): current YTD vs the prior year's YTD *as originally reported* in an older
+    filing. mode="comparative" (Session 3, review P1-5): current YTD vs the prior-year comparative reported in
+    the SAME filing (restated for spin-offs / discontinued operations; same acceptance time, so PIT-safe).
+    If the filing carries no comparative, falls back to legacy and says so in `method`."""
     have = [f for f in avail if key in f]
     if not have:
         return None
     cur = have[-1]
+    if mode == "comparative" and cur.get(key + "_prior"):
+        g = (cur[key] / cur[key + "_prior"] - 1.0) * 100.0
+        return {"value": g, "end": cur["end"], "accepted_at": cur["accepted_at"],
+                "method": f"YoY {_days(cur)}d YTD vs same-filing comparative", "source": cur.get("source")}
     prior_end = pd.Timestamp(cur["end"]) - pd.DateOffset(years=1)
     prior = [f for f in have if _same_len(f, cur) and abs((pd.Timestamp(f["end"]) - prior_end).days) <= 10]
     if not prior or not prior[-1][key]:
@@ -164,7 +183,7 @@ def _split_factor_after(splits: List[Dict[str, float]], when: str) -> float:
 
 
 def pit_fundamentals(filings: List[Dict[str, Any]], cutoff: pd.Timestamp, price: float,
-                     splits: Optional[List[Dict[str, float]]] = None) -> Dict[str, Any]:
+                     splits: Optional[List[Dict[str, float]]] = None, yoy: str = "legacy") -> Dict[str, Any]:
     """Valuation inputs as known strictly before `cutoff`. Returns tagged values (None if unavailable).
 
     `price` must be on the *current* share basis (snapshot `CloseSplitAdj`). As-reported EPS is
@@ -191,7 +210,7 @@ def pit_fundamentals(filings: List[Dict[str, Any]], cutoff: pd.Timestamp, price:
     ni = _ttm(avail, "net_income")
     eq_f = [f for f in avail if "equity" in f]
     eq = eq_f[-1] if eq_f else None
-    rev_g = _yoy_growth(avail, "revenue")
+    rev_g = _yoy_growth(avail, "revenue", yoy)
 
     # Shares (current basis): latest weighted diluted shares. Fallback: NI / EPS from the latest
     # filing, only if its EPS is not a whole number (some as-reported EPS values are truncated).

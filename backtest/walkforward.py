@@ -39,7 +39,7 @@ import pandas as pd
 os.environ.setdefault("LUMINA_LLM_MODE", "mock")
 
 from backtest.pit import Snapshot, decision_session, pit_fundamentals, pit_history_metrics  # noqa: E402
-from backtest.stats import cluster_diff, describe  # noqa: E402
+from backtest.stats import cluster_diff, cluster_diff_2way, describe  # noqa: E402
 from core.ai_hedge_fund.alpha158_engine import Alpha158Engine  # noqa: E402
 from core.ai_hedge_fund.cost_model import CostModel  # noqa: E402
 from core.ai_hedge_fund.deterministic_metrics import DeterministicMetrics  # noqa: E402
@@ -65,7 +65,7 @@ RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # Point-in-time decision inputs
 # ---------------------------------------------------------------------------
 
-def build_inputs(snap: Snapshot, ticker: str, D: pd.Timestamp, announced_at: str) -> Dict[str, Any]:
+def build_inputs(snap: Snapshot, ticker: str, D: pd.Timestamp, announced_at: str, yoy: str = "legacy") -> Dict[str, Any]:
     """Everything a strategy may see. Uses bars through D-1 and filings accepted < announcement."""
     sessions = snap.sessions(ticker)
     prev = sessions[sessions < D]
@@ -75,7 +75,7 @@ def build_inputs(snap: Snapshot, ticker: str, D: pd.Timestamp, announced_at: str
     # Filings must be public before the decision (close of D) AND before the announcement. For a
     # pre-market release D is the previous session, so a filing accepted overnight is excluded.
     cutoff = min(pd.Timestamp(announced_at), pd.Timestamp(f"{D.date()} 16:00:00"))
-    fund = pit_fundamentals(snap.fundamentals.get(ticker, []), cutoff, px_val, snap.splits.get(ticker, []))
+    fund = pit_fundamentals(snap.fundamentals.get(ticker, []), cutoff, px_val, snap.splits.get(ticker, []), yoy=yoy)
     hm = pit_history_metrics(bars)
     det = DeterministicMetrics.compute_price_metrics(bars.tail(252))
     a158 = Alpha158Engine.get_latest_factors(bars.tail(300)[["Open", "High", "Low", "Close", "Volume"]])
@@ -171,6 +171,9 @@ def score(snap: Snapshot, ticker: str, D: pd.Timestamp, strategy: str, decision:
     entry = snap.close_on(ticker, D)
     spy_entry = snap.close_on("SPY", D)
     etf = (snap.universe.get(ticker) or {}).get("sector_etf")
+    if etf and (D not in snap.prices[etf].index or sessions[i0 + max(HORIZONS)] not in snap.prices[etf].index):
+        # Session 3: the ETF did not trade yet (XLC from 2018-06, XLRE from 2015-10) -> SPY as the benchmark
+        etf = "SPY"
     etf_entry = snap.close_on(etf, D) if etf else None
     out: Dict[str, Any] = {"entry_close": entry}
     lows = snap.prices[ticker]["Low"]
@@ -201,13 +204,32 @@ def score(snap: Snapshot, ticker: str, D: pd.Timestamp, strategy: str, decision:
     return out
 
 
-def run(snapshot_root: str, n_events: int = 12, tickers: Optional[List[str]] = None,
-        out_dir: str = RESULTS_DIR, write: bool = True) -> Dict[str, Any]:
+def run(snapshot_root: str, n_events: Optional[int] = 12, tickers: Optional[List[str]] = None,
+        out_dir: str = RESULTS_DIR, write: bool = True, universe: str = "static", d_from: Optional[str] = None,
+        d_to: Optional[str] = None, yoy: str = "legacy", tag: str = "", two_way: bool = False,
+        snap: Optional[Snapshot] = None) -> Dict[str, Any]:
+    """universe="static": every snapshot ticker (Sessions 1-2). universe="pit" (Session 3): an event counts only
+    if its company ranks <= TOP_N by point-in-time market cap at the close of D-1 (backtest/pit_universe.py).
+    universe="static_top:YYYY-MM-DD": the TOP_N companies by market cap at that session, applied to every
+    event (the survivorship-biased comparison on the same data). d_from/d_to bound the decision date D."""
+    from backtest import pit_universe as PU
     random.seed(SEED)
     np.random.seed(SEED)
-    snap = Snapshot.load(snapshot_root)
+    snap = snap or Snapshot.load(snapshot_root)
     cost = CostModel()  # fixed defaults, independent of env, for reproducibility
     tickers = tickers or snap.manifest["tickers"]
+    spy = snap.sessions("SPY")
+    rank_cache: Dict[pd.Timestamp, Dict[str, int]] = {}
+
+    def rank(day: pd.Timestamp) -> Dict[str, int]:
+        if day not in rank_cache:
+            rank_cache[day] = PU.rank_on(snap, day)
+        return rank_cache[day]
+    static_set = None
+    if universe.startswith("static_top:"):
+        r = rank(pd.Timestamp(universe.split(":", 1)[1]))
+        static_set = {t for t, v in r.items() if v <= PU.TOP_N}
+        tickers = [t for t in tickers if t in static_set]
     rows: List[Dict[str, Any]] = []
     postmortems: Dict[str, List[Dict[str, Any]]] = {}
     for t in tickers:
@@ -220,9 +242,17 @@ def run(snapshot_root: str, n_events: int = 12, tickers: Optional[List[str]] = N
             i0 = sessions.get_loc(D)
             if i0 < 300 or i0 + max(HORIZONS) >= len(sessions):
                 continue
-            events.append((ev, D))
-        for k, (ev, D) in enumerate(events[-n_events:], 1):
-            inp = build_inputs(snap, t, D, ev["announced_at_et"])
+            if (d_from and D < pd.Timestamp(d_from)) or (d_to and D > pd.Timestamp(d_to)):
+                continue
+            rk = None
+            if universe == "pit":
+                prev = spy[spy < D]
+                rk = rank(prev[-1]).get(t) if len(prev) else None
+                if rk is None or rk > PU.TOP_N:
+                    continue
+            events.append((ev, D, rk))
+        for k, (ev, D, rk) in enumerate(events[-n_events:] if n_events else events, 1):
+            inp = build_inputs(snap, t, D, ev["announced_at_et"], yoy=yoy)
             ann = pd.Timestamp(ev["announced_at_et"])
             quarter = f"{ann.year}Q{(ann.month - 1) // 3 + 1}"
             decisions = {}
@@ -243,11 +273,17 @@ def run(snapshot_root: str, n_events: int = 12, tickers: Optional[List[str]] = N
                     "sector": (snap.universe.get(t) or {}).get("sector", "n/a"),
                     "sector_etf": (snap.universe.get(t) or {}).get("sector_etf", ""),
                     **sc,
+                    **({"pit_rank_d1": rk} if universe == "pit" else {}),
                 })
             postmortems.setdefault(quarter, []).append(_postmortem_entry(t, D, ev, inp, decisions, rows[-len(STRATEGIES):]))
     df = pd.DataFrame(rows).sort_values(["ticker", "event_no", "strategy"]).reset_index(drop=True)
-    summary = summarize(df)
-    result = {"rows": df, "summary": summary, "postmortems": postmortems, "snapshot_id": snap.snapshot_id}
+    summary = summarize(df, two_way=two_way)
+    out_id = snap.snapshot_id + (f"_{tag}" if tag else "")
+    result = {"rows": df, "summary": summary, "postmortems": postmortems, "snapshot_id": out_id}
+    if universe != "static" or d_from or d_to or yoy != "legacy":
+        summary["run"] = {"universe": universe, "decision_date_from": d_from, "decision_date_to": d_to,
+                          "yoy": yoy, "n_events_per_ticker": n_events, "top_n": PU.TOP_N,
+                          "n_tickers_with_events": int(df.ticker.nunique()) if len(df) else 0}
     if write:
         result["paths"] = write_outputs(result, out_dir, snap)
     return result
@@ -295,7 +331,7 @@ def _bootstrap_ci(x: np.ndarray, n: int = 2000, seed: int = SEED) -> List[float]
     return [float(np.percentile(means, 2.5)), float(np.percentile(means, 97.5))]
 
 
-def summarize(df: pd.DataFrame) -> Dict[str, Any]:
+def summarize(df: pd.DataFrame, two_way: bool = False) -> Dict[str, Any]:
     out: Dict[str, Any] = {"overall": {}, "by_quarter": {}, "council_minus_factors": {}}
     for strat in STRATEGIES:
         s = df[df.strategy == strat]
@@ -330,14 +366,14 @@ def summarize(df: pd.DataFrame) -> Dict[str, Any]:
                                                     != df[df.strategy == "factors_only"].long.to_numpy()).mean()),
         }
     if "sector" in df.columns and (df["sector"] != "n/a").any():
-        out["cells"] = summarize_cells(df)
+        out["cells"] = summarize_cells(df, two_way=two_way)
     return out
 
 
 CELL_METRICS = ("net_ret", "excess_ret", "excess_sector")
 
 
-def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
+def _cell(sub: pd.DataFrame, two_way: bool = False) -> Dict[str, Any]:
     d: Dict[str, Any] = {"n_events": int((sub.strategy == "council").sum())}
     for strat in STRATEGIES:
         s = sub[sub.strategy == strat]
@@ -356,6 +392,9 @@ def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
             # leaves only the timing of the decision across that ticker's own events.
             yd = y - y.groupby(s["ticker"]).transform("mean")
             d[f"{strat}|{h}|selection_skill_fe"] = cluster_diff(yd.to_numpy(), s["long"].to_numpy() == 1, s["month"].to_numpy())
+            if two_way:   # Session 3: two-way (season x ticker) pigeonhole bootstrap
+                d[f"{strat}|{h}|selection_skill_fe_2way"] = cluster_diff_2way(
+                    yd.to_numpy(), s["long"].to_numpy() == 1, s["month"].to_numpy(), s["ticker"].to_numpy())
     a = sub[sub.strategy == "council"].set_index(["ticker", "event_no"])
     b = sub[sub.strategy == "factors_only"].set_index(["ticker", "event_no"])
     for h in HORIZONS:
@@ -364,18 +403,18 @@ def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
     return d
 
 
-def summarize_cells(df: pd.DataFrame) -> Dict[str, Any]:
+def summarize_cells(df: pd.DataFrame, two_way: bool = False) -> Dict[str, Any]:
     """Session 2: overall / VIX(D-1) regime / GICS sector cells with iid and season-clustered
     bootstrap CIs and minimum detectable effects. Clusters = calendar quarter of the decision date."""
     # Clusters = earnings season (calendar quarter of D). Independent review P1-2: calendar months understate
     # uncertainty (T+20 windows cross month ends; events bunch in Jan/Apr/Jul/Oct, so ~13 seasons, not 36 months).
     d = pd.to_datetime(df["decision_date"])
     df = df.assign(month=d.dt.year.astype(str) + "Q" + d.dt.quarter.astype(str))
-    res: Dict[str, Any] = {"overall": _cell(df), "by_regime": {}, "by_sector": {}}
+    res: Dict[str, Any] = {"overall": _cell(df, two_way), "by_regime": {}, "by_sector": {}}
     for name, g in sorted(df.groupby("vix_bucket"), key=lambda kv: kv[0]):
-        res["by_regime"][name] = _cell(g)
+        res["by_regime"][name] = _cell(g, two_way)
     for name, g in sorted(df.groupby("sector"), key=lambda kv: kv[0]):
-        res["by_sector"][name] = _cell(g)
+        res["by_sector"][name] = _cell(g, two_way)
     return res
 
 
@@ -397,8 +436,15 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
          f"{manifest['sources'].get('fundamentals', 'n/a')}; events: {manifest['sources'].get('events', 'n/a')}). <!-- text-only -->", "",
          "Costs: commission and slippage of five bps each per side (long-only). Council runs with LUMINA_LLM_MODE=mock "
          "(deterministic persona rules; no LLM calls). Sharpe: quarterly equal-weight portfolio of event returns, "
-         "annualised by sqrt(four). <!-- text-only -->", "",
-         "| strategy / horizon | events | longs | hit rate | long hit | avg net | avg excess vs SPY | Sharpe (q, ann.) | max DD (q) |",
+         "annualised by sqrt(four). <!-- text-only -->", ""]
+    run = summary.get("run")
+    if run:
+        L += [f"Run (Session 3): universe `{run['universe']}`, decision dates `{run['decision_date_from']}` to "
+              f"`{run['decision_date_to']}`, YoY growth method `{run['yoy']}`, events per ticker "
+              f"{'all in window' if not run['n_events_per_ticker'] else 'last N'}; tickers with events: "
+              f"{N(run['n_tickers_with_events'])}. In the pit universe an event counts only if its company ranks in the top "
+              f"hundred by point-in-time market cap at the close of D-1 (backtest/pit_universe.py). <!-- text-only -->", ""]
+    L += ["| strategy / horizon | events | longs | hit rate | long hit | avg net | avg excess vs SPY | Sharpe (q, ann.) | max DD (q) |",
          "|---|---|---|---|---|---|---|---|---|"]
     for key, m in summary["overall"].items():
         strat, h = key.split("|")
@@ -478,6 +524,16 @@ def cells_markdown(cells: Dict[str, Any], F, N) -> List[str]:
             m, fe = o[f"{strat}|{h}|selection_skill"], o[f"{strat}|{h}|selection_skill_fe"]
             L.append(f"| {strat} T+{h} | {F(o[f'{strat}|long_rate'])} | {N(m['n_in'])} | {N(m['n_out'])} | {_sk(F, fe)} | "
                      f"{F(fe['mde80'])} | {_sk(F, m)} |")
+    if f"council|{HORIZONS[0]}|selection_skill_fe_2way" in o:
+        L += ["", "Two-way clustered (earnings season x ticker, pigeonhole bootstrap; conservative) version of the "
+              "within-ticker selection skill: <!-- text-only -->", "",
+              "| strategy / horizon | long − flat, within ticker | 95% CI low | 95% CI high | one-sided 95% lower bound | "
+              "one-sided p | seasons | tickers | MDE (one-sided, 80% power) |", "|---|---|---|---|---|---|---|---|---|"]
+        for strat in ("council", "factors_only"):
+            for h in HORIZONS:
+                w = o[f"{strat}|{h}|selection_skill_fe_2way"]
+                L.append(f"| {strat} T+{h} | {F(w['mean'])} | {F(w['lo'])} | {F(w['hi'])} | {F(w['p05'])} | "
+                         f"{F(w['p_one_sided'], False)} | {N(w['n_c1'])} | {N(w['n_c2'])} | {F(w['mde80_one_sided'])} |")
     for title, key in (("By regime: VIX close on D-1", "by_regime"), ("By GICS sector", "by_sector")):
         L += ["", f"### {title} — T+20", "",
               "| cell | events | seasons | buy-and-hold excess vs sector | council excess vs sector | factors-only excess vs sector | council − factors | MDE (council − factors) | council selection skill (within ticker) |",
@@ -531,6 +587,12 @@ def main() -> None:
     ap.add_argument("--events", type=int, default=12)
     ap.add_argument("--tickers", default="")
     ap.add_argument("--out", default=RESULTS_DIR)
+    ap.add_argument("--universe", default="static", help="static | pit | static_top:YYYY-MM-DD (Session 3)")
+    ap.add_argument("--from", dest="d_from", default=None, help="first decision date (inclusive)")
+    ap.add_argument("--to", dest="d_to", default=None, help="last decision date (inclusive)")
+    ap.add_argument("--yoy", default="legacy", choices=("legacy", "comparative"))
+    ap.add_argument("--tag", default="", help="suffix for output file names")
+    ap.add_argument("--two-way", action="store_true", help="add season x ticker clustered selection skill")
     a = ap.parse_args()
     if os.getenv("LUMINA_LLM_MODE", "mock") != "mock":
         raise SystemExit("walkforward runs with LUMINA_LLM_MODE=mock only (no live LLM spend; LLM look-ahead risk)")
@@ -538,7 +600,8 @@ def main() -> None:
     bad = verify(a.snapshot)
     if bad:
         raise SystemExit(f"snapshot hash mismatch: {bad}")
-    res = run(a.snapshot, a.events, [t for t in a.tickers.split(",") if t] or None, a.out)
+    res = run(a.snapshot, a.events or None, [t for t in a.tickers.split(",") if t] or None, a.out, universe=a.universe,
+              d_from=a.d_from, d_to=a.d_to, yoy=a.yoy, tag=a.tag, two_way=a.two_way)
     print(json.dumps(res["paths"], indent=1))
     print("output sha256:", digest(res["paths"]))
 
