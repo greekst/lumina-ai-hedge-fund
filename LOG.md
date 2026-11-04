@@ -341,3 +341,36 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
   **82 (1.7%)**, upper bound (150th-largest) **147 (3.1%)**, against 4,661 H1 events. Concentrated 2015Q2–2019Q3 (up to ~11 per
   season, ~10% of a season); near zero since 2020. Largest: Shire 11, Celgene 10, Allergan 8, Walgreens 8, Monsanto 8, Time Warner 7.
 - No delisted company could be added to the candidate pool (no prices). Direction of the bias stays unknown.
+
+## 2026-11-04 23:28 UTC — Phase B: new base snapshot `2026-11-04-pit2`; Phase C: H1 rerun
+- **Snapshot** (`backtest/snapshot_pit2.py`, change report `results/pit2_changes_2026-11-04.md`): self-contained (no `base` key),
+  `rank_rules: v2`, `event_rules: v2`. Prices, fundamentals, splits and vendor event lists copied byte-for-byte from `2026-11-04-pit`
+  and v2 share counts from `2026-11-04-pit-r1`, each verified against its frozen manifest (both frozen snapshots untouched). New data
+  path `filings/<T>.json` (SEC EDGAR submissions: every 8-K with items, original 10-Q/10-K with period end; 1,197 requests at 5/s,
+  cached). The frozen Item 2.02 lists equal fresh EDGAR for all 564 companies. Rebuild from cache byte-identical (manifest `8fbf7d7c…`).
+- **Event rules v2** (`snapshot_pit.resolve_events_v2`), decided by inspecting the 45 vendor-only events of the Phase D sample and
+  EDGAR filing lists (not by any return):
+  P2-2: a vendor-only date 4–45 days after the period's earnings 8-K is the 10-Q/10-K date unless a release-type 8-K (2.02/7.01, or
+  9.01 alone) was filed that day or the day before → re-timed from the 8-K or dropped (COST ×2, INTC, KHC, PGR, CCL, USB, BRK.B
+  2016-05, MRNA, DELL re-timed; LIN 2020-03-01 dropped; GE 2020-04-29 and WELL 2019-02-12 kept: their releases were 9.01-only 8-Ks
+  while an earlier 2.02 8-K was something else). P2-1: an earnings 8-K with no vendor date within ±60 days and no event within ±45
+  days fills a vendor gap (BLK 2014–2022: 32 events; OXY's 2023-01-04 preliminary 8-K correctly not added).
+  8-K-only timing = pre-market of the acceptance day; only for issuers whose 8-Ks are timely (≤10% would give a later decision day
+  on their vendor-and-8-K events). Validation on 22,571 such events: 0.19% would be one session late (raw acceptance time: 1.6%).
+- **Provenance:** the first pit2 build (95d2385, manifest `38efcb28…`) measured timeliness in calendar days, which wrongly dropped
+  COST's re-timed events (next-morning 8-Ks after 21:00 releases). Fixed before any review (1ca98af); the first-version H1 run
+  (`dddfa071…`, S +0.08%, lower bound −0.45%) is recorded in HYPOTHESIS.md; same decision.
+- **Tests:** `tests/test_pit2_snapshot.py` (17: rule cases from the real ones, manifest/identity, offline event rebuild byte-identical,
+  "event ≤ each source", reaction-day detector on 8-K-only events of top-150 companies: |r(D)|/|r(D+1)| 0.33, and its meta-test fails
+  the leak when those events are shifted one session late: 2.05). Poisoned-future + leak meta-tests now also run on pit2 with a fourth
+  day (2017-01-12, BLK 8-K-only event): 30 passed.
+- Known, pre-existing, harmless for H1: DELL prices before 2018-12-28 are the DVMT tracking stock (DELL never ranks top 100 then).
+- **Phase B on the new data** (`results/pit_vs_biased_2026-11-04-pit2.md`; digests B `a47d6d9e…`, C `7c35c029…`): buy-and-hold excess
+  vs sector ETF T+20: biased B +0.96% [+0.63, +1.33] → PIT C +0.12% [−0.20, +0.43]; C/B = 0.12 (Session 3: 0.12). Council
+  within-ticker selection skill T+5 in C: −0.02%.
+- **Phase C — H1 rerun, exact pre-registered command, snapshot id only** (two runs in parallel 23:15–23:24 UTC, identical sha256
+  `8337e6b5…`; `results/h1_rerun_2026-11-04-pit2.md`): **S = +0.08%, lower bound −0.45%, CI [−0.58%, +0.70%], p = 0.396,
+  n = 4,692 / 47 seasons / 188 tickers. Not rejected.** Session 3: +0.07%, −0.41%, n = 4,661. Exploratory: FE slope +0.10%, W = 0.78,
+  MDE 0.79% (S units) / 1.01% (effect units). H1 sample change: +64 events (BLK 30, COP 13, ...), −33 (RPAY 7, SHW 2, ...).
+  **Nothing changed in substance.**
+- **Remaining survivorship gap:** the delisted companies only (Phase A: ~82 events, ≤147, 1.7–3.1%, mostly 2015–2019); direction unknown.
