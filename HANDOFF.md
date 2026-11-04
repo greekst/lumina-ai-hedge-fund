@@ -164,3 +164,105 @@ pytest 75 passed, 1 skipped · UI smoke 1 passed · legacy suite 19/19 (zero-cos
 - Live LLM council (Gemini free-tier quota 20/day) → harness ready, partial leakage check only.
 - `ai.google.dev` unreachable from this sandbox → model cutoffs taken from web search of Google's pages (sources in LOG.md).
 - GitHub Actions still not verified on the fork (Session 1 note stands).
+
+---
+
+# Session 3 (2026-11-04) — CI, point-in-time universe, longer history, one pre-registered test
+
+Branch `claude/kind-rubin-ahzsge`. Timeline and decisions: `LOG.md` (Session 3 section). Every number below comes from a committed,
+tagged result file named next to it. Mock LLM mode throughout; **0 live LLM calls** this session.
+
+## Bottom line
+
+- **The ~1% buy-and-hold "excess" of Session 2 was survivorship.** On a point-in-time universe it falls to +0.12% per 20 sessions, CI includes 0.
+- **H1 (pre-registered) is not rejected.** The mock council shows no within-ticker selection skill at T+5 over 2015–2026:
+  S = +0.07%, one-sided lower bound −0.41%, n = 4,661 events. Every exploratory cell agrees. **No edge.**
+
+## 1. CI fix (Phase A)
+
+- Failure causes (run 41899352628): pins `scipy==1.18.1` / `streamlit==1.66.1` need Python ≥3.12 / ≥3.11, so the 3.10/3.11 and ui-smoke jobs
+  could not install; `test_cache_replays_offline_and_budget_cap_is_enforced` needed `GEMINI_API_KEY` because the client was built before the budget check.
+- Fix: **Python 3.12+ only** (one pin set, no marker fallbacks; CI matrix 3.12 + 3.13, ui-smoke on 3.12; README, AGENTS.md, Dockerfile updated).
+  Chosen over per-version constraints because those already existed and still broke, and two pin sets cannot share one backtest digest.
+  The budget gate now runs before any key/SDK/network access; the test removes the key and makes client construction fail the test;
+  a new fake-client test covers the live path offline.
+- Result: run 41900979973 green on all four jobs. Final run: see "Final checks".
+
+## 2. Point-in-time universe (Phase B)
+
+How it is built (`backtest/pit_universe.py`, report `results/pit_universe_2026-11-04.md`):
+- On decision session D, an event counts if its company is in the **top 100 US-listed domestic filers by market cap at the close of D-1**:
+  EDGAR share count from the latest 10-K/10-Q accepted before 16:00 ET on D-1 × split factor × split-adjusted close (BRK.B × 1,500).
+  Membership is computed inside the harness, so the poisoned-future tests cover it.
+- Candidates (569; 564 with data): every S&P 500 member since 2014 (dated historical list), plus every listed company with ≥100M shares
+  in any EDGAR frame (screened at rank ≤200 by quarter), plus every company ranked ≤150 by public float in any year (no prices needed;
+  catches Visa and MercadoLibre). Completeness check: public-float top-150 of every year 2014–2025.
+- Share classes (GOOGL, BRK.B, FOXA, NWSA, ...), ticker changes (by CIK), and re-registrations (8 predecessor CIKs) handled explicitly.
+- Data-quality guards, each found on a real filing error and PIT-safe: unit-only NI/EPS override (WFC 2020Q1), unconfirmed share-count
+  jumps held back (WTTR), cap vs public float (ADS ratios, banks tagging shares ×1000), cap vs assets (RRBI; always on in rules v2).
+  MLP units, commodity/crypto trusts and preferred-only listings excluded. The review found errors these v1 guards missed (see section 4). Cross-check vs Finnhub caps of Session 2's 100 names: 98 within ±20–25%;
+  BX/IBKR differ by definition (Up-C units).
+- **Known gaps:** ~25 large companies later delisted have no price history reachable from this sandbox (Allergan, Celgene, Walgreens,
+  Time Warner, Dow Chemical, Express Scripts, Monsanto, Anadarko, Shire, EMC, Aetna, Raytheon, Activision, Pioneer, Discover, Kenvue, ...).
+  The direction of the resulting bias is **unknown** (several were long decliners before they left; a takeover premium rarely falls in an
+  earnings window); the reviewer estimates a few percent of events. The within-ticker H1 is largely immune. Fix requires a delisted-price source.
+
+Biased vs PIT on the Session 2 window (2023-10..2026-09; `results/pit_vs_biased_2026-11-04.md`), T+20, season-clustered CIs:
+
+| | A: Session 2 (biased) | B: today's top 100, new data (biased) | C: point-in-time |
+|---|---|---|---|
+| events / tickers | 1,183 / 100 | 1,171 / 99 | 1,198 / 134 |
+| buy-and-hold excess vs sector ETF | +0.97% [+0.72, +1.24] | +0.95% [+0.64, +1.30] | **+0.12% [−0.20, +0.42]** |
+| council excess vs sector ETF | +0.34% | +0.27% | −0.22% [−0.60, +0.18] |
+| factors-only excess vs sector ETF | +0.23% | +0.15% | −0.26% [−0.53, −0.01] |
+| council − factors-only | +0.73% | +0.74% | +0.74% [−0.02, +1.52] |
+| council selection skill (within ticker) | −0.00% | −0.20% | −0.08% [−1.91, +1.80] |
+
+B ≈ A shows the new data pipeline agrees with Session 2's; B → C isolates the universe: **about 12% of the excess survives** (C/B = 0.12).
+
+## 3. H1 (Phase C pre-registration, Phase D run)
+
+`HYPOTHESIS.md` committed in e43319c before any Phase D decision was computed (it discloses that ~25% of the sample, 2023-10..2026-09, had been seen in Phase B).
+- H1: within-ticker selection skill of the mock council at T+5 > 0; one-sided 5%; two-way (season × ticker) bootstrap; reject iff the 5th percentile > 0.
+  Pre-computed MDE ≈ 1.0% (≈ 1.3% in effect units, see section 4).
+- **Result (`results/h1_phaseD_2026-11-04.md`): S = +0.07%, lower bound −0.41%, 95% CI [−0.54%, +0.65%], p = 0.41; 4,661 events,
+  47 seasons, 190 tickers. Not rejected.** Realised MDE 0.76% for S, ≈ 0.98% in within-ticker effect units (S is attenuated, W = 0.78). Unseen subsample (before 2023-10): −0.05%. Two runs: identical sha256 `ccabc089…`.
+- P1-5 fixed for this run: YoY growth from the same filing's prior-year comparative (99.1% coverage).
+
+Exploratory (not evidence for anything): selection skill at T+1/T+20 within ±0.4% for both strategies; no VIX regime or sector cell excludes zero.
+Buy-and-hold vs sector ETF 2015–2026 on the PIT universe: −0.02% at T+20. Council − factors-only: +0.41% [+0.10, +0.72] at T+20, explained by
+exposure (long 67% vs 45%); both trail their sector ETFs.
+
+## 4. Independent review (Phase E)
+
+A fresh subagent audited the PIT universe, the snapshot and the H1 test (`results/independent_review_session3.md`, verbatim + responses).
+- **No P0** (no look-ahead found; pre-registration intact).
+- P1 data errors in the universe (share counts tagged ×1000 — COP missing ~3.5 years, RPAY ranked ~19th; SHW split counted twice;
+  float check biased against momentum names such as TSLA 2020) were fixed as ranking rules v2 in a **review overlay**
+  `2026-11-04-pit-r1`. The pre-registered result stays as run. Robustness on the overlay: **H1 S = +0.08%, lower bound −0.45%,
+  not rejected; Phase B PIT buy-and-hold +0.10% vs +0.95% biased.** No conclusion changes.
+- P1 wording: S is attenuated (W = 0.78), so the MDE in effect units is ≈ 1% (not 0.76%); the "gaps bias buy-and-hold down" claim was
+  unsupported and now reads "direction unknown". Correction appended below the line in HYPOTHESIS.md.
+- P2 open: BLK has no events before 2022-07; a few vendor dates are not earnings releases; today's GICS used for history; share-count
+  jump filter delays real mergers by one filing (KHC 2015–16, LIN 2018–19); big IPOs wait ~14 months (300-session warm-up).
+
+## 5. Open items / what to test next
+
+1. **Delisted prices** (CRSP/Norgate/EODHD or an allowed host) to close the known gaps; then rerun H1 unchanged (same command, new snapshot id).
+   Fold the v2 ranking rules and the open P2 event fixes (8-K-only events for BLK, drop vendor-only non-earnings dates) into that new base snapshot.
+2. Live LLM council (Session 2 question 2) is still blocked by the Gemini free-tier quota; anonymisation level 2 still unverified.
+3. Point-in-time sectors (GICS history) instead of today's sector applied to the past; sector ETF before XLC/XLRE existed is SPY.
+4. Up-C companies (BX, IBKR, ...) are ranked on the listed class only; decide whether to add exchangeable units.
+5. Session 2 P2 items still open: stops recorded but not simulated; Sharpe/drawdown are event aggregates; legacy untagged report surfaces.
+6. With no selection skill at any horizon, the next useful question is not more cells but a different signal; any new idea should be
+   pre-registered the same way before it touches the 2015–2026 data.
+
+## Final checks
+
+Run 2026-11-04 22:02–22:12 UTC on the final code:
+- pytest **100 passed, 1 skipped** (incl. poisoned-future + leak meta-tests on both PIT snapshots) · UI smoke **1 passed** ·
+  legacy suite **19/19** (zero-cost env) · all four snapshot manifests verify (`2026-11-04`, `-sp100`, `-pit`, `-pit-r1`).
+- Rerun digests in fresh directories: pre-registered Phase D `ccabc089…` (third identical run), Session 2 sp100 `f5735aab…` (unchanged
+  since Session 2), Phase B PIT `63184c87…` (twice); base snapshot `2026-11-04-pit` rebuilds byte-identically from cache.
+- Secret scan of all tracked files OK with `SEC_USER_AGENT` present in the env. Kill switches, broker adapters and social posting untouched.
+- Live LLM calls this session: **0**. GitHub Actions on the branch: run 41923015186 (commit ccb9c89) green on all four jobs; LOG.md has the final entry.

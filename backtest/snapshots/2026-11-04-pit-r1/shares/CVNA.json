@@ -1,0 +1,246 @@
+{
+ "ciks": [
+  1690820
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2018-03-06 17:11:54",
+   "as_of": "2017-06-30",
+   "value": 278700000.0
+  },
+  {
+   "accepted_at": "2019-02-27 16:43:12",
+   "as_of": "2018-06-30",
+   "value": 1300000000.0
+  },
+  {
+   "accepted_at": "2020-02-26 17:15:56",
+   "as_of": "2019-06-30",
+   "value": 3100000000.0
+  },
+  {
+   "accepted_at": "2021-02-25 16:49:00",
+   "as_of": "2020-06-30",
+   "value": 8200000000.0
+  },
+  {
+   "accepted_at": "2022-02-24 16:45:04",
+   "as_of": "2021-06-30",
+   "value": 24600000000.0
+  },
+  {
+   "accepted_at": "2023-02-23 16:23:02",
+   "as_of": "2022-06-30",
+   "value": 2200000000.0
+  },
+  {
+   "accepted_at": "2024-02-22 16:19:06",
+   "as_of": "2023-06-30",
+   "value": 2500000000.0
+  },
+  {
+   "accepted_at": "2025-02-19 16:16:24",
+   "as_of": "2024-06-30",
+   "value": 14700000000.0
+  },
+  {
+   "accepted_at": "2026-02-18 16:11:36",
+   "as_of": "2025-06-30",
+   "value": 43800000000.0
+  }
+ ],
+ "rules": "v2",
+ "shares": [
+  {
+   "accepted_at": "2018-03-06 17:11:54",
+   "accn": "0001690820-18-000005",
+   "as_of": "2018-03-06",
+   "assets": 641137000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 12177777.777777778
+  },
+  {
+   "accepted_at": "2019-02-27 16:43:12",
+   "accn": "0001690820-19-000024",
+   "as_of": "2019-02-27",
+   "assets": 991013000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 38789189.18918919
+  },
+  {
+   "accepted_at": "2020-02-26 17:15:56",
+   "accn": "0001690820-20-000052",
+   "as_of": "2020-02-26",
+   "assets": 2057748000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 50162195.12195122
+  },
+  {
+   "accepted_at": "2021-02-25 16:49:00",
+   "accn": "0001690820-21-000069",
+   "as_of": "2021-02-25",
+   "assets": 3034531000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 72802298.85057472
+  },
+  {
+   "accepted_at": "2021-05-06 16:19:37",
+   "accn": "0001690820-21-000154",
+   "as_of": "2021-05-06",
+   "assets": 3819000000.0,
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 78260869.56521739
+  },
+  {
+   "accepted_at": "2021-08-05 16:36:30",
+   "accn": "0001690820-21-000242",
+   "as_of": "2021-08-05",
+   "assets": 4581000000.0,
+   "form": "10-Q",
+   "method": "weighted basic",
+   "shares": 79751000.0
+  },
+  {
+   "accepted_at": "2021-11-04 16:19:26",
+   "accn": "0001690820-21-000310",
+   "as_of": "2021-11-04",
+   "assets": 5360000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 81427000.0
+  },
+  {
+   "accepted_at": "2022-02-24 16:45:04",
+   "accn": "0001690820-22-000080",
+   "as_of": "2022-02-24",
+   "assets": 7015000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 82805000.0
+  },
+  {
+   "accepted_at": "2022-05-10 16:12:15",
+   "accn": "0001690820-22-000166",
+   "as_of": "2022-05-10",
+   "assets": 7585000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 78103000.0
+  },
+  {
+   "accepted_at": "2022-08-04 16:31:23",
+   "accn": "0001690820-22-000253",
+   "as_of": "2022-08-04",
+   "assets": 10502000000.0,
+   "form": "10-Q",
+   "method": "weighted basic",
+   "shares": 95773000.0
+  },
+  {
+   "accepted_at": "2022-11-03 16:14:04",
+   "accn": "0001690820-22-000313",
+   "as_of": "2022-11-03",
+   "assets": 9621000000.0,
+   "form": "10-Q",
+   "method": "weighted basic",
+   "shares": 105857000.0
+  },
+  {
+   "accepted_at": "2023-02-23 16:23:02",
+   "accn": "0001690820-23-000052",
+   "as_of": "2023-02-23",
+   "assets": 8698000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 100828000.0
+  },
+  {
+   "accepted_at": "2023-05-04 16:22:40",
+   "accn": "0001690820-23-000163",
+   "as_of": "2023-05-04",
+   "assets": 8646000000.0,
+   "form": "10-Q",
+   "method": "weighted basic",
+   "shares": 106011000.0
+  },
+  {
+   "accepted_at": "2023-07-19 07:09:15",
+   "accn": "0001690820-23-000219",
+   "as_of": "2023-07-19",
+   "assets": 7849000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 106222000.0
+  },
+  {
+   "accepted_at": "2023-11-02 16:18:47",
+   "accn": "0001690820-23-000323",
+   "as_of": "2023-11-02",
+   "assets": 7025000000.0,
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 110921985.81560284
+  },
+  {
+   "accepted_at": "2024-02-22 16:19:06",
+   "accn": "0001690820-24-000093",
+   "as_of": "2024-02-22",
+   "assets": 7071000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 200578000.0
+  },
+  {
+   "accepted_at": "2024-05-01 16:16:37",
+   "accn": "0001690820-24-000165",
+   "as_of": "2024-05-01",
+   "assets": 6983000000.0,
+   "form": "10-Q",
+   "method": "net income / diluted EPS",
+   "shares": 116666666.66666667
+  },
+  {
+   "accepted_at": "2025-02-19 16:16:24",
+   "accn": "0001690820-25-000074",
+   "as_of": "2025-02-19",
+   "assets": 8484000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 132206000.0
+  },
+  {
+   "accepted_at": "2026-02-18 16:11:36",
+   "accn": "0001690820-26-000009",
+   "as_of": "2026-02-18",
+   "assets": 13201000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 224277000.0
+  },
+  {
+   "accepted_at": "2026-07-29 16:11:13",
+   "accn": "0001690820-26-000055",
+   "as_of": "2026-07-29",
+   "assets": 14552000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 739960000.0
+  },
+  {
+   "accepted_at": "2026-10-28 16:11:03",
+   "accn": "0001690820-26-000067",
+   "as_of": "2026-10-28",
+   "assets": 15195000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 739910000.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "CVNA"
+}

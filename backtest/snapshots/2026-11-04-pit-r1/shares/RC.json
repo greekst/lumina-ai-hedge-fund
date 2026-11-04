@@ -1,0 +1,610 @@
+{
+ "ciks": [
+  1527590
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2014-03-12 21:55:02",
+   "as_of": "2013-06-30",
+   "value": 142450202.0
+  },
+  {
+   "accepted_at": "2015-03-16 16:49:09",
+   "as_of": "2014-06-30",
+   "value": 129625928.0
+  },
+  {
+   "accepted_at": "2016-03-10 17:29:21",
+   "as_of": "2015-06-30",
+   "value": 125460507.0
+  },
+  {
+   "accepted_at": "2017-03-15 17:21:31",
+   "as_of": "2016-06-30",
+   "value": 109280847.0
+  },
+  {
+   "accepted_at": "2018-03-16 06:19:32",
+   "as_of": "2017-06-30",
+   "value": 245625504.0
+  },
+  {
+   "accepted_at": "2019-03-13 16:41:37",
+   "as_of": "2018-06-30",
+   "value": 296481510.0
+  },
+  {
+   "accepted_at": "2020-03-12 16:33:28",
+   "as_of": "2019-06-30",
+   "value": 471000000.0
+  },
+  {
+   "accepted_at": "2021-03-15 16:32:48",
+   "as_of": "2020-06-30",
+   "value": 359000000.0
+  },
+  {
+   "accepted_at": "2022-02-28 17:03:58",
+   "as_of": "2021-06-30",
+   "value": 914400000.0
+  },
+  {
+   "accepted_at": "2023-02-28 17:20:20",
+   "as_of": "2022-06-30",
+   "value": 1200000000.0
+  },
+  {
+   "accepted_at": "2023-04-21 17:26:59",
+   "as_of": "2022-12-30",
+   "value": 1231200000000.0
+  },
+  {
+   "accepted_at": "2024-02-28 17:13:42",
+   "as_of": "2023-06-30",
+   "value": 1801200000.0
+  },
+  {
+   "accepted_at": "2024-04-29 16:17:14",
+   "as_of": "2023-06-30",
+   "value": 1801200000000.0
+  },
+  {
+   "accepted_at": "2025-03-03 16:44:04",
+   "as_of": "2024-06-30",
+   "value": 1313400000.0
+  },
+  {
+   "accepted_at": "2025-09-29 18:43:46",
+   "as_of": "2024-06-30",
+   "value": 1313400000.0
+  },
+  {
+   "accepted_at": "2026-03-02 16:34:42",
+   "as_of": "2025-06-30",
+   "value": 694700000.0
+  },
+  {
+   "accepted_at": "2026-04-30 16:20:36",
+   "as_of": "2025-03-31",
+   "value": 694700000.0
+  }
+ ],
+ "rules": "v2",
+ "shares": [
+  {
+   "accepted_at": "2013-05-14 18:27:45",
+   "accn": "0001206774-13-001827",
+   "as_of": "2013-05-14",
+   "assets": 491744654.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 6068967.0
+  },
+  {
+   "accepted_at": "2013-08-13 17:17:26",
+   "accn": "0001206774-13-002892",
+   "as_of": "2013-08-12",
+   "assets": 607858180.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2013-11-12 16:06:37",
+   "accn": "0001206774-13-004054",
+   "as_of": "2013-11-11",
+   "assets": 559545372.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2014-03-12 21:55:02",
+   "accn": "0001206774-14-000850",
+   "as_of": "2014-03-10",
+   "assets": 620081058.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2014-05-13 19:46:55",
+   "accn": "0001206774-14-001617",
+   "as_of": "2014-05-12",
+   "assets": 698216777.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2014-08-12 17:24:39",
+   "accn": "0001206774-14-002503",
+   "as_of": "2014-08-12",
+   "assets": 713161117.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 10677360.0
+  },
+  {
+   "accepted_at": "2014-11-13 16:16:15",
+   "accn": "0001206774-14-003275",
+   "as_of": "2014-11-11",
+   "assets": 721621407.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2015-03-16 16:49:09",
+   "accn": "0001206774-15-000907",
+   "as_of": "2015-03-13",
+   "assets": 792398605.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2015-05-11 17:12:55",
+   "accn": "0001206774-15-001651",
+   "as_of": "2015-05-08",
+   "assets": 813388363.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2015-08-05 19:56:28",
+   "accn": "0001144204-15-046638",
+   "as_of": "2015-08-05",
+   "assets": 782645192.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 10677360.0
+  },
+  {
+   "accepted_at": "2015-11-05 16:44:09",
+   "accn": "0001144204-15-063110",
+   "as_of": "2015-11-04",
+   "assets": 779100280.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2016-03-10 17:29:21",
+   "accn": "0001144204-16-087286",
+   "as_of": "2016-03-08",
+   "assets": 775138921.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2016-05-10 06:49:08",
+   "accn": "0001144204-16-100111",
+   "as_of": "2016-05-09",
+   "assets": 802670568.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 7970886.0
+  },
+  {
+   "accepted_at": "2016-08-09 16:32:39",
+   "accn": "0001144204-16-117733",
+   "as_of": "2016-08-09",
+   "assets": 565352636.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 8836902.0
+  },
+  {
+   "accepted_at": "2016-10-25 17:16:48",
+   "accn": "0001144204-16-129429",
+   "as_of": "2016-10-24",
+   "assets": 588630124.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 8836902.0
+  },
+  {
+   "accepted_at": "2017-03-15 17:21:31",
+   "accn": "0001558370-17-001850",
+   "as_of": "2017-03-14",
+   "assets": 2605267000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 30549084.0
+  },
+  {
+   "accepted_at": "2017-05-10 17:21:39",
+   "accn": "0001558370-17-004152",
+   "as_of": "2017-05-09",
+   "assets": 2527522000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 30824946.0
+  },
+  {
+   "accepted_at": "2017-08-03 16:15:06",
+   "accn": "0001558370-17-005847",
+   "as_of": "2017-07-31",
+   "assets": 2446920000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 31996440.0
+  },
+  {
+   "accepted_at": "2017-11-09 16:44:16",
+   "accn": "0001558370-17-008735",
+   "as_of": "2017-10-31",
+   "assets": 2503143000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 31996440.0
+  },
+  {
+   "accepted_at": "2018-03-16 06:19:32",
+   "accn": "0001558370-18-002174",
+   "as_of": "2018-03-01",
+   "assets": 2523503000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 31996440.0
+  },
+  {
+   "accepted_at": "2018-05-09 18:28:07",
+   "accn": "0001558370-18-004531",
+   "as_of": "2018-03-31",
+   "assets": 2640954000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 31996440.0
+  },
+  {
+   "accepted_at": "2018-08-08 16:03:06",
+   "accn": "0001558370-18-006746",
+   "as_of": "2018-06-30",
+   "assets": 2812980000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 32051989.0
+  },
+  {
+   "accepted_at": "2018-11-08 16:02:58",
+   "accn": "0001558370-18-008993",
+   "as_of": "2018-09-30",
+   "assets": 2900759000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 32065112.0
+  },
+  {
+   "accepted_at": "2019-03-13 16:41:37",
+   "accn": "0001558370-19-001928",
+   "as_of": "2019-03-01",
+   "assets": 3036843000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 32124966.0
+  },
+  {
+   "accepted_at": "2019-05-09 17:09:52",
+   "accn": "0001558370-19-004732",
+   "as_of": "2019-05-09",
+   "assets": 3279014000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 32563644.0
+  },
+  {
+   "accepted_at": "2019-08-08 17:01:55",
+   "accn": "0001558370-19-007743",
+   "as_of": "2019-07-31",
+   "assets": 3840323000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 44415479.0
+  },
+  {
+   "accepted_at": "2019-11-07 16:40:58",
+   "accn": "0001558370-19-010410",
+   "as_of": "2019-10-31",
+   "assets": 4123019000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 45097886.0
+  },
+  {
+   "accepted_at": "2020-03-12 16:33:28",
+   "accn": "0001558370-20-002546",
+   "as_of": "2020-03-05",
+   "assets": 4977018000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 52027326.0
+  },
+  {
+   "accepted_at": "2020-05-11 16:14:31",
+   "accn": "0001558370-20-006246",
+   "as_of": "2020-04-30",
+   "assets": 5270050000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 54796599.0
+  },
+  {
+   "accepted_at": "2020-08-07 18:06:31",
+   "accn": "0001558370-20-009948",
+   "as_of": "2020-07-31",
+   "assets": 5460932000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 54872789.0
+  },
+  {
+   "accepted_at": "2020-11-05 18:50:58",
+   "accn": "0001558370-20-012971",
+   "as_of": "2020-10-30",
+   "assets": 5317510000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 54466581.0
+  },
+  {
+   "accepted_at": "2021-03-15 16:32:48",
+   "accn": "0001558370-21-003005",
+   "as_of": "2021-03-15",
+   "assets": 5372095000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 54434578.0
+  },
+  {
+   "accepted_at": "2021-05-07 16:03:58",
+   "accn": "0001558370-21-006494",
+   "as_of": "2021-05-07",
+   "assets": 8016955000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 56843448.0
+  },
+  {
+   "accepted_at": "2021-08-06 16:18:26",
+   "accn": "0001558370-21-010823",
+   "as_of": "2021-08-06",
+   "assets": 8976892000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 71231487.0
+  },
+  {
+   "accepted_at": "2021-11-05 16:19:52",
+   "accn": "0001558370-21-014843",
+   "as_of": "2021-11-05",
+   "assets": 9264398000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 73593768.0
+  },
+  {
+   "accepted_at": "2022-02-28 17:03:58",
+   "accn": "0001558370-22-002392",
+   "as_of": "2022-02-28",
+   "assets": 9534031000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 83328441.0
+  },
+  {
+   "accepted_at": "2022-05-06 16:33:02",
+   "accn": "0001558370-22-007640",
+   "as_of": "2022-05-06",
+   "assets": 11476244000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 95402494.0
+  },
+  {
+   "accepted_at": "2022-08-05 17:09:46",
+   "accn": "0001558370-22-012449",
+   "as_of": "2022-08-05",
+   "assets": 11937315000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 114403087.0
+  },
+  {
+   "accepted_at": "2022-11-08 17:02:28",
+   "accn": "0001558370-22-016912",
+   "as_of": "2022-11-07",
+   "assets": 11858211000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 110512870.0
+  },
+  {
+   "accepted_at": "2023-02-28 17:20:20",
+   "accn": "0001558370-23-002422",
+   "as_of": "2023-02-27",
+   "assets": 11620977000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 110732368.0
+  },
+  {
+   "accepted_at": "2023-05-09 16:21:00",
+   "accn": "0001558370-23-008847",
+   "as_of": "2023-05-08",
+   "assets": 11537463000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 110745658.0
+  },
+  {
+   "accepted_at": "2023-08-08 16:58:17",
+   "accn": "0001558370-23-013980",
+   "as_of": "2023-08-07",
+   "assets": 12383046000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 171971814.0
+  },
+  {
+   "accepted_at": "2023-11-08 16:33:00",
+   "accn": "0001558370-23-018295",
+   "as_of": "2023-11-07",
+   "assets": 12799433000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 172124669.0
+  },
+  {
+   "accepted_at": "2024-02-28 17:13:42",
+   "accn": "0001558370-24-002034",
+   "as_of": "2024-02-27",
+   "assets": 12441217000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 172554524.0
+  },
+  {
+   "accepted_at": "2024-04-29 16:17:14",
+   "accn": "0001104659-24-054045",
+   "as_of": "2024-04-19",
+   "assets": null,
+   "form": "10-K/A",
+   "method": "dei cover shares (unchecked: no weighted count in filing)",
+   "shares": 168871689.0
+  },
+  {
+   "accepted_at": "2024-05-10 16:19:41",
+   "accn": "0001558370-24-007797",
+   "as_of": "2024-05-09",
+   "assets": 12043532000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 168873507.0
+  },
+  {
+   "accepted_at": "2024-08-09 17:25:38",
+   "accn": "0001558370-24-011768",
+   "as_of": "2024-08-07",
+   "assets": 11774333000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 168214839.0
+  },
+  {
+   "accepted_at": "2024-11-12 16:11:31",
+   "accn": "0001628280-24-047137",
+   "as_of": "2024-11-07",
+   "assets": 11253044000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 168530704.0
+  },
+  {
+   "accepted_at": "2025-03-03 16:44:04",
+   "accn": "0001628280-25-009464",
+   "as_of": "2025-02-28",
+   "assets": 10141921000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 163151086.0
+  },
+  {
+   "accepted_at": "2025-05-09 16:49:48",
+   "accn": "0001628280-25-024331",
+   "as_of": "2025-05-08",
+   "assets": 9976451000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 170507227.0
+  },
+  {
+   "accepted_at": "2025-08-08 16:18:00",
+   "accn": "0001628280-25-039276",
+   "as_of": "2025-08-08",
+   "assets": 9308797000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 164327272.0
+  },
+  {
+   "accepted_at": "2025-09-29 18:43:46",
+   "accn": "0001628280-25-043144",
+   "as_of": "2025-02-28",
+   "assets": 10141921000.0,
+   "form": "10-K/A",
+   "method": "dei cover shares",
+   "shares": 163151086.0
+  },
+  {
+   "accepted_at": "2025-11-07 16:44:16",
+   "accn": "0001628280-25-050686",
+   "as_of": "2025-11-06",
+   "assets": 8332101000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 162126276.0
+  },
+  {
+   "accepted_at": "2026-03-02 16:34:42",
+   "accn": "0001628280-26-013256",
+   "as_of": "2026-02-27",
+   "assets": 7769796000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 162878779.0
+  },
+  {
+   "accepted_at": "2026-04-30 16:20:36",
+   "accn": "0001628280-26-028924",
+   "as_of": "2026-04-21",
+   "assets": null,
+   "form": "10-K/A",
+   "method": "dei cover shares (unchecked: no weighted count in filing)",
+   "shares": 165219071.0
+  },
+  {
+   "accepted_at": "2026-05-08 16:58:56",
+   "accn": "0001628280-26-032982",
+   "as_of": "2026-05-07",
+   "assets": 6314288000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 165219071.0
+  },
+  {
+   "accepted_at": "2026-08-07 16:18:41",
+   "accn": "0001628280-26-054850",
+   "as_of": "2026-08-06",
+   "assets": 6263916000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 165190992.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "RC"
+}

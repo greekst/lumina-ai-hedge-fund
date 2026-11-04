@@ -1,0 +1,103 @@
+{
+ "ciks": [
+  1594805
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2025-02-11 07:02:46",
+   "as_of": "2024-06-28",
+   "value": 79793497805.0
+  },
+  {
+   "accepted_at": "2025-04-29 07:02:25",
+   "as_of": "2024-06-28",
+   "value": 79793497805.0
+  },
+  {
+   "accepted_at": "2026-02-11 07:03:35",
+   "as_of": "2024-06-28",
+   "value": 140315345495.0
+  },
+  {
+   "accepted_at": "2026-04-29 17:00:32",
+   "as_of": "2025-06-30",
+   "value": 140315345495.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2025-02-11 07:02:46",
+   "accn": "0001594805-25-000012",
+   "as_of": "2025-02-11",
+   "assets": 13924000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 1301509980.0
+  },
+  {
+   "accepted_at": "2025-05-08 07:02:29",
+   "accn": "0001594805-25-000046",
+   "as_of": "2025-05-08",
+   "assets": 13400000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 1295377376.0
+  },
+  {
+   "accepted_at": "2025-08-06 07:06:12",
+   "accn": "0001594805-25-000073",
+   "as_of": "2025-08-06",
+   "assets": 14561000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 1308993838.0
+  },
+  {
+   "accepted_at": "2025-11-04 07:03:12",
+   "accn": "0001594805-25-000089",
+   "as_of": "2025-11-04",
+   "assets": 15039000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 1312872709.0
+  },
+  {
+   "accepted_at": "2026-02-11 07:03:35",
+   "accn": "0001594805-26-000007",
+   "as_of": "2026-02-11",
+   "assets": 15189000000.0,
+   "form": "10-K",
+   "method": "weighted diluted",
+   "shares": 1304953255.0
+  },
+  {
+   "accepted_at": "2026-05-05 07:19:23",
+   "accn": "0001594805-26-000019",
+   "as_of": "2026-05-05",
+   "assets": 14121000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 1303357874.0
+  },
+  {
+   "accepted_at": "2026-08-05 07:03:05",
+   "accn": "0001594805-26-000047",
+   "as_of": "2026-08-05",
+   "assets": 14470000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 1297940958.0
+  },
+  {
+   "accepted_at": "2026-11-03 08:09:03",
+   "accn": "0001594805-26-000068",
+   "as_of": "2026-11-03",
+   "assets": 14664000000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 1290726742.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "SHOP"
+}

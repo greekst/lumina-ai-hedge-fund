@@ -1,0 +1,8535 @@
+{
+ "candidates_inputs": {
+  "sec_company_tickers_exchange": {
+   "sha256_raw": "b502301fccada1df77152043aa50d1f15796092c0a3188c27bbc29be7669f558",
+   "url": "https://www.sec.gov/files/company_tickers_exchange.json"
+  },
+  "sp500_history": {
+   "last_date": "2026-08-18",
+   "rows": 2720,
+   "sha256_raw": "36326709d46d6cd25834de5df457b16f5f96fad3a06b9beac28f7b88aa0b0d54",
+   "tickers_since_2014": 784,
+   "url": "https://raw.githubusercontent.com/fja05680/sp500/master/S%26P%20500%20Historical%20Components%20%26%20Changes%20(Updated).csv"
+  }
+ },
+ "flagged": {
+  "ABTC": "share counts start 2019-09-23, prices start 2018-02-26 (possible CIK change)",
+  "AKTX": "share counts start 2015-02-11, prices start 2014-01-06 (possible CIK change)",
+  "APO": "share counts start 2022-05-10, prices start 2013-01-02 (possible CIK change)",
+  "ARM": "not a domestic 10-K/10-Q filer (forms: ['144', '20-F', '3', '4', '424B4', '6-K'])",
+  "BFC": "share counts start 2018-12-07, prices start 2013-01-02 (possible CIK change)",
+  "BH": "share counts start 2019-02-25, prices start 2013-01-02 (possible CIK change)",
+  "BITW": "share counts start 2021-08-13, prices start 2020-12-10 (possible CIK change)",
+  "CELH": "share counts start 2016-11-10, prices start 2013-01-02 (possible CIK change)",
+  "CP": "share counts start 2016-02-29, prices start 2013-01-02 (possible CIK change)",
+  "CRD.A": "share counts start 2014-02-26, prices start 2013-01-02 (possible CIK change)",
+  "CRH": "share counts start 2024-02-29, prices start 2013-01-02 (possible CIK change)",
+  "CRON": "share counts start 2020-03-30, prices start 2018-02-27 (possible CIK change)",
+  "CVNA": "share counts start 2018-03-06, prices start 2017-04-28 (possible CIK change)",
+  "DD": "share counts start 2017-11-06, prices start 2013-01-02 (possible CIK change)",
+  "DXC": "share counts start 2017-03-30, prices start 2013-01-02 (possible CIK change)",
+  "ENB": "share counts start 2018-02-16, prices start 2013-01-02 (possible CIK change)",
+  "FMS": "not a domestic 10-K/10-Q filer (forms: ['11-K', '144', '20-F', '20-F/A', '25-NSE', '3'])",
+  "ICE": "share counts start 2014-02-14, prices start 2013-01-02 (possible CIK change)",
+  "IX": "not a domestic 10-K/10-Q filer (forms: ['13F-HR', '13F-HR/A', '13F-NT', '15-12B', '20-F', '20-F/A'])",
+  "KMI": "share counts start 2014-02-21, prices start 2013-01-02 (possible CIK change)",
+  "KVUE": "prices: empty",
+  "LBTYA": "share counts start 2013-11-05, prices start 2013-01-02 (possible CIK change)",
+  "LIN": "share counts start 2017-10-30, prices start 2013-01-02 (possible CIK change)",
+  "MFIN": "share counts start 2018-08-14, prices start 2013-01-02 (possible CIK change)",
+  "MNSB": "share counts start 2019-05-15, prices start 2013-01-02 (possible CIK change)",
+  "NMR": "not a domestic 10-K/10-Q filer (forms: ['13F-HR', '13F-HR/A', '20-F', '20-F/A', '3', '3/A'])",
+  "NXPI": "share counts start 2019-10-29, prices start 2013-01-02 (possible CIK change)",
+  "PDLB": "share counts start 2022-03-31, prices start 2017-10-02 (possible CIK change)",
+  "PRGO": "share counts start 2014-02-06, prices start 2013-01-02 (possible CIK change)",
+  "SHOP": "share counts start 2025-02-11, prices start 2015-05-20 (possible CIK change)",
+  "TBLA": "share counts start 2023-03-13, prices start 2021-06-30 (possible CIK change)",
+  "TEAM": "share counts start 2022-11-04, prices start 2015-12-09 (possible CIK change)",
+  "TEVA": "share counts start 2018-02-12, prices start 2013-01-02 (possible CIK change)",
+  "TKO": "share counts start 2023-11-07, prices start 2013-01-02 (possible CIK change)",
+  "TPL": "share counts start 2021-02-25, prices start 2013-01-02 (possible CIK change)",
+  "URG": "share counts start 2014-03-03, prices start 2013-01-02 (possible CIK change)",
+  "UUUU": "share counts start 2016-06-02, prices start 2013-01-02 (possible CIK change)",
+  "V": "share counts start 2013-11-21, prices start 2013-01-02 (possible CIK change)",
+  "VABK": "share counts start 2014-05-14, prices start 2013-01-02 (possible CIK change)",
+  "VRRM": "share counts start 2019-03-18, prices start 2017-03-24 (possible CIK change)",
+  "VRT": "share counts start 2020-03-11, prices start 2018-08-02 (possible CIK change)",
+  "VST": "share counts start 2017-05-17, prices start 2016-10-05 (possible CIK change)",
+  "WTTR": "share counts start 2018-03-19, prices start 2017-06-26 (possible CIK change)",
+  "ZLAB": "share counts start 2021-03-01, prices start 2017-09-20 (possible CIK change)"
+ },
+ "label": "POINT-IN-TIME top-100 US-listed domestic filers by market cap at D-1 (decided in the harness)",
+ "members": [
+  {
+   "cik": 1090872,
+   "ciks": [
+    1090872
+   ],
+   "exclude_reason": "",
+   "name": "AGILENT TECHNOLOGIES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3826,
+   "ticker": "A"
+  },
+  {
+   "cik": 6201,
+   "ciks": [
+    6201
+   ],
+   "exclude_reason": "",
+   "name": "American Airlines Group Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 4512 map",
+   "seed": "sp500_history",
+   "sic": 4512,
+   "ticker": "AAL"
+  },
+  {
+   "cik": 320193,
+   "ciks": [
+    320193
+   ],
+   "exclude_reason": "",
+   "name": "Apple Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3571,
+   "ticker": "AAPL"
+  },
+  {
+   "cik": 1551152,
+   "ciks": [
+    1551152
+   ],
+   "exclude_reason": "",
+   "name": "AbbVie Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "ABBV"
+  },
+  {
+   "cik": 1703057,
+   "ciks": [
+    1703057
+   ],
+   "exclude_reason": "",
+   "name": "AbCellera Biologics Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "ABCL"
+  },
+  {
+   "cik": 1559720,
+   "ciks": [
+    1559720
+   ],
+   "exclude_reason": "",
+   "name": "Airbnb, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7340,
+   "ticker": "ABNB"
+  },
+  {
+   "cik": 1800,
+   "ciks": [
+    1800
+   ],
+   "exclude_reason": "",
+   "name": "ABBOTT LABORATORIES",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "ABT"
+  },
+  {
+   "cik": 1755953,
+   "ciks": [
+    1755953
+   ],
+   "exclude_reason": "",
+   "name": "American Bitcoin Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6199 map",
+   "seed": "listed_sweep",
+   "sic": 6199,
+   "ticker": "ABTC"
+  },
+  {
+   "cik": 947484,
+   "ciks": [
+    947484
+   ],
+   "exclude_reason": "",
+   "name": "ARCH CAPITAL GROUP LTD.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "ACGL"
+  },
+  {
+   "cik": 1467373,
+   "ciks": [
+    1467373
+   ],
+   "exclude_reason": "",
+   "name": "Accenture plc",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "ACN"
+  },
+  {
+   "cik": 796343,
+   "ciks": [
+    796343
+   ],
+   "exclude_reason": "",
+   "name": "ADOBE INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "ADBE"
+  },
+  {
+   "cik": 6281,
+   "ciks": [
+    6281
+   ],
+   "exclude_reason": "",
+   "name": "ANALOG DEVICES INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "ADI"
+  },
+  {
+   "cik": 7084,
+   "ciks": [
+    7084
+   ],
+   "exclude_reason": "",
+   "name": "Archer-Daniels-Midland Co",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2070,
+   "ticker": "ADM"
+  },
+  {
+   "cik": 8670,
+   "ciks": [
+    8670
+   ],
+   "exclude_reason": "",
+   "name": "AUTOMATIC DATA PROCESSING INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7374,
+   "ticker": "ADP"
+  },
+  {
+   "cik": 769397,
+   "ciks": [
+    769397
+   ],
+   "exclude_reason": "",
+   "name": "Autodesk, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "ADSK"
+  },
+  {
+   "cik": 927003,
+   "ciks": [
+    927003
+   ],
+   "exclude_reason": "",
+   "name": "ADVANCED ENERGY INDUSTRIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3679 map",
+   "seed": "public_float",
+   "sic": 3679,
+   "ticker": "AEIS"
+  },
+  {
+   "cik": 4904,
+   "ciks": [
+    4904
+   ],
+   "exclude_reason": "",
+   "name": "AMERICAN ELECTRIC POWER CO INC",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "AEP"
+  },
+  {
+   "cik": 4977,
+   "ciks": [
+    4977
+   ],
+   "exclude_reason": "",
+   "name": "AFLAC INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6321,
+   "ticker": "AFL"
+  },
+  {
+   "cik": 78749,
+   "ciks": [
+    78749
+   ],
+   "exclude_reason": "",
+   "name": "AGILYSYS INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7373 map",
+   "seed": "public_float",
+   "sic": 7373,
+   "ticker": "AGYS"
+  },
+  {
+   "cik": 5272,
+   "ciks": [
+    5272
+   ],
+   "exclude_reason": "",
+   "name": "AMERICAN INTERNATIONAL GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "AIG"
+  },
+  {
+   "cik": 946644,
+   "ciks": [
+    946644
+   ],
+   "exclude_reason": "",
+   "name": "AIM ImmunoTech Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "listed_sweep",
+   "sic": 2836,
+   "ticker": "AIM"
+  },
+  {
+   "cik": 354190,
+   "ciks": [
+    354190
+   ],
+   "exclude_reason": "",
+   "name": "Arthur J. Gallagher & Co.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6411,
+   "ticker": "AJG"
+  },
+  {
+   "cik": 1541157,
+   "ciks": [
+    1541157
+   ],
+   "exclude_reason": "",
+   "name": "Akari Therapeutics Plc",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "AKTX"
+  },
+  {
+   "cik": 1736297,
+   "ciks": [
+    1736297
+   ],
+   "exclude_reason": "",
+   "name": "Astera Labs, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "listed_sweep",
+   "sic": 3674,
+   "ticker": "ALAB"
+  },
+  {
+   "cik": 1097149,
+   "ciks": [
+    1097149
+   ],
+   "exclude_reason": "",
+   "name": "ALIGN TECHNOLOGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3842,
+   "ticker": "ALGN"
+  },
+  {
+   "cik": 899051,
+   "ciks": [
+    899051
+   ],
+   "exclude_reason": "",
+   "name": "ALLSTATE CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "ALL"
+  },
+  {
+   "cik": 40729,
+   "ciks": [
+    40729
+   ],
+   "exclude_reason": "",
+   "name": "Ally Financial Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "ALLY"
+  },
+  {
+   "cik": 1828805,
+   "ciks": [
+    1828805
+   ],
+   "exclude_reason": "",
+   "name": "Aeluma, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "listed_sweep",
+   "sic": 3674,
+   "ticker": "ALMU"
+  },
+  {
+   "cik": 1178670,
+   "ciks": [
+    1178670
+   ],
+   "exclude_reason": "",
+   "name": "ALNYLAM PHARMACEUTICALS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "ALNY"
+  },
+  {
+   "cik": 778164,
+   "ciks": [
+    778164
+   ],
+   "exclude_reason": "",
+   "name": "Alto Ingredients, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 2860 map",
+   "seed": "public_float",
+   "sic": 2860,
+   "ticker": "ALTO"
+  },
+  {
+   "cik": 6951,
+   "ciks": [
+    6951
+   ],
+   "exclude_reason": "",
+   "name": "APPLIED MATERIALS INC /DE",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "AMAT"
+  },
+  {
+   "cik": 2488,
+   "ciks": [
+    2488
+   ],
+   "exclude_reason": "",
+   "name": "ADVANCED MICRO DEVICES INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "AMD"
+  },
+  {
+   "cik": 318154,
+   "ciks": [
+    318154
+   ],
+   "exclude_reason": "",
+   "name": "AMGEN INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2836,
+   "ticker": "AMGN"
+  },
+  {
+   "cik": 1658551,
+   "ciks": [
+    1658551
+   ],
+   "exclude_reason": "",
+   "name": "Amylyx Pharmaceuticals, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "AMLX"
+  },
+  {
+   "cik": 820027,
+   "ciks": [
+    820027
+   ],
+   "exclude_reason": "",
+   "name": "AMERIPRISE FINANCIAL INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6282,
+   "ticker": "AMP"
+  },
+  {
+   "cik": 1053507,
+   "ciks": [
+    1053507
+   ],
+   "exclude_reason": "",
+   "name": "AMERICAN TOWER CORP /MA/",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "AMT"
+  },
+  {
+   "cik": 1018724,
+   "ciks": [
+    1018724
+   ],
+   "exclude_reason": "",
+   "name": "AMAZON COM INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5961,
+   "ticker": "AMZN"
+  },
+  {
+   "cik": 1596532,
+   "ciks": [
+    1596532
+   ],
+   "exclude_reason": "",
+   "name": "Arista Networks, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3576,
+   "ticker": "ANET"
+  },
+  {
+   "cik": 315293,
+   "ciks": [
+    315293
+   ],
+   "exclude_reason": "",
+   "name": "Aon plc",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6411,
+   "ticker": "AON"
+  },
+  {
+   "cik": 2969,
+   "ciks": [
+    2969
+   ],
+   "exclude_reason": "",
+   "name": "Air Products & Chemicals, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2810,
+   "ticker": "APD"
+  },
+  {
+   "cik": 820313,
+   "ciks": [
+    820313
+   ],
+   "exclude_reason": "",
+   "name": "AMPHENOL CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3678,
+   "ticker": "APH"
+  },
+  {
+   "cik": 1858681,
+   "ciks": [
+    1858681
+   ],
+   "exclude_reason": "",
+   "name": "Apollo Global Management, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6282,
+   "ticker": "APO"
+  },
+  {
+   "cik": 1751008,
+   "ciks": [
+    1751008
+   ],
+   "exclude_reason": "",
+   "name": "AppLovin Corp",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7370,
+   "ticker": "APP"
+  },
+  {
+   "cik": 1521332,
+   "ciks": [
+    1521332
+   ],
+   "exclude_reason": "",
+   "name": "Aptiv PLC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3714,
+   "ticker": "APTV"
+  },
+  {
+   "cik": 1138723,
+   "ciks": [
+    1138723
+   ],
+   "exclude_reason": "",
+   "name": "ACCURAY INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 3841 map",
+   "seed": "listed_sweep",
+   "sic": 3841,
+   "ticker": "ARAY"
+  },
+  {
+   "cik": 1426800,
+   "ciks": [
+    1426800
+   ],
+   "exclude_reason": "",
+   "name": "ASSEMBLY BIOSCIENCES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "ASMB"
+  },
+  {
+   "cik": 1540684,
+   "ciks": [
+    1540684
+   ],
+   "exclude_reason": "",
+   "name": "Atlas Lithium Corp",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 1400 map",
+   "seed": "listed_sweep",
+   "sic": 1400,
+   "ticker": "ATLX"
+  },
+  {
+   "cik": 1420520,
+   "ciks": [
+    1420520
+   ],
+   "exclude_reason": "",
+   "name": "Atomera Inc",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "public_float",
+   "sic": 3674,
+   "ticker": "ATOM"
+  },
+  {
+   "cik": 1730168,
+   "ciks": [
+    1441634,
+    1649338,
+    1730168
+   ],
+   "exclude_reason": "",
+   "name": "Broadcom Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "AVGO"
+  },
+  {
+   "cik": 1593899,
+   "ciks": [
+    1593899
+   ],
+   "exclude_reason": "",
+   "name": "Atea Pharmaceuticals, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "AVIR"
+  },
+  {
+   "cik": 1314052,
+   "ciks": [
+    1314052
+   ],
+   "exclude_reason": "",
+   "name": "ANAVEX LIFE SCIENCES CORP.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "listed_sweep",
+   "sic": 2836,
+   "ticker": "AVXL"
+  },
+  {
+   "cik": 1015739,
+   "ciks": [
+    1015739
+   ],
+   "exclude_reason": "",
+   "name": "AWARE INC /MA/",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "public_float",
+   "sic": 7372,
+   "ticker": "AWRE"
+  },
+  {
+   "cik": 1069183,
+   "ciks": [
+    1069183
+   ],
+   "exclude_reason": "",
+   "name": "AXON ENTERPRISE, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3480,
+   "ticker": "AXON"
+  },
+  {
+   "cik": 4962,
+   "ciks": [
+    4962
+   ],
+   "exclude_reason": "",
+   "name": "AMERICAN EXPRESS CO",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6199,
+   "ticker": "AXP"
+  },
+  {
+   "cik": 866787,
+   "ciks": [
+    866787
+   ],
+   "exclude_reason": "",
+   "name": "AUTOZONE INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5531,
+   "ticker": "AZO"
+  },
+  {
+   "cik": 12927,
+   "ciks": [
+    12927
+   ],
+   "exclude_reason": "",
+   "name": "BOEING CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3721,
+   "ticker": "BA"
+  },
+  {
+   "cik": 70858,
+   "ciks": [
+    70858
+   ],
+   "exclude_reason": "",
+   "name": "BANK OF AMERICA CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "BAC"
+  },
+  {
+   "cik": 9389,
+   "ciks": [
+    9389
+   ],
+   "exclude_reason": "",
+   "name": "BALL Corp",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3411,
+   "ticker": "BALL"
+  },
+  {
+   "cik": 10456,
+   "ciks": [
+    10456
+   ],
+   "exclude_reason": "",
+   "name": "BAXTER INTERNATIONAL INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3841,
+   "ticker": "BAX"
+  },
+  {
+   "cik": 701985,
+   "ciks": [
+    701985
+   ],
+   "exclude_reason": "",
+   "name": "Bath & Body Works, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5990 map",
+   "seed": "sp500_history",
+   "sic": 5990,
+   "ticker": "BBWI"
+  },
+  {
+   "cik": 10795,
+   "ciks": [
+    10795
+   ],
+   "exclude_reason": "",
+   "name": "BECTON DICKINSON & CO",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3841,
+   "ticker": "BDX"
+  },
+  {
+   "cik": 1664703,
+   "ciks": [
+    1664703
+   ],
+   "exclude_reason": "",
+   "name": "Bloom Energy Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "listed_sweep",
+   "sic": 3620,
+   "ticker": "BE"
+  },
+  {
+   "cik": 38777,
+   "ciks": [
+    38777
+   ],
+   "exclude_reason": "",
+   "name": "FRANKLIN TEMPLETON INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6282,
+   "ticker": "BEN"
+  },
+  {
+   "cik": 14693,
+   "ciks": [
+    14693
+   ],
+   "exclude_reason": "",
+   "name": "BROWN FORMAN CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2080,
+   "ticker": "BF.B"
+  },
+  {
+   "cik": 1746109,
+   "ciks": [
+    1746109
+   ],
+   "exclude_reason": "",
+   "name": "Bank First Corp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "listed_sweep",
+   "sic": 6021,
+   "ticker": "BFC"
+  },
+  {
+   "cik": 1726173,
+   "ciks": [
+    1726173
+   ],
+   "exclude_reason": "",
+   "name": "Biglari Holdings Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5812 map",
+   "seed": "public_float",
+   "sic": 5812,
+   "ticker": "BH"
+  },
+  {
+   "cik": 885590,
+   "ciks": [
+    885590
+   ],
+   "exclude_reason": "",
+   "name": "Bausch Health Companies Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "BHC"
+  },
+  {
+   "cik": 875045,
+   "ciks": [
+    875045
+   ],
+   "exclude_reason": "",
+   "name": "BIOGEN INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2836,
+   "ticker": "BIIB"
+  },
+  {
+   "cik": 1723788,
+   "ciks": [
+    1723788
+   ],
+   "exclude_reason": "commodity/crypto trust (SIC 6221), not common stock",
+   "name": "Bitwise 10 Crypto Index ETF",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6221 map",
+   "seed": "public_float",
+   "sic": 6221,
+   "ticker": "BITW"
+  },
+  {
+   "cik": 1075531,
+   "ciks": [
+    1075531
+   ],
+   "exclude_reason": "",
+   "name": "Booking Holdings Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4700,
+   "ticker": "BKNG"
+  },
+  {
+   "cik": 2186,
+   "ciks": [
+    2186
+   ],
+   "exclude_reason": "",
+   "name": "BK Technologies Corp",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3663 map",
+   "seed": "listed_sweep",
+   "sic": 3663,
+   "ticker": "BKTI"
+  },
+  {
+   "cik": 2012383,
+   "ciks": [
+    1364742,
+    2012383
+   ],
+   "exclude_reason": "",
+   "name": "BlackRock, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6211,
+   "ticker": "BLK"
+  },
+  {
+   "cik": 1048477,
+   "ciks": [
+    1048477
+   ],
+   "exclude_reason": "",
+   "name": "BIOMARIN PHARMACEUTICAL INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "BMRN"
+  },
+  {
+   "cik": 14272,
+   "ciks": [
+    14272
+   ],
+   "exclude_reason": "",
+   "name": "BRISTOL MYERS SQUIBB CO",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "BMY"
+  },
+  {
+   "cik": 1424182,
+   "ciks": [
+    1424182
+   ],
+   "exclude_reason": "",
+   "name": "Broadstone Net Lease, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "listed_sweep",
+   "sic": 6798,
+   "ticker": "BNL"
+  },
+  {
+   "cik": 1390777,
+   "ciks": [
+    1390777
+   ],
+   "exclude_reason": "",
+   "name": "Bank of New York Mellon Corp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6022,
+   "ticker": "BNY"
+  },
+  {
+   "cik": 14177,
+   "ciks": [
+    14177
+   ],
+   "exclude_reason": "",
+   "name": "BRIDGFORD FOODS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "SIC 2013 map",
+   "seed": "listed_sweep",
+   "sic": 2013,
+   "ticker": "BRID"
+  },
+  {
+   "cik": 1067983,
+   "ciks": [
+    1067983
+   ],
+   "exclude_reason": "",
+   "name": "BERKSHIRE HATHAWAY INC",
+   "price_multiplier": 1500.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "BRK.B"
+  },
+  {
+   "cik": 10048,
+   "ciks": [
+    10048
+   ],
+   "exclude_reason": "",
+   "name": "BARNWELL INDUSTRIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "SIC 1311 map",
+   "seed": "public_float",
+   "sic": 1311,
+   "ticker": "BRN"
+  },
+  {
+   "cik": 885725,
+   "ciks": [
+    885725
+   ],
+   "exclude_reason": "",
+   "name": "BOSTON SCIENTIFIC CORP",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3841,
+   "ticker": "BSX"
+  },
+  {
+   "cik": 1734713,
+   "ciks": [
+    1734713
+   ],
+   "exclude_reason": "",
+   "name": "BrightView Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 0700 map",
+   "seed": "listed_sweep",
+   "sic": 700,
+   "ticker": "BV"
+  },
+  {
+   "cik": 1393818,
+   "ciks": [
+    1393818
+   ],
+   "exclude_reason": "",
+   "name": "Blackstone Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6282,
+   "ticker": "BX"
+  },
+  {
+   "cik": 831001,
+   "ciks": [
+    831001
+   ],
+   "exclude_reason": "",
+   "name": "CITIGROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "C"
+  },
+  {
+   "cik": 23217,
+   "ciks": [
+    23217
+   ],
+   "exclude_reason": "",
+   "name": "CONAGRA BRANDS INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "SIC 2000 map",
+   "seed": "sp500_history",
+   "sic": 2000,
+   "ticker": "CAG"
+  },
+  {
+   "cik": 721371,
+   "ciks": [
+    721371
+   ],
+   "exclude_reason": "",
+   "name": "CARDINAL HEALTH INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5122,
+   "ticker": "CAH"
+  },
+  {
+   "cik": 1783180,
+   "ciks": [
+    1783180
+   ],
+   "exclude_reason": "",
+   "name": "CARRIER GLOBAL Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3585,
+   "ticker": "CARR"
+  },
+  {
+   "cik": 708781,
+   "ciks": [
+    708781
+   ],
+   "exclude_reason": "",
+   "name": "CASS INFORMATION SYSTEMS INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7389 map",
+   "seed": "public_float",
+   "sic": 7389,
+   "ticker": "CASS"
+  },
+  {
+   "cik": 18230,
+   "ciks": [
+    18230
+   ],
+   "exclude_reason": "",
+   "name": "CATERPILLAR INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3531,
+   "ticker": "CAT"
+  },
+  {
+   "cik": 728387,
+   "ciks": [
+    728387
+   ],
+   "exclude_reason": "",
+   "name": "Perspective Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "CATX"
+  },
+  {
+   "cik": 896159,
+   "ciks": [
+    896159
+   ],
+   "exclude_reason": "",
+   "name": "Chubb Ltd",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "CB"
+  },
+  {
+   "cik": 16040,
+   "ciks": [
+    16040
+   ],
+   "exclude_reason": "",
+   "name": "CABOT CORP",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 2890 map",
+   "seed": "public_float",
+   "sic": 2890,
+   "ticker": "CBT"
+  },
+  {
+   "cik": 1437958,
+   "ciks": [
+    1437958
+   ],
+   "exclude_reason": "",
+   "name": "COASTAL FINANCIAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "public_float",
+   "sic": 6022,
+   "ticker": "CCB"
+  },
+  {
+   "cik": 1051470,
+   "ciks": [
+    1051470
+   ],
+   "exclude_reason": "",
+   "name": "CROWN CASTLE INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "CCI"
+  },
+  {
+   "cik": 815097,
+   "ciks": [
+    815097
+   ],
+   "exclude_reason": "",
+   "name": "Carnival Corp Ltd.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4400,
+   "ticker": "CCL"
+  },
+  {
+   "cik": 813672,
+   "ciks": [
+    813672
+   ],
+   "exclude_reason": "",
+   "name": "CADENCE DESIGN SYSTEMS INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "CDNS"
+  },
+  {
+   "cik": 1868275,
+   "ciks": [
+    1868275
+   ],
+   "exclude_reason": "",
+   "name": "Constellation Energy Corp",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "CEG"
+  },
+  {
+   "cik": 1341766,
+   "ciks": [
+    1341766
+   ],
+   "exclude_reason": "",
+   "name": "Celsius Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "SIC 2086 map",
+   "seed": "listed_sweep",
+   "sic": 2086,
+   "ticker": "CELH"
+  },
+  {
+   "cik": 1324404,
+   "ciks": [
+    1324404
+   ],
+   "exclude_reason": "",
+   "name": "CF Industries Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2870,
+   "ticker": "CF"
+  },
+  {
+   "cik": 313927,
+   "ciks": [
+    313927
+   ],
+   "exclude_reason": "",
+   "name": "CHURCH & DWIGHT CO INC /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2840,
+   "ticker": "CHD"
+  },
+  {
+   "cik": 1517175,
+   "ciks": [
+    1517175
+   ],
+   "exclude_reason": "",
+   "name": "Chefs' Warehouse, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "SIC 5141 map",
+   "seed": "public_float",
+   "sic": 5141,
+   "ticker": "CHEF"
+  },
+  {
+   "cik": 1091667,
+   "ciks": [
+    1091667
+   ],
+   "exclude_reason": "",
+   "name": "CHARTER COMMUNICATIONS, INC. /MO/",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4841,
+   "ticker": "CHTR"
+  },
+  {
+   "cik": 1739940,
+   "ciks": [
+    701221,
+    1739940
+   ],
+   "exclude_reason": "",
+   "name": "Cigna Group",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6324,
+   "ticker": "CI"
+  },
+  {
+   "cik": 936395,
+   "ciks": [
+    936395
+   ],
+   "exclude_reason": "",
+   "name": "CIENA CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3661,
+   "ticker": "CIEN"
+  },
+  {
+   "cik": 1605888,
+   "ciks": [
+    1605888
+   ],
+   "exclude_reason": "",
+   "name": "CIRCLE8 GROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7363 map",
+   "seed": "public_float",
+   "sic": 7363,
+   "ticker": "CIRC"
+  },
+  {
+   "cik": 944745,
+   "ciks": [
+    944745
+   ],
+   "exclude_reason": "",
+   "name": "CIVISTA BANCSHARES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "public_float",
+   "sic": 6022,
+   "ticker": "CIVB"
+  },
+  {
+   "cik": 21665,
+   "ciks": [
+    21665
+   ],
+   "exclude_reason": "",
+   "name": "COLGATE PALMOLIVE CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2844,
+   "ticker": "CL"
+  },
+  {
+   "cik": 827876,
+   "ciks": [
+    827876
+   ],
+   "exclude_reason": "",
+   "name": "CLEANSPARK, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6199 map",
+   "seed": "listed_sweep",
+   "sic": 6199,
+   "ticker": "CLSK"
+  },
+  {
+   "cik": 1166691,
+   "ciks": [
+    1166691
+   ],
+   "exclude_reason": "",
+   "name": "COMCAST CORP",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4841,
+   "ticker": "CMCSA"
+  },
+  {
+   "cik": 1156375,
+   "ciks": [
+    1156375
+   ],
+   "exclude_reason": "",
+   "name": "CME GROUP INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6200,
+   "ticker": "CME"
+  },
+  {
+   "cik": 1058090,
+   "ciks": [
+    1058090
+   ],
+   "exclude_reason": "",
+   "name": "CHIPOTLE MEXICAN GRILL INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5812,
+   "ticker": "CMG"
+  },
+  {
+   "cik": 26172,
+   "ciks": [
+    26172
+   ],
+   "exclude_reason": "",
+   "name": "CUMMINS INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3510,
+   "ticker": "CMI"
+  },
+  {
+   "cik": 1071739,
+   "ciks": [
+    1071739
+   ],
+   "exclude_reason": "",
+   "name": "CENTENE CORP",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6324,
+   "ticker": "CNC"
+  },
+  {
+   "cik": 1070412,
+   "ciks": [
+    1070412
+   ],
+   "exclude_reason": "",
+   "name": "CNX Resources Corp",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "SIC 1311 map",
+   "seed": "sp500_history",
+   "sic": 1311,
+   "ticker": "CNX"
+  },
+  {
+   "cik": 1412486,
+   "ciks": [
+    1412486
+   ],
+   "exclude_reason": "",
+   "name": "Cocrystal Pharma, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "COCP"
+  },
+  {
+   "cik": 927628,
+   "ciks": [
+    927628
+   ],
+   "exclude_reason": "",
+   "name": "CAPITAL ONE FINANCIAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "COF"
+  },
+  {
+   "cik": 803164,
+   "ciks": [
+    803164
+   ],
+   "exclude_reason": "",
+   "name": "CHOICEONE FINANCIAL SERVICES INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "public_float",
+   "sic": 6022,
+   "ticker": "COFS"
+  },
+  {
+   "cik": 1622229,
+   "ciks": [
+    1622229
+   ],
+   "exclude_reason": "",
+   "name": "Cogent Biosciences, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "COGT"
+  },
+  {
+   "cik": 820318,
+   "ciks": [
+    820318
+   ],
+   "exclude_reason": "",
+   "name": "COHERENT CORP.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3827,
+   "ticker": "COHR"
+  },
+  {
+   "cik": 1679788,
+   "ciks": [
+    1679788
+   ],
+   "exclude_reason": "",
+   "name": "Coinbase Global, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6199,
+   "ticker": "COIN"
+  },
+  {
+   "cik": 1563190,
+   "ciks": [
+    1563190
+   ],
+   "exclude_reason": "",
+   "name": "Compass, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6531 map",
+   "seed": "listed_sweep",
+   "sic": 6531,
+   "ticker": "COMP"
+  },
+  {
+   "cik": 711404,
+   "ciks": [
+    711404
+   ],
+   "exclude_reason": "",
+   "name": "COOPER COMPANIES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3851,
+   "ticker": "COO"
+  },
+  {
+   "cik": 1163165,
+   "ciks": [
+    1163165
+   ],
+   "exclude_reason": "",
+   "name": "CONOCOPHILLIPS",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2911,
+   "ticker": "COP"
+  },
+  {
+   "cik": 1140859,
+   "ciks": [
+    1140859
+   ],
+   "exclude_reason": "",
+   "name": "Cencora, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5122,
+   "ticker": "COR"
+  },
+  {
+   "cik": 909832,
+   "ciks": [
+    909832
+   ],
+   "exclude_reason": "",
+   "name": "COSTCO WHOLESALE CORP /NEW",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5331,
+   "ticker": "COST"
+  },
+  {
+   "cik": 16875,
+   "ciks": [
+    16875
+   ],
+   "exclude_reason": "",
+   "name": "CANADIAN PACIFIC KANSAS CITY LTD/CN",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 4011 map",
+   "seed": "listed_sweep",
+   "sic": 4011,
+   "ticker": "CP"
+  },
+  {
+   "cik": 1834584,
+   "ciks": [
+    1834584
+   ],
+   "exclude_reason": "",
+   "name": "Coupang, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5961 map",
+   "seed": "listed_sweep",
+   "sic": 5961,
+   "ticker": "CPNG"
+  },
+  {
+   "cik": 1530721,
+   "ciks": [
+    1530721
+   ],
+   "exclude_reason": "",
+   "name": "Capri Holdings Ltd",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 3100 map",
+   "seed": "sp500_history",
+   "sic": 3100,
+   "ticker": "CPRI"
+  },
+  {
+   "cik": 900075,
+   "ciks": [
+    900075
+   ],
+   "exclude_reason": "",
+   "name": "COPART INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5500,
+   "ticker": "CPRT"
+  },
+  {
+   "cik": 889609,
+   "ciks": [
+    889609
+   ],
+   "exclude_reason": "",
+   "name": "CONSUMER PORTFOLIO SERVICES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6199 map",
+   "seed": "public_float",
+   "sic": 6199,
+   "ticker": "CPSS"
+  },
+  {
+   "cik": 1383650,
+   "ciks": [
+    1383650
+   ],
+   "exclude_reason": "limited partnership units (MLP), not common stock",
+   "name": "Cheniere Energy Partners, L.P.",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "SIC 4924 map",
+   "seed": "listed_sweep",
+   "sic": 4924,
+   "ticker": "CQP"
+  },
+  {
+   "cik": 25475,
+   "ciks": [
+    25475
+   ],
+   "exclude_reason": "only listed security is a preferred share / unit / warrant, not common stock",
+   "name": "CRAWFORD & CO",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6411 map",
+   "seed": "public_float",
+   "sic": 6411,
+   "ticker": "CRD.A"
+  },
+  {
+   "cik": 849395,
+   "ciks": [
+    849395
+   ],
+   "exclude_reason": "",
+   "name": "CRH PUBLIC LTD CO",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3241,
+   "ticker": "CRH"
+  },
+  {
+   "cik": 1108524,
+   "ciks": [
+    1108524
+   ],
+   "exclude_reason": "",
+   "name": "Salesforce, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "CRM"
+  },
+  {
+   "cik": 1656472,
+   "ciks": [
+    1656472
+   ],
+   "exclude_reason": "",
+   "name": "Cronos Group Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2833 map",
+   "seed": "listed_sweep",
+   "sic": 2833,
+   "ticker": "CRON"
+  },
+  {
+   "cik": 1535527,
+   "ciks": [
+    1535527
+   ],
+   "exclude_reason": "",
+   "name": "CrowdStrike Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "CRWD"
+  },
+  {
+   "cik": 1769628,
+   "ciks": [
+    1769628
+   ],
+   "exclude_reason": "",
+   "name": "CoreWeave, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "CRWV"
+  },
+  {
+   "cik": 858877,
+   "ciks": [
+    858877
+   ],
+   "exclude_reason": "",
+   "name": "CISCO SYSTEMS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3576,
+   "ticker": "CSCO"
+  },
+  {
+   "cik": 1057352,
+   "ciks": [
+    1057352
+   ],
+   "exclude_reason": "",
+   "name": "COSTAR GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "CSGP"
+  },
+  {
+   "cik": 277948,
+   "ciks": [
+    277948
+   ],
+   "exclude_reason": "",
+   "name": "CSX CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4011,
+   "ticker": "CSX"
+  },
+  {
+   "cik": 30554,
+   "ciks": [
+    30554
+   ],
+   "exclude_reason": "only listed security is a preferred share / unit / warrant, not common stock",
+   "name": "EIDP, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 2820 map",
+   "seed": "listed_sweep",
+   "sic": 2820,
+   "ticker": "CTA.PA"
+  },
+  {
+   "cik": 723254,
+   "ciks": [
+    723254
+   ],
+   "exclude_reason": "",
+   "name": "CINTAS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2320,
+   "ticker": "CTAS"
+  },
+  {
+   "cik": 1851484,
+   "ciks": [
+    1851484
+   ],
+   "exclude_reason": "",
+   "name": "CITIUS ONCOLOGY, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "CTOR"
+  },
+  {
+   "cik": 1058290,
+   "ciks": [
+    1058290
+   ],
+   "exclude_reason": "",
+   "name": "COGNIZANT TECHNOLOGY SOLUTIONS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7371,
+   "ticker": "CTSH"
+  },
+  {
+   "cik": 1755672,
+   "ciks": [
+    1755672
+   ],
+   "exclude_reason": "",
+   "name": "Corteva, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 0100 map",
+   "seed": "sp500_history",
+   "sic": 100,
+   "ticker": "CTVA"
+  },
+  {
+   "cik": 1506251,
+   "ciks": [
+    1506251
+   ],
+   "exclude_reason": "",
+   "name": "Citius Pharmaceuticals, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "CTXR"
+  },
+  {
+   "cik": 1690820,
+   "ciks": [
+    1690820
+   ],
+   "exclude_reason": "",
+   "name": "CARVANA CO.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5500,
+   "ticker": "CVNA"
+  },
+  {
+   "cik": 64803,
+   "ciks": [
+    64803
+   ],
+   "exclude_reason": "",
+   "name": "CVS HEALTH Corp",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5912,
+   "ticker": "CVS"
+  },
+  {
+   "cik": 93410,
+   "ciks": [
+    93410
+   ],
+   "exclude_reason": "",
+   "name": "CHEVRON CORP",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2911,
+   "ticker": "CVX"
+  },
+  {
+   "cik": 1070985,
+   "ciks": [
+    1070985
+   ],
+   "exclude_reason": "",
+   "name": "CoreCivic, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "listed_sweep",
+   "sic": 6798,
+   "ticker": "CXW"
+  },
+  {
+   "cik": 1509745,
+   "ciks": [
+    1509745
+   ],
+   "exclude_reason": "",
+   "name": "CYPHERPUNK TECHNOLOGIES INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "CYPH"
+  },
+  {
+   "cik": 715957,
+   "ciks": [
+    715957
+   ],
+   "exclude_reason": "",
+   "name": "DOMINION ENERGY, INC",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "D"
+  },
+  {
+   "cik": 27904,
+   "ciks": [
+    27904
+   ],
+   "exclude_reason": "",
+   "name": "DELTA AIR LINES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4512,
+   "ticker": "DAL"
+  },
+  {
+   "cik": 1792789,
+   "ciks": [
+    1792789
+   ],
+   "exclude_reason": "",
+   "name": "DoorDash, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "DASH"
+  },
+  {
+   "cik": 1666700,
+   "ciks": [
+    1666700
+   ],
+   "exclude_reason": "",
+   "name": "DuPont de Nemours, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2821,
+   "ticker": "DD"
+  },
+  {
+   "cik": 1561550,
+   "ciks": [
+    1561550
+   ],
+   "exclude_reason": "",
+   "name": "Datadog, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "DDOG"
+  },
+  {
+   "cik": 315189,
+   "ciks": [
+    315189
+   ],
+   "exclude_reason": "",
+   "name": "DEERE & CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3523,
+   "ticker": "DE"
+  },
+  {
+   "cik": 910521,
+   "ciks": [
+    910521
+   ],
+   "exclude_reason": "",
+   "name": "DECKERS OUTDOOR CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3021,
+   "ticker": "DECK"
+  },
+  {
+   "cik": 1571996,
+   "ciks": [
+    1571996
+   ],
+   "exclude_reason": "",
+   "name": "Dell Technologies Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3571,
+   "ticker": "DELL"
+  },
+  {
+   "cik": 29534,
+   "ciks": [
+    29534
+   ],
+   "exclude_reason": "",
+   "name": "DOLLAR GENERAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5331,
+   "ticker": "DG"
+  },
+  {
+   "cik": 882184,
+   "ciks": [
+    882184
+   ],
+   "exclude_reason": "",
+   "name": "HORTON D R INC /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1531,
+   "ticker": "DHI"
+  },
+  {
+   "cik": 313616,
+   "ciks": [
+    313616
+   ],
+   "exclude_reason": "",
+   "name": "DANAHER CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3823,
+   "ticker": "DHR"
+  },
+  {
+   "cik": 1744489,
+   "ciks": [
+    1001039,
+    1744489
+   ],
+   "exclude_reason": "",
+   "name": "Walt Disney Co",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7990,
+   "ticker": "DIS"
+  },
+  {
+   "cik": 1297996,
+   "ciks": [
+    1297996
+   ],
+   "exclude_reason": "",
+   "name": "DIGITAL REALTY TRUST, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "DLR"
+  },
+  {
+   "cik": 935703,
+   "ciks": [
+    935703
+   ],
+   "exclude_reason": "",
+   "name": "DOLLAR TREE, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5331,
+   "ticker": "DLTR"
+  },
+  {
+   "cik": 765880,
+   "ciks": [
+    765880
+   ],
+   "exclude_reason": "",
+   "name": "HEALTHPEAK PROPERTIES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "DOC"
+  },
+  {
+   "cik": 1261333,
+   "ciks": [
+    1261333
+   ],
+   "exclude_reason": "",
+   "name": "DOCUSIGN, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "DOCU"
+  },
+  {
+   "cik": 1751788,
+   "ciks": [
+    1751788
+   ],
+   "exclude_reason": "",
+   "name": "DOW INC.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2821,
+   "ticker": "DOW"
+  },
+  {
+   "cik": 1286681,
+   "ciks": [
+    1286681
+   ],
+   "exclude_reason": "",
+   "name": "DOMINOS PIZZA INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5140,
+   "ticker": "DPZ"
+  },
+  {
+   "cik": 1326160,
+   "ciks": [
+    1326160
+   ],
+   "exclude_reason": "",
+   "name": "Duke Energy CORP",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "DUK"
+  },
+  {
+   "cik": 1090012,
+   "ciks": [
+    1090012
+   ],
+   "exclude_reason": "",
+   "name": "DEVON ENERGY CORP/DE",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1311,
+   "ticker": "DVN"
+  },
+  {
+   "cik": 1688568,
+   "ciks": [
+    1688568
+   ],
+   "exclude_reason": "",
+   "name": "DXC Technology Co",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7374 map",
+   "seed": "sp500_history",
+   "sic": 7374,
+   "ticker": "DXC"
+  },
+  {
+   "cik": 1093557,
+   "ciks": [
+    1093557
+   ],
+   "exclude_reason": "",
+   "name": "DEXCOM INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3841,
+   "ticker": "DXCM"
+  },
+  {
+   "cik": 1065088,
+   "ciks": [
+    1065088
+   ],
+   "exclude_reason": "",
+   "name": "EBAY INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "EBAY"
+  },
+  {
+   "cik": 31462,
+   "ciks": [
+    31462
+   ],
+   "exclude_reason": "",
+   "name": "ECOLAB INC.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2840,
+   "ticker": "ECL"
+  },
+  {
+   "cik": 1047862,
+   "ciks": [
+    1047862
+   ],
+   "exclude_reason": "",
+   "name": "CONSOLIDATED EDISON INC",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "ED"
+  },
+  {
+   "cik": 827052,
+   "ciks": [
+    827052
+   ],
+   "exclude_reason": "",
+   "name": "EDISON INTERNATIONAL",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "EIX"
+  },
+  {
+   "cik": 1001250,
+   "ciks": [
+    1001250
+   ],
+   "exclude_reason": "",
+   "name": "ESTEE LAUDER COMPANIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2844,
+   "ticker": "EL"
+  },
+  {
+   "cik": 1156039,
+   "ciks": [
+    1156039
+   ],
+   "exclude_reason": "",
+   "name": "Elevance Health, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6324,
+   "ticker": "ELV"
+  },
+  {
+   "cik": 32604,
+   "ciks": [
+    32604
+   ],
+   "exclude_reason": "",
+   "name": "EMERSON ELECTRIC CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3600,
+   "ticker": "EMR"
+  },
+  {
+   "cik": 895728,
+   "ciks": [
+    895728
+   ],
+   "exclude_reason": "",
+   "name": "ENBRIDGE INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 4610 map",
+   "seed": "listed_sweep",
+   "sic": 4610,
+   "ticker": "ENB"
+  },
+  {
+   "cik": 1463101,
+   "ciks": [
+    1463101
+   ],
+   "exclude_reason": "",
+   "name": "Enphase Energy, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "ENPH"
+  },
+  {
+   "cik": 1529864,
+   "ciks": [
+    1529864
+   ],
+   "exclude_reason": "",
+   "name": "Enova International, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6141 map",
+   "seed": "public_float",
+   "sic": 6141,
+   "ticker": "ENVA"
+  },
+  {
+   "cik": 821189,
+   "ciks": [
+    821189
+   ],
+   "exclude_reason": "",
+   "name": "EOG RESOURCES INC",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1311,
+   "ticker": "EOG"
+  },
+  {
+   "cik": 1061219,
+   "ciks": [
+    1061219
+   ],
+   "exclude_reason": "limited partnership units (MLP), not common stock",
+   "name": "ENTERPRISE PRODUCTS PARTNERS L.P.",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "SIC 4922 map",
+   "seed": "listed_sweep",
+   "sic": 4922,
+   "ticker": "EPD"
+  },
+  {
+   "cik": 1101239,
+   "ciks": [
+    1101239
+   ],
+   "exclude_reason": "",
+   "name": "EQUINIX INC",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "EQIX"
+  },
+  {
+   "cik": 72741,
+   "ciks": [
+    72741
+   ],
+   "exclude_reason": "",
+   "name": "EVERSOURCE ENERGY",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "ES"
+  },
+  {
+   "cik": 1551182,
+   "ciks": [
+    1551182
+   ],
+   "exclude_reason": "",
+   "name": "Eaton Corp plc",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3590,
+   "ticker": "ETN"
+  },
+  {
+   "cik": 65984,
+   "ciks": [
+    65984
+   ],
+   "exclude_reason": "",
+   "name": "ENTERGY CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "ETR"
+  },
+  {
+   "cik": 1109116,
+   "ciks": [
+    1109116
+   ],
+   "exclude_reason": "",
+   "name": "ENTRAVISION COMMUNICATIONS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4833 map",
+   "seed": "listed_sweep",
+   "sic": 4833,
+   "ticker": "EVC"
+  },
+  {
+   "cik": 1805385,
+   "ciks": [
+    1805385
+   ],
+   "exclude_reason": "",
+   "name": "Evolv Technologies Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3577 map",
+   "seed": "listed_sweep",
+   "sic": 3577,
+   "ticker": "EVLV"
+  },
+  {
+   "cik": 1099800,
+   "ciks": [
+    1099800
+   ],
+   "exclude_reason": "",
+   "name": "Edwards Lifesciences Corp",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3842,
+   "ticker": "EW"
+  },
+  {
+   "cik": 1109357,
+   "ciks": [
+    1109357
+   ],
+   "exclude_reason": "",
+   "name": "EXELON CORP",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "EXC"
+  },
+  {
+   "cik": 37996,
+   "ciks": [
+    37996
+   ],
+   "exclude_reason": "",
+   "name": "FORD MOTOR CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3711,
+   "ticker": "F"
+  },
+  {
+   "cik": 1472787,
+   "ciks": [
+    1472787
+   ],
+   "exclude_reason": "",
+   "name": "First American Financial Corp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6361 map",
+   "seed": "listed_sweep",
+   "sic": 6361,
+   "ticker": "FAF"
+  },
+  {
+   "cik": 815556,
+   "ciks": [
+    815556
+   ],
+   "exclude_reason": "",
+   "name": "FASTENAL CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5200,
+   "ticker": "FAST"
+  },
+  {
+   "cik": 1434316,
+   "ciks": [
+    1434316
+   ],
+   "exclude_reason": "",
+   "name": "FATE THERAPEUTICS INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "listed_sweep",
+   "sic": 2836,
+   "ticker": "FATE"
+  },
+  {
+   "cik": 886128,
+   "ciks": [
+    886128
+   ],
+   "exclude_reason": "",
+   "name": "FUELCELL ENERGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 3620 map",
+   "seed": "listed_sweep",
+   "sic": 3620,
+   "ticker": "FCEL"
+  },
+  {
+   "cik": 831259,
+   "ciks": [
+    831259
+   ],
+   "exclude_reason": "",
+   "name": "FREEPORT-MCMORAN INC",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1000,
+   "ticker": "FCX"
+  },
+  {
+   "cik": 1048911,
+   "ciks": [
+    1048911
+   ],
+   "exclude_reason": "",
+   "name": "FEDEX CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4513,
+   "ticker": "FDX"
+  },
+  {
+   "cik": 1136893,
+   "ciks": [
+    1136893
+   ],
+   "exclude_reason": "",
+   "name": "Fidelity National Information Services, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "FIS"
+  },
+  {
+   "cik": 862831,
+   "ciks": [
+    862831
+   ],
+   "exclude_reason": "",
+   "name": "FINANCIAL INSTITUTIONS INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "public_float",
+   "sic": 6021,
+   "ticker": "FISI"
+  },
+  {
+   "cik": 798354,
+   "ciks": [
+    798354
+   ],
+   "exclude_reason": "",
+   "name": "FISERV INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "FISV"
+  },
+  {
+   "cik": 35527,
+   "ciks": [
+    35527
+   ],
+   "exclude_reason": "",
+   "name": "FIFTH THIRD BANCORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6022,
+   "ticker": "FITB"
+  },
+  {
+   "cik": 1035983,
+   "ciks": [
+    1035983
+   ],
+   "exclude_reason": "",
+   "name": "COMFORT SYSTEMS USA INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1731,
+   "ticker": "FIX"
+  },
+  {
+   "cik": 792966,
+   "ciks": [
+    792966
+   ],
+   "exclude_reason": "",
+   "name": "FARMERS & MERCHANTS BANCORP INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6035 map",
+   "seed": "public_float",
+   "sic": 6035,
+   "ticker": "FMAO"
+  },
+  {
+   "cik": 919864,
+   "ciks": [
+    919864
+   ],
+   "exclude_reason": "",
+   "name": "Finward Bancorp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6035 map",
+   "seed": "listed_sweep",
+   "sic": 6035,
+   "ticker": "FNWD"
+  },
+  {
+   "cik": 1023313,
+   "ciks": [
+    1023313
+   ],
+   "exclude_reason": "",
+   "name": "FORRESTER RESEARCH, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 8700 map",
+   "seed": "public_float",
+   "sic": 8700,
+   "ticker": "FORR"
+  },
+  {
+   "cik": 924805,
+   "ciks": [
+    924805
+   ],
+   "exclude_reason": "",
+   "name": "Freedom Holding Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6211 map",
+   "seed": "listed_sweep",
+   "sic": 6211,
+   "ticker": "FRHC"
+  },
+  {
+   "cik": 1325670,
+   "ciks": [
+    1325670
+   ],
+   "exclude_reason": "",
+   "name": "Primis Financial Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "public_float",
+   "sic": 6022,
+   "ticker": "FRST"
+  },
+  {
+   "cik": 1262039,
+   "ciks": [
+    1262039
+   ],
+   "exclude_reason": "",
+   "name": "Fortinet, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3577,
+   "ticker": "FTNT"
+  },
+  {
+   "cik": 1659166,
+   "ciks": [
+    1659166
+   ],
+   "exclude_reason": "",
+   "name": "Fortive Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3823,
+   "ticker": "FTV"
+  },
+  {
+   "cik": 1680581,
+   "ciks": [
+    1680581
+   ],
+   "exclude_reason": "",
+   "name": "Fulcrum Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "FULC"
+  },
+  {
+   "cik": 1560385,
+   "ciks": [
+    1560385
+   ],
+   "exclude_reason": "",
+   "name": "Liberty Media Corp",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4833 map",
+   "seed": "listed_sweep",
+   "sic": 4833,
+   "ticker": "FWONA"
+  },
+  {
+   "cik": 719402,
+   "ciks": [
+    719402
+   ],
+   "exclude_reason": "",
+   "name": "FIRST NATIONAL CORP /VA/",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "FXNC"
+  },
+  {
+   "cik": 39911,
+   "ciks": [
+    39911
+   ],
+   "exclude_reason": "",
+   "name": "GAP INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5651 map",
+   "seed": "listed_sweep",
+   "sic": 5651,
+   "ticker": "GAP"
+  },
+  {
+   "cik": 40533,
+   "ciks": [
+    40533
+   ],
+   "exclude_reason": "",
+   "name": "GENERAL DYNAMICS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3730,
+   "ticker": "GD"
+  },
+  {
+   "cik": 40545,
+   "ciks": [
+    40545
+   ],
+   "exclude_reason": "",
+   "name": "GENERAL ELECTRIC CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3600,
+   "ticker": "GE"
+  },
+  {
+   "cik": 1996810,
+   "ciks": [
+    1996810
+   ],
+   "exclude_reason": "",
+   "name": "GE Vernova Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3600,
+   "ticker": "GEV"
+  },
+  {
+   "cik": 882095,
+   "ciks": [
+    882095
+   ],
+   "exclude_reason": "",
+   "name": "GILEAD SCIENCES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2836,
+   "ticker": "GILD"
+  },
+  {
+   "cik": 40704,
+   "ciks": [
+    40704
+   ],
+   "exclude_reason": "",
+   "name": "GENERAL MILLS INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2040,
+   "ticker": "GIS"
+  },
+  {
+   "cik": 1222333,
+   "ciks": [
+    1222333
+   ],
+   "exclude_reason": "commodity/crypto trust (SIC 6221), not common stock",
+   "name": "SPDR GOLD TRUST",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6221 map",
+   "seed": "listed_sweep",
+   "sic": 6221,
+   "ticker": "GLD"
+  },
+  {
+   "cik": 24741,
+   "ciks": [
+    24741
+   ],
+   "exclude_reason": "",
+   "name": "CORNING INC /NY",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3357,
+   "ticker": "GLW"
+  },
+  {
+   "cik": 1467858,
+   "ciks": [
+    1467858
+   ],
+   "exclude_reason": "",
+   "name": "General Motors Co",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3711,
+   "ticker": "GM"
+  },
+  {
+   "cik": 1326380,
+   "ciks": [
+    1326380
+   ],
+   "exclude_reason": "",
+   "name": "GameStop Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5734 map",
+   "seed": "sp500_history",
+   "sic": 5734,
+   "ticker": "GME"
+  },
+  {
+   "cik": 1326200,
+   "ciks": [
+    1326200
+   ],
+   "exclude_reason": "",
+   "name": "GENCO SHIPPING & TRADING LTD",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 4412 map",
+   "seed": "listed_sweep",
+   "sic": 4412,
+   "ticker": "GNK"
+  },
+  {
+   "cik": 1537054,
+   "ciks": [
+    1537054
+   ],
+   "exclude_reason": "",
+   "name": "Gogo Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4899 map",
+   "seed": "listed_sweep",
+   "sic": 4899,
+   "ticker": "GOGO"
+  },
+  {
+   "cik": 1591588,
+   "ciks": [
+    1591588
+   ],
+   "exclude_reason": "",
+   "name": "Gold.com, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 5094 map",
+   "seed": "public_float",
+   "sic": 5094,
+   "ticker": "GOLD"
+  },
+  {
+   "cik": 1652044,
+   "ciks": [
+    1288776,
+    1652044
+   ],
+   "exclude_reason": "",
+   "name": "Alphabet Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7370,
+   "ticker": "GOOGL"
+  },
+  {
+   "cik": 1123360,
+   "ciks": [
+    1123360
+   ],
+   "exclude_reason": "",
+   "name": "GLOBAL PAYMENTS INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "GPN"
+  },
+  {
+   "cik": 1500435,
+   "ciks": [
+    1500435
+   ],
+   "exclude_reason": "",
+   "name": "GoPro, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3861 map",
+   "seed": "listed_sweep",
+   "sic": 3861,
+   "ticker": "GPRO"
+  },
+  {
+   "cik": 42682,
+   "ciks": [
+    42682
+   ],
+   "exclude_reason": "",
+   "name": "GORMAN RUPP CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 3561 map",
+   "seed": "listed_sweep",
+   "sic": 3561,
+   "ticker": "GRC"
+  },
+  {
+   "cik": 1121788,
+   "ciks": [
+    1121788
+   ],
+   "exclude_reason": "",
+   "name": "GARMIN LTD",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3812,
+   "ticker": "GRMN"
+  },
+  {
+   "cik": 886982,
+   "ciks": [
+    886982
+   ],
+   "exclude_reason": "",
+   "name": "GOLDMAN SACHS GROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6211,
+   "ticker": "GS"
+  },
+  {
+   "cik": 854560,
+   "ciks": [
+    854560
+   ],
+   "exclude_reason": "",
+   "name": "GREAT SOUTHERN BANCORP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "public_float",
+   "sic": 6022,
+   "ticker": "GSBC"
+  },
+  {
+   "cik": 45012,
+   "ciks": [
+    45012
+   ],
+   "exclude_reason": "",
+   "name": "HALLIBURTON CO",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1389,
+   "ticker": "HAL"
+  },
+  {
+   "cik": 860730,
+   "ciks": [
+    860730
+   ],
+   "exclude_reason": "",
+   "name": "HCA Healthcare, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 8062,
+   "ticker": "HCA"
+  },
+  {
+   "cik": 354950,
+   "ciks": [
+    354950
+   ],
+   "exclude_reason": "",
+   "name": "HOME DEPOT, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5211,
+   "ticker": "HD"
+  },
+  {
+   "cik": 1822928,
+   "ciks": [
+    1822928
+   ],
+   "exclude_reason": "",
+   "name": "Holley Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 3714 map",
+   "seed": "listed_sweep",
+   "sic": 3714,
+   "ticker": "HLLY"
+  },
+  {
+   "cik": 1585689,
+   "ciks": [
+    1585689
+   ],
+   "exclude_reason": "",
+   "name": "Hilton Worldwide Holdings Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7011,
+   "ticker": "HLT"
+  },
+  {
+   "cik": 850141,
+   "ciks": [
+    850141
+   ],
+   "exclude_reason": "",
+   "name": "HORACE MANN EDUCATORS CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6331 map",
+   "seed": "listed_sweep",
+   "sic": 6331,
+   "ticker": "HMN"
+  },
+  {
+   "cik": 773840,
+   "ciks": [
+    773840
+   ],
+   "exclude_reason": "",
+   "name": "HONEYWELL INTERNATIONAL INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3724,
+   "ticker": "HON"
+  },
+  {
+   "cik": 1783879,
+   "ciks": [
+    1783879
+   ],
+   "exclude_reason": "",
+   "name": "Robinhood Markets, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6211,
+   "ticker": "HOOD"
+  },
+  {
+   "cik": 1645590,
+   "ciks": [
+    1645590
+   ],
+   "exclude_reason": "",
+   "name": "Hewlett Packard Enterprise Co",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3570,
+   "ticker": "HPE"
+  },
+  {
+   "cik": 47217,
+   "ciks": [
+    47217
+   ],
+   "exclude_reason": "",
+   "name": "HP INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3570,
+   "ticker": "HPQ"
+  },
+  {
+   "cik": 48465,
+   "ciks": [
+    48465
+   ],
+   "exclude_reason": "",
+   "name": "HORMEL FOODS CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2011,
+   "ticker": "HRL"
+  },
+  {
+   "cik": 1000228,
+   "ciks": [
+    1000228
+   ],
+   "exclude_reason": "",
+   "name": "HENRY SCHEIN INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5047,
+   "ticker": "HSIC"
+  },
+  {
+   "cik": 1070750,
+   "ciks": [
+    1070750
+   ],
+   "exclude_reason": "",
+   "name": "HOST HOTELS & RESORTS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "HST"
+  },
+  {
+   "cik": 47111,
+   "ciks": [
+    47111
+   ],
+   "exclude_reason": "",
+   "name": "HERSHEY CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2060,
+   "ticker": "HSY"
+  },
+  {
+   "cik": 1404655,
+   "ciks": [
+    1404655
+   ],
+   "exclude_reason": "",
+   "name": "HUBSPOT INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "public_float",
+   "sic": 7372,
+   "ticker": "HUBS"
+  },
+  {
+   "cik": 49071,
+   "ciks": [
+    49071
+   ],
+   "exclude_reason": "",
+   "name": "HUMANA INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6324,
+   "ticker": "HUM"
+  },
+  {
+   "cik": 216085,
+   "ciks": [
+    216085
+   ],
+   "exclude_reason": "",
+   "name": "HAVERTY FURNITURE COMPANIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5712 map",
+   "seed": "public_float",
+   "sic": 5712,
+   "ticker": "HVT"
+  },
+  {
+   "cik": 4281,
+   "ciks": [
+    4281
+   ],
+   "exclude_reason": "",
+   "name": "Howmet Aerospace Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3350,
+   "ticker": "HWM"
+  },
+  {
+   "cik": 717605,
+   "ciks": [
+    717605
+   ],
+   "exclude_reason": "",
+   "name": "HEXCEL CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 2821 map",
+   "seed": "listed_sweep",
+   "sic": 2821,
+   "ticker": "HXL"
+  },
+  {
+   "cik": 1381197,
+   "ciks": [
+    1381197
+   ],
+   "exclude_reason": "",
+   "name": "Interactive Brokers Group, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6211,
+   "ticker": "IBKR"
+  },
+  {
+   "cik": 51143,
+   "ciks": [
+    51143
+   ],
+   "exclude_reason": "",
+   "name": "INTERNATIONAL BUSINESS MACHINES CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3570,
+   "ticker": "IBM"
+  },
+  {
+   "cik": 1571949,
+   "ciks": [
+    1571949
+   ],
+   "exclude_reason": "",
+   "name": "Intercontinental Exchange, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6200,
+   "ticker": "ICE"
+  },
+  {
+   "cik": 1040896,
+   "ciks": [
+    1040896
+   ],
+   "exclude_reason": "",
+   "name": "Intellicheck, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "IDN"
+  },
+  {
+   "cik": 874716,
+   "ciks": [
+    874716
+   ],
+   "exclude_reason": "",
+   "name": "IDEXX LABORATORIES INC /DE",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2835,
+   "ticker": "IDXX"
+  },
+  {
+   "cik": 1110803,
+   "ciks": [
+    1110803
+   ],
+   "exclude_reason": "",
+   "name": "ILLUMINA, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3826,
+   "ticker": "ILMN"
+  },
+  {
+   "cik": 49938,
+   "ciks": [
+    49938
+   ],
+   "exclude_reason": "",
+   "name": "IMPERIAL OIL LTD",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "SIC 2911 map",
+   "seed": "listed_sweep",
+   "sic": 2911,
+   "ticker": "IMO"
+  },
+  {
+   "cik": 1683695,
+   "ciks": [
+    1683695
+   ],
+   "exclude_reason": "",
+   "name": "International Money Express, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7389 map",
+   "seed": "public_float",
+   "sic": 7389,
+   "ticker": "IMXI"
+  },
+  {
+   "cik": 1562463,
+   "ciks": [
+    1562463
+   ],
+   "exclude_reason": "",
+   "name": "First Internet Bancorp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "INBK"
+  },
+  {
+   "cik": 879169,
+   "ciks": [
+    879169
+   ],
+   "exclude_reason": "",
+   "name": "INCYTE CORP",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 8731,
+   "ticker": "INCY"
+  },
+  {
+   "cik": 903651,
+   "ciks": [
+    903651
+   ],
+   "exclude_reason": "",
+   "name": "INNODATA INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7374 map",
+   "seed": "public_float",
+   "sic": 7374,
+   "ticker": "INOD"
+  },
+  {
+   "cik": 50863,
+   "ciks": [
+    50863
+   ],
+   "exclude_reason": "",
+   "name": "INTEL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "INTC"
+  },
+  {
+   "cik": 896878,
+   "ciks": [
+    896878
+   ],
+   "exclude_reason": "",
+   "name": "INTUIT INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "INTU"
+  },
+  {
+   "cik": 1080014,
+   "ciks": [
+    1080014
+   ],
+   "exclude_reason": "",
+   "name": "Innoviva, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "INVA"
+  },
+  {
+   "cik": 51434,
+   "ciks": [
+    51434
+   ],
+   "exclude_reason": "",
+   "name": "INTERNATIONAL PAPER CO /NEW/",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2621,
+   "ticker": "IP"
+  },
+  {
+   "cik": 822663,
+   "ciks": [
+    822663
+   ],
+   "exclude_reason": "",
+   "name": "INTERPARFUMS INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "SIC 2844 map",
+   "seed": "public_float",
+   "sic": 2844,
+   "ticker": "IPAR"
+  },
+  {
+   "cik": 1478242,
+   "ciks": [
+    1478242
+   ],
+   "exclude_reason": "",
+   "name": "IQVIA HOLDINGS INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 8731,
+   "ticker": "IQV"
+  },
+  {
+   "cik": 1035267,
+   "ciks": [
+    1035267
+   ],
+   "exclude_reason": "",
+   "name": "INTUITIVE SURGICAL INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3842,
+   "ticker": "ISRG"
+  },
+  {
+   "cik": 49826,
+   "ciks": [
+    49826
+   ],
+   "exclude_reason": "",
+   "name": "ILLINOIS TOOL WORKS INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3560,
+   "ticker": "ITW"
+  },
+  {
+   "cik": 833444,
+   "ciks": [
+    833444
+   ],
+   "exclude_reason": "",
+   "name": "Johnson Controls International plc",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3585,
+   "ticker": "JCI"
+  },
+  {
+   "cik": 200406,
+   "ciks": [
+    200406
+   ],
+   "exclude_reason": "",
+   "name": "JOHNSON & JOHNSON",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "JNJ"
+  },
+  {
+   "cik": 19617,
+   "ciks": [
+    19617
+   ],
+   "exclude_reason": "",
+   "name": "JPMORGAN CHASE & CO",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "JPM"
+  },
+  {
+   "cik": 1418135,
+   "ciks": [
+    1418135
+   ],
+   "exclude_reason": "",
+   "name": "Keurig Dr Pepper Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2080,
+   "ticker": "KDP"
+  },
+  {
+   "cik": 1601046,
+   "ciks": [
+    1601046
+   ],
+   "exclude_reason": "",
+   "name": "Keysight Technologies, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3823,
+   "ticker": "KEYS"
+  },
+  {
+   "cik": 1637459,
+   "ciks": [
+    1637459
+   ],
+   "exclude_reason": "",
+   "name": "Kraft Heinz Co",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2030,
+   "ticker": "KHC"
+  },
+  {
+   "cik": 1404912,
+   "ciks": [
+    1404912
+   ],
+   "exclude_reason": "",
+   "name": "KKR & Co. Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6282,
+   "ticker": "KKR"
+  },
+  {
+   "cik": 319201,
+   "ciks": [
+    319201
+   ],
+   "exclude_reason": "",
+   "name": "KLA CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3827,
+   "ticker": "KLAC"
+  },
+  {
+   "cik": 55785,
+   "ciks": [
+    55785
+   ],
+   "exclude_reason": "",
+   "name": "KIMBERLY CLARK CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2670,
+   "ticker": "KMB"
+  },
+  {
+   "cik": 1506307,
+   "ciks": [
+    1506307
+   ],
+   "exclude_reason": "",
+   "name": "KINDER MORGAN, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4922,
+   "ticker": "KMI"
+  },
+  {
+   "cik": 21344,
+   "ciks": [
+    21344
+   ],
+   "exclude_reason": "",
+   "name": "COCA COLA CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2080,
+   "ticker": "KO"
+  },
+  {
+   "cik": 56873,
+   "ciks": [
+    56873
+   ],
+   "exclude_reason": "",
+   "name": "KROGER CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5411,
+   "ticker": "KR"
+  },
+  {
+   "cik": 1069258,
+   "ciks": [
+    1069258
+   ],
+   "exclude_reason": "",
+   "name": "KRATOS DEFENSE & SECURITY SOLUTIONS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 3760 map",
+   "seed": "listed_sweep",
+   "sic": 3760,
+   "ticker": "KTOS"
+  },
+  {
+   "cik": 798081,
+   "ciks": [
+    798081
+   ],
+   "exclude_reason": "",
+   "name": "LAKELAND INDUSTRIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 3842 map",
+   "seed": "listed_sweep",
+   "sic": 3842,
+   "ticker": "LAKE"
+  },
+  {
+   "cik": 1141688,
+   "ciks": [
+    1141688
+   ],
+   "exclude_reason": "",
+   "name": "LANDMARK BANCORP INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "listed_sweep",
+   "sic": 6021,
+   "ticker": "LARK"
+  },
+  {
+   "cik": 1570585,
+   "ciks": [
+    1570585
+   ],
+   "exclude_reason": "",
+   "name": "Liberty Global Ltd.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4841 map",
+   "seed": "listed_sweep",
+   "sic": 4841,
+   "ticker": "LBTYA"
+  },
+  {
+   "cik": 876343,
+   "ciks": [
+    876343
+   ],
+   "exclude_reason": "",
+   "name": "Lineage Cell Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "listed_sweep",
+   "sic": 2836,
+   "ticker": "LCTX"
+  },
+  {
+   "cik": 202058,
+   "ciks": [
+    202058
+   ],
+   "exclude_reason": "",
+   "name": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3812,
+   "ticker": "LHX"
+  },
+  {
+   "cik": 1707925,
+   "ciks": [
+    1707925
+   ],
+   "exclude_reason": "",
+   "name": "LINDE PLC",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2810,
+   "ticker": "LIN"
+  },
+  {
+   "cik": 1633978,
+   "ciks": [
+    1633978
+   ],
+   "exclude_reason": "",
+   "name": "Lumentum Holdings Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3669,
+   "ticker": "LITE"
+  },
+  {
+   "cik": 59478,
+   "ciks": [
+    59478
+   ],
+   "exclude_reason": "",
+   "name": "ELI LILLY & Co",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "LLY"
+  },
+  {
+   "cik": 936468,
+   "ciks": [
+    936468
+   ],
+   "exclude_reason": "",
+   "name": "LOCKHEED MARTIN CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3760,
+   "ticker": "LMT"
+  },
+  {
+   "cik": 3570,
+   "ciks": [
+    3570
+   ],
+   "exclude_reason": "",
+   "name": "Cheniere Energy, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "SIC 4924 map",
+   "seed": "listed_sweep",
+   "sic": 4924,
+   "ticker": "LNG"
+  },
+  {
+   "cik": 1462120,
+   "ciks": [
+    1462120
+   ],
+   "exclude_reason": "",
+   "name": "Live Oak Bancshares, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "LOB"
+  },
+  {
+   "cik": 1504678,
+   "ciks": [
+    1504678
+   ],
+   "exclude_reason": "",
+   "name": "Loop Industries, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 2800 map",
+   "seed": "listed_sweep",
+   "sic": 2800,
+   "ticker": "LOOP"
+  },
+  {
+   "cik": 60667,
+   "ciks": [
+    60667
+   ],
+   "exclude_reason": "",
+   "name": "LOWES COMPANIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5211,
+   "ticker": "LOW"
+  },
+  {
+   "cik": 707549,
+   "ciks": [
+    707549
+   ],
+   "exclude_reason": "",
+   "name": "LAM RESEARCH CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3559,
+   "ticker": "LRCX"
+  },
+  {
+   "cik": 1374690,
+   "ciks": [
+    1374690
+   ],
+   "exclude_reason": "",
+   "name": "Larimar Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "LRMR"
+  },
+  {
+   "cik": 1397187,
+   "ciks": [
+    1397187
+   ],
+   "exclude_reason": "",
+   "name": "lululemon athletica inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2300,
+   "ticker": "LULU"
+  },
+  {
+   "cik": 18926,
+   "ciks": [
+    18926
+   ],
+   "exclude_reason": "",
+   "name": "Lumen Technologies, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4813 map",
+   "seed": "sp500_history",
+   "sic": 4813,
+   "ticker": "LUMN"
+  },
+  {
+   "cik": 92380,
+   "ciks": [
+    92380
+   ],
+   "exclude_reason": "",
+   "name": "SOUTHWEST AIRLINES CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4512,
+   "ticker": "LUV"
+  },
+  {
+   "cik": 1300514,
+   "ciks": [
+    1300514
+   ],
+   "exclude_reason": "",
+   "name": "LAS VEGAS SANDS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7011,
+   "ticker": "LVS"
+  },
+  {
+   "cik": 1489393,
+   "ciks": [
+    1489393
+   ],
+   "exclude_reason": "",
+   "name": "LyondellBasell Industries N.V.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2860,
+   "ticker": "LYB"
+  },
+  {
+   "cik": 794367,
+   "ciks": [
+    794367
+   ],
+   "exclude_reason": "",
+   "name": "Macy's, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5311 map",
+   "seed": "sp500_history",
+   "sic": 5311,
+   "ticker": "M"
+  },
+  {
+   "cik": 1141391,
+   "ciks": [
+    1141391
+   ],
+   "exclude_reason": "",
+   "name": "Mastercard Inc",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "MA"
+  },
+  {
+   "cik": 871763,
+   "ciks": [
+    871763
+   ],
+   "exclude_reason": "",
+   "name": "ManpowerGroup Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7363 map",
+   "seed": "public_float",
+   "sic": 7363,
+   "ticker": "MAN"
+  },
+  {
+   "cik": 1048286,
+   "ciks": [
+    1048286
+   ],
+   "exclude_reason": "",
+   "name": "MARRIOTT INTERNATIONAL INC /MD/",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7011,
+   "ticker": "MAR"
+  },
+  {
+   "cik": 63908,
+   "ciks": [
+    63908
+   ],
+   "exclude_reason": "",
+   "name": "MCDONALDS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5812,
+   "ticker": "MCD"
+  },
+  {
+   "cik": 1638290,
+   "ciks": [
+    1638290
+   ],
+   "exclude_reason": "",
+   "name": "MasterCraft Boat Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 3730 map",
+   "seed": "public_float",
+   "sic": 3730,
+   "ticker": "MCFT"
+  },
+  {
+   "cik": 827054,
+   "ciks": [
+    827054
+   ],
+   "exclude_reason": "",
+   "name": "MICROCHIP TECHNOLOGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "MCHP"
+  },
+  {
+   "cik": 927653,
+   "ciks": [
+    927653
+   ],
+   "exclude_reason": "",
+   "name": "MCKESSON CORP",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5122,
+   "ticker": "MCK"
+  },
+  {
+   "cik": 1059556,
+   "ciks": [
+    1059556
+   ],
+   "exclude_reason": "",
+   "name": "MOODYS CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7320,
+   "ticker": "MCO"
+  },
+  {
+   "cik": 1103982,
+   "ciks": [
+    1103982
+   ],
+   "exclude_reason": "",
+   "name": "Mondelez International, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2000,
+   "ticker": "MDLZ"
+  },
+  {
+   "cik": 1613103,
+   "ciks": [
+    64670,
+    1613103
+   ],
+   "exclude_reason": "",
+   "name": "Medtronic plc",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3845,
+   "ticker": "MDT"
+  },
+  {
+   "cik": 1099590,
+   "ciks": [
+    1099590
+   ],
+   "exclude_reason": "",
+   "name": "MERCADOLIBRE INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7389 map",
+   "seed": "public_float",
+   "sic": 7389,
+   "ticker": "MELI"
+  },
+  {
+   "cik": 1099219,
+   "ciks": [
+    1099219
+   ],
+   "exclude_reason": "",
+   "name": "METLIFE INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6311,
+   "ticker": "MET"
+  },
+  {
+   "cik": 1326801,
+   "ciks": [
+    1326801
+   ],
+   "exclude_reason": "",
+   "name": "Meta Platforms, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7370,
+   "ticker": "META"
+  },
+  {
+   "cik": 1000209,
+   "ciks": [
+    1000209
+   ],
+   "exclude_reason": "",
+   "name": "MEDALLION FINANCIAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6199 map",
+   "seed": "public_float",
+   "sic": 6199,
+   "ticker": "MFIN"
+  },
+  {
+   "cik": 752714,
+   "ciks": [
+    752714
+   ],
+   "exclude_reason": "",
+   "name": "MCGRATH RENTCORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7359 map",
+   "seed": "public_float",
+   "sic": 7359,
+   "ticker": "MGRC"
+  },
+  {
+   "cik": 1735438,
+   "ciks": [
+    1735438
+   ],
+   "exclude_reason": "",
+   "name": "MeiraGTx Holdings plc",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "public_float",
+   "sic": 2836,
+   "ticker": "MGTX"
+  },
+  {
+   "cik": 1904286,
+   "ciks": [
+    1904286
+   ],
+   "exclude_reason": "",
+   "name": "MIRA PHARMACEUTICALS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "MIRA"
+  },
+  {
+   "cik": 63754,
+   "ciks": [
+    63754
+   ],
+   "exclude_reason": "",
+   "name": "MCCORMICK & CO INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2090,
+   "ticker": "MKC"
+  },
+  {
+   "cik": 66740,
+   "ciks": [
+    66740
+   ],
+   "exclude_reason": "",
+   "name": "3M CO",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3841,
+   "ticker": "MMM"
+  },
+  {
+   "cik": 1693577,
+   "ciks": [
+    1693577
+   ],
+   "exclude_reason": "",
+   "name": "MainStreet Bancshares, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "public_float",
+   "sic": 6022,
+   "ticker": "MNSB"
+  },
+  {
+   "cik": 865752,
+   "ciks": [
+    865752
+   ],
+   "exclude_reason": "",
+   "name": "Monster Beverage Corp",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2086,
+   "ticker": "MNST"
+  },
+  {
+   "cik": 764180,
+   "ciks": [
+    764180
+   ],
+   "exclude_reason": "",
+   "name": "ALTRIA GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2111,
+   "ticker": "MO"
+  },
+  {
+   "cik": 67347,
+   "ciks": [
+    67347
+   ],
+   "exclude_reason": "",
+   "name": "MODINE MANUFACTURING CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 3714 map",
+   "seed": "public_float",
+   "sic": 3714,
+   "ticker": "MOD"
+  },
+  {
+   "cik": 1285785,
+   "ciks": [
+    1285785
+   ],
+   "exclude_reason": "",
+   "name": "MOSAIC CO",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2870,
+   "ticker": "MOS"
+  },
+  {
+   "cik": 1510295,
+   "ciks": [
+    1510295
+   ],
+   "exclude_reason": "",
+   "name": "Marathon Petroleum Corp",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2911,
+   "ticker": "MPC"
+  },
+  {
+   "cik": 1280452,
+   "ciks": [
+    1280452
+   ],
+   "exclude_reason": "",
+   "name": "MONOLITHIC POWER SYSTEMS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "MPWR"
+  },
+  {
+   "cik": 310158,
+   "ciks": [
+    310158
+   ],
+   "exclude_reason": "",
+   "name": "Merck & Co., Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "MRK"
+  },
+  {
+   "cik": 1682852,
+   "ciks": [
+    1682852
+   ],
+   "exclude_reason": "",
+   "name": "Moderna, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2836,
+   "ticker": "MRNA"
+  },
+  {
+   "cik": 62709,
+   "ciks": [
+    62709
+   ],
+   "exclude_reason": "",
+   "name": "MARSH & MCLENNAN COMPANIES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6411,
+   "ticker": "MRSH"
+  },
+  {
+   "cik": 1835632,
+   "ciks": [
+    1058057,
+    1835632
+   ],
+   "exclude_reason": "",
+   "name": "Marvell Technology, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "MRVL"
+  },
+  {
+   "cik": 895421,
+   "ciks": [
+    895421
+   ],
+   "exclude_reason": "",
+   "name": "MORGAN STANLEY",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6211,
+   "ticker": "MS"
+  },
+  {
+   "cik": 1408198,
+   "ciks": [
+    1408198
+   ],
+   "exclude_reason": "",
+   "name": "MSCI Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "MSCI"
+  },
+  {
+   "cik": 789019,
+   "ciks": [
+    789019
+   ],
+   "exclude_reason": "",
+   "name": "MICROSOFT CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "MSFT"
+  },
+  {
+   "cik": 68505,
+   "ciks": [
+    68505
+   ],
+   "exclude_reason": "",
+   "name": "Motorola Solutions, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3663,
+   "ticker": "MSI"
+  },
+  {
+   "cik": 1050446,
+   "ciks": [
+    1050446
+   ],
+   "exclude_reason": "",
+   "name": "Strategy Inc",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6199 map",
+   "seed": "listed_sweep",
+   "sic": 6199,
+   "ticker": "MSTR"
+  },
+  {
+   "cik": 36270,
+   "ciks": [
+    36270
+   ],
+   "exclude_reason": "",
+   "name": "M&T BANK CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6022,
+   "ticker": "MTB"
+  },
+  {
+   "cik": 891103,
+   "ciks": [
+    891103
+   ],
+   "exclude_reason": "",
+   "name": "Match Group, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "sp500_history",
+   "sic": 7370,
+   "ticker": "MTCH"
+  },
+  {
+   "cik": 723125,
+   "ciks": [
+    723125
+   ],
+   "exclude_reason": "",
+   "name": "MICRON TECHNOLOGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "MU"
+  },
+  {
+   "cik": 1211805,
+   "ciks": [
+    1211805
+   ],
+   "exclude_reason": "",
+   "name": "My Size, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "MYSZ"
+  },
+  {
+   "cik": 1512228,
+   "ciks": [
+    1512228
+   ],
+   "exclude_reason": "",
+   "name": "NIOCORP DEVELOPMENTS LTD",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 1000 map",
+   "seed": "listed_sweep",
+   "sic": 1000,
+   "ticker": "NB"
+  },
+  {
+   "cik": 1120193,
+   "ciks": [
+    1120193
+   ],
+   "exclude_reason": "",
+   "name": "NASDAQ, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6200,
+   "ticker": "NDAQ"
+  },
+  {
+   "cik": 753308,
+   "ciks": [
+    753308
+   ],
+   "exclude_reason": "",
+   "name": "NEXTERA ENERGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "NEE"
+  },
+  {
+   "cik": 1164727,
+   "ciks": [
+    1164727
+   ],
+   "exclude_reason": "",
+   "name": "NEWMONT Corp /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1040,
+   "ticker": "NEM"
+  },
+  {
+   "cik": 1477333,
+   "ciks": [
+    1477333
+   ],
+   "exclude_reason": "",
+   "name": "Cloudflare, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "NET"
+  },
+  {
+   "cik": 1065280,
+   "ciks": [
+    1065280
+   ],
+   "exclude_reason": "",
+   "name": "NETFLIX INC",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7841,
+   "ticker": "NFLX"
+  },
+  {
+   "cik": 320187,
+   "ciks": [
+    320187
+   ],
+   "exclude_reason": "",
+   "name": "NIKE, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3021,
+   "ticker": "NKE"
+  },
+  {
+   "cik": 796534,
+   "ciks": [
+    796534
+   ],
+   "exclude_reason": "",
+   "name": "NATIONAL BANKSHARES INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "listed_sweep",
+   "sic": 6021,
+   "ticker": "NKSH"
+  },
+  {
+   "cik": 1690680,
+   "ciks": [
+    1690680
+   ],
+   "exclude_reason": "",
+   "name": "NEWMARK GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6531 map",
+   "seed": "listed_sweep",
+   "sic": 6531,
+   "ticker": "NMRK"
+  },
+  {
+   "cik": 751364,
+   "ciks": [
+    751364
+   ],
+   "exclude_reason": "",
+   "name": "NNN REIT, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "listed_sweep",
+   "sic": 6798,
+   "ticker": "NNN"
+  },
+  {
+   "cik": 1133421,
+   "ciks": [
+    1133421
+   ],
+   "exclude_reason": "",
+   "name": "NORTHROP GRUMMAN CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3812,
+   "ticker": "NOC"
+  },
+  {
+   "cik": 1021860,
+   "ciks": [
+    1021860
+   ],
+   "exclude_reason": "",
+   "name": "NOV Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 3533 map",
+   "seed": "sp500_history",
+   "sic": 3533,
+   "ticker": "NOV"
+  },
+  {
+   "cik": 1076930,
+   "ciks": [
+    1076930
+   ],
+   "exclude_reason": "",
+   "name": "NOVANTA INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3690 map",
+   "seed": "public_float",
+   "sic": 3690,
+   "ticker": "NOVT"
+  },
+  {
+   "cik": 1373715,
+   "ciks": [
+    1373715
+   ],
+   "exclude_reason": "",
+   "name": "ServiceNow, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "NOW"
+  },
+  {
+   "cik": 1719406,
+   "ciks": [
+    1719406
+   ],
+   "exclude_reason": "",
+   "name": "NRX Pharmaceuticals, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "NRXP"
+  },
+  {
+   "cik": 702165,
+   "ciks": [
+    702165
+   ],
+   "exclude_reason": "",
+   "name": "NORFOLK SOUTHERN CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4011,
+   "ticker": "NSC"
+  },
+  {
+   "cik": 1811063,
+   "ciks": [
+    1811063
+   ],
+   "exclude_reason": "",
+   "name": "Nuvation Bio Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "NUVB"
+  },
+  {
+   "cik": 1045810,
+   "ciks": [
+    1045810
+   ],
+   "exclude_reason": "",
+   "name": "NVIDIA CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "NVDA"
+  },
+  {
+   "cik": 814453,
+   "ciks": [
+    814453
+   ],
+   "exclude_reason": "",
+   "name": "NEWELL BRANDS INC.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 3089 map",
+   "seed": "sp500_history",
+   "sic": 3089,
+   "ticker": "NWL"
+  },
+  {
+   "cik": 1413447,
+   "ciks": [
+    1413447
+   ],
+   "exclude_reason": "",
+   "name": "NXP Semiconductors N.V.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "NXPI"
+  },
+  {
+   "cik": 1142417,
+   "ciks": [
+    1142417
+   ],
+   "exclude_reason": "",
+   "name": "NEXSTAR MEDIA GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4833 map",
+   "seed": "public_float",
+   "sic": 4833,
+   "ticker": "NXST"
+  },
+  {
+   "cik": 726728,
+   "ciks": [
+    726728
+   ],
+   "exclude_reason": "",
+   "name": "REALTY INCOME CORP",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "O"
+  },
+  {
+   "cik": 1000230,
+   "ciks": [
+    1000230
+   ],
+   "exclude_reason": "",
+   "name": "OPTICAL CABLE CORP",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 3357 map",
+   "seed": "public_float",
+   "sic": 3357,
+   "ticker": "OCC"
+  },
+  {
+   "cik": 878927,
+   "ciks": [
+    878927
+   ],
+   "exclude_reason": "",
+   "name": "OLD DOMINION FREIGHT LINE, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4213,
+   "ticker": "ODFL"
+  },
+  {
+   "cik": 1039684,
+   "ciks": [
+    1039684
+   ],
+   "exclude_reason": "",
+   "name": "ONEOK INC /NEW/",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4923,
+   "ticker": "OKE"
+  },
+  {
+   "cik": 1005284,
+   "ciks": [
+    1005284
+   ],
+   "exclude_reason": "",
+   "name": "UNIVERSAL DISPLAY CORP \\PA\\",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3670 map",
+   "seed": "public_float",
+   "sic": 3670,
+   "ticker": "OLED"
+  },
+  {
+   "cik": 29989,
+   "ciks": [
+    29989
+   ],
+   "exclude_reason": "",
+   "name": "OMNICOM GROUP INC.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7311,
+   "ticker": "OMC"
+  },
+  {
+   "cik": 1651308,
+   "ciks": [
+    1651308
+   ],
+   "exclude_reason": "",
+   "name": "BeOne Medicines Ltd.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "ONC"
+  },
+  {
+   "cik": 704532,
+   "ciks": [
+    704532
+   ],
+   "exclude_reason": "",
+   "name": "ONTO INNOVATION INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3829 map",
+   "seed": "public_float",
+   "sic": 3829,
+   "ticker": "ONTO"
+  },
+  {
+   "cik": 1378140,
+   "ciks": [
+    1378140
+   ],
+   "exclude_reason": "",
+   "name": "Ocean Power Technologies, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "SIC 4911 map",
+   "seed": "listed_sweep",
+   "sic": 4911,
+   "ticker": "OPTT"
+  },
+  {
+   "cik": 1341439,
+   "ciks": [
+    1341439
+   ],
+   "exclude_reason": "",
+   "name": "ORACLE CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "ORCL"
+  },
+  {
+   "cik": 898173,
+   "ciks": [
+    898173
+   ],
+   "exclude_reason": "",
+   "name": "O REILLY AUTOMOTIVE INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5531,
+   "ticker": "ORLY"
+  },
+  {
+   "cik": 797468,
+   "ciks": [
+    797468
+   ],
+   "exclude_reason": "",
+   "name": "OCCIDENTAL PETROLEUM CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1311,
+   "ticker": "OXY"
+  },
+  {
+   "cik": 1327567,
+   "ciks": [
+    1327567
+   ],
+   "exclude_reason": "",
+   "name": "Palo Alto Networks Inc",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3577,
+   "ticker": "PANW"
+  },
+  {
+   "cik": 708821,
+   "ciks": [
+    708821
+   ],
+   "exclude_reason": "",
+   "name": "PAR TECHNOLOGY CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3578 map",
+   "seed": "public_float",
+   "sic": 3578,
+   "ticker": "PAR"
+  },
+  {
+   "cik": 723531,
+   "ciks": [
+    723531
+   ],
+   "exclude_reason": "",
+   "name": "PAYCHEX INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 8700,
+   "ticker": "PAYX"
+  },
+  {
+   "cik": 75362,
+   "ciks": [
+    75362
+   ],
+   "exclude_reason": "",
+   "name": "PACCAR INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3711,
+   "ticker": "PCAR"
+  },
+  {
+   "cik": 1004980,
+   "ciks": [
+    1004980
+   ],
+   "exclude_reason": "",
+   "name": "PG&E Corp",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "PCG"
+  },
+  {
+   "cik": 788920,
+   "ciks": [
+    788920
+   ],
+   "exclude_reason": "",
+   "name": "PRO DEX INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 3841 map",
+   "seed": "listed_sweep",
+   "sic": 3841,
+   "ticker": "PDEX"
+  },
+  {
+   "cik": 1874071,
+   "ciks": [
+    1874071
+   ],
+   "exclude_reason": "",
+   "name": "Ponce Financial Group, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6035 map",
+   "seed": "public_float",
+   "sic": 6035,
+   "ticker": "PDLB"
+  },
+  {
+   "cik": 1093672,
+   "ciks": [
+    1093672
+   ],
+   "exclude_reason": "",
+   "name": "PEOPLES BANCORP OF NORTH CAROLINA INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "PEBK"
+  },
+  {
+   "cik": 1141197,
+   "ciks": [
+    1141197
+   ],
+   "exclude_reason": "",
+   "name": "PEDEVCO CORP",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "SIC 1311 map",
+   "seed": "listed_sweep",
+   "sic": 1311,
+   "ticker": "PED"
+  },
+  {
+   "cik": 788784,
+   "ciks": [
+    788784
+   ],
+   "exclude_reason": "",
+   "name": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "PEG"
+  },
+  {
+   "cik": 77476,
+   "ciks": [
+    77476
+   ],
+   "exclude_reason": "",
+   "name": "PEPSICO INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2080,
+   "ticker": "PEP"
+  },
+  {
+   "cik": 78003,
+   "ciks": [
+    78003
+   ],
+   "exclude_reason": "",
+   "name": "PFIZER INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "PFE"
+  },
+  {
+   "cik": 80424,
+   "ciks": [
+    80424
+   ],
+   "exclude_reason": "",
+   "name": "PROCTER & GAMBLE Co",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2840,
+   "ticker": "PG"
+  },
+  {
+   "cik": 80661,
+   "ciks": [
+    80661
+   ],
+   "exclude_reason": "",
+   "name": "PROGRESSIVE CORP/OH/",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "PGR"
+  },
+  {
+   "cik": 76334,
+   "ciks": [
+    76334
+   ],
+   "exclude_reason": "",
+   "name": "Parker-Hannifin Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3490,
+   "ticker": "PH"
+  },
+  {
+   "cik": 1506293,
+   "ciks": [
+    1506293
+   ],
+   "exclude_reason": "",
+   "name": "PINTEREST, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "listed_sweep",
+   "sic": 7370,
+   "ticker": "PINS"
+  },
+  {
+   "cik": 75677,
+   "ciks": [
+    75677
+   ],
+   "exclude_reason": "",
+   "name": "PACKAGING CORP OF AMERICA",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2650,
+   "ticker": "PKG"
+  },
+  {
+   "cik": 1045609,
+   "ciks": [
+    1045609
+   ],
+   "exclude_reason": "",
+   "name": "Prologis, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "PLD"
+  },
+  {
+   "cik": 1321655,
+   "ciks": [
+    1321655
+   ],
+   "exclude_reason": "",
+   "name": "Palantir Technologies Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "PLTR"
+  },
+  {
+   "cik": 1413329,
+   "ciks": [
+    1413329
+   ],
+   "exclude_reason": "",
+   "name": "Philip Morris International Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2111,
+   "ticker": "PM"
+  },
+  {
+   "cik": 713676,
+   "ciks": [
+    713676
+   ],
+   "exclude_reason": "",
+   "name": "PNC FINANCIAL SERVICES GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "PNC"
+  },
+  {
+   "cik": 79879,
+   "ciks": [
+    79879
+   ],
+   "exclude_reason": "",
+   "name": "PPG INDUSTRIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2851,
+   "ticker": "PPG"
+  },
+  {
+   "cik": 922224,
+   "ciks": [
+    922224
+   ],
+   "exclude_reason": "",
+   "name": "PPL Corp",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "PPL"
+  },
+  {
+   "cik": 1585364,
+   "ciks": [
+    1585364
+   ],
+   "exclude_reason": "",
+   "name": "PERRIGO Co plc",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "PRGO"
+  },
+  {
+   "cik": 805676,
+   "ciks": [
+    805676
+   ],
+   "exclude_reason": "",
+   "name": "PARK NATIONAL CORP /OH/",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "listed_sweep",
+   "sic": 6021,
+   "ticker": "PRK"
+  },
+  {
+   "cik": 1564902,
+   "ciks": [
+    1564902
+   ],
+   "exclude_reason": "",
+   "name": "United Parks & Resorts Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 7990 map",
+   "seed": "public_float",
+   "sic": 7990,
+   "ticker": "PRKS"
+  },
+  {
+   "cik": 1850270,
+   "ciks": [
+    1850270
+   ],
+   "exclude_reason": "",
+   "name": "PROKIDNEY CORP.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "public_float",
+   "sic": 2836,
+   "ticker": "PROK"
+  },
+  {
+   "cik": 1137774,
+   "ciks": [
+    1137774
+   ],
+   "exclude_reason": "",
+   "name": "PRUDENTIAL FINANCIAL INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6311,
+   "ticker": "PRU"
+  },
+  {
+   "cik": 1393311,
+   "ciks": [
+    1393311
+   ],
+   "exclude_reason": "",
+   "name": "Public Storage",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "PSA"
+  },
+  {
+   "cik": 1527753,
+   "ciks": [
+    1527753
+   ],
+   "exclude_reason": "",
+   "name": "Personalis, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 8071 map",
+   "seed": "listed_sweep",
+   "sic": 8071,
+   "ticker": "PSNL"
+  },
+  {
+   "cik": 1534701,
+   "ciks": [
+    1534701
+   ],
+   "exclude_reason": "",
+   "name": "Phillips 66",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2911,
+   "ticker": "PSX"
+  },
+  {
+   "cik": 1377121,
+   "ciks": [
+    1377121
+   ],
+   "exclude_reason": "",
+   "name": "Protagonist Therapeutics, Inc",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "PTGX"
+  },
+  {
+   "cik": 1639825,
+   "ciks": [
+    1639825
+   ],
+   "exclude_reason": "",
+   "name": "PELOTON INTERACTIVE, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 3949 map",
+   "seed": "listed_sweep",
+   "sic": 3949,
+   "ticker": "PTON"
+  },
+  {
+   "cik": 1050915,
+   "ciks": [
+    1050915
+   ],
+   "exclude_reason": "",
+   "name": "QUANTA SERVICES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1731,
+   "ticker": "PWR"
+  },
+  {
+   "cik": 1633917,
+   "ciks": [
+    1633917
+   ],
+   "exclude_reason": "",
+   "name": "PayPal Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "PYPL"
+  },
+  {
+   "cik": 804328,
+   "ciks": [
+    804328
+   ],
+   "exclude_reason": "",
+   "name": "QUALCOMM INC/DE",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3663,
+   "ticker": "QCOM"
+  },
+  {
+   "cik": 1618756,
+   "ciks": [
+    1618756
+   ],
+   "exclude_reason": "",
+   "name": "Restaurant Brands International Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5812 map",
+   "seed": "listed_sweep",
+   "sic": 5812,
+   "ticker": "QSR"
+  },
+  {
+   "cik": 882508,
+   "ciks": [
+    882508
+   ],
+   "exclude_reason": "",
+   "name": "QUICKLOGIC Corp",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "listed_sweep",
+   "sic": 3674,
+   "ticker": "QUIK"
+  },
+  {
+   "cik": 1315098,
+   "ciks": [
+    1315098
+   ],
+   "exclude_reason": "",
+   "name": "Roblox Corp",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "RBLX"
+  },
+  {
+   "cik": 1527590,
+   "ciks": [
+    1527590
+   ],
+   "exclude_reason": "",
+   "name": "Ready Capital Corp",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "listed_sweep",
+   "sic": 6798,
+   "ticker": "RC"
+  },
+  {
+   "cik": 884887,
+   "ciks": [
+    884887
+   ],
+   "exclude_reason": "",
+   "name": "ROYAL CARIBBEAN CRUISES LTD",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4400,
+   "ticker": "RCL"
+  },
+  {
+   "cik": 872589,
+   "ciks": [
+    872589
+   ],
+   "exclude_reason": "",
+   "name": "REGENERON PHARMACEUTICALS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "REGN"
+  },
+  {
+   "cik": 1959023,
+   "ciks": [
+    1959023
+   ],
+   "exclude_reason": "",
+   "name": "RenX Enterprises Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "SIC 4953 map",
+   "seed": "public_float",
+   "sic": 4953,
+   "ticker": "RENX"
+  },
+  {
+   "cik": 1464790,
+   "ciks": [
+    1464790
+   ],
+   "exclude_reason": "",
+   "name": "BRC Group Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6282 map",
+   "seed": "public_float",
+   "sic": 6282,
+   "ticker": "RILY"
+  },
+  {
+   "cik": 1556593,
+   "ciks": [
+    1556593
+   ],
+   "exclude_reason": "",
+   "name": "Rithm Capital Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "listed_sweep",
+   "sic": 6798,
+   "ticker": "RITM"
+  },
+  {
+   "cik": 810332,
+   "ciks": [
+    810332
+   ],
+   "exclude_reason": "",
+   "name": "REPUBLIC AIRWAYS HOLDINGS INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 4512 map",
+   "seed": "public_float",
+   "sic": 4512,
+   "ticker": "RJET"
+  },
+  {
+   "cik": 1553643,
+   "ciks": [
+    1553643
+   ],
+   "exclude_reason": "",
+   "name": "RELMADA THERAPEUTICS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "RLMD"
+  },
+  {
+   "cik": 1420565,
+   "ciks": [
+    1420565
+   ],
+   "exclude_reason": "",
+   "name": "Rein Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "RNTX"
+  },
+  {
+   "cik": 1428439,
+   "ciks": [
+    1428439
+   ],
+   "exclude_reason": "",
+   "name": "ROKU, INC",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4841 map",
+   "seed": "listed_sweep",
+   "sic": 4841,
+   "ticker": "ROKU"
+  },
+  {
+   "cik": 882835,
+   "ciks": [
+    882835
+   ],
+   "exclude_reason": "",
+   "name": "ROPER TECHNOLOGIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3823,
+   "ticker": "ROP"
+  },
+  {
+   "cik": 745732,
+   "ciks": [
+    745732
+   ],
+   "exclude_reason": "",
+   "name": "ROSS STORES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5651,
+   "ticker": "ROST"
+  },
+  {
+   "cik": 1720592,
+   "ciks": [
+    1720592
+   ],
+   "exclude_reason": "",
+   "name": "Repay Holdings Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7389 map",
+   "seed": "listed_sweep",
+   "sic": 7389,
+   "ticker": "RPAY"
+  },
+  {
+   "cik": 1071236,
+   "ciks": [
+    1071236
+   ],
+   "exclude_reason": "",
+   "name": "RED RIVER BANCSHARES INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "RRBI"
+  },
+  {
+   "cik": 1060391,
+   "ciks": [
+    1060391
+   ],
+   "exclude_reason": "",
+   "name": "REPUBLIC SERVICES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4953,
+   "ticker": "RSG"
+  },
+  {
+   "cik": 101829,
+   "ciks": [
+    101829
+   ],
+   "exclude_reason": "",
+   "name": "RTX Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3724,
+   "ticker": "RTX"
+  },
+  {
+   "cik": 1034054,
+   "ciks": [
+    1034054
+   ],
+   "exclude_reason": "",
+   "name": "SBA COMMUNICATIONS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "SBAC"
+  },
+  {
+   "cik": 829224,
+   "ciks": [
+    829224
+   ],
+   "exclude_reason": "",
+   "name": "STARBUCKS CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5810,
+   "ticker": "SBUX"
+  },
+  {
+   "cik": 1001838,
+   "ciks": [
+    1001838
+   ],
+   "exclude_reason": "",
+   "name": "SOUTHERN COPPER CORP/",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 1000 map",
+   "seed": "listed_sweep",
+   "sic": 1000,
+   "ticker": "SCCO"
+  },
+  {
+   "cik": 316709,
+   "ciks": [
+    316709
+   ],
+   "exclude_reason": "",
+   "name": "SCHWAB CHARLES CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6211,
+   "ticker": "SCHW"
+  },
+  {
+   "cik": 1178253,
+   "ciks": [
+    1178253
+   ],
+   "exclude_reason": "",
+   "name": "SCYNEXIS INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "SCYX"
+  },
+  {
+   "cik": 1490978,
+   "ciks": [
+    1490978
+   ],
+   "exclude_reason": "",
+   "name": "Schrodinger, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "SDGR"
+  },
+  {
+   "cik": 895447,
+   "ciks": [
+    895447
+   ],
+   "exclude_reason": "",
+   "name": "SHOE STATION GROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5661 map",
+   "seed": "listed_sweep",
+   "sic": 5661,
+   "ticker": "SHOE"
+  },
+  {
+   "cik": 913241,
+   "ciks": [
+    913241
+   ],
+   "exclude_reason": "",
+   "name": "STEVEN MADDEN, LTD.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 3140 map",
+   "seed": "public_float",
+   "sic": 3140,
+   "ticker": "SHOO"
+  },
+  {
+   "cik": 1594805,
+   "ciks": [
+    1594805
+   ],
+   "exclude_reason": "",
+   "name": "SHOPIFY INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "SHOP"
+  },
+  {
+   "cik": 89800,
+   "ciks": [
+    89800
+   ],
+   "exclude_reason": "",
+   "name": "SHERWIN WILLIAMS CO",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5200,
+   "ticker": "SHW"
+  },
+  {
+   "cik": 1269026,
+   "ciks": [
+    1269026
+   ],
+   "exclude_reason": "",
+   "name": "Sintx Technologies, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 3841 map",
+   "seed": "listed_sweep",
+   "sic": 3841,
+   "ticker": "SINT"
+  },
+  {
+   "cik": 908937,
+   "ciks": [
+    908937
+   ],
+   "exclude_reason": "",
+   "name": "SIRIUS XM HOLDINGS INC.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4832 map",
+   "seed": "listed_sweep",
+   "sic": 4832,
+   "ticker": "SIRI"
+  },
+  {
+   "cik": 1451809,
+   "ciks": [
+    1451809
+   ],
+   "exclude_reason": "",
+   "name": "SITIME Corp",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "public_float",
+   "sic": 3674,
+   "ticker": "SITM"
+  },
+  {
+   "cik": 1774675,
+   "ciks": [
+    1774675
+   ],
+   "exclude_reason": "",
+   "name": "Skillsoft Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "SKIL"
+  },
+  {
+   "cik": 90896,
+   "ciks": [
+    90896
+   ],
+   "exclude_reason": "",
+   "name": "Champion Homes, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 2451 map",
+   "seed": "listed_sweep",
+   "sic": 2451,
+   "ticker": "SKY"
+  },
+  {
+   "cik": 87347,
+   "ciks": [
+    87347
+   ],
+   "exclude_reason": "",
+   "name": "SLB LIMITED/NV",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 1389,
+   "ticker": "SLB"
+  },
+  {
+   "cik": 1375365,
+   "ciks": [
+    1375365
+   ],
+   "exclude_reason": "",
+   "name": "Super Micro Computer, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3571,
+   "ticker": "SMCI"
+  },
+  {
+   "cik": 93389,
+   "ciks": [
+    93389
+   ],
+   "exclude_reason": "",
+   "name": "STANDARD MOTOR PRODUCTS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 3714 map",
+   "seed": "public_float",
+   "sic": 3714,
+   "ticker": "SMP"
+  },
+  {
+   "cik": 1564408,
+   "ciks": [
+    1564408
+   ],
+   "exclude_reason": "",
+   "name": "Snap Inc",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "listed_sweep",
+   "sic": 7370,
+   "ticker": "SNAP"
+  },
+  {
+   "cik": 2023554,
+   "ciks": [
+    2023554
+   ],
+   "exclude_reason": "",
+   "name": "Sandisk Corp",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3572,
+   "ticker": "SNDK"
+  },
+  {
+   "cik": 1395937,
+   "ciks": [
+    1395937
+   ],
+   "exclude_reason": "",
+   "name": "Syndax Pharmaceuticals Inc",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "public_float",
+   "sic": 2834,
+   "ticker": "SNDX"
+  },
+  {
+   "cik": 1640147,
+   "ciks": [
+    1640147
+   ],
+   "exclude_reason": "",
+   "name": "Snowflake Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "SNOW"
+  },
+  {
+   "cik": 883241,
+   "ciks": [
+    883241
+   ],
+   "exclude_reason": "",
+   "name": "SYNOPSYS INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "SNPS"
+  },
+  {
+   "cik": 92122,
+   "ciks": [
+    92122
+   ],
+   "exclude_reason": "",
+   "name": "SOUTHERN CO",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "SO"
+  },
+  {
+   "cik": 1181412,
+   "ciks": [
+    1181412
+   ],
+   "exclude_reason": "",
+   "name": "SPACE EXPLORATION TECHNOLOGIES CORP",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "listed_sweep",
+   "sic": 7370,
+   "ticker": "SPCX"
+  },
+  {
+   "cik": 1063761,
+   "ciks": [
+    1063761
+   ],
+   "exclude_reason": "",
+   "name": "SIMON PROPERTY GROUP INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "SPG"
+  },
+  {
+   "cik": 64040,
+   "ciks": [
+    64040
+   ],
+   "exclude_reason": "",
+   "name": "S&P Global Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7320,
+   "ticker": "SPGI"
+  },
+  {
+   "cik": 1005210,
+   "ciks": [
+    1005210
+   ],
+   "exclude_reason": "limited partnership units (MLP), not common stock",
+   "name": "SUBURBAN PROPANE PARTNERS LP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 5900 map",
+   "seed": "public_float",
+   "sic": 5900,
+   "ticker": "SPH"
+  },
+  {
+   "cik": 1816017,
+   "ciks": [
+    1816017
+   ],
+   "exclude_reason": "",
+   "name": "Spire Global, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 4899 map",
+   "seed": "listed_sweep",
+   "sic": 4899,
+   "ticker": "SPIR"
+  },
+  {
+   "cik": 1032208,
+   "ciks": [
+    1032208
+   ],
+   "exclude_reason": "",
+   "name": "SEMPRA",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4932,
+   "ticker": "SRE"
+  },
+  {
+   "cik": 873303,
+   "ciks": [
+    873303
+   ],
+   "exclude_reason": "",
+   "name": "Sarepta Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "SRPT"
+  },
+  {
+   "cik": 1805833,
+   "ciks": [
+    1805833
+   ],
+   "exclude_reason": "",
+   "name": "System1, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "public_float",
+   "sic": 7370,
+   "ticker": "SST"
+  },
+  {
+   "cik": 1351636,
+   "ciks": [
+    1351636
+   ],
+   "exclude_reason": "",
+   "name": "SOUNDTHINKING, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "public_float",
+   "sic": 7372,
+   "ticker": "SSTI"
+  },
+  {
+   "cik": 876883,
+   "ciks": [
+    876883
+   ],
+   "exclude_reason": "",
+   "name": "Stagwell Inc",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7311 map",
+   "seed": "listed_sweep",
+   "sic": 7311,
+   "ticker": "STGW"
+  },
+  {
+   "cik": 1782430,
+   "ciks": [
+    1782430
+   ],
+   "exclude_reason": "",
+   "name": "Strawberry Fields REIT, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "public_float",
+   "sic": 6798,
+   "ticker": "STRW"
+  },
+  {
+   "cik": 93751,
+   "ciks": [
+    93751
+   ],
+   "exclude_reason": "",
+   "name": "STATE STREET CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6022,
+   "ticker": "STT"
+  },
+  {
+   "cik": 1137789,
+   "ciks": [
+    1137789
+   ],
+   "exclude_reason": "",
+   "name": "Seagate Technology Holdings plc",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3572,
+   "ticker": "STX"
+  },
+  {
+   "cik": 1089907,
+   "ciks": [
+    1089907
+   ],
+   "exclude_reason": "",
+   "name": "SWK Holdings Corp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6159 map",
+   "seed": "listed_sweep",
+   "sic": 6159,
+   "ticker": "SWKHL"
+  },
+  {
+   "cik": 1601712,
+   "ciks": [
+    1601712
+   ],
+   "exclude_reason": "",
+   "name": "Synchrony Financial",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6199,
+   "ticker": "SYF"
+  },
+  {
+   "cik": 310764,
+   "ciks": [
+    310764
+   ],
+   "exclude_reason": "",
+   "name": "STRYKER CORP",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3841,
+   "ticker": "SYK"
+  },
+  {
+   "cik": 817720,
+   "ciks": [
+    817720
+   ],
+   "exclude_reason": "",
+   "name": "SYNAPTICS Inc",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3674 map",
+   "seed": "public_float",
+   "sic": 3674,
+   "ticker": "SYNA"
+  },
+  {
+   "cik": 96021,
+   "ciks": [
+    96021
+   ],
+   "exclude_reason": "",
+   "name": "SYSCO CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5140,
+   "ticker": "SYY"
+  },
+  {
+   "cik": 732717,
+   "ciks": [
+    732717
+   ],
+   "exclude_reason": "",
+   "name": "AT&T INC.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4813,
+   "ticker": "T"
+  },
+  {
+   "cik": 24545,
+   "ciks": [
+    24545
+   ],
+   "exclude_reason": "",
+   "name": "MOLSON COORS BEVERAGE CO",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "SIC 2082 map",
+   "seed": "sp500_history",
+   "sic": 2082,
+   "ticker": "TAP"
+  },
+  {
+   "cik": 1840502,
+   "ciks": [
+    1840502
+   ],
+   "exclude_reason": "",
+   "name": "Taboola.com Ltd.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "listed_sweep",
+   "sic": 7370,
+   "ticker": "TBLA"
+  },
+  {
+   "cik": 1107421,
+   "ciks": [
+    1107421
+   ],
+   "exclude_reason": "",
+   "name": "Alaunos Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "TCRT"
+  },
+  {
+   "cik": 1783328,
+   "ciks": [
+    1783328
+   ],
+   "exclude_reason": "",
+   "name": "TScan Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2836 map",
+   "seed": "listed_sweep",
+   "sic": 2836,
+   "ticker": "TCRX"
+  },
+  {
+   "cik": 1260221,
+   "ciks": [
+    1260221
+   ],
+   "exclude_reason": "",
+   "name": "TransDigm Group INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3728,
+   "ticker": "TDG"
+  },
+  {
+   "cik": 1650372,
+   "ciks": [
+    1650372
+   ],
+   "exclude_reason": "",
+   "name": "Atlassian Corp",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7372 map",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "TEAM"
+  },
+  {
+   "cik": 842023,
+   "ciks": [
+    842023
+   ],
+   "exclude_reason": "",
+   "name": "BIO-TECHNE Corp",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2836,
+   "ticker": "TECH"
+  },
+  {
+   "cik": 1385157,
+   "ciks": [
+    1385157
+   ],
+   "exclude_reason": "",
+   "name": "TE Connectivity plc",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5065,
+   "ticker": "TEL"
+  },
+  {
+   "cik": 97210,
+   "ciks": [
+    97210
+   ],
+   "exclude_reason": "",
+   "name": "TERADYNE, INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3825,
+   "ticker": "TER"
+  },
+  {
+   "cik": 818686,
+   "ciks": [
+    818686
+   ],
+   "exclude_reason": "",
+   "name": "TEVA PHARMACEUTICAL INDUSTRIES LTD",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "TEVA"
+  },
+  {
+   "cik": 92230,
+   "ciks": [
+    92230
+   ],
+   "exclude_reason": "",
+   "name": "TRUIST FINANCIAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "TFC"
+  },
+  {
+   "cik": 27419,
+   "ciks": [
+    27419
+   ],
+   "exclude_reason": "",
+   "name": "TARGET CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5331,
+   "ticker": "TGT"
+  },
+  {
+   "cik": 903129,
+   "ciks": [
+    903129
+   ],
+   "exclude_reason": "",
+   "name": "Gentherm Inc",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 3714 map",
+   "seed": "public_float",
+   "sic": 3714,
+   "ticker": "THRM"
+  },
+  {
+   "cik": 109198,
+   "ciks": [
+    109198
+   ],
+   "exclude_reason": "",
+   "name": "TJX COMPANIES INC /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5651,
+   "ticker": "TJX"
+  },
+  {
+   "cik": 1973266,
+   "ciks": [
+    1973266
+   ],
+   "exclude_reason": "",
+   "name": "TKO Group Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7900,
+   "ticker": "TKO"
+  },
+  {
+   "cik": 1731348,
+   "ciks": [
+    1731348
+   ],
+   "exclude_reason": "",
+   "name": "Tilray Brands, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2833 map",
+   "seed": "listed_sweep",
+   "sic": 2833,
+   "ticker": "TLRY"
+  },
+  {
+   "cik": 97745,
+   "ciks": [
+    97745
+   ],
+   "exclude_reason": "",
+   "name": "THERMO FISHER SCIENTIFIC INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3829,
+   "ticker": "TMO"
+  },
+  {
+   "cik": 1005817,
+   "ciks": [
+    1005817
+   ],
+   "exclude_reason": "",
+   "name": "TOMPKINS FINANCIAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6022 map",
+   "seed": "listed_sweep",
+   "sic": 6022,
+   "ticker": "TMP"
+  },
+  {
+   "cik": 1283699,
+   "ciks": [
+    1283699
+   ],
+   "exclude_reason": "",
+   "name": "T-Mobile US, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4812,
+   "ticker": "TMUS"
+  },
+  {
+   "cik": 1430306,
+   "ciks": [
+    1430306
+   ],
+   "exclude_reason": "",
+   "name": "Tonix Pharmaceuticals Holding Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "TNXP"
+  },
+  {
+   "cik": 894158,
+   "ciks": [
+    894158
+   ],
+   "exclude_reason": "",
+   "name": "Theriva Biologics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "TOVX"
+  },
+  {
+   "cik": 1811074,
+   "ciks": [
+    1811074
+   ],
+   "exclude_reason": "",
+   "name": "Texas Pacific Land Corp",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6792,
+   "ticker": "TPL"
+  },
+  {
+   "cik": 36146,
+   "ciks": [
+    36146
+   ],
+   "exclude_reason": "",
+   "name": "TRUSTMARK CORP",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "public_float",
+   "sic": 6021,
+   "ticker": "TRMK"
+  },
+  {
+   "cik": 1113169,
+   "ciks": [
+    1113169
+   ],
+   "exclude_reason": "",
+   "name": "PRICE T ROWE GROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6282,
+   "ticker": "TROW"
+  },
+  {
+   "cik": 86312,
+   "ciks": [
+    86312
+   ],
+   "exclude_reason": "",
+   "name": "TRAVELERS COMPANIES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6331,
+   "ticker": "TRV"
+  },
+  {
+   "cik": 916365,
+   "ciks": [
+    916365
+   ],
+   "exclude_reason": "",
+   "name": "TRACTOR SUPPLY CO /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5200,
+   "ticker": "TSCO"
+  },
+  {
+   "cik": 1318605,
+   "ciks": [
+    1318605
+   ],
+   "exclude_reason": "",
+   "name": "Tesla, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3711,
+   "ticker": "TSLA"
+  },
+  {
+   "cik": 100493,
+   "ciks": [
+    100493
+   ],
+   "exclude_reason": "",
+   "name": "TYSON FOODS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2015,
+   "ticker": "TSN"
+  },
+  {
+   "cik": 1466258,
+   "ciks": [
+    1466258
+   ],
+   "exclude_reason": "",
+   "name": "Trane Technologies plc",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3822,
+   "ticker": "TT"
+  },
+  {
+   "cik": 1671933,
+   "ciks": [
+    1671933
+   ],
+   "exclude_reason": "",
+   "name": "Trade Desk, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "sp500_history",
+   "sic": 7370,
+   "ticker": "TTD"
+  },
+  {
+   "cik": 831641,
+   "ciks": [
+    831641
+   ],
+   "exclude_reason": "",
+   "name": "TETRA TECH INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 8711 map",
+   "seed": "listed_sweep",
+   "sic": 8711,
+   "ticker": "TTEK"
+  },
+  {
+   "cik": 1116942,
+   "ciks": [
+    1116942
+   ],
+   "exclude_reason": "",
+   "name": "TTM TECHNOLOGIES INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 3672 map",
+   "seed": "listed_sweep",
+   "sic": 3672,
+   "ticker": "TTMI"
+  },
+  {
+   "cik": 1447669,
+   "ciks": [
+    1447669
+   ],
+   "exclude_reason": "",
+   "name": "TWILIO INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "listed_sweep",
+   "sic": 7372,
+   "ticker": "TWLO"
+  },
+  {
+   "cik": 97476,
+   "ciks": [
+    97476
+   ],
+   "exclude_reason": "",
+   "name": "TEXAS INSTRUMENTS INC",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3674,
+   "ticker": "TXN"
+  },
+  {
+   "cik": 1336917,
+   "ciks": [
+    1336917
+   ],
+   "exclude_reason": "",
+   "name": "Under Armour, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 2300 map",
+   "seed": "sp500_history",
+   "sic": 2300,
+   "ticker": "UAA"
+  },
+  {
+   "cik": 100517,
+   "ciks": [
+    100517
+   ],
+   "exclude_reason": "",
+   "name": "United Airlines Holdings, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4512,
+   "ticker": "UAL"
+  },
+  {
+   "cik": 8504,
+   "ciks": [
+    8504
+   ],
+   "exclude_reason": "",
+   "name": "AgEagle Aerial Systems Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 3721 map",
+   "seed": "listed_sweep",
+   "sic": 3721,
+   "ticker": "UAVS"
+  },
+  {
+   "cik": 1543151,
+   "ciks": [
+    1543151
+   ],
+   "exclude_reason": "",
+   "name": "Uber Technologies, Inc",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "UBER"
+  },
+  {
+   "cik": 731766,
+   "ciks": [
+    731766
+   ],
+   "exclude_reason": "",
+   "name": "UNITEDHEALTH GROUP INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6324,
+   "ticker": "UNH"
+  },
+  {
+   "cik": 100885,
+   "ciks": [
+    100885
+   ],
+   "exclude_reason": "",
+   "name": "UNION PACIFIC CORP",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4011,
+   "ticker": "UNP"
+  },
+  {
+   "cik": 1090727,
+   "ciks": [
+    1090727
+   ],
+   "exclude_reason": "",
+   "name": "UNITED PARCEL SERVICE INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4210,
+   "ticker": "UPS"
+  },
+  {
+   "cik": 1375205,
+   "ciks": [
+    1375205
+   ],
+   "exclude_reason": "",
+   "name": "UR-ENERGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 1040 map",
+   "seed": "listed_sweep",
+   "sic": 1040,
+   "ticker": "URG"
+  },
+  {
+   "cik": 1067701,
+   "ciks": [
+    1067701
+   ],
+   "exclude_reason": "",
+   "name": "UNITED RENTALS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7359,
+   "ticker": "URI"
+  },
+  {
+   "cik": 36104,
+   "ciks": [
+    36104
+   ],
+   "exclude_reason": "",
+   "name": "US BANCORP DE",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "USB"
+  },
+  {
+   "cik": 755001,
+   "ciks": [
+    755001
+   ],
+   "exclude_reason": "",
+   "name": "UNITIL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "SIC 4931 map",
+   "seed": "public_float",
+   "sic": 4931,
+   "ticker": "UTL"
+  },
+  {
+   "cik": 1385849,
+   "ciks": [
+    1385849
+   ],
+   "exclude_reason": "",
+   "name": "ENERGY FUELS INC",
+   "price_multiplier": 1.0,
+   "sector": "Materials",
+   "sector_etf": "XLB",
+   "sector_source": "SIC 1400 map",
+   "seed": "listed_sweep",
+   "sic": 1400,
+   "ticker": "UUUU"
+  },
+  {
+   "cik": 1403161,
+   "ciks": [
+    1403161
+   ],
+   "exclude_reason": "",
+   "name": "VISA INC.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7389,
+   "ticker": "V"
+  },
+  {
+   "cik": 1572334,
+   "ciks": [
+    1572334
+   ],
+   "exclude_reason": "",
+   "name": "Virginia National Bankshares Corp",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "public_float",
+   "sic": 6021,
+   "ticker": "VABK"
+  },
+  {
+   "cik": 1393052,
+   "ciks": [
+    1393052
+   ],
+   "exclude_reason": "",
+   "name": "VEEVA SYSTEMS INC",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "VEEV"
+  },
+  {
+   "cik": 1692376,
+   "ciks": [
+    1692376
+   ],
+   "exclude_reason": "",
+   "name": "Velocity Financial, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6199 map",
+   "seed": "public_float",
+   "sic": 6199,
+   "ticker": "VEL"
+  },
+  {
+   "cik": 1615165,
+   "ciks": [
+    1615165
+   ],
+   "exclude_reason": "",
+   "name": "Veritone, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "SIC 7374 map",
+   "seed": "listed_sweep",
+   "sic": 7374,
+   "ticker": "VERI"
+  },
+  {
+   "cik": 103379,
+   "ciks": [
+    103379
+   ],
+   "exclude_reason": "",
+   "name": "V F CORP",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "SIC 2320 map",
+   "seed": "sp500_history",
+   "sic": 2320,
+   "ticker": "VFC"
+  },
+  {
+   "cik": 1035002,
+   "ciks": [
+    1035002
+   ],
+   "exclude_reason": "",
+   "name": "VALERO ENERGY CORP/TX",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2911,
+   "ticker": "VLO"
+  },
+  {
+   "cik": 1729149,
+   "ciks": [
+    1729149
+   ],
+   "exclude_reason": "",
+   "name": "VIEMED HEALTHCARE, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 8090 map",
+   "seed": "public_float",
+   "sic": 8090,
+   "ticker": "VMD"
+  },
+  {
+   "cik": 906107,
+   "ciks": [
+    906107
+   ],
+   "exclude_reason": "",
+   "name": "VIVMARK RESIDENTIAL",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "VMRK"
+  },
+  {
+   "cik": 899689,
+   "ciks": [
+    899689
+   ],
+   "exclude_reason": "",
+   "name": "VORNADO REALTY TRUST",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "SIC 6798 map",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "VNO"
+  },
+  {
+   "cik": 1682745,
+   "ciks": [
+    1682745
+   ],
+   "exclude_reason": "",
+   "name": "VERRA MOBILITY Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 4700 map",
+   "seed": "listed_sweep",
+   "sic": 4700,
+   "ticker": "VRRM"
+  },
+  {
+   "cik": 1674101,
+   "ciks": [
+    1674101
+   ],
+   "exclude_reason": "",
+   "name": "Vertiv Holdings Co",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3679,
+   "ticker": "VRT"
+  },
+  {
+   "cik": 875320,
+   "ciks": [
+    875320
+   ],
+   "exclude_reason": "",
+   "name": "VERTEX PHARMACEUTICALS INC / MA",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "VRTX"
+  },
+  {
+   "cik": 1692819,
+   "ciks": [
+    1692819
+   ],
+   "exclude_reason": "",
+   "name": "Vistra Corp.",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4911,
+   "ticker": "VST"
+  },
+  {
+   "cik": 740260,
+   "ciks": [
+    740260
+   ],
+   "exclude_reason": "",
+   "name": "Ventas, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "VTR"
+  },
+  {
+   "cik": 1716166,
+   "ciks": [
+    1716166
+   ],
+   "exclude_reason": "",
+   "name": "Vivos Therapeutics, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 3841 map",
+   "seed": "listed_sweep",
+   "sic": 3841,
+   "ticker": "VVOS"
+  },
+  {
+   "cik": 732712,
+   "ciks": [
+    732712
+   ],
+   "exclude_reason": "",
+   "name": "VERIZON COMMUNICATIONS INC",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4813,
+   "ticker": "VZ"
+  },
+  {
+   "cik": 1000697,
+   "ciks": [
+    1000697
+   ],
+   "exclude_reason": "",
+   "name": "WATERS CORP /DE/",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3826,
+   "ticker": "WAT"
+  },
+  {
+   "cik": 1327811,
+   "ciks": [
+    1327811
+   ],
+   "exclude_reason": "",
+   "name": "Workday, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7374,
+   "ticker": "WDAY"
+  },
+  {
+   "cik": 106040,
+   "ciks": [
+    106040
+   ],
+   "exclude_reason": "",
+   "name": "WESTERN DIGITAL CORP",
+   "price_multiplier": 1.0,
+   "sector": "Information Technology",
+   "sector_etf": "XLK",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3572,
+   "ticker": "WDC"
+  },
+  {
+   "cik": 783325,
+   "ciks": [
+    783325
+   ],
+   "exclude_reason": "",
+   "name": "WEC ENERGY GROUP, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "WEC"
+  },
+  {
+   "cik": 766704,
+   "ciks": [
+    766704
+   ],
+   "exclude_reason": "",
+   "name": "WELLTOWER INC.",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "WELL"
+  },
+  {
+   "cik": 72971,
+   "ciks": [
+    72971
+   ],
+   "exclude_reason": "",
+   "name": "WELLS FARGO & COMPANY/MN",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6021,
+   "ticker": "WFC"
+  },
+  {
+   "cik": 823768,
+   "ciks": [
+    823768
+   ],
+   "exclude_reason": "",
+   "name": "WASTE MANAGEMENT INC",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4953,
+   "ticker": "WM"
+  },
+  {
+   "cik": 107263,
+   "ciks": [
+    107263
+   ],
+   "exclude_reason": "",
+   "name": "WILLIAMS COMPANIES, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4922,
+   "ticker": "WMB"
+  },
+  {
+   "cik": 104169,
+   "ciks": [
+    104169
+   ],
+   "exclude_reason": "",
+   "name": "Walmart Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Staples",
+   "sector_etf": "XLP",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5331,
+   "ticker": "WMT"
+  },
+  {
+   "cik": 1157647,
+   "ciks": [
+    1157647
+   ],
+   "exclude_reason": "",
+   "name": "Western New England Bancorp, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6035 map",
+   "seed": "public_float",
+   "sic": 6035,
+   "ticker": "WNEB"
+  },
+  {
+   "cik": 203596,
+   "ciks": [
+    203596
+   ],
+   "exclude_reason": "",
+   "name": "WESBANCO INC",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6021 map",
+   "seed": "public_float",
+   "sic": 6021,
+   "ticker": "WSBC"
+  },
+  {
+   "cik": 1647088,
+   "ciks": [
+    1647088
+   ],
+   "exclude_reason": "",
+   "name": "WillScot Holdings Corp",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7350 map",
+   "seed": "listed_sweep",
+   "sic": 7350,
+   "ticker": "WSC"
+  },
+  {
+   "cik": 880631,
+   "ciks": [
+    880631
+   ],
+   "exclude_reason": "",
+   "name": "WisdomTree, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "SIC 6211 map",
+   "seed": "listed_sweep",
+   "sic": 6211,
+   "ticker": "WT"
+  },
+  {
+   "cik": 1693256,
+   "ciks": [
+    1693256
+   ],
+   "exclude_reason": "",
+   "name": "Select Water Solutions, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "SIC 1389 map",
+   "seed": "public_float",
+   "sic": 1389,
+   "ticker": "WTTR"
+  },
+  {
+   "cik": 105319,
+   "ciks": [
+    105319
+   ],
+   "exclude_reason": "",
+   "name": "WW INTERNATIONAL, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Industrials",
+   "sector_etf": "XLI",
+   "sector_source": "SIC 7200 map",
+   "seed": "listed_sweep",
+   "sic": 7200,
+   "ticker": "WW"
+  },
+  {
+   "cik": 106535,
+   "ciks": [
+    106535
+   ],
+   "exclude_reason": "",
+   "name": "WEYERHAEUSER CO",
+   "price_multiplier": 1.0,
+   "sector": "Real Estate",
+   "sector_etf": "XLRE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 6798,
+   "ticker": "WY"
+  },
+  {
+   "cik": 1174922,
+   "ciks": [
+    1174922
+   ],
+   "exclude_reason": "",
+   "name": "WYNN RESORTS LTD",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7011,
+   "ticker": "WYNN"
+  },
+  {
+   "cik": 72903,
+   "ciks": [
+    72903
+   ],
+   "exclude_reason": "",
+   "name": "XCEL ENERGY INC",
+   "price_multiplier": 1.0,
+   "sector": "Utilities",
+   "sector_etf": "XLU",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 4931,
+   "ticker": "XEL"
+  },
+  {
+   "cik": 2115436,
+   "ciks": [
+    34088,
+    2115436
+   ],
+   "exclude_reason": "",
+   "name": "ExxonMobil Holdings Corp",
+   "price_multiplier": 1.0,
+   "sector": "Energy",
+   "sector_etf": "XLE",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2911,
+   "ticker": "XOM"
+  },
+  {
+   "cik": 1512673,
+   "ciks": [
+    1512673
+   ],
+   "exclude_reason": "",
+   "name": "Block, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Financials",
+   "sector_etf": "XLF",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 7372,
+   "ticker": "XYZ"
+  },
+  {
+   "cik": 1041061,
+   "ciks": [
+    1041061
+   ],
+   "exclude_reason": "",
+   "name": "YUM BRANDS INC",
+   "price_multiplier": 1.0,
+   "sector": "Consumer Discretionary",
+   "sector_etf": "XLY",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 5812,
+   "ticker": "YUM"
+  },
+  {
+   "cik": 1136869,
+   "ciks": [
+    1136869
+   ],
+   "exclude_reason": "",
+   "name": "ZIMMER BIOMET HOLDINGS, INC.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 3842,
+   "ticker": "ZBH"
+  },
+  {
+   "cik": 1704292,
+   "ciks": [
+    1704292
+   ],
+   "exclude_reason": "",
+   "name": "Zai Lab Ltd",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "SIC 2834 map",
+   "seed": "listed_sweep",
+   "sic": 2834,
+   "ticker": "ZLAB"
+  },
+  {
+   "cik": 1585521,
+   "ciks": [
+    1585521
+   ],
+   "exclude_reason": "",
+   "name": "Zoom Communications, Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Communication Services",
+   "sector_etf": "XLC",
+   "sector_source": "SIC 7370 map",
+   "seed": "listed_sweep",
+   "sic": 7370,
+   "ticker": "ZM"
+  },
+  {
+   "cik": 1555280,
+   "ciks": [
+    1555280
+   ],
+   "exclude_reason": "",
+   "name": "Zoetis Inc.",
+   "price_multiplier": 1.0,
+   "sector": "Health Care",
+   "sector_etf": "XLV",
+   "sector_source": "S&P 500 file (GICS)",
+   "seed": "sp500_history",
+   "sic": 2834,
+   "ticker": "ZTS"
+  }
+ ],
+ "rule": "rank <= 200 at any quarter end (2014, 1)..(2026, 3) by EDGAR frames shares x yfinance month-end split-adjusted close (screen only; membership is decided PIT by rank <= 100)",
+ "top_n": 100
+}

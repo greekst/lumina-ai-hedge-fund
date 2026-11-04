@@ -149,15 +149,32 @@ class EdgarClient:
             subs += self.submissions(c)
         return {"facts": {"facts": {"us-gaap": gaap}}, "subs": subs, "ciks": self.ciks(ticker)}
 
+    def bundle_ciks(self, ciks: List[int], since: str = "2019-01-01") -> Dict[str, Any]:
+        """Like `bundle`, for explicit CIKs (oldest predecessor first). Keeps the dei taxonomy too."""
+        tax: Dict[str, Dict[str, Any]] = {"us-gaap": {}, "dei": {}}
+        subs: List[Dict[str, Any]] = []
+        for c in ciks:
+            try:
+                f = self.companyfacts(c)
+            except EdgarUnavailable:
+                f = {}
+            for t in ("us-gaap", "dei"):
+                for concept, node in ((f.get("facts") or {}).get(t, {}) or {}).items():
+                    dst = tax[t].setdefault(concept, {"units": {}})
+                    for unit, rows in (node.get("units") or {}).items():
+                        dst["units"].setdefault(unit, []).extend(rows)
+            subs += self.submissions(c, since=since)
+        return {"facts": {"facts": tax}, "subs": subs, "ciks": list(ciks)}
+
     def companyfacts(self, cik: int) -> Dict[str, Any]:
         return self.get_json(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json")
 
-    def submissions(self, cik: int) -> List[Dict[str, Any]]:
-        """All filings (recent + paged history) as a list of dicts."""
+    def submissions(self, cik: int, since: str = "2019-01-01") -> List[Dict[str, Any]]:
+        """All filings (recent + paged history back to `since`) as a list of dicts."""
         d = self.get_json(f"https://data.sec.gov/submissions/CIK{cik:010d}.json")
         blocks = [d["filings"]["recent"]]
         for f in d["filings"].get("files", []) or []:
-            if f.get("filingTo", "") >= "2019-01-01":
+            if f.get("filingTo", "") >= since:
                 blocks.append(self.get_json(f"https://data.sec.gov/submissions/{f['name']}"))
         out = []
         for b in blocks:
@@ -192,8 +209,11 @@ def earnings_8k(subs: List[Dict[str, Any]], since: str = "2019-01-01") -> List[D
     return sorted(out, key=lambda e: e["accepted_at_et"])
 
 
+PRIOR_KEYS = ("revenue", "net_income")   # flow items for which the filing's own prior-year comparative is kept
+
+
 def fundamentals_from_companyfacts(facts: Dict[str, Any], subs: List[Dict[str, Any]],
-                                   since: str = "2019-01-01") -> List[Dict[str, Any]]:
+                                   since: str = "2019-01-01", comparatives: bool = False) -> List[Dict[str, Any]]:
     """One record per periodic filing (10-Q/10-K, incl. amendments) in the same shape as the
     Finnhub snapshot: the filing's *current* period, YTD for flow items (longest duration ending
     at the period end), instant at the period end for equity. PIT key = acceptance time (ET)."""
@@ -242,6 +262,16 @@ def fundamentals_from_companyfacts(facts: Dict[str, Any], subs: List[Dict[str, A
                 if hit:
                     rec[name] = float(hit[-1]["val"])
                     rec[name + "_concept"] = "us-gaap_" + c
+                    if comparatives and name in PRIOR_KEYS:
+                        # Review P1-5: the prior-year comparative of the SAME length reported inside THIS filing
+                        # (restated for spin-offs/discontinued ops/accounting changes; same acceptance time).
+                        cur_len = (pd.Timestamp(period_end) - pd.Timestamp(ytd_start)).days
+                        tgt = pd.Timestamp(period_end) - pd.DateOffset(years=1)
+                        pri = [r for r in rows if r.get("start") and r["end"] < period_end
+                               and abs((pd.Timestamp(r["end"]) - tgt).days) <= 10
+                               and abs((pd.Timestamp(r["end"]) - pd.Timestamp(r["start"])).days - cur_len) <= 20]
+                        if pri:
+                            rec[name + "_prior"] = float(pri[-1]["val"])
                     break
         records.append(rec)
     records.sort(key=lambda x: (x["accepted_at"], x["end"], x["form"] or ""))

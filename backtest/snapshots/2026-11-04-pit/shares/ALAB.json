@@ -1,0 +1,120 @@
+{
+ "ciks": [
+  1736297
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2025-02-13 19:46:00",
+   "as_of": "2024-06-28",
+   "value": 6600000000.0
+  },
+  {
+   "accepted_at": "2026-02-20 17:26:05",
+   "as_of": "2025-06-30",
+   "value": 13200000000.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2024-05-07 17:42:02",
+   "accn": "0001736297-24-000006",
+   "as_of": "2024-05-07",
+   "assets": 864901000.0,
+   "form": "10-Q",
+   "method": "weighted diluted",
+   "shares": 52532000.0
+  },
+  {
+   "accepted_at": "2024-08-06 17:38:18",
+   "accn": "0001736297-24-000018",
+   "as_of": "2024-07-31",
+   "assets": 915515000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 156656716.0
+  },
+  {
+   "accepted_at": "2024-11-04 17:43:00",
+   "accn": "0001736297-24-000043",
+   "as_of": "2024-10-31",
+   "assets": 983065000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 158610853.0
+  },
+  {
+   "accepted_at": "2025-02-13 19:46:00",
+   "accn": "0001736297-25-000003",
+   "as_of": "2025-01-31",
+   "assets": 1054508000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 162153472.0
+  },
+  {
+   "accepted_at": "2025-05-06 17:33:10",
+   "accn": "0001736297-25-000031",
+   "as_of": "2025-04-30",
+   "assets": 1121694000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 164916814.0
+  },
+  {
+   "accepted_at": "2025-08-05 17:41:47",
+   "accn": "0001736297-25-000098",
+   "as_of": "2025-07-31",
+   "assets": 1271405000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 166219140.0
+  },
+  {
+   "accepted_at": "2025-11-04 17:36:22",
+   "accn": "0001736297-25-000147",
+   "as_of": "2025-10-31",
+   "assets": 1401182000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 168903616.0
+  },
+  {
+   "accepted_at": "2026-02-20 17:26:05",
+   "accn": "0001736297-26-000010",
+   "as_of": "2026-01-31",
+   "assets": 1531823000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 170214503.0
+  },
+  {
+   "accepted_at": "2026-05-05 17:38:06",
+   "accn": "0001736297-26-000020",
+   "as_of": "2026-04-30",
+   "assets": 1659215000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 171407939.0
+  },
+  {
+   "accepted_at": "2026-08-04 17:34:14",
+   "accn": "0001736297-26-000035",
+   "as_of": "2026-07-31",
+   "assets": 1931501000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 173485104.0
+  },
+  {
+   "accepted_at": "2026-11-03 17:35:42",
+   "accn": "0001736297-26-000045",
+   "as_of": "2026-10-31",
+   "assets": 2300333000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 174782075.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "ALAB"
+}

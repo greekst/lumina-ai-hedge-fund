@@ -1,0 +1,128 @@
+{
+ "ciks": [
+  1693256
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2018-03-19 16:47:03",
+   "as_of": "2017-06-30",
+   "value": 322100000.0
+  },
+  {
+   "accepted_at": "2019-03-01 16:17:43",
+   "as_of": "2018-06-30",
+   "value": 874400000.0
+  },
+  {
+   "accepted_at": "2020-02-25 16:34:18",
+   "as_of": "2019-06-28",
+   "value": 684900000.0
+  },
+  {
+   "accepted_at": "2021-02-24 16:54:48",
+   "as_of": "2020-06-30",
+   "value": 284200000.0
+  },
+  {
+   "accepted_at": "2022-02-23 16:37:31",
+   "as_of": "2021-06-30",
+   "value": 376800000.0
+  },
+  {
+   "accepted_at": "2023-02-22 16:31:02",
+   "as_of": "2022-06-30",
+   "value": 489100000.0
+  },
+  {
+   "accepted_at": "2024-02-21 16:31:19",
+   "as_of": "2023-06-30",
+   "value": 755300000.0
+  },
+  {
+   "accepted_at": "2025-02-19 16:30:43",
+   "as_of": "2024-06-30",
+   "value": 1000000000.0
+  },
+  {
+   "accepted_at": "2026-02-18 16:31:27",
+   "as_of": "2025-06-30",
+   "value": 837400000000.0
+  }
+ ],
+ "shares": [
+  {
+   "accepted_at": "2018-03-19 16:47:03",
+   "accn": "0001558370-18-002250",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2017-06-30 (no share count reported)",
+   "shares": 26510288.06584362
+  },
+  {
+   "accepted_at": "2019-03-01 16:17:43",
+   "accn": "0001558370-19-001424",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2018-06-30 (no share count reported)",
+   "shares": 60178940.12388163
+  },
+  {
+   "accepted_at": "2020-02-25 16:34:18",
+   "accn": "0001558370-20-001327",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2019-06-28 (no share count reported)",
+   "shares": 58992248.0620155
+  },
+  {
+   "accepted_at": "2021-02-24 16:54:48",
+   "accn": "0001558370-21-001620",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2020-06-30 (no share count reported)",
+   "shares": 57999999.99999999
+  },
+  {
+   "accepted_at": "2022-02-23 16:37:31",
+   "accn": "0001558370-22-001752",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2021-06-30 (no share count reported)",
+   "shares": 62384105.9602649
+  },
+  {
+   "accepted_at": "2023-02-22 16:31:02",
+   "accn": "0001558370-23-001765",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2022-06-30 (no share count reported)",
+   "shares": 71715542.52199413
+  },
+  {
+   "accepted_at": "2024-02-21 16:31:19",
+   "accn": "0001558370-24-001437",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2023-06-30 (no share count reported)",
+   "shares": 93246913.58024691
+  },
+  {
+   "accepted_at": "2025-02-19 16:30:43",
+   "accn": "0001558370-25-001154",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2024-06-30 (no share count reported)",
+   "shares": 93457943.92523365
+  },
+  {
+   "accepted_at": "2026-02-18 16:31:27",
+   "accn": "0001104659-26-017085",
+   "as_of": "9999-12-31",
+   "form": "10-K",
+   "method": "public float / split-adjusted close on 2025-06-30 (no share count reported)",
+   "shares": 96921296296.2963
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "WTTR"
+}

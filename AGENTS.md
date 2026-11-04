@@ -15,7 +15,7 @@ License: upstream is CC BY-NC 4.0. This fork is for **personal research only**. 
 
 ## Working conventions
 
-- Python 3.10+. Install: `pip install -r requirements.txt` (pinned). Run tests: `LUMINA_LLM_MODE=mock pytest -q`. Legacy suite: `python tests/test_institutional_hardening.py`.
+- Python 3.12+ (the pinned set needs it; CI runs 3.12 and 3.13). Install: `pip install -r requirements.txt` (pinned). Run tests: `LUMINA_LLM_MODE=mock pytest -q`. Legacy suite: `python tests/test_institutional_hardening.py`.
 - Network-dependent tests are marked `@pytest.mark.network` and are skipped in CI; core tests use fixtures in `tests/fixtures/`.
 - Backtests: `python -m backtest.walkforward --help`. A rerun with the same snapshot must produce byte-identical output; keep it that way (seeded RNGs, sorted iteration, fixed float formatting, no wall-clock timestamps in result files).
 - Third-party repos live read-only in `vendor/` (git-ignored). Do not copy their code into `core/` unless the license allows it and the log says so.

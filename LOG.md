@@ -194,3 +194,130 @@ entries are left unchanged; this note is the correction.
 - **Final live Gemini count: 28 / 1,500** (22 OK, 6 errors).
 - Time check: Session 2 LOG entries 17:42, 17:55, 18:41, 18:51, 19:05 and 19:08 vs commits 17:55:28, 18:41:52, 18:51:09 and 19:05:26. Two entries were
   first written ahead of the commit and corrected (noted in the Phase C and Phase D entries' history).
+
+---
+
+# Session 3 (2026-11-04) — CI, point-in-time universe, longer history, pre-registered H1
+
+Branch: `claude/kind-rubin-ahzsge` (assigned by the harness). Mock LLM mode throughout; no live LLM calls.
+
+## 2026-11-04 19:51 UTC — Phase A: fix CI
+- Failing run inspected: run 41899352628 (main, merge of PR 2). Four jobs failed: `test (3.10)` (`streamlit==1.66.1` needs ≥3.11),
+  `test (3.11)` and `ui-smoke` (`scipy==1.18.1` needs ≥3.12), `test (3.12)` (`test_cache_replays_offline_and_budget_cap_is_enforced`:
+  `GEMINI_API_KEY not set`).
+- **Choice: support Python 3.12+ only.** Justification: the alternative (per-version marker fallbacks for 3.10/3.11) already existed for
+  numpy/scipy/etc. and still broke, because every new upstream release can drop an old interpreter; it doubles the pin set and the two halves
+  are never tested against the same backtest digest. One pin set on ≥3.12 is simpler and keeps results reproducible. Changes:
+  `requirements.txt` (markers removed, header notes ≥3.12), CI matrix `["3.12", "3.13"]` (3.13 resolution checked with
+  `pip install --dry-run --python-version 3.13 --only-binary=:all:`), `ui-smoke` on 3.12, README badge, `AGENTS.md`, Dockerfile `python:3.12-slim`.
+- **Live-council test made offline:** the root cause was ordering. `GeminiCached._call` built the client (needing the key) before checking the budget.
+  The budget gate now runs first, before any key, SDK or network access. The test removes `GEMINI_API_KEY` and replaces `google.genai.Client` with
+  a function that fails the test if called. A new test drives the live path through a fake client (request counted, response cached, replay free).
+  The old code fails the updated test with no key; the new code passes.
+- Local env: fresh `.venv` on Python 3.12 with the pinned set. `pytest -q` → 76 passed, 1 skipped.
+
+## 2026-11-04 19:53 UTC — Phase A result
+- CI run 41900979973 on `claude/kind-rubin-ahzsge` (commit 0fd8b6c): **all four jobs green** (secrets, test 3.12, test 3.13, ui-smoke).
+
+## 2026-11-04 21:17 UTC — Phase B checkpoint: point-in-time universe built and frozen
+- **Membership rule** (`backtest/pit_universe.py`, decided inside the harness): on decision session D, an event counts if its company
+  ranks in the top 100 US-listed domestic filers (10-K/10-Q) by market cap at the close of D-1. Cap = PIT share count (latest
+  periodic filing accepted before 16:00 ET on D-1) x split factor x split-adjusted close of D-1 (BRK.B x 1500, Class A equivalents).
+  Share count per filing: dei cover value if within 0.8–1.25x of the same filing's weighted count; else weighted diluted (or basic,
+  or BasicAndDiluted for loss-makers); else NI / diluted EPS; last resort (Visa: everything per class) public float / close on the float date.
+- **Data-quality guards, each found on real errors and each PIT-safe (only past filings used):**
+  NI/EPS only overrides a weighted count for order-of-magnitude unit errors (WFC 2020Q1 EPS 0.01 gave 65B shares; BA, CRWD rounded EPS);
+  a share count > 3x away from the last accepted one waits for confirmation by the next filing (one-off tags such as WTTR);
+  cap > 10x latest public float -> not rankable that day (ADS-ratio junk AKTX; banks tagging shares x1000: NKSH, LOB, GRC, PEBK),
+  waived only if the float looks tagged in thousands AND the share count is confirmed by two tags (Duke Energy 2023);
+  with no float and a single-tag count, cap > 100x total assets -> not rankable (RRBI 2019; removes nothing else from any top-110).
+  Excluded as not common stock: commodity/crypto trusts (SIC 6221: GLD, BITW), MLP units (EPD, CQP, SPH), preferred-only listings (CTA.PA, CRD.A).
+- **Candidate pool** (`backtest/universe/pit/candidates.json`, inputs frozen with sha256): (1) every S&P 500 member on any date since
+  2014-01-01 (fja05680/sp500 historical components, 784 tickers, 175 without a current listing); (2) every NYSE/Nasdaq/CBOE-listed
+  company with >= 100M shares in any EDGAR frame; screened by frames shares x yfinance month-end closes (rank <= 200 at any quarter end
+  2014Q1–2026Q3); (3) every listed company ranked <= 150 by dei:EntityPublicFloat in any year (needs no prices; caught Visa and MercadoLibre,
+  which the share-based screen missed). Screen bugs found and fixed on the way: sparse Q4 frames put small caps at rank 1; frames hold
+  split-restated values (AAPL 2020 4x). 569 candidates -> 564 in the snapshot with prices + EDGAR data, 44 flagged (list in universe.json).
+- **Ticker changes / share classes / re-registrations:** one entry per CIK; renamed companies keep full Yahoo history under the current
+  ticker (FB->META etc.). Dual classes: GOOGL, FOXA, NWSA, BRK.B, LEN, BF.B, HEI. Predecessor CIKs merged: XOM, BLK, AVGO (Avago, Broadcom Ltd),
+  DIS (TWDC Enterprises 18), CI (old Cigna), MDT (Medtronic Inc), GOOGL (Google Inc), MRVL (Bermuda parent). Mergers of two operating
+  companies (DowDuPont, Linde/Praxair, DXC) are not merged: those companies enter when the new registrant files.
+- **Known gaps (no price history: Yahoo keeps none for delisted tickers; Stooq/Nasdaq/Tiingo/Polygon/AlphaVantage/stockanalysis blocked
+  by the network policy; Finnhub candles 403; a Bright Data scrape was refused by the permission classifier and not pursued):**
+  Allergan, Celgene, Walgreens Boots Alliance, Time Warner, Dow Chemical, Express Scripts, Monsanto, Anadarko, Shire, EMC, Time Warner
+  Cable, Reynolds American, Aetna, Raytheon, Activision, Alexion, Kraft Foods Group, Precision Castparts, DirecTV, Yahoo, Discover,
+  Pioneer, Covidien, Kenvue (all found by the public-float completeness check). Bias: these are mostly acquisitions, which end with a
+  takeover premium, so their absence biases buy-and-hold slightly DOWN, not up. Full table: `results/pit_universe_2026-11-04.md`.
+- Membership: 196 distinct companies were top-100 at some quarter end since 2014-06; 96 of them are not in today's top 100
+  (e.g. CMCSA, PYPL, NKE, MMM, UPS, ZM, MRNA, SNOW; full list and quarter-by-quarter turnover in the report). Cross-check vs Finnhub market caps of
+  Session 2's 100 names on 2026-11-03: 98 within 0.8–1.25x; BX and IBKR differ by definition (Up-C: Finnhub adds LP units).
+- **Snapshot `backtest/snapshots/2026-11-04-pit`** (63 MB, gzipped CSV/JSON, 1,709 files, sha256 manifest): prices 2013-01..2026-11 for
+  564 candidates + SPY, ^VIX, 11 sector ETFs; EDGAR fundamentals since 2012 incl. same-filing prior-year comparatives (for P1-5);
+  PIT share counts and public floats; events since 2014-06. A second build from cache gives an identical manifest.
+- **Poisoned-future tests** (`tests/test_pit_snapshot.py`): every candidate's prices from D on, share counts accepted at/after 16:00 on
+  D-1 and filings after the announcement are poisoned on three busy days (2016, 2020, 2024): ranks, event set and all decision-time
+  columns unchanged. Meta-tests: the detector FAILS for a harness that ranks at D instead of D-1 and for one that sees share counts
+  18 hours early. Session 2 regression: sp100 walk-forward rerun with the modified harness reproduces sha256 `f5735aab…`.
+- Tests: 91 passed, 1 skipped.
+
+## 2026-11-04 21:21 UTC — Phase B result: survivorship-biased vs point-in-time, Session 2 window
+Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..2026-09-30 (12 seasons), mock council, season-clustered CIs.
+- A = Session 2 as published (1,183 events, 100 tickers); B = today's top 100 recomputed on Session 3 data (1,171 events, 99 tickers);
+  C = point-in-time universe (1,198 events, 134 tickers).
+- **Buy-and-hold excess vs sector ETF, T+20: A +0.97% [+0.72, +1.24], B +0.95% [+0.64, +1.30], C +0.12% [−0.20, +0.42].**
+  B reproduces A on new data (data pipeline consistent); C keeps about 12% of it (C/B = 0.12), and the CI includes zero.
+  T+5: B +0.46% -> C −0.05%; T+1: B +0.39% -> C −0.10%. The Session 2 "about 1% per 20 sessions" was survivorship.
+- Council excess vs sector ETF T+20: B +0.27% -> C −0.22% [−0.60, +0.18]; factors-only B +0.15% -> C −0.26% [−0.53, −0.01].
+- Council − factors-only (paired) T+20 is unchanged at +0.74% in all three (C: [−0.02, +1.52]): it is the long-rate gap
+  (council long 71% vs 43% in C) times the market, not stock selection.
+- **Within-ticker selection skill stays at zero** in every universe and horizon; council T+5: A +0.08%, B −0.02%, C −0.02% [−1.06, +1.12].
+- Output digests: B `5c48ffbd…`, C `63184c87…` (rerun check in progress).
+
+## 2026-11-04 21:21 UTC — Phase C: HYPOTHESIS.md committed before Phase D
+- H1: within-ticker selection skill of the mock council at T+5 > 0 on the PIT universe, D >= 2015-01-01, two-way (season x ticker)
+  pigeonhole bootstrap, one-sided 5%: reject iff the bootstrap 5th percentile > 0. MDE ≈ 1.0% (one-sided, 80% power), from the
+  Phase B SE (0.813%) scaled by sqrt(12/47). Disclosed: the 2023-10..2026-09 part (about a quarter of the sample) was seen in Phase B.
+  No decision or return before 2023-10-09 had been computed when the file was committed.
+
+## 2026-11-04 21:29 UTC — Phase D: H1 run as pre-registered (P1-5 fixed, two-way clustering)
+- P1-5 (review): YoY revenue growth now uses the prior-year comparative inside the current filing (`edgar.fundamentals_from_companyfacts(comparatives=True)`,
+  `pit._yoy_growth(mode="comparative")`; same acceptance time, so PIT-safe; 99.1% of revenue filings since 2014-06 carry it; falls back to the
+  old method, labelled, otherwise). Unit test with a spin-off restatement (legacy −34% vs comparative +10%).
+- Two-way clustering: `stats.cluster_diff_2way` (season x ticker pigeonhole bootstrap, conservative), unit-tested on simulated data.
+- Extended history: events from 2015-01 on the PIT universe; the Phase B snapshot already covered 2013-01..2026-11 (no second download).
+  Snapshot frozen in Phase B; rebuild byte-identical. **Two reruns of the pre-registered command: identical sha256 `ccabc089…`.**
+- **H1 (confirmatory): S = +0.07%, one-sided lower bound −0.41%, CI [−0.54%, +0.65%], p = 0.41, n = 4,661 events / 47 seasons / 190 tickers.
+  Not rejected.** Unseen pre-2023-10 subsample: −0.05%.
+- Exploratory (`results/h1_phaseD_2026-11-04.md`): selection skill at T+1/T+20 for both strategies within ±0.4%, all CIs include zero;
+  no VIX regime or sector cell excludes zero. Buy-and-hold excess vs sector ETF on the PIT universe 2015–2026: T+20 −0.02% [−0.24, +0.18].
+  Council − factors-only T+20 +0.41% [+0.10, +0.72] and T+5 +0.16% [+0.01, +0.31]: exploratory, and explained by exposure (council long
+  67% vs factors-only 45%) in a rising market — both strategies trail their sector ETFs (council T+20 −0.16%, factors-only −0.24%).
+- Phase B PIT run reproduced: `63184c87…` twice.
+
+## 2026-11-04 22:04 UTC — Phase E: independent review, fixes, robustness
+- Fresh general-purpose subagent started ~21:31 UTC (after the Phase D commit), given only the repo path, venv/test hints, a scratch dir,
+  "change no files, no live LLM calls", and the brief's instruction verbatim. Report saved verbatim with responses:
+  `results/independent_review_session3.md`.
+- **No P0.** Membership timing, event timing, the H1 statistic and the pre-registration were found clean; the reviewer's own counterfactual
+  with its fixes left H1 and Phase B unchanged.
+- P1-1..P1-3 (share-count ×1000 tags passing the guards: COP missing ~3.5 years, RPAY ranked ~19th; SHW 2021 split counted twice;
+  float check biased against momentum names: TSLA 2020, MU 2026, MRNA, DD): **fixed as ranking rules v2 in a review overlay**
+  `backtest/snapshots/2026-11-04-pit-r1` (only share counts recomputed; base snapshot and the pre-registered result untouched;
+  `verify` checks overlay + base + base identity). Poisoned-future and leak meta-tests now run on both snapshots.
+  Regression: COP 2016 rank 419 -> 77, RPAY 19 -> 468, SHW 32 -> 118, TSLA unrankable -> 8.
+- Robustness (overlay, exploratory): H1 S = +0.08%, lower bound −0.45%, not rejected; Phase B PIT buy-and-hold vs sector T+20 +0.10%
+  (biased +0.95%). No conclusion changes.
+- P1-4 (S attenuated, W = 0.78; FE slope +0.09%; MDE in effect units ≈ 0.98%, pre-registered ≈ 1.3%): correction appended below the
+  line in HYPOTHESIS.md; decision unchanged. P1-5 (gap bias "down" unsupported): corrected to "direction unknown" in both reports.
+  This also corrects the Phase B LOG entry above, which said the gaps bias buy-and-hold slightly DOWN.
+- P2 open: BLK events before 2022-07 missing (vendor dates), vendor-only non-earnings dates, today's GICS for history, jump-filter lag
+  (KHC 2015–16, LIN 2018–19), IPO warm-up. P2-5 comment fixed. P2-6 provenance: the two Phase D runs were started ~21:22 UTC in parallel
+  (two processes, ~6 min each), both sha256 `ccabc089…`.
+
+## 2026-11-04 22:15 UTC — Session 3 final
+- Final checks (22:02–22:12 UTC): pytest 100 passed, 1 skipped; UI smoke 1 passed; legacy suite 19/19; four snapshot manifests verify;
+  digests reproduced in fresh directories (Phase D `ccabc089…`, Session 2 sp100 `f5735aab…`, Phase B PIT `63184c87…`); base PIT snapshot
+  rebuilds byte-identically; secret scan of all tracked files OK; kill switches, broker adapters and social-posting code unchanged since the
+  Session 2 merge (`git diff 5529c83` on those files is empty). Live LLM calls this session: 0.
+- **GitHub Actions on `claude/kind-rubin-ahzsge`: run 41923015186 (commit ccb9c89) green on all four jobs** (secrets, test 3.12, test 3.13, ui-smoke).
+- Branch ready for a PR into `main`.
