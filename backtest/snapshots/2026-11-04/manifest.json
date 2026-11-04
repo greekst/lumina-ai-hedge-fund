@@ -1,0 +1,54 @@
+{
+ "benchmarks": [
+  "SPY",
+  "^VIX"
+ ],
+ "fetched_at_utc": "2026-11-04T17:05:34Z",
+ "price_end_exclusive": "2026-11-04",
+ "price_start": "2021-01-01",
+ "sha256": {
+  "events.json": "bf67e5af14cace39bf73c228079e49804ba6c4b2d10e10ccf89c071e754a0588",
+  "fundamentals/AAPL.json": "71e41b017c2a96e3699e3d7776aceafc05b53bff231a3f9bb609e58550b8bd30",
+  "fundamentals/AMZN.json": "468efdaf5b919a12c8079b2ac62830ab5e830015473be8d332ac1eca7c642344",
+  "fundamentals/GOOGL.json": "e14c1dc40c5348d61b815b0c07d8b9c147f46c6e0547f2e74ba6fd637115acb2",
+  "fundamentals/JNJ.json": "4ef0bdd996fafc4ffc6774d589e9b77ce922e8381da2035b90363fea9bff50de",
+  "fundamentals/JPM.json": "74598136a9d9a8bb25ceff3871bda8758ca6a10d25e346f7c7aed26c34dfe4b9",
+  "fundamentals/META.json": "a4f704a97a6109a72d90fc90d11219c38517178f0e1161eb402dc6324784b169",
+  "fundamentals/MSFT.json": "8efdfd19ae76b0d8e7d1a09fef94769595af62fd860c71ac37e3702e06670b1c",
+  "fundamentals/NVDA.json": "14a89b3e33ea1e79a58f6d627782d9ce624674a6500c4f4d495a355f17f8616c",
+  "fundamentals/PG.json": "ce6bed8938a5aa2588cb6dfab10d902e2017ccec8b23245581a40417baf1b623",
+  "fundamentals/XOM.json": "35eb81755fa6a249c0b359980d4fbde3ad2321e6bd57eeb05dea34596cde42be",
+  "prices/AAPL.csv": "4991cafa43991f20042c31eefdf3d43ad6fbaffbd0a0b3fe76583892bc45b5b5",
+  "prices/AMZN.csv": "10c88520b5d98387b4729c6cdfb3656b85dddc9d1a7f9d4e64c74c2c0e6494d8",
+  "prices/GOOGL.csv": "6bc6b46ce00678e9bd8cdfd5b4c42d6f948f01ded6fc2e14be58e27171e34fc5",
+  "prices/JNJ.csv": "1aed9255086c24444163f51ee116a68d4a12afb57cea5557dbcf0ee9a4c2aa91",
+  "prices/JPM.csv": "8dfff65773dfd1bfc8592762d0e2d6b3ba92a52113da914e98c32a0824620032",
+  "prices/META.csv": "68eaba7c92ed26405679ae127ebfa10489085fe26c94d632f94b52832ccd8056",
+  "prices/MSFT.csv": "f3469ccc90b250c6ac85d58a2fd4ede2155f003a8f7f8f83f7e7387bfd11309e",
+  "prices/NVDA.csv": "a4916c5eee350e09424244c63f2d9765d218119d410925dcf0bbb5cf6951dff2",
+  "prices/PG.csv": "67eb3a4118b925114de363b44b18f1b024466d90d6a21399026c4ba0beb1e7e2",
+  "prices/SPY.csv": "44573926edfceac58d76a9b9ddbe420e63673d52c2bc3af3aa6d3a6fe4aeeba2",
+  "prices/XOM.csv": "051f3a7b7eadd93c0733852e85adce18b32917a0d8111d59362c3351c8a5a9a3",
+  "prices/_VIX.csv": "bdab5aadde12c7651f2e66ac198006046fc0f4dc8c4b22517a3ab7dca46adde3",
+  "splits.json": "aecb4663ee7c1827b4ee43422349b3736a8f215110a725a81f72eaf74d40382e"
+ },
+ "snapshot_id": "2026-11-04",
+ "sources": {
+  "events": "yfinance get_earnings_dates (announcement timestamp, America/New_York)",
+  "fundamentals": "Finnhub /stock/financials-reported; PIT key = acceptedDate",
+  "prices": "yfinance Ticker.history(auto_adjust=False): OHLC scaled to Adj Close (split+dividend adjusted); CloseSplitAdj = split-adjusted only",
+  "splits": "yfinance Ticker.splits (used only to put as-reported EPS on the current share basis)"
+ },
+ "tickers": [
+  "AAPL",
+  "MSFT",
+  "NVDA",
+  "AMZN",
+  "GOOGL",
+  "META",
+  "JPM",
+  "JNJ",
+  "XOM",
+  "PG"
+ ]
+}

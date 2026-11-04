@@ -26,3 +26,14 @@ Times are UTC (container clock). Budget proxy: elapsed wall time (no cost readou
 - Security audit (cloudflare skill, guidance mode — focused scope given): `SECURITY_AUDIT.md`.
 - Decision: did not run the skill's full 6-phase multi-agent workflow; scope was explicitly 4 areas and the brief asks not to burn budget.
 - Next: Phase 2 walk-forward harness.
+
+## 2026-11-04 17:55 — Phase 2 checkpoint
+- `backtest/snapshot.py` (only networked step) → frozen, sha256-manifested snapshot `backtest/snapshots/2026-11-04` (committed, 1.5 MB): yfinance adjusted OHLCV + split-only close, splits, yfinance earnings timestamps, Finnhub as-reported financials with `acceptedDate`.
+- SEC EDGAR: first request worked, then 403 "undeclared automated tool" for the rest of the session (UA policy; I will not spoof). Switched fundamentals to Finnhub `/stock/financials-reported` (the same XBRL data, with acceptance timestamps). Found and handled two data-quality problems: (1) as-reported EPS is truncated to an integer for some filers (AMZN shows 1.0 and 0.0) → EPS derived as TTM net income / weighted diluted shares; (2) as-reported per-share values are pre-split → normalised by subsequent splits (a unit conversion only, no look-ahead). 15 of 520 fundamental values remain missing, and agents use their built-in defaults for those.
+- `backtest/pit.py`: D = last close before the announcement; features through D-1; filings accepted before the announcement; TTM = FY + YTD − prior-year YTD (52/53-week tolerant).
+- `backtest/walkforward.py`: 10 tickers × 12 events, council (mock) vs factors-only (Alpha158 trend + same CRO veto) vs buy-and-hold; T+1/5/20; 5+5 bps per side; post-mortem JSON per quarter. Options-GEX turbulence is replaced by a PIT VIX(D-1) ≥ 30 proxy. The TimesFM/Chronos/LightGBM/news/macro inputs are excluded (no PIT history, or fabricated); documented.
+- Reproducibility: two full runs give identical sha256 `a901a264…` for all outputs. Tests: rerun digest equality, plus a poisoned-future test (all prices ≥ D scrambled, a post-dated filing injected → identical decisions). Verified that test FAILS when the harness is mutated to use day D.
+- Result (honest): **no edge found.** Council is long 85% of events, ≈ buy-and-hold minus costs (T+20 avg net +1.99% vs +2.40% B&H; excess vs SPY −0.39% vs −0.43%). Council − factors-only at T+20: +0.90% mean, 95% CI [−0.15%, +2.01%] — not significant, and mostly beta (more time long in a rising market).
+- TradingAgents baseline skipped (LLM-only, no mock mode, conflicting pandas pin, LLM training-data look-ahead) — `backtest/tradingagents_adapter.py`.
+- GitHub Actions: no runs are recorded for this branch (forks have Actions disabled by default) → CI verified locally only. Owner action: enable Actions on the fork.
+- Next: Phase 3 source-tagged reporting.
