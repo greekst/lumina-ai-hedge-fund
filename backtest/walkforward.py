@@ -39,7 +39,7 @@ import pandas as pd
 os.environ.setdefault("LUMINA_LLM_MODE", "mock")
 
 from backtest.pit import Snapshot, decision_session, pit_fundamentals, pit_history_metrics  # noqa: E402
-from backtest.stats import describe  # noqa: E402
+from backtest.stats import cluster_diff, describe  # noqa: E402
 from core.ai_hedge_fund.alpha158_engine import Alpha158Engine  # noqa: E402
 from core.ai_hedge_fund.cost_model import CostModel  # noqa: E402
 from core.ai_hedge_fund.deterministic_metrics import DeterministicMetrics  # noqa: E402
@@ -344,6 +344,13 @@ def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
         for h in HORIZONS:
             for m in CELL_METRICS:
                 d[f"{strat}|{h}|{m}"] = describe(s[f"{m}_{h}"].to_numpy(), s["month"].to_numpy())
+    for strat in ("council", "factors_only"):
+        s = sub[sub.strategy == strat]
+        d[f"{strat}|long_rate"] = float(s["long"].mean()) if len(s) else None
+        for h in HORIZONS:
+            # selection skill on the sector-relative underlying return (decision-independent outcome)
+            y = (s[f"underlying_ret_{h}"] - s[f"sector_ret_{h}"]).to_numpy()
+            d[f"{strat}|{h}|selection_skill"] = cluster_diff(y, s["long"].to_numpy() == 1, s["month"].to_numpy())
     a = sub[sub.strategy == "council"].set_index(["ticker", "event_no"])
     b = sub[sub.strategy == "factors_only"].set_index(["ticker", "event_no"])
     for h in HORIZONS:
@@ -415,11 +422,16 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
     return md
 
 
+MIN_CLUSTERS = 8  # below this a cluster bootstrap CI is not reported (unreliable with few clusters)
+
+
 def _ci(F, m: Dict[str, Any], kind: str = "cluster") -> str:
     c = m.get(kind) or {}
     if m.get("mean") is None:
         return "n/a"
     lo, hi = c.get("lo"), c.get("hi")
+    if kind == "cluster" and (c.get("n_clusters") or 0) < MIN_CLUSTERS:
+        return f"{F(m['mean'])} [too few months for a CI]"
     return f"{F(m['mean'])} [{F(lo)} … {F(hi)}]" if lo is not None else F(m["mean"])
 
 
@@ -444,16 +456,33 @@ def cells_markdown(cells: Dict[str, Any], F, N) -> List[str]:
     for h in HORIZONS:
         m = o[f"council_minus_factors|{h}"]
         L.append(f"| T+{h} | {N(m['n'])} | {_ci(F, m)} | {F(m['iid']['lo'])} | {F(m['iid']['hi'])} | {F(m['mde80'])} |")
+    L += ["", "### Selection skill: do the events a strategy goes long on beat the ones it skips?", "",
+          "Mean sector-relative underlying return (stock minus its sector ETF, before costs) of long events minus that "
+          "of flat events. This does not reward being long more often, so it is not inflated by the universe's "
+          "survivorship (today's largest companies outperformed their sectors in the past by construction). "
+          "<!-- text-only -->", "",
+          "| strategy / horizon | long rate | longs | flats | long − flat [clustered CI] | MDE |", "|---|---|---|---|---|---|"]
+    for strat in ("council", "factors_only"):
+        for h in HORIZONS:
+            m = o[f"{strat}|{h}|selection_skill"]
+            ci = f"{F(m['mean'])} [{F(m['lo'])} … {F(m['hi'])}]" if m["mean"] is not None else "n/a"
+            L.append(f"| {strat} T+{h} | {F(o[f'{strat}|long_rate'])} | {N(m['n_in'])} | {N(m['n_out'])} | {ci} | {F(m['mde80'])} |")
     for title, key in (("By regime: VIX close on D-1", "by_regime"), ("By GICS sector", "by_sector")):
         L += ["", f"### {title} — T+20", "",
-              "| cell | events | buy-and-hold excess vs sector | council excess vs sector | factors-only excess vs sector | council − factors | MDE (council − factors) |",
-              "|---|---|---|---|---|---|---|"]
+              "| cell | events | months | buy-and-hold excess vs sector | council excess vs sector | factors-only excess vs sector | council − factors | MDE (council − factors) | council selection skill |",
+              "|---|---|---|---|---|---|---|---|---|"]
         for name, c in cells[key].items():
             d = c["council_minus_factors|20"]
-            L.append(f"| {name} | {N(c['n_events'])} | {_ci(F, c['buy_and_hold|20|excess_sector'])} | "
+            nc = (d.get("cluster") or {}).get("n_clusters") or 0
+            L.append(f"| {name} | {N(c['n_events'])} | {N(nc)} | {_ci(F, c['buy_and_hold|20|excess_sector'])} | "
                      f"{_ci(F, c['council|20|excess_sector'])} | {_ci(F, c['factors_only|20|excess_sector'])} | "
-                     f"{_ci(F, d)} | {F(d['mde80'])} |")
+                     f"{_ci(F, d)} | {F(d['mde80']) if nc >= MIN_CLUSTERS else 'n/a'} | "
+                     f"{_sk(F, c['council|20|selection_skill']) if nc >= MIN_CLUSTERS else 'n/a'} |")
     return L
+
+
+def _sk(F, m: Dict[str, Any]) -> str:
+    return f"{F(m['mean'])} [{F(m['lo'])} … {F(m['hi'])}]" if m.get("mean") is not None else "n/a"
 
 
 def write_outputs(result: Dict[str, Any], out_dir: str, snap: Snapshot) -> Dict[str, str]:

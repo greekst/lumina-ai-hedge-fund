@@ -25,25 +25,26 @@ def run(snapshot_root: str) -> Dict[str, Any]:
     with open(os.path.join(snapshot_root, "event_crosscheck.json"), encoding="utf-8") as fh:
         xc = json.load(fh)
     start = snap.sessions("SPY")[0]
-    rows = []
+    rows, extra = [], []
     for t in snap.manifest["tickers"]:
-        evs = snap.events.get(t, [])
-        if not evs or not str(evs[0].get("source", "")).startswith("SEC"):
-            continue
-        k8 = [{"accepted_at_et": e["announced_at_et"], "accession": e.get("accession")} for e in evs]
         sessions = snap.sessions(t)
-        for y in xc.get(t, {}).get("yfinance", []):
-            if pd.Timestamp(y) < start or y[:10] >= snap.manifest["price_end_exclusive"]:
+        used = set()
+        for e in snap.events.get(t, []):
+            if pd.Timestamp(e["vendor_et"]) < start:
                 continue
-            m = match_8k(y, k8)
-            dv = decision_session(sessions, y)
-            d8 = decision_session(sessions, m["accepted_at_et"]) if m else None
-            rows.append({"ticker": t, "yfinance_et": y, "edgar_8k_et": m["accepted_at_et"] if m else None,
+            dv = decision_session(sessions, e["vendor_et"])
+            d8 = decision_session(sessions, e["edgar_8k_et"]) if e.get("edgar_8k_et") else None
+            du = decision_session(sessions, e["announced_at_et"])
+            used.add(e.get("accession"))
+            rows.append({"ticker": t, "yfinance_et": e["vendor_et"], "edgar_8k_et": e.get("edgar_8k_et"),
                          "D_yfinance": str(dv.date()) if dv is not None else None,
                          "D_8k": str(d8.date()) if d8 is not None else None,
+                         "D_used": str(du.date()) if du is not None else None, "rule": e["rule"],
                          "gap": trading_day_gap(sessions, dv, d8)})
-    return {"rows": rows, "fallback_tickers": sorted(t for t in snap.manifest["tickers"]
-                                                     if snap.events.get(t) and not str(snap.events[t][0]["source"]).startswith("SEC"))}
+        for k in xc.get(t, {}).get("edgar_2_02", []):
+            if k["accession"] not in used and pd.Timestamp(k["accepted_at_et"]) >= start:
+                extra.append({"ticker": t, "edgar_8k_et": k["accepted_at_et"][:16], "accession": k["accession"]})
+    return {"rows": rows, "extra_8k": extra, "fallback_tickers": []}
 
 
 def markdown(res: Dict[str, Any], sid: str, run_date: str) -> str:
@@ -55,25 +56,36 @@ def markdown(res: Dict[str, Any], sid: str, run_date: str) -> str:
     far = [r for r in rows if r["gap"] is not None and abs(r["gap"]) > 1]
     unm = [r for r in rows if r["edgar_8k_et"] is None]
     L = [f"# Earnings timestamps: 8-K Item 2.02 vs yfinance — snapshot {sid}", "",
-         "The harness uses the 8-K acceptance time; yfinance is shown only as a cross-check. A yfinance event "
-         "without an 8-K within ten days is listed as unmatched. Tickers whose events had to come from yfinance "
-         "(no 8-K Item 2.02 furnished) are listed at the end. <!-- text-only -->", "",
+         "yfinance identifies which dates are earnings releases; each is matched to an `8-K` Item 2.02 within three "
+         "calendar days, and the harness uses the EARLIER of the two timestamps (column D used). An `8-K` can be "
+         "accepted after the press release (look-ahead if used alone); a vendor placeholder time can only move D "
+         "earlier. Item 2.02 filings that match no earnings date (delivery reports, monthly sales, preliminary "
+         "results, pre-announcements) are listed and are NOT events. <!-- text-only -->", "",
          f"- yfinance events in the price window: {n(len(rows))}",
          f"- same decision session: {n(len(same))}",
          f"- off by one trading day: {n(len(one))}",
          f"- off by more than one trading day: {n(len(far))}",
-         f"- no matching `8-K`: {n(len(unm))}", ""]
+         f"- no matching `8-K` within three days (vendor time used): {n(len(unm))}",
+         f"- `8-K` filings matching no earnings date (excluded): "
+         f"{n(len(res['extra_8k']))}", ""]
     for title, rr in (("Off by more than one trading day", far), ("Off by one trading day", one), ("Unmatched", unm)):
         L += [f"## {title}", ""]
         if not rr:
             L += ["None. <!-- text-only -->", ""]
             continue
-        L += ["| ticker | yfinance (ET) | 8-K accepted (ET) | D yfinance | D 8-K | gap (sessions) |", "|---|---|---|---|---|---|"]
+        L += ["| ticker | yfinance (ET) | 8-K accepted (ET) | D yfinance | D 8-K | gap (sessions) | D used |",
+              "|---|---|---|---|---|---|---|"]
         for r in rr:
             L.append(f"| {r['ticker']} | `{r['yfinance_et']}` | {_c(r['edgar_8k_et'])} | {_c(r['D_yfinance'])} | "
-                     f"{_c(r['D_8k'])} | {n(r['gap']) if r['gap'] is not None else 'n/a'} |")
+                     f"{_c(r['D_8k'])} | {n(r['gap']) if r['gap'] is not None else 'n/a'} | {_c(r['D_used'])} |")
         L.append("")
-    L += ["## Tickers with yfinance-sourced events (no 8-K Item 2.02)", "",
+    L += ["## 8-K filings that are not earnings releases (excluded)", ""]
+    if res["extra_8k"]:
+        L += ["| ticker | 8-K accepted (ET) | accession |", "|---|---|---|"]
+        L += [f"| {r['ticker']} | `{r['edgar_8k_et']}` | {_c(r['accession'])} |" for r in res["extra_8k"]]
+    else:
+        L.append("None. <!-- text-only -->")
+    L += ["", "## Tickers with yfinance-sourced events (no 8-K Item 2.02)", "",
           (", ".join(res["fallback_tickers"]) or "None.") + " <!-- text-only -->", ""]
     md = "\n".join(L)
     bad = untagged_numbers(md)

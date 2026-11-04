@@ -101,3 +101,44 @@ entries are left unchanged; this note is the correction.
   Test added with a fake value. Note: CI has no `SEC_USER_AGENT`, so this check is effective locally and in this session's pre-commit runs.
 - Tests: 60 passed, 1 skipped (`tests/test_edgar.py`: 7 offline tests).
 - Live Gemini calls used: 0.
+
+## 2026-11-04 18:42 UTC — Phase B checkpoint (wider universe, sector-neutral benchmark)
+- **Universe = S&P 100 *proxy*, not the official list.** The official constituent list was unreachable from this sandbox: en.wikipedia.org,
+  spglobal.com, ssga.com and ishares.com were refused by the network policy; Finnhub `/index/constituents` and `/etf/holdings` (REST and MCP
+  connector) returned 403; Yahoo index components returned 401; Bright Data said "customer is not active"; web search gave only top-10 holdings.
+  Rule (`backtest/universe.py`): S&P 500 members with GICS sector from `datasets/s-and-p-500-companies` (GitHub, from Wikipedia; it shows the
+  2026-09 additions DELL/PANW/SNDK; raw file + sha256 frozen in `backtest/universe/`), Finnhub `marketCapitalization` on 2026-11-04,
+  one share class per CIK, and the 100 largest. Sector mix: IT 28, Financials 18, Health Care 15, Industrials 10, Cons. Disc. 7, Staples 7,
+  Comm. 7, Energy 4, Real Estate 2, Materials 1, Utilities 1. All 10 Session 1 tickers are included.
+- **Survivorship / selection bias (important):** the universe is selected by *today's* market cap, i.e. on past returns, and applied to
+  2023–2026 events. Buy-and-hold beats its sector ETF by +0.97% at T+20 (clustered CI [+0.46%, +1.47%]); that is the bias, not an effect.
+  Any strategy that is long more often looks better. Hence the new **selection-skill** statistic (long-event minus flat-event sector-relative
+  return), which does not reward exposure.
+- Snapshot `backtest/snapshots/2026-11-04-sp100` (15 MB, sha256 manifest): EDGAR fundamentals (predecessor CIKs for XOM and BLK, which
+  reorganised into new holding companies in 2026-07 and 2024-10), yfinance prices for the 100 stocks + SPY, ^VIX and 11 SPDR sector ETFs.
+- **Event timestamps — rule changed after evidence.** The first draft used every 8-K Item 2.02 (clustered at 45 days) as the event list. The
+  universe-wide cross-check (`results/events_8k_vs_yfinance_2026-11-04-sp100.md`) showed two failures: (1) wrong events. TSLA delivery
+  reports, COST monthly sales, ISRG/DHR preliminary results and ABBV pre-announcements are all furnished under Item 2.02, and clustering
+  dropped the real earnings release (every TSLA "event" was a delivery report). (2) **look-ahead.** SCHW releases at ~07:00 but its 8-K is
+  accepted at ~16:17 the same day, every quarter (22 events), and BRK.B's 8-K comes 1–4 sessions after the Saturday release. Using the
+  8-K alone would put the entry at a close that already contains the news. New rule: yfinance dates identify which dates are earnings; each is
+  matched to an Item 2.02 8-K within ±3 days; the timestamp is the **earlier** of the two. This departs from the brief's "decide D from
+  the 8-K" because following it literally would create a P0 look-ahead. Result: 2,339 events; 2,285 give the same D; 33 differ by one session
+  (all resolved to the earlier D); 0 differ by more than one session; 21 have no 8-K within ±3 days (vendor time used); 138 non-earnings Item 2.02 filings excluded.
+  Phase A's report was regenerated with the same rule (AMZN 2024-08-01 now uses the earlier vendor D).
+- **New PIT fix (P0 class, inherited from Session 1):** the filings cutoff was the announcement time, but entry is at the close of D. For a
+  pre-market release (D = previous session), a filing accepted overnight would have leaked. The cutoff is now `min(announcement, D 16:00 ET)`.
+  The new test `test_overnight_filing_before_premarket_release_is_excluded` fails on the old code. Session 1 impact: 0 events, 0/360 decisions.
+- EDGAR vs Finnhub on Session 1's 10 tickers (same harness): decision dates identical for 120/120 events, council long/flat agrees on 117/120,
+  and council − factors-only at T+20 goes from +0.90% [−0.15%, +2.01%] (Session 1) to +1.01% [−0.10%, +2.15%].
+- Walk-forward on 100 tickers × last 12 events = **1,183 events** (36 calendar months, 2023-11..2026-10). Statistics: i.i.d. and
+  **month-clustered** bootstrap CIs (events in a month share market moves and overlapping T+20 windows), MDE at 80% power, by VIX(D-1)
+  bucket and GICS sector. Cells with fewer than 8 months get no CI.
+  - Council − factors-only (paired) T+20: +0.73% [+0.17%, +1.32%] clustered (MDE 0.84%). Positive, but the council is long 66% vs 43%.
+  - **Selection skill T+20:** council −0.73% [−2.35%, +0.80%] (MDE 2.24%); factors-only −0.42% [−1.59%, +0.68%]. Neither picks better
+    events than it skips. The paired "advantage" is exposure to a winner-selected universe.
+  - Council excess vs sector ETF T+20: +0.34% [−0.03%, +0.68%]; buy-and-hold: +0.97% [+0.46%, +1.47%].
+  - Regimes: VIX<15 229 events, VIX 15–25 899, VIX>25 55 (3 months, so no CI). No regime shows significant selection skill.
+- Reproducibility: two full runs, identical output sha256 `5161e20ac61b01ea9fcb1bcf80a7ff614a5d2f26c674ca9d2d25b2947bd39f48`.
+- Tests: 73 passed, 1 skipped (EDGAR-snapshot poison test for JPM/XOM/NVDA incl. sector ETF; rerun digest; manifest hashes).
+- Live Gemini calls used: 2 / 1,500 (1 smoke OK, 1 HTTP 404 — see Phase C).

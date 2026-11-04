@@ -54,7 +54,8 @@ PERIODIC_FORMS = {"10-Q", "10-K", "10-Q/A", "10-K/A", "10-KT", "10-QT"}
 # Successor registrants: the SEC ticker map points at the *current* CIK; history lives under the
 # predecessor. Facts and filings of all listed CIKs are merged (oldest first). Verified by hand.
 PREDECESSOR_CIKS: Dict[str, List[int]] = {
-    "XOM": [34088],  # Exxon Mobil Corp -> ExxonMobil Holdings Corp (holding-company reorganisation, 2026-07)
+    "XOM": [34088],     # Exxon Mobil Corp -> ExxonMobil Holdings Corp (holding-company reorganisation, 2026-07)
+    "BLK": [1364742],   # BlackRock, Inc. (old; now "BlackRock Finance, Inc.") -> new BlackRock, Inc. (2024-10, GIP deal)
 }
 # Upper bound on the YTD length (days) for each fiscal period, so trailing-twelve-month columns
 # that some filers (e.g. AMZN cash-flow/NI) add to 10-Qs are not mistaken for year-to-date values.

@@ -53,3 +53,31 @@ def describe(x: np.ndarray, clusters: Optional[Sequence[Any]] = None) -> Dict[st
     se = (out.get("cluster") or {}).get("se") or out["iid"]["se"]
     out["mde80"] = float(Z80 * se) if se else None
     return out
+
+
+def cluster_diff(y: np.ndarray, group: np.ndarray, clusters: Sequence[Any], n_boot: int = 2000,
+                 seed: int = SEED) -> Dict[str, Optional[float]]:
+    """mean(y | group) - mean(y | ~group), with a month-clustered bootstrap CI and MDE.
+    Used as 'selection skill': do events a strategy goes long on outperform the ones it skips?
+    Unlike the strategy's own return, this is not inflated by how OFTEN it is long."""
+    y = np.asarray(y, dtype=float)
+    gm = np.asarray(group, dtype=bool)
+    g = np.asarray(list(clusters))
+    ok = np.isfinite(y)
+    y, gm, g = y[ok], gm[ok], g[ok]
+    out: Dict[str, Optional[float]] = {"n_in": int(gm.sum()), "n_out": int((~gm).sum()), "mean": None,
+                                       "lo": None, "hi": None, "se": None, "mde80": None}
+    if gm.sum() < 2 or (~gm).sum() < 2:
+        return out
+    out["mean"] = float(y[gm].mean() - y[~gm].mean())
+    labels = sorted(set(g.tolist()))
+    s1 = np.array([y[(g == c) & gm].sum() for c in labels]); n1 = np.array([((g == c) & gm).sum() for c in labels], float)
+    s0 = np.array([y[(g == c) & ~gm].sum() for c in labels]); n0 = np.array([((g == c) & ~gm).sum() for c in labels], float)
+    rng = np.random.default_rng(seed)
+    idx = rng.integers(0, len(labels), size=(n_boot, len(labels)))
+    with np.errstate(invalid="ignore", divide="ignore"):
+        d = s1[idx].sum(1) / n1[idx].sum(1) - s0[idx].sum(1) / n0[idx].sum(1)
+    d = d[np.isfinite(d)]
+    out.update(lo=float(np.percentile(d, 2.5)), hi=float(np.percentile(d, 97.5)), se=float(d.std(ddof=1)))
+    out["mde80"] = float(Z80 * out["se"])
+    return out

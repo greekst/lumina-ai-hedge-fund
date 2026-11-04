@@ -5,9 +5,10 @@ backtest/snapshot_sp100.py — Session 2 frozen snapshot over the S&P 100 proxy 
 Network happens only here (cached). The snapshot has the same layout as backtest/snapshot.py
 plus `universe.json` (sector + SPDR sector ETF per ticker) and `event_crosscheck.json`.
 
-  events        SEC EDGAR 8-K Item 2.02 acceptanceDateTime (ET) — PRIMARY earnings timestamp.
-                8-Ks within 45 days of the previous kept one are treated as the same event
-                (pre-announcements, re-filings) and only the first is kept.
+  events        yfinance earnings dates identify WHICH dates are earnings releases (many issuers also
+                furnish Item 2.02 for delivery reports, monthly sales, preliminary results...). Each is
+                matched to an SEC EDGAR 8-K Item 2.02 within +-3 days; the timestamp is the EARLIER of the
+                8-K acceptance and the vendor time (an 8-K can be accepted after the press release).
   fundamentals  SEC EDGAR companyfacts, PIT key = acceptanceDateTime (backtest/edgar.py)
   prices        yfinance daily OHLCV (split+dividend adjusted) + CloseSplitAdj; stocks, SPY, ^VIX
                 and the 11 SPDR sector ETFs
@@ -28,6 +29,7 @@ from typing import Any, Dict, List
 import pandas as pd
 
 from backtest.edgar import EdgarClient, EdgarUnavailable, earnings_8k, fundamentals_from_companyfacts
+from backtest.sec_crosscheck import match_8k, resolve_event_time
 from backtest.snapshot import SNAP_ROOT, _safe, _sha256, fetch_prices, fetch_splits
 from backtest import universe as U
 
@@ -73,9 +75,17 @@ def build(snapshot_id: str, start: str, end: str, tickers: List[str] = None) -> 
     for sub in ("prices", "fundamentals"):
         os.makedirs(os.path.join(root, sub), exist_ok=True)
     ed = EdgarClient()
+    # Resume: reuse yfinance splits / earnings dates already frozen in this snapshot (no refetch drift).
+    prev_splits, prev_x = {}, {}
+    if os.path.exists(os.path.join(root, "splits.json")):
+        with open(os.path.join(root, "splits.json"), encoding="utf-8") as fh:
+            prev_splits = json.load(fh)
+    if os.path.exists(os.path.join(root, "event_crosscheck.json")):
+        with open(os.path.join(root, "event_crosscheck.json"), encoding="utf-8") as fh:
+            prev_x = json.load(fh)
     events: Dict[str, List[Dict[str, Any]]] = {}
     splits: Dict[str, List[Dict[str, float]]] = {}
-    xcheck: Dict[str, Any] = {}
+    xcheck: Dict[str, Any] = {}  # per ticker: yfinance dates + raw 8-K 2.02 list (cross-check only)
     problems: Dict[str, str] = {}
     for sym in BENCH:
         p = os.path.join(root, "prices", f"{_safe(sym)}.csv")
@@ -87,7 +97,7 @@ def build(snapshot_id: str, start: str, end: str, tickers: List[str] = None) -> 
         try:
             if not os.path.exists(p):
                 fetch_prices(yf_symbol(t), start, end).to_csv(p, float_format="%.6f")
-            splits[t] = [x for x in fetch_splits(yf_symbol(t)) if x["date"] < end]
+            splits[t] = prev_splits[t] if t in prev_splits else [x for x in fetch_splits(yf_symbol(t)) if x["date"] < end]
         except Exception as e:  # noqa: BLE001
             problems[t] = f"prices: {type(e).__name__}"
             continue
@@ -97,23 +107,33 @@ def build(snapshot_id: str, start: str, end: str, tickers: List[str] = None) -> 
             problems[t] = f"edgar: {e}"
             continue
         fund = fundamentals_from_companyfacts(b["facts"], b["subs"])
-        k8 = [e for e in cluster_events(earnings_8k(b["subs"])) if e["accepted_at_et"][:10] < end]
-        yfe = _yf_events(t)
-        xcheck[t] = {"yfinance": yfe}
-        if len([e for e in k8 if e["accepted_at_et"] >= "2022-01-01"]) >= 4:
-            events[t] = [{"announced_at_et": e["accepted_at_et"][:16], "source": e["source"], "accession": e["accession"],
-                          "merged_accessions": e.get("merged_accessions", [])} for e in k8]
-        else:
-            # issuer does not furnish earnings under 8-K Item 2.02 (e.g. results released with the 10-Q)
-            events[t] = [{"announced_at_et": x, "source": "yfinance.get_earnings_dates (no 8-K 2.02 filed)",
-                          "accession": None, "merged_accessions": []} for x in yfe if x[:10] < end]
-            problems[t] = f"events from yfinance: only {len(k8)} 8-K 2.02 filings"
+        k8 = [e for e in earnings_8k(b["subs"]) if e["accepted_at_et"][:10] < end]   # all Item 2.02, unclustered
+        yfe = prev_x[t]["yfinance"] if t in prev_x else _yf_events(t)
+        xcheck[t] = {"yfinance": yfe, "edgar_2_02": [{"accepted_at_et": e["accepted_at_et"], "accession": e["accession"]}
+                                                     for e in k8]}
+        evs = []
+        kept_y: List[str] = []
+        for y in sorted(yfe):
+            if y[:10] >= end:
+                continue  # not yet happened at snapshot time
+            if kept_y and (pd.Timestamp(y) - pd.Timestamp(kept_y[-1])).days < 5:
+                continue  # vendor duplicate of the same release (e.g. 08:00 and 16:00 rows); keep the earlier
+            kept_y.append(y)
+            m = match_8k(y, [{"accepted_at_et": e["accepted_at_et"], "accession": e["accession"]} for e in k8])
+            ts, rule = resolve_event_time(m["accepted_at_et"] if m else None, y)
+            evs.append({"announced_at_et": ts[:16], "rule": rule, "vendor_et": y,
+                        "edgar_8k_et": m["accepted_at_et"] if m else None, "accession": m["accession"] if m else None,
+                        "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates"})
+        events[t] = sorted(evs, key=lambda e: e["announced_at_et"])
+        if not evs:
+            problems[t] = "no earnings events"
         with open(os.path.join(root, "fundamentals", f"{_safe(t)}.json"), "w", encoding="utf-8", newline="\n") as fh:
             json.dump({"ticker": t, "ciks": b["ciks"], "source": "SEC EDGAR companyfacts; PIT key = acceptanceDateTime",
                        "filings": fund}, fh, indent=1, sort_keys=True)
         if not fund or min(f["accepted_at"] for f in fund) > "2022-01-01":
             problems[t] = "edgar: no periodic filing before 2022 (possible CIK change)"
-        time.sleep(0.5)
+        if t not in prev_x:
+            time.sleep(0.5)
     with open(os.path.join(root, "events.json"), "w", encoding="utf-8", newline="\n") as fh:
         json.dump(events, fh, indent=1, sort_keys=True)
     with open(os.path.join(root, "splits.json"), "w", encoding="utf-8", newline="\n") as fh:
@@ -133,7 +153,7 @@ def build(snapshot_id: str, start: str, end: str, tickers: List[str] = None) -> 
         "sources": {
             "prices": "yfinance Ticker.history(auto_adjust=False): OHLC scaled to Adj Close; CloseSplitAdj = split-adjusted only",
             "splits": "yfinance Ticker.splits",
-            "events": "SEC EDGAR 8-K Item 2.02 acceptanceDateTime (UTC -> America/New_York); 45-day clusters keep the first",
+            "events": "yfinance earnings dates matched (+-3d) to SEC EDGAR 8-K Item 2.02 acceptance; timestamp = earlier of the two",
             "fundamentals": "SEC EDGAR companyfacts (XBRL); PIT key = submissions acceptanceDateTime",
             "universe": uni["sp500_source"] + " + " + uni["market_cap_source"],
         },

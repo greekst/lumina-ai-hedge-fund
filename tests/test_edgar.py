@@ -60,13 +60,22 @@ def test_earnings_8k_keeps_only_item_202():
     assert k8[0]["accepted_at_et"] == "2025-05-01 16:30:21"
 
 
-def test_decision_session_comes_from_8k():
+def test_event_time_is_the_earlier_of_8k_and_vendor():
     s = pd.bdate_range("2024-07-01", "2024-08-31")
-    D, rule = resolve_decision_session(s, "2024-08-01 16:06:02", "2024-08-01 12:00")
-    assert D == pd.Timestamp("2024-08-01") and rule.startswith("8-K")
+    # SCHW pattern: release ~07:00, 8-K accepted 16:17 the same day. The 8-K alone would put D on
+    # the release day, whose close already contains the news -> look-ahead. Earlier timestamp wins.
+    D, rule = resolve_decision_session(s, "2024-07-16 16:17:00", "2024-07-16 07:00")
+    assert D == pd.Timestamp("2024-07-15") and rule.startswith("vendor")
+    # AMZN pattern: vendor placeholder "12:00", 8-K 16:06 -> earlier (vendor) D: one session early, never late
+    D, _ = resolve_decision_session(s, "2024-08-01 16:06:02", "2024-08-01 12:00")
+    assert D == pd.Timestamp("2024-07-31")
+    D, rule = resolve_decision_session(s, "2024-08-01 06:30:00", "2024-08-01 16:00")
+    assert D == pd.Timestamp("2024-07-31") and rule.startswith("8-K")
     D, rule = resolve_decision_session(s, None, "2024-08-01 07:00")
     assert D == pd.Timestamp("2024-07-31") and rule.startswith("vendor")
-    assert match_8k("2024-08-01 16:00", [{"accepted_at_et": "2024-08-20 16:00:00"}]) is None
+    # only Item 2.02 filings within three days count as the same release
+    assert match_8k("2024-08-01 16:00", [{"accepted_at_et": "2024-08-05 16:00:00"}]) is None
+    assert match_8k("2024-08-01 16:00", [{"accepted_at_et": "2024-08-02 09:00:00"}]) is not None
 
 
 def test_missing_user_agent_refuses_network(tmp_path):
