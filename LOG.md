@@ -61,3 +61,43 @@ Times are UTC (container clock). Budget proxy: elapsed wall time (no cost readou
 - Wrote `HANDOFF.md` (changes, how to run, results with interpretation, limitations, next steps) and added a fork notice at the top of the README.
 - Final verification: pytest 52 passed, 1 skipped; UI smoke 1 passed; walk-forward rerun into a fresh dir → same sha256 2233f1c1…; secret scan of all tracked files OK.
 - Budget: about 2.5 h of the ~24 h window used. I stopped deliberately after Phase 4 (hard rule 6). The remaining items in HANDOFF §5 need owner decisions (enable Actions, SEC contact UA, universe size, LLM-test design) rather than more autonomous time.
+
+---
+
+# Session 2 — wider universe, EDGAR, anonymised live-LLM test
+
+Branch: `claude/quirky-albattani-qc1wt7` (assigned by the session harness; based on `main` at `3817380`).
+Times below are from `date -u` at the moment of writing and are cross-checked against `git log`.
+**Session 1 time drift:** Session 1's LOG says Phase 0 at 16:50 and Phase 5 at 19:00, but its commits are
+stamped 16:46–17:19 UTC (`git log`), so its later entries ran up to ~1h40m ahead of the clock. Session 1's
+entries are left unchanged; this note is the correction.
+
+**Live Gemini call counter (cap 1,500):** 0 used at session start.
+
+## 2026-11-04 17:42 UTC — start
+- Env: `GEMINI_API_KEY`, `FINNHUB_API_KEY`, `FRED_API_KEY`, `SEC_USER_AGENT` present (checked with `[ -n ]`, values never printed).
+- Network: SEC EDGAR now answers 200 with the declared User-Agent (Session 1 got 403 without one). Finnhub, yfinance and the Gemini API answer.
+  `ai.google.dev` is blocked by this sandbox's network policy (proxy 403). The model's documented cutoff was taken from web search results
+  of that page and of the Vertex AI model page (see Phase C).
+
+## 2026-11-04 17:55 UTC — Phase A checkpoint (SEC EDGAR as primary PIT source)
+- `backtest/edgar.py`: EDGAR client, reads the User-Agent from `SEC_USER_AGENT` only. Throttled to 5 req/s, gzip disk cache in `backtest/cache/edgar/` (git-ignored).
+  Fundamentals come from `companyfacts`, the PIT key is the submissions `acceptanceDateTime` joined by accession number, and earnings
+  times come from 8-K filings with Item 2.02.
+- Verified that EDGAR `acceptanceDateTime` really is UTC (AAPL 8-Ks: 21:30Z in Jan and 20:30Z in Jul both give 16:30 ET). Stored as naive ET, like the rest of the snapshot.
+- Two data traps found and fixed: (1) AMZN 10-Qs carry trailing-twelve-month columns. A "longest duration" rule picked those
+  instead of YTD, giving net-income errors of up to 76%. YTD length is now capped by the fiscal period `fp`. (2) XOM moved to a holding company
+  (ExxonMobil Holdings Corp, new CIK) in July 2026, and the SEC ticker map points only at the new CIK, which has 2 filings. Predecessor
+  CIKs are now merged through an explicit map (`PREDECESSOR_CIKS`).
+- `backtest/sec_crosscheck.py` → `results/sec_vs_finnhub.md`/`.json`, 10 tickers. 1,533 values compared. 77 mismatches above 1%:
+  73 are Finnhub diluted EPS truncated to whole numbers (Session 1's known issue), 4 are a different XBRL concept for PG net income
+  (incl. vs excl. NCI), 0 are unexplained. Missing values: EDGAR 0, Finnhub 128. Acceptance-time disagreements: 0.
+- Events: 240 yfinance events vs 8-K 2.02. 238 give the same decision session D, 1 is off by one session (AMZN 2024-08-01: yfinance's
+  placeholder "12:00" vs 8-K at 16:06 ET, so the 8-K is right), and 1 lies before the price window. None are off by more than one session.
+  **D now comes from the 8-K acceptance**; the vendor time is used only when no 8-K matches.
+- Tagging validator: inline code spans that contain only a date, datetime, date range, accession number or SEC form code
+  (`10-Q`, `8-K`) are treated as identifiers. Any other code span is still checked, so a metric cannot hide in backticks.
+- `scripts/check_no_secrets.py` now also fails if the value of `SEC_USER_AGENT`, or its e-mail/domain part on its own, appears in a tracked file.
+  Test added with a fake value. Note: CI has no `SEC_USER_AGENT`, so this check is effective locally and in this session's pre-commit runs.
+- Tests: 60 passed, 1 skipped (`tests/test_edgar.py`: 7 offline tests).
+- Live Gemini calls used: 0.
