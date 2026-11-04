@@ -156,6 +156,9 @@ A fresh subagent that had not seen the work audited `backtest/` and the new data
 4. More events per name (e.g. all events since 2015 with a longer price history) to bring the selection-skill MDE below 1%.
 5. Pre-register one primary hypothesis (selection skill at T+5, say) before looking at new data. This session reports many cells; treat any single significant cell as noise.
 
+## Final checks (2026-11-04 19:05–19:08 UTC)
+pytest 75 passed, 1 skipped · UI smoke 1 passed · legacy suite 19/19 (zero-cost env) · walk-forward rerun digest `f5735aab…` reproduced in a fresh directory · both snapshot manifests verify · secret scan OK, including the `SEC_USER_AGENT` value check · kill switches untouched · Gemini calls 28/1,500.
+
 ## Blocked / not done
 - Official S&P 100 list (network policy, provider 403s, Bright Data inactive) → documented proxy universe.
 - Live LLM council (Gemini free-tier quota 20/day) → harness ready, partial leakage check only.

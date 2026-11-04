@@ -167,7 +167,7 @@ entries are left unchanged; this note is the correction.
 - **Live Gemini calls used: 28 / 1,500** (22 OK: 1 smoke, 1 diagnostic, 20 leakage; 6 errors: 1 HTTP 404 on gemini-2.5-flash, 5 HTTP 429).
 - Phase D was started in parallel at ~18:47 (fresh subagent, given only the repo path and the brief's instruction).
 
-## 2026-11-04 19:07 UTC — Phase D checkpoint (independent review)
+## 2026-11-04 19:05 UTC — Phase D checkpoint (independent review)
 - Fresh general-purpose subagent, started ~18:47 UTC, given only the repo path and the brief's instruction verbatim. It changed no files.
   Its report is saved verbatim, with responses, in `results/independent_review.md`.
 - **P0-1 (fixed):** a pre-market release could still land after the close when the vendor stamp is "16:00" and the 8-K is late
@@ -184,3 +184,13 @@ entries are left unchanged; this note is the correction.
   status regenerated. No answer to the three questions changed.
 - Tests: 75 passed, 1 skipped.
 - Live Gemini calls used: 28 / 1,500 (unchanged).
+
+## 2026-11-04 19:08 UTC — Phase E (final)
+- `HANDOFF.md` Session 2 section: answers to the three questions with numbers, CIs and sample sizes, the review outcome, next tests, and what is blocked.
+- Final checks (run 19:05–19:08 UTC): pytest **75 passed, 1 skipped**; UI smoke **1 passed**; legacy suite **19/19** (zero-cost env);
+  walk-forward rerun into a fresh directory → sha256 `f5735aab…` (same as both Phase D runs); both snapshot manifests verify;
+  secret scan of all tracked files OK, with `SEC_USER_AGENT` present in the env, so its value and contact parts were checked.
+- Kill switches / broker / social-posting code untouched this session (`git diff 3817380` on those files is empty). Paper only.
+- **Final live Gemini count: 28 / 1,500** (22 OK, 6 errors).
+- Time check: Session 2 LOG entries 17:42, 17:55, 18:41, 18:51, 19:05 and 19:08 vs commits 17:55:28, 18:41:52, 18:51:09 and 19:05:26. Two entries were
+  first written ahead of the commit and corrected (noted in the Phase C and Phase D entries' history).
