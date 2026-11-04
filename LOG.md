@@ -279,7 +279,7 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
   Phase B SE (0.813%) scaled by sqrt(12/47). Disclosed: the 2023-10..2026-09 part (about a quarter of the sample) was seen in Phase B.
   No decision or return before 2023-10-09 had been computed when the file was committed.
 
-## 2026-11-04 21:57 UTC — Phase D: H1 run as pre-registered (P1-5 fixed, two-way clustering)
+## 2026-11-04 21:29 UTC — Phase D: H1 run as pre-registered (P1-5 fixed, two-way clustering)
 - P1-5 (review): YoY revenue growth now uses the prior-year comparative inside the current filing (`edgar.fundamentals_from_companyfacts(comparatives=True)`,
   `pit._yoy_growth(mode="comparative")`; same acceptance time, so PIT-safe; 99.1% of revenue filings since 2014-06 carry it; falls back to the
   old method, labelled, otherwise). Unit test with a spin-off restatement (legacy −34% vs comparative +10%).
