@@ -260,7 +260,7 @@ Branch: `claude/kind-rubin-ahzsge` (assigned by the harness). Mock LLM mode thro
   18 hours early. Session 2 regression: sp100 walk-forward rerun with the modified harness reproduces sha256 `f5735aab…`.
 - Tests: 91 passed, 1 skipped.
 
-## 2026-11-04 21:41 UTC — Phase B result: survivorship-biased vs point-in-time, Session 2 window
+## 2026-11-04 21:21 UTC — Phase B result: survivorship-biased vs point-in-time, Session 2 window
 Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..2026-09-30 (12 seasons), mock council, season-clustered CIs.
 - A = Session 2 as published (1,183 events, 100 tickers); B = today's top 100 recomputed on Session 3 data (1,171 events, 99 tickers);
   C = point-in-time universe (1,198 events, 134 tickers).
@@ -273,7 +273,7 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
 - **Within-ticker selection skill stays at zero** in every universe and horizon; council T+5: A +0.08%, B −0.02%, C −0.02% [−1.06, +1.12].
 - Output digests: B `5c48ffbd…`, C `63184c87…` (rerun check in progress).
 
-## 2026-11-04 21:41 UTC — Phase C: HYPOTHESIS.md committed before Phase D
+## 2026-11-04 21:21 UTC — Phase C: HYPOTHESIS.md committed before Phase D
 - H1: within-ticker selection skill of the mock council at T+5 > 0 on the PIT universe, D >= 2015-01-01, two-way (season x ticker)
   pigeonhole bootstrap, one-sided 5%: reject iff the bootstrap 5th percentile > 0. MDE ≈ 1.0% (one-sided, 80% power), from the
   Phase B SE (0.813%) scaled by sqrt(12/47). Disclosed: the 2023-10..2026-09 part (about a quarter of the sample) was seen in Phase B.
