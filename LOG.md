@@ -293,3 +293,23 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
   Council − factors-only T+20 +0.41% [+0.10, +0.72] and T+5 +0.16% [+0.01, +0.31]: exploratory, and explained by exposure (council long
   67% vs factors-only 45%) in a rising market — both strategies trail their sector ETFs (council T+20 −0.16%, factors-only −0.24%).
 - Phase B PIT run reproduced: `63184c87…` twice.
+
+## 2026-11-04 22:04 UTC — Phase E: independent review, fixes, robustness
+- Fresh general-purpose subagent started ~21:31 UTC (after the Phase D commit), given only the repo path, venv/test hints, a scratch dir,
+  "change no files, no live LLM calls", and the brief's instruction verbatim. Report saved verbatim with responses:
+  `results/independent_review_session3.md`.
+- **No P0.** Membership timing, event timing, the H1 statistic and the pre-registration were found clean; the reviewer's own counterfactual
+  with its fixes left H1 and Phase B unchanged.
+- P1-1..P1-3 (share-count ×1000 tags passing the guards: COP missing ~3.5 years, RPAY ranked ~19th; SHW 2021 split counted twice;
+  float check biased against momentum names: TSLA 2020, MU 2026, MRNA, DD): **fixed as ranking rules v2 in a review overlay**
+  `backtest/snapshots/2026-11-04-pit-r1` (only share counts recomputed; base snapshot and the pre-registered result untouched;
+  `verify` checks overlay + base + base identity). Poisoned-future and leak meta-tests now run on both snapshots.
+  Regression: COP 2016 rank 419 -> 77, RPAY 19 -> 468, SHW 32 -> 118, TSLA unrankable -> 8.
+- Robustness (overlay, exploratory): H1 S = +0.08%, lower bound −0.45%, not rejected; Phase B PIT buy-and-hold vs sector T+20 +0.10%
+  (biased +0.95%). No conclusion changes.
+- P1-4 (S attenuated, W = 0.78; FE slope +0.09%; MDE in effect units ≈ 0.98%, pre-registered ≈ 1.3%): correction appended below the
+  line in HYPOTHESIS.md; decision unchanged. P1-5 (gap bias "down" unsupported): corrected to "direction unknown" in both reports.
+  This also corrects the Phase B LOG entry above, which said the gaps bias buy-and-hold slightly DOWN.
+- P2 open: BLK events before 2022-07 missing (vendor dates), vendor-only non-earnings dates, today's GICS for history, jump-filter lag
+  (KHC 2015–16, LIN 2018–19), IPO warm-up. P2-5 comment fixed. P2-6 provenance: the two Phase D runs were started ~21:22 UTC in parallel
+  (two processes, ~6 min each), both sha256 `ccabc089…`.

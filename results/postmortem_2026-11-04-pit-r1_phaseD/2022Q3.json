@@ -1,0 +1,5502 @@
+[
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.2793,
+   "ret_20d_pct": 8.2086,
+   "ret_5d_pct": 5.3766,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-28 16:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.3895,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 67,
+    "cis_trader": 84,
+    "george_soros": 70,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 72,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.36,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AAPL"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -4.167,
+   "ret_20d_pct": -6.9583,
+   "ret_5d_pct": -7.2321,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-29 07:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.2895,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 53,
+    "cis_trader": 76,
+    "george_soros": 61,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 67,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.82,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ABBV"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.5464,
+   "ret_20d_pct": 1.9103,
+   "ret_5d_pct": -0.7641,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.6373,
+   "spy_20d_pct": 9.5419,
+   "spy_5d_pct": -0.3518
+  },
+  "announced_at_et": "2022-07-20 07:00",
+  "decision_date": "2022-07-19",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.726,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 86,
+    "cathie_wood": 75,
+    "cis_trader": 78,
+    "george_soros": 75,
+    "graham": 20,
+    "michael_burry": 36,
+    "william_oneil": 83
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 72,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.13,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ABT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.168,
+   "ret_20d_pct": -0.07,
+   "ret_5d_pct": -1.3149,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.84,
+   "spy_20d_pct": -2.3556,
+   "spy_5d_pct": -1.8178
+  },
+  "announced_at_et": "2022-09-22 06:00",
+  "decision_date": "2022-09-21",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.4407,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 91,
+    "cis_trader": 84,
+    "george_soros": 91,
+    "graham": 20,
+    "michael_burry": 20,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 82,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.65,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ACN"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -16.7932,
+   "ret_20d_pct": -22.9786,
+   "ret_5d_pct": -22.9382,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1353,
+   "spy_20d_pct": -9.2689,
+   "spy_5d_pct": -3.9685
+  },
+  "announced_at_et": "2022-09-15 08:00",
+  "decision_date": "2022-09-14",
+  "diff": {
+   "abs_move_vs_atr_ratio": 4.6908,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 70,
+    "cis_trader": 85,
+    "george_soros": 72,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 72,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.58,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ADBE"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -4.9765,
+   "ret_20d_pct": -15.6763,
+   "ret_5d_pct": -8.1714,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.7098,
+   "spy_20d_pct": -8.1685,
+   "spy_5d_pct": -4.0377
+  },
+  "announced_at_et": "2022-08-17 07:00",
+  "decision_date": "2022-08-16",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.0067,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 91,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 20,
+    "michael_burry": 20,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.48,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ADI"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 7.4021,
+   "ret_20d_pct": 17.3742,
+   "ret_5d_pct": 10.4217,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-27 06:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.4916,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 66,
+    "cis_trader": 79,
+    "george_soros": 69,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 71,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.12,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ADP"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -3.362,
+   "ret_20d_pct": -17.7083,
+   "ret_5d_pct": -2.7722,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.3438,
+   "spy_20d_pct": -9.5226,
+   "spy_5d_pct": -1.9584
+  },
+  "announced_at_et": "2022-08-18 16:00",
+  "decision_date": "2022-08-18",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.8043,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 81,
+    "cis_trader": 85,
+    "george_soros": 79,
+    "graham": 26,
+    "michael_burry": 31,
+    "william_oneil": 89
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 76,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.18,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AMAT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.2086,
+   "ret_20d_pct": -12.4383,
+   "ret_5d_pct": -3.7768,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.566,
+   "spy_20d_pct": -2.4138,
+   "spy_5d_pct": 0.8063
+  },
+  "announced_at_et": "2022-08-02 16:00",
+  "decision_date": "2022-08-02",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.2941,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 31,
+    "cathie_wood": 91,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 21,
+    "michael_burry": 36,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.11,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AMD"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.2956,
+   "ret_20d_pct": 0.1684,
+   "ret_5d_pct": 0.5547,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.169,
+   "spy_20d_pct": -4.2857,
+   "spy_5d_pct": 1.4052
+  },
+  "announced_at_et": "2022-08-04 16:00",
+  "decision_date": "2022-08-04",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.1679,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 57,
+    "cis_trader": 75,
+    "george_soros": 63,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 68,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.76,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AMGN"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.1118,
+   "ret_20d_pct": 2.4005,
+   "ret_5d_pct": 4.0847,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 07:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.6991,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 96,
+    "cis_trader": 81,
+    "george_soros": 89,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 80,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.42,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AMT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 10.3615,
+   "ret_20d_pct": 12.2669,
+   "ret_5d_pct": 16.5931,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-28 16:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.6432,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 62,
+    "cathie_wood": 61,
+    "cis_trader": 78,
+    "george_soros": 65,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 74
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 62,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.92,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AMZN"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.6687,
+   "ret_20d_pct": -8.9992,
+   "ret_5d_pct": 6.1767,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.0545,
+   "spy_20d_pct": -9.5285,
+   "spy_5d_pct": 2.568
+  },
+  "announced_at_et": "2022-09-01 16:00",
+  "decision_date": "2022-09-01",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.5348,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 87,
+    "cis_trader": 85,
+    "george_soros": 83,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 78,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.12,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AVGO"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.8844,
+   "ret_20d_pct": 9.6351,
+   "ret_5d_pct": 1.3051,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.9278,
+   "spy_20d_pct": 7.2971,
+   "spy_5d_pct": 1.8255
+  },
+  "announced_at_et": "2022-07-22 07:00",
+  "decision_date": "2022-07-21",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.6589,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 91,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 26,
+    "michael_burry": 46,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 84,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.86,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "AXP"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.109,
+   "ret_20d_pct": 2.6616,
+   "ret_5d_pct": 4.7204,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-27 07:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.0277,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 27,
+    "cis_trader": 80,
+    "george_soros": 42,
+    "graham": 56,
+    "michael_burry": 57,
+    "william_oneil": 45
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BEARISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BEARISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 47,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 3.93,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BA"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.031,
+   "ret_20d_pct": 12.5581,
+   "ret_5d_pct": 3.6589,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.8257,
+   "spy_20d_pct": 10.8976,
+   "spy_5d_pct": 2.5861
+  },
+  "announced_at_et": "2022-07-18 06:00",
+  "decision_date": "2022-07-15",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.0095,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 65,
+    "cathie_wood": 48,
+    "cis_trader": 80,
+    "george_soros": 57,
+    "graham": 76,
+    "michael_burry": 73,
+    "william_oneil": 62
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BULLISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 62,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.25,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BAC"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.9779,
+   "ret_20d_pct": -4.6108,
+   "ret_5d_pct": 2.9093,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.0676,
+   "spy_20d_pct": -4.6496,
+   "spy_5d_pct": 1.3367
+  },
+  "announced_at_et": "2022-08-03 16:00",
+  "decision_date": "2022-08-03",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.2981,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 46,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 76,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.28,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BKNG"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.9945,
+   "ret_20d_pct": 23.7874,
+   "ret_5d_pct": 8.6098,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.9105,
+   "spy_20d_pct": 11.1349,
+   "spy_5d_pct": 5.5251
+  },
+  "announced_at_et": "2022-07-15 07:00",
+  "decision_date": "2022-07-14",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.6738,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 70,
+    "cathie_wood": 60,
+    "cis_trader": 78,
+    "george_soros": 65,
+    "graham": 37,
+    "michael_burry": 59,
+    "william_oneil": 74
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 66,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.96,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BLK"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.6026,
+   "ret_20d_pct": -1.168,
+   "ret_5d_pct": -0.4754,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-27 06:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.9539,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 74,
+    "cathie_wood": 56,
+    "cis_trader": 74,
+    "george_soros": 62,
+    "graham": 20,
+    "michael_burry": 37,
+    "william_oneil": 74
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 63,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.68,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BMY"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.0924,
+   "ret_20d_pct": -4.9303,
+   "ret_5d_pct": 3.2458,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.1161,
+   "spy_20d_pct": -5.1346,
+   "spy_5d_pct": 3.2965
+  },
+  "announced_at_et": "2022-08-06 08:00",
+  "decision_date": "2022-08-05",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.05,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 95,
+    "cathie_wood": 66,
+    "cis_trader": 74,
+    "george_soros": 69,
+    "graham": 93,
+    "michael_burry": 84,
+    "william_oneil": 78
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BULLISH",
+    "michael_burry": "BULLISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.85,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "BRK.B"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 13.2306,
+   "ret_20d_pct": 23.5444,
+   "ret_5d_pct": 19.1437,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.9105,
+   "spy_20d_pct": 11.1349,
+   "spy_5d_pct": 5.5251
+  },
+  "announced_at_et": "2022-07-15 08:00",
+  "decision_date": "2022-07-14",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.9613,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 68,
+    "cathie_wood": 39,
+    "cis_trader": 82,
+    "george_soros": 51,
+    "graham": 84,
+    "michael_burry": 78,
+    "william_oneil": 53
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BULLISH",
+    "michael_burry": "BULLISH",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 58,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.34,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "C"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -5.8247,
+   "ret_20d_pct": -1.5806,
+   "ret_5d_pct": -4.6443,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.6597,
+   "spy_20d_pct": -1.9816,
+   "spy_5d_pct": 0.5405
+  },
+  "announced_at_et": "2022-08-02 06:00",
+  "decision_date": "2022-08-01",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.1653,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 76,
+    "cis_trader": 84,
+    "george_soros": 76,
+    "graham": 24,
+    "michael_burry": 39,
+    "william_oneil": 89
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 76,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.69,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CAT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.6798,
+   "ret_20d_pct": 4.488,
+   "ret_5d_pct": -2.0926,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.3268,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 69,
+    "cathie_wood": 38,
+    "cis_trader": 74,
+    "george_soros": 50,
+    "graham": 64,
+    "michael_burry": 69,
+    "william_oneil": 56
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 57,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.08,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CB"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.4543,
+   "ret_20d_pct": 6.4153,
+   "ret_5d_pct": 1.7651,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-20 16:00",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.6379,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 71,
+    "cathie_wood": 83,
+    "cis_trader": 80,
+    "george_soros": 80,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 73,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.28,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CCI"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.7989,
+   "ret_20d_pct": 0.6796,
+   "ret_5d_pct": 5.4801,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-29 07:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.2745,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 56,
+    "cis_trader": 84,
+    "george_soros": 63,
+    "graham": 24,
+    "michael_burry": 35,
+    "william_oneil": 92
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.91,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CHTR"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.0765,
+   "ret_20d_pct": 4.3093,
+   "ret_5d_pct": 5.6414,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.0676,
+   "spy_20d_pct": -4.6496,
+   "spy_5d_pct": 1.3367
+  },
+  "announced_at_et": "2022-08-04 06:00",
+  "decision_date": "2022-08-03",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.2872,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 54,
+    "cathie_wood": 61,
+    "cis_trader": 80,
+    "george_soros": 66,
+    "graham": 48,
+    "michael_burry": 60,
+    "william_oneil": 71
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 65,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.39,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CI"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -9.1307,
+   "ret_20d_pct": -14.4339,
+   "ret_5d_pct": -11.2751,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 07:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 4.2469,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 67,
+    "cathie_wood": 75,
+    "cis_trader": 80,
+    "george_soros": 75,
+    "graham": 47,
+    "michael_burry": 62,
+    "william_oneil": 81
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 73,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.15,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CMCSA"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.5769,
+   "ret_20d_pct": 20.3922,
+   "ret_5d_pct": 5.1029,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.0676,
+   "spy_20d_pct": -4.6496,
+   "spy_5d_pct": 1.3367
+  },
+  "announced_at_et": "2022-08-04 07:00",
+  "decision_date": "2022-08-03",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.4332,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 93,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 40,
+    "michael_burry": 63,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 85,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.64,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "COP"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -4.2634,
+   "ret_20d_pct": -4.6288,
+   "ret_5d_pct": -1.6811,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.6755,
+   "spy_20d_pct": -2.3542,
+   "spy_5d_pct": -3.0543
+  },
+  "announced_at_et": "2022-09-22 16:00",
+  "decision_date": "2022-09-22",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.6851,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 80,
+    "cis_trader": 84,
+    "george_soros": 79,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 76,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.53,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "COST"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -3.3887,
+   "ret_20d_pct": -16.588,
+   "ret_5d_pct": -13.2715,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4118,
+   "spy_20d_pct": -9.165,
+   "spy_5d_pct": -4.4698
+  },
+  "announced_at_et": "2022-08-24 16:00",
+  "decision_date": "2022-08-24",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.1371,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 91,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 90
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 72,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.98,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CRM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 5.808,
+   "ret_20d_pct": -7.2224,
+   "ret_5d_pct": 0.8787,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.2906,
+   "spy_20d_pct": -8.5621,
+   "spy_5d_pct": -3.0423
+  },
+  "announced_at_et": "2022-08-17 16:00",
+  "decision_date": "2022-08-17",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.4367,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 55,
+    "cis_trader": 81,
+    "george_soros": 62,
+    "graham": 24,
+    "michael_burry": 45,
+    "william_oneil": 81
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 67,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.69,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CSCO"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 6.3018,
+   "ret_20d_pct": 3.5965,
+   "ret_5d_pct": 8.7239,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.566,
+   "spy_20d_pct": -2.4138,
+   "spy_5d_pct": 0.8063
+  },
+  "announced_at_et": "2022-08-03 06:00",
+  "decision_date": "2022-08-02",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.1197,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 52,
+    "cathie_wood": 69,
+    "cis_trader": 77,
+    "george_soros": 71,
+    "graham": 52,
+    "michael_burry": 62,
+    "william_oneil": 76
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 68,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.02,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CVS"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 8.9035,
+   "ret_20d_pct": 10.4567,
+   "ret_5d_pct": 0.4987,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-29 06:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.2259,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 63,
+    "cathie_wood": 93,
+    "cis_trader": 82,
+    "george_soros": 95,
+    "graham": 48,
+    "michael_burry": 62,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 83,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.76,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "CVX"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.4538,
+   "ret_20d_pct": -3.6659,
+   "ret_5d_pct": 5.4784,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.3438,
+   "spy_20d_pct": -9.5226,
+   "spy_5d_pct": -1.9584
+  },
+  "announced_at_et": "2022-08-19 06:00",
+  "decision_date": "2022-08-18",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.1948,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 63,
+    "cis_trader": 85,
+    "george_soros": 67,
+    "graham": 22,
+    "michael_burry": 38,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 70,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.33,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "DE"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 9.0742,
+   "ret_20d_pct": 16.1211,
+   "ret_5d_pct": 9.3945,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-20 17:49",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.0656,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 57,
+    "cathie_wood": 71,
+    "cis_trader": 76,
+    "george_soros": 73,
+    "graham": 20,
+    "michael_burry": 38,
+    "william_oneil": 80
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 67,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.96,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "DHR"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.6785,
+   "ret_20d_pct": -0.0889,
+   "ret_5d_pct": 9.2324,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.0,
+   "spy_20d_pct": -4.6692,
+   "spy_5d_pct": 1.5858
+  },
+  "announced_at_et": "2022-08-10 16:00",
+  "decision_date": "2022-08-10",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.7789,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 90,
+    "cis_trader": 84,
+    "george_soros": 95,
+    "graham": 27,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.63,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "DIS"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.9836,
+   "ret_20d_pct": -2.6392,
+   "ret_5d_pct": -0.6858,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.0676,
+   "spy_20d_pct": -4.6496,
+   "spy_5d_pct": 1.3367
+  },
+  "announced_at_et": "2022-08-03 17:54",
+  "decision_date": "2022-08-03",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.5961,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 40,
+    "cathie_wood": 67,
+    "cis_trader": 71,
+    "george_soros": 62,
+    "graham": 47,
+    "michael_burry": 56,
+    "william_oneil": 68
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 63,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.65,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "DUK"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.8443,
+   "ret_20d_pct": -11.2735,
+   "ret_5d_pct": -4.0106,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.2906,
+   "spy_20d_pct": -8.5621,
+   "spy_5d_pct": -3.0423
+  },
+  "announced_at_et": "2022-08-18 06:00",
+  "decision_date": "2022-08-17",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.8383,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 78,
+    "cis_trader": 85,
+    "george_soros": 78,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.2,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "EL"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -7.6171,
+   "ret_20d_pct": -1.0353,
+   "ret_5d_pct": -5.7234,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.6373,
+   "spy_20d_pct": 9.5419,
+   "spy_5d_pct": -0.3518
+  },
+  "announced_at_et": "2022-07-20 06:00",
+  "decision_date": "2022-07-19",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.6086,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 72,
+    "cathie_wood": 83,
+    "cis_trader": 81,
+    "george_soros": 81,
+    "graham": 22,
+    "michael_burry": 51,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.92,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ELV"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.492,
+   "ret_20d_pct": 0.7961,
+   "ret_5d_pct": -3.2655,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-29 07:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.2674,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 51,
+    "cathie_wood": 94,
+    "cis_trader": 75,
+    "george_soros": 91,
+    "graham": 59,
+    "michael_burry": 64,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 81,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.84,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ENB"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.6079,
+   "ret_20d_pct": 9.3914,
+   "ret_5d_pct": 10.8836,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1831,
+   "spy_20d_pct": 4.4948,
+   "spy_5d_pct": 3.8425
+  },
+  "announced_at_et": "2022-07-26 06:00",
+  "decision_date": "2022-07-25",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.4722,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 44,
+    "cis_trader": 79,
+    "george_soros": 54,
+    "graham": 46,
+    "michael_burry": 57,
+    "william_oneil": 39
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BEARISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 49,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.13,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "GE"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 7.6557,
+   "ret_20d_pct": 8.4174,
+   "ret_5d_pct": 9.6267,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.0691,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 95,
+    "cis_trader": 85,
+    "george_soros": 89,
+    "graham": 21,
+    "michael_burry": 37,
+    "william_oneil": 89
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 82,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.7,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "GOOGL"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 2.5147,
+   "ret_20d_pct": 20.4002,
+   "ret_5d_pct": 10.229,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.8257,
+   "spy_20d_pct": 10.8976,
+   "spy_5d_pct": 2.5861
+  },
+  "announced_at_et": "2022-07-18 07:00",
+  "decision_date": "2022-07-15",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.8138,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 79,
+    "cathie_wood": 25,
+    "cis_trader": 82,
+    "george_soros": 30,
+    "graham": 79,
+    "michael_burry": 75,
+    "william_oneil": 30
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BEARISH",
+    "graham": "BULLISH",
+    "michael_burry": "BULLISH",
+    "william_oneil": "BEARISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 48,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.09,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "GS"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.059,
+   "ret_20d_pct": -11.0825,
+   "ret_5d_pct": -0.7629,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.1959,
+   "spy_20d_pct": -8.3384,
+   "spy_5d_pct": -3.6166
+  },
+  "announced_at_et": "2022-08-16 06:00",
+  "decision_date": "2022-08-15",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.8619,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 53,
+    "cis_trader": 79,
+    "george_soros": 60,
+    "graham": 54,
+    "michael_burry": 57,
+    "william_oneil": 64
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 60,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.18,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "HD"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.6916,
+   "ret_20d_pct": 8.2314,
+   "ret_5d_pct": 4.2688,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 06:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.9328,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 42,
+    "cis_trader": 77,
+    "george_soros": 53,
+    "graham": 20,
+    "michael_burry": 29,
+    "william_oneil": 71
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 59,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.91,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "HON"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -5.2487,
+   "ret_20d_pct": -1.0859,
+   "ret_5d_pct": -6.9427,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.7019,
+   "spy_20d_pct": 12.2817,
+   "spy_5d_pct": 3.5659
+  },
+  "announced_at_et": "2022-07-18 16:00",
+  "decision_date": "2022-07-18",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.5356,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 61,
+    "cis_trader": 78,
+    "george_soros": 66,
+    "graham": 20,
+    "michael_burry": 30,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.07,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "IBM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -8.5621,
+   "ret_20d_pct": -11.251,
+   "ret_5d_pct": -9.2924,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-28 16:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.1022,
+   "avoided_drawdown": 1,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 90,
+    "cathie_wood": 30,
+    "cis_trader": 85,
+    "george_soros": 44,
+    "graham": 62,
+    "michael_burry": 70,
+    "william_oneil": 58
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BEARISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 57,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.76,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "INTC"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.6057,
+   "ret_20d_pct": -9.0934,
+   "ret_5d_pct": -3.6391,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.3201,
+   "spy_20d_pct": -8.1023,
+   "spy_5d_pct": -3.4291
+  },
+  "announced_at_et": "2022-08-23 16:00",
+  "decision_date": "2022-08-23",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.2223,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 58,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 77,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.95,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "INTU"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -5.7397,
+   "ret_20d_pct": 2.1535,
+   "ret_5d_pct": 2.5762,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.9278,
+   "spy_20d_pct": 7.2971,
+   "spy_5d_pct": 1.8255
+  },
+  "announced_at_et": "2022-07-21 16:00",
+  "decision_date": "2022-07-21",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.8456,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 54,
+    "cathie_wood": 78,
+    "cis_trader": 78,
+    "george_soros": 77,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.11,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ISRG"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.4578,
+   "ret_20d_pct": -4.672,
+   "ret_5d_pct": -1.0159,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.7019,
+   "spy_20d_pct": 12.2817,
+   "spy_5d_pct": 3.5659
+  },
+  "announced_at_et": "2022-07-19 06:00",
+  "decision_date": "2022-07-18",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.8944,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 55,
+    "cis_trader": 73,
+    "george_soros": 62,
+    "graham": 20,
+    "michael_burry": 31,
+    "william_oneil": 79
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 65,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.63,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "JNJ"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -3.4939,
+   "ret_20d_pct": 5.7904,
+   "ret_5d_pct": 2.3501,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.2429,
+   "spy_20d_pct": 10.865,
+   "spy_5d_pct": 4.2077
+  },
+  "announced_at_et": "2022-07-14 06:00",
+  "decision_date": "2022-07-13",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.2988,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 73,
+    "cathie_wood": 34,
+    "cis_trader": 77,
+    "george_soros": 47,
+    "graham": 71,
+    "michael_burry": 71,
+    "william_oneil": 54
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BULLISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 56,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.69,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "JPM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.6401,
+   "ret_20d_pct": 3.232,
+   "ret_5d_pct": 3.7466,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1831,
+   "spy_20d_pct": 4.4948,
+   "spy_5d_pct": 3.8425
+  },
+  "announced_at_et": "2022-07-26 07:00",
+  "decision_date": "2022-07-25",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.994,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 80,
+    "cis_trader": 74,
+    "george_soros": 79,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.65,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "KO"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 2.231,
+   "ret_20d_pct": 0.9227,
+   "ret_5d_pct": 3.3087,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 05:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.156,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 41,
+    "cathie_wood": 74,
+    "cis_trader": 75,
+    "george_soros": 75,
+    "graham": 20,
+    "michael_burry": 35,
+    "william_oneil": 78
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 66,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.93,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "LIN"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -2.5619,
+   "ret_20d_pct": -3.7016,
+   "ret_5d_pct": -2.9379,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.0676,
+   "spy_20d_pct": -4.6496,
+   "spy_5d_pct": 1.3367
+  },
+  "announced_at_et": "2022-08-04 06:00",
+  "decision_date": "2022-08-03",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.0948,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 77,
+    "cis_trader": 82,
+    "george_soros": 77,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 75,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.34,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "LLY"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.8005,
+   "ret_20d_pct": 13.0991,
+   "ret_5d_pct": 3.2328,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.7019,
+   "spy_20d_pct": 12.2817,
+   "spy_5d_pct": 3.5659
+  },
+  "announced_at_et": "2022-07-19 07:00",
+  "decision_date": "2022-07-18",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.3151,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 88,
+    "cathie_wood": 27,
+    "cis_trader": 80,
+    "george_soros": 43,
+    "graham": 23,
+    "michael_burry": 15,
+    "william_oneil": 86
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BEARISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 58,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.54,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "LMT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 0.5838,
+   "ret_20d_pct": -10.1485,
+   "ret_5d_pct": -3.1057,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.7098,
+   "spy_20d_pct": -8.1685,
+   "spy_5d_pct": -4.0377
+  },
+  "announced_at_et": "2022-08-17 06:00",
+  "decision_date": "2022-08-16",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.2186,
+   "avoided_drawdown": 1,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 38,
+    "cis_trader": 79,
+    "george_soros": 50,
+    "graham": 57,
+    "michael_burry": 60,
+    "william_oneil": 53
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 53,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.67,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "LOW"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 2.6743,
+   "ret_20d_pct": -1.0371,
+   "ret_5d_pct": 3.1637,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 08:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.1284,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 91,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 81,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.37,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MA"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 2.6799,
+   "ret_20d_pct": 5.0204,
+   "ret_5d_pct": 5.5316,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1831,
+   "spy_20d_pct": 4.4948,
+   "spy_5d_pct": 3.8425
+  },
+  "announced_at_et": "2022-07-26 07:00",
+  "decision_date": "2022-07-25",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.8873,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 68,
+    "cis_trader": 71,
+    "george_soros": 70,
+    "graham": 49,
+    "michael_burry": 50,
+    "william_oneil": 74
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 65,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.42,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MCD"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.0963,
+   "ret_20d_pct": 1.2393,
+   "ret_5d_pct": 2.8917,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.6565,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 63,
+    "cathie_wood": 60,
+    "cis_trader": 70,
+    "george_soros": 65,
+    "graham": 20,
+    "michael_burry": 50,
+    "william_oneil": 73
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 63,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.67,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MDLZ"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -3.083,
+   "ret_20d_pct": -4.9737,
+   "ret_5d_pct": -4.4903,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.2419,
+   "spy_20d_pct": -6.697,
+   "spy_5d_pct": -2.5934
+  },
+  "announced_at_et": "2022-08-23 06:00",
+  "decision_date": "2022-08-22",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.5271,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 44,
+    "cathie_wood": 56,
+    "cis_trader": 74,
+    "george_soros": 62,
+    "graham": 29,
+    "michael_burry": 49,
+    "william_oneil": 66
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 59,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.22,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MDT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -5.2247,
+   "ret_20d_pct": -3.7269,
+   "ret_5d_pct": -0.4599,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-27 16:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.1794,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 90,
+    "cathie_wood": 59,
+    "cis_trader": 85,
+    "george_soros": 64,
+    "graham": 28,
+    "michael_burry": 56,
+    "william_oneil": 84
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.43,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "META"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.9433,
+   "ret_20d_pct": 6.653,
+   "ret_5d_pct": 6.8893,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1831,
+   "spy_20d_pct": 4.4948,
+   "spy_5d_pct": 3.8425
+  },
+  "announced_at_et": "2022-07-26 06:00",
+  "decision_date": "2022-07-25",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.7161,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 44,
+    "cis_trader": 76,
+    "george_soros": 54,
+    "graham": 26,
+    "michael_burry": 46,
+    "william_oneil": 79
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 63,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.82,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MMM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.1588,
+   "ret_20d_pct": 3.9256,
+   "ret_5d_pct": 0.3631,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 07:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.0887,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 39,
+    "cis_trader": 76,
+    "george_soros": 51,
+    "graham": 49,
+    "michael_burry": 51,
+    "william_oneil": 54
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 52,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.79,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MO"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.414,
+   "ret_20d_pct": -1.3373,
+   "ret_5d_pct": -3.9571,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 06:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.7727,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 91,
+    "cis_trader": 79,
+    "george_soros": 95,
+    "graham": 24,
+    "michael_burry": 41,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 83,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.83,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MRK"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.0433,
+   "ret_20d_pct": 13.0576,
+   "ret_5d_pct": 3.4284,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-21 07:00",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.4355,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 67,
+    "cis_trader": 77,
+    "george_soros": 62,
+    "graham": 20,
+    "michael_burry": 28,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.12,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MRSH"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.3868,
+   "ret_20d_pct": 19.6757,
+   "ret_5d_pct": 9.1091,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.2429,
+   "spy_20d_pct": 10.865,
+   "spy_5d_pct": 4.2077
+  },
+  "announced_at_et": "2022-07-14 07:00",
+  "decision_date": "2022-07-13",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.1248,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 69,
+    "cathie_wood": 32,
+    "cis_trader": 79,
+    "george_soros": 46,
+    "graham": 67,
+    "michael_burry": 70,
+    "william_oneil": 51
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 54,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.1,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MS"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 6.6852,
+   "ret_20d_pct": 9.9749,
+   "ret_5d_pct": 9.0989,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.5911,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 89,
+    "cis_trader": 83,
+    "george_soros": 85,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 78,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.58,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "MSFT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 1.7497,
+   "ret_20d_pct": 14.4161,
+   "ret_5d_pct": 7.189,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.9278,
+   "spy_20d_pct": 7.2971,
+   "spy_5d_pct": 1.8255
+  },
+  "announced_at_et": "2022-07-22 07:00",
+  "decision_date": "2022-07-21",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.6862,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 57,
+    "cis_trader": 75,
+    "george_soros": 63,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 62
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 54,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.55,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "NEE"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 7.3451,
+   "ret_20d_pct": 21.8519,
+   "ret_5d_pct": 6.0904,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.6373,
+   "spy_20d_pct": 9.5419,
+   "spy_5d_pct": -0.3518
+  },
+  "announced_at_et": "2022-07-19 16:00",
+  "decision_date": "2022-07-19",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.6002,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 66,
+    "cis_trader": 85,
+    "george_soros": 69,
+    "graham": 23,
+    "michael_burry": 44,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 30,
+   "council_long": 0,
+   "cro_veto": 1,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.59,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": "Extreme catastrophic volatility (60.9%) on target asset"
+  },
+  "ticker": "NFLX"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -12.8081,
+   "ret_20d_pct": -5.0246,
+   "ret_5d_pct": -5.4128,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.5464,
+   "spy_20d_pct": 4.7383,
+   "spy_5d_pct": 2.8694
+  },
+  "announced_at_et": "2022-09-29 16:00",
+  "decision_date": "2022-09-29",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.7671,
+   "avoided_drawdown": 1,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 88,
+    "cathie_wood": 55,
+    "cis_trader": 85,
+    "george_soros": 62,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 89
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 30,
+   "council_long": 0,
+   "cro_veto": 1,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.4,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": "Options gamma flip plunge combined with severe volatility spike"
+  },
+  "ticker": "NKE"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -2.6973,
+   "ret_20d_pct": 1.9884,
+   "ret_5d_pct": 5.0936,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-27 16:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.5217,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 94,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 74,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 5.17,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "NOW"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.0123,
+   "ret_20d_pct": -27.0426,
+   "ret_5d_pct": -12.3563,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4118,
+   "spy_20d_pct": -9.165,
+   "spy_5d_pct": -4.4698
+  },
+  "announced_at_et": "2022-08-24 16:00",
+  "decision_date": "2022-08-24",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.8376,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 80,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.79,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "NVDA"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.3493,
+   "ret_20d_pct": -18.8246,
+   "ret_5d_pct": -10.3918,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -4.3482,
+   "spy_20d_pct": -12.0376,
+   "spy_5d_pct": -5.067
+  },
+  "announced_at_et": "2022-09-12 16:00",
+  "decision_date": "2022-09-12",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.7064,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 55,
+    "cis_trader": 81,
+    "george_soros": 62,
+    "graham": 45,
+    "michael_burry": 46,
+    "william_oneil": 65
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 60,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.91,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ORCL"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.569,
+   "ret_20d_pct": 1.9828,
+   "ret_5d_pct": -1.2964,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.8849,
+   "spy_20d_pct": 7.4851,
+   "spy_5d_pct": -0.5934
+  },
+  "announced_at_et": "2022-07-11 18:02",
+  "decision_date": "2022-07-11",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.3251,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 65,
+    "cis_trader": 74,
+    "george_soros": 68,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 70,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.75,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "PEP"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.6101,
+   "ret_20d_pct": -7.9922,
+   "ret_5d_pct": -3.2784,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 06:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.8299,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 91,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 27,
+    "michael_burry": 55,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 84,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.94,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "PFE"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -6.1799,
+   "ret_20d_pct": -1.5939,
+   "ret_5d_pct": -2.3031,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-29 06:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.8625,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 58,
+    "cis_trader": 75,
+    "george_soros": 64,
+    "graham": 20,
+    "michael_burry": 21,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 67,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.6,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "PG"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.4957,
+   "ret_20d_pct": 13.4121,
+   "ret_5d_pct": 4.8674,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.8257,
+   "spy_20d_pct": 10.8976,
+   "spy_5d_pct": 2.5861
+  },
+  "announced_at_et": "2022-07-18 08:00",
+  "decision_date": "2022-07-15",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.556,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 48,
+    "cathie_wood": 58,
+    "cis_trader": 77,
+    "george_soros": 64,
+    "graham": 25,
+    "michael_burry": 49,
+    "william_oneil": 68
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 60,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.69,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "PLD"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.1857,
+   "ret_20d_pct": 12.6239,
+   "ret_5d_pct": 7.9372,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-21 06:00",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.744,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 49,
+    "cis_trader": 75,
+    "george_soros": 58,
+    "graham": 57,
+    "michael_burry": 60,
+    "william_oneil": 61
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 58,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.4,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "PM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 9.2491,
+   "ret_20d_pct": 2.4211,
+   "ret_5d_pct": 5.4111,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.566,
+   "spy_20d_pct": -2.4138,
+   "spy_5d_pct": 0.8063
+  },
+  "announced_at_et": "2022-08-02 16:00",
+  "decision_date": "2022-08-02",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.9977,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 70,
+    "cathie_wood": 61,
+    "cis_trader": 79,
+    "george_soros": 66,
+    "graham": 20,
+    "michael_burry": 33,
+    "william_oneil": 75
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 63,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.63,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "PYPL"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -4.5431,
+   "ret_20d_pct": -7.8934,
+   "ret_5d_pct": -2.7767,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-27 16:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.3168,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 25,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 82,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 3.45,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "QCOM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -4.5786,
+   "ret_20d_pct": -2.385,
+   "ret_5d_pct": -1.4064,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1831,
+   "spy_20d_pct": 4.4948,
+   "spy_5d_pct": 3.8425
+  },
+  "announced_at_et": "2022-07-26 06:00",
+  "decision_date": "2022-07-25",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.8097,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 32,
+    "cathie_wood": 51,
+    "cis_trader": 75,
+    "george_soros": 59,
+    "graham": 33,
+    "michael_burry": 44,
+    "william_oneil": 59
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 55,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.53,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "RTX"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.2528,
+   "ret_20d_pct": 0.2094,
+   "ret_5d_pct": 1.3499,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.566,
+   "spy_20d_pct": -2.4138,
+   "spy_5d_pct": 0.8063
+  },
+  "announced_at_et": "2022-08-02 16:00",
+  "decision_date": "2022-08-02",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.8735,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 43,
+    "cathie_wood": 82,
+    "cis_trader": 81,
+    "george_soros": 80,
+    "graham": 52,
+    "michael_burry": 54,
+    "william_oneil": 85
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 73,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.27,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SBUX"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.5117,
+   "ret_20d_pct": 20.9981,
+   "ret_5d_pct": 1.3027,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.8257,
+   "spy_20d_pct": 10.8976,
+   "spy_5d_pct": 2.5861
+  },
+  "announced_at_et": "2022-07-18 08:00",
+  "decision_date": "2022-07-15",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.5142,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 53,
+    "cathie_wood": 42,
+    "cis_trader": 80,
+    "george_soros": 53,
+    "graham": 34,
+    "michael_burry": 55,
+    "william_oneil": 58
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 54,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.94,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SCHW"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.5217,
+   "ret_20d_pct": 8.6057,
+   "ret_5d_pct": 5.46,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 06:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.4627,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 34,
+    "cathie_wood": 72,
+    "cis_trader": 74,
+    "george_soros": 73,
+    "graham": 22,
+    "michael_burry": 42,
+    "william_oneil": 70
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 63,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.43,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SO"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.6752,
+   "ret_20d_pct": -3.7921,
+   "ret_5d_pct": 0.5424,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.6597,
+   "spy_20d_pct": -1.9816,
+   "spy_5d_pct": 0.5405
+  },
+  "announced_at_et": "2022-08-02 07:00",
+  "decision_date": "2022-08-01",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.7347,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 41,
+    "cathie_wood": 85,
+    "cis_trader": 80,
+    "george_soros": 82,
+    "graham": 21,
+    "michael_burry": 45,
+    "william_oneil": 80
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 71,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.28,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SPGI"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 3.6153,
+   "ret_20d_pct": 2.3139,
+   "ret_5d_pct": 4.3246,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.6285,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 54,
+    "cathie_wood": 62,
+    "cis_trader": 76,
+    "george_soros": 67,
+    "graham": 20,
+    "michael_burry": 24,
+    "william_oneil": 73
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 62,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.22,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "SYK"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -7.6172,
+   "ret_20d_pct": -10.0586,
+   "ret_5d_pct": -10.2051,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-21 06:00",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 4.3279,
+   "avoided_drawdown": 1,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 59,
+    "cathie_wood": 25,
+    "cis_trader": 74,
+    "george_soros": 35,
+    "graham": 77,
+    "michael_burry": 72,
+    "william_oneil": 36
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BEARISH",
+    "graham": "BULLISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BEARISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 47,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 1.76,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "T"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 2.6996,
+   "ret_20d_pct": -1.5088,
+   "ret_5d_pct": 1.0396,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.2542,
+   "spy_20d_pct": 3.1493,
+   "spy_5d_pct": 3.3438
+  },
+  "announced_at_et": "2022-07-28 06:00",
+  "decision_date": "2022-07-27",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.9182,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 0,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 74,
+    "cathie_wood": 87,
+    "cis_trader": 83,
+    "george_soros": 83,
+    "graham": 20,
+    "michael_burry": 30,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 76,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.94,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "TMO"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 5.2274,
+   "ret_20d_pct": 7.4304,
+   "ret_5d_pct": 6.3027,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-27 06:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.1601,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 25,
+    "cathie_wood": 49,
+    "cis_trader": 76,
+    "george_soros": 57,
+    "graham": 22,
+    "michael_burry": 18,
+    "william_oneil": 56
+   },
+   "agent_stances": {
+    "buffett": "BEARISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 51,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.42,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "TMUS"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 9.7805,
+   "ret_20d_pct": 22.8269,
+   "ret_5d_pct": 11.0384,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-20 16:43",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.0249,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 94,
+    "cathie_wood": 90,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 30,
+   "council_long": 0,
+   "cro_veto": 1,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 4.83,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": "Extreme catastrophic volatility (61.9%) on target asset"
+  },
+  "ticker": "TSLA"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 6.6526,
+   "ret_20d_pct": 7.9684,
+   "ret_5d_pct": 10.9098,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.7835,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 76,
+    "cis_trader": 81,
+    "george_soros": 76,
+    "graham": 22,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 74,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.39,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "TXN"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 5.4376,
+   "ret_20d_pct": 6.0566,
+   "ret_5d_pct": 3.9867,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.9105,
+   "spy_20d_pct": 11.1349,
+   "spy_5d_pct": 5.5251
+  },
+  "announced_at_et": "2022-07-15 05:00",
+  "decision_date": "2022-07-14",
+  "diff": {
+   "abs_move_vs_atr_ratio": 2.0442,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 90,
+    "cathie_wood": 76,
+    "cis_trader": 78,
+    "george_soros": 76,
+    "graham": 20,
+    "michael_burry": 28,
+    "william_oneil": 84
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 73,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.66,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "UNH"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -1.1891,
+   "ret_20d_pct": 12.3292,
+   "ret_5d_pct": 2.5367,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.0183,
+   "spy_20d_pct": 8.0756,
+   "spy_5d_pct": 1.5883
+  },
+  "announced_at_et": "2022-07-21 07:00",
+  "decision_date": "2022-07-20",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.5147,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 82,
+    "cis_trader": 77,
+    "george_soros": 80,
+    "graham": 21,
+    "michael_burry": 15,
+    "william_oneil": 88
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 76,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 2.31,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "UNP"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -3.3952,
+   "ret_20d_pct": 10.6626,
+   "ret_5d_pct": 3.954,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -1.1831,
+   "spy_20d_pct": 4.4948,
+   "spy_5d_pct": 3.8425
+  },
+  "announced_at_et": "2022-07-26 06:00",
+  "decision_date": "2022-07-25",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.6168,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 59,
+    "cis_trader": 83,
+    "george_soros": 64,
+    "graham": 25,
+    "michael_burry": 17,
+    "william_oneil": 89
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.1,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "UPS"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -0.9506,
+   "ret_20d_pct": -2.5054,
+   "ret_5d_pct": -2.9319,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 2.5966,
+   "spy_20d_pct": 5.49,
+   "spy_5d_pct": 4.3925
+  },
+  "announced_at_et": "2022-07-26 16:00",
+  "decision_date": "2022-07-26",
+  "diff": {
+   "abs_move_vs_atr_ratio": 0.4063,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 96,
+    "cathie_wood": 94,
+    "cis_trader": 84,
+    "george_soros": 92,
+    "graham": 56,
+    "michael_burry": 57,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "NEUTRAL",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 86,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.34,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "V"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -6.7352,
+   "ret_20d_pct": -7.2808,
+   "ret_5d_pct": -4.4272,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.9278,
+   "spy_20d_pct": 7.2971,
+   "spy_5d_pct": 1.8255
+  },
+  "announced_at_et": "2022-07-22 07:00",
+  "decision_date": "2022-07-21",
+  "diff": {
+   "abs_move_vs_atr_ratio": 3.8932,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 91,
+    "cathie_wood": 49,
+    "cis_trader": 74,
+    "george_soros": 58,
+    "graham": 42,
+    "michael_burry": 64,
+    "william_oneil": 73
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 65,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 1.73,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "VZ"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 6.1694,
+   "ret_20d_pct": 17.6082,
+   "ret_5d_pct": 11.7191,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.9105,
+   "spy_20d_pct": 11.1349,
+   "spy_5d_pct": 5.5251
+  },
+  "announced_at_et": "2022-07-15 06:00",
+  "decision_date": "2022-07-14",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.733,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 1,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 67,
+    "cathie_wood": 33,
+    "cis_trader": 80,
+    "george_soros": 47,
+    "graham": 78,
+    "michael_burry": 74,
+    "william_oneil": 51
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BEARISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BULLISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 55,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.56,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "WFC"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 5.1056,
+   "ret_20d_pct": 1.9759,
+   "ret_5d_pct": 1.4857,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.1959,
+   "spy_20d_pct": -8.3384,
+   "spy_5d_pct": -3.6166
+  },
+  "announced_at_et": "2022-08-16 07:00",
+  "decision_date": "2022-08-15",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.83,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 1,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 68,
+    "cathie_wood": 50,
+    "cis_trader": 74,
+    "george_soros": 58,
+    "graham": 20,
+    "michael_burry": 35,
+    "william_oneil": 67
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "NEUTRAL"
+   },
+   "council_action": "HOLD",
+   "council_confidence": 58,
+   "council_long": 0,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.79,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "WMT"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 4.6308,
+   "ret_20d_pct": 8.0017,
+   "ret_5d_pct": -5.883,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 1.4579,
+   "spy_20d_pct": 3.3098,
+   "spy_5d_pct": 1.9947
+  },
+  "announced_at_et": "2022-07-29 06:00",
+  "decision_date": "2022-07-28",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.5592,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 1,
+   "factors_correct_20d": 1,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 66,
+    "cathie_wood": 93,
+    "cis_trader": 85,
+    "george_soros": 95,
+    "graham": 40,
+    "michael_burry": 59,
+    "william_oneil": 96
+   },
+   "agent_stances": {
+    "buffett": "NEUTRAL",
+    "cathie_wood": "BULLISH",
+    "cis_trader": "BULLISH",
+    "george_soros": "BULLISH",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "BUY",
+   "council_confidence": 83,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.97,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "XOM"
+ },
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": -3.2471,
+   "ret_20d_pct": -13.1161,
+   "ret_5d_pct": -3.3859,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": -0.0676,
+   "spy_20d_pct": -4.6496,
+   "spy_5d_pct": 1.3367
+  },
+  "announced_at_et": "2022-08-04 07:00",
+  "decision_date": "2022-08-03",
+  "diff": {
+   "abs_move_vs_atr_ratio": 1.3818,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 0,
+   "council_correct_20d": 0,
+   "council_correct_5d": 0,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 1
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 88,
+    "cathie_wood": 58,
+    "cis_trader": 80,
+    "george_soros": 64,
+    "graham": 20,
+    "michael_burry": 15,
+    "william_oneil": 95
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "BEARISH",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 69,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 1,
+   "implied_1d_move_pct_from_atr": 2.35,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ZTS"
+ }
+]

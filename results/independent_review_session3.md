@@ -141,4 +141,21 @@ Phase D and Phase B were rerun on the overlay as a labelled robustness check.
 | P2-6 provenance timing | Recorded in LOG: the two Phase D runs were started at about 21:22 UTC, **in parallel** (two processes), each ~6 minutes; both wrote sha256 `ccabc089…`. | — |
 | P2-7 IPO warm-up in H1 caveats | Added to HANDOFF. | — |
 
-ROBUSTNESS_PLACEHOLDER
+### Robustness rerun on the review overlay (rules v2) — exploratory, does not replace the pre-registered result
+
+Same commands, snapshot `2026-11-04-pit-r1` instead of `2026-11-04-pit` (output files carry the `-r1` id; unlike the reviewer prose
+above, these figures are copied from `results/walkforward_2026-11-04-pit-r1_*_summary.json`, tagged there).
+
+| | pre-registered base (v1) | review overlay (v2) |
+|---|---|---|
+| H1: S at T+5 (events) | +0.07% (4,661) | +0.08% (4,663) |
+| H1: one-sided lower bound / two-sided CI | −0.41% / [−0.54%, +0.65%] | −0.45% / [−0.56%, +0.71%] |
+| H1: one-sided p / decision | 0.41 / not rejected | 0.39 / not rejected |
+| Buy-and-hold vs sector ETF T+20, 2015–2026 | −0.02% | −0.04% |
+| Phase B window, today's top 100 (B): buy-and-hold vs sector ETF T+20 | +0.95% [+0.64, +1.30] | +0.95% [+0.63, +1.30] |
+| Phase B window, point-in-time (C): buy-and-hold vs sector ETF T+20 | +0.12% [−0.20, +0.42] | +0.10% [−0.20, +0.42] |
+| Phase B window, PIT: council selection skill T+5 | −0.02% | −0.02% |
+
+Output sha256 (overlay runs): Phase D `16ae9016…`, C `4de4785d…`, B `8eb45e12…`. No conclusion changes. This matches the reviewer's own
+counterfactual (S +0.093%, C +0.104%).
+
