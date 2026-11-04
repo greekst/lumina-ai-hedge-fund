@@ -25,11 +25,13 @@ pytestmark = pytest.mark.skipif(not os.path.exists(os.path.join(SNAP, "manifest.
 
 DECISION_COLS = ["ticker", "decision_date", "features_through", "strategy", "action", "long", "allocation_pct",
                  "confidence", "cro_veto", "pe_trailing", "roe", "revenue_growth", "vix_d1", "pit_rank_d1"]
-DAYS = ["2016-04-25", "2020-07-27", "2024-10-29"]   # busy earnings sessions in three different regimes
+DAYS = ["2016-04-25", "2020-07-27", "2024-10-29",   # busy earnings sessions in three different regimes
+        "2017-01-12"]   # Session 4: bank-earnings eve incl. BLK's 8-K-only event (event rules v2, snapshot pit2)
 
 
-# the pre-registered base snapshot (ranking rules v1) and the review overlay (rules v2)
-@pytest.fixture(scope="module", params=["2026-11-04-pit", "2026-11-04-pit-r1"])
+# the pre-registered base snapshot (ranking rules v1), the review overlay (rules v2) and the Session 4 base
+# (ranking rules v2 + event rules v2, self-contained)
+@pytest.fixture(scope="module", params=["2026-11-04-pit", "2026-11-04-pit-r1", "2026-11-04-pit2"])
 def snap(request):
     root = os.path.join(SNAPS, request.param)
     if not os.path.exists(os.path.join(root, "manifest.json")):

@@ -321,3 +321,16 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
   Session 2 merge (`git diff 5529c83` on those files is empty). Live LLM calls this session: 0.
 - **GitHub Actions on `claude/kind-rubin-ahzsge`: run 41923015186 (commit ccb9c89) green on all four jobs** (secrets, test 3.12, test 3.13, ui-smoke).
 - Branch ready for a PR into `main`.
+
+---
+
+# Session 4 (2026-11-04) — one clean data base, H1 rerun unchanged
+
+Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode throughout; no live LLM calls.
+
+## 2026-11-04 22:44 UTC — Start; Phase A: no delisted-price provider
+- Environment checked (presence only): `GEMINI_API_KEY`, `FINNHUB_API_KEY`, `FRED_API_KEY`, `SEC_USER_AGENT` set. **No delisted-price
+  provider was added**: no further API keys, no network secrets on the environment, and the allowed hosts are unchanged (Yahoo, SEC,
+  FRED, Hugging Face, Finnhub, Gemini). Yahoo keeps no history for delisted tickers; Finnhub candles are 403 on this plan. Phase A
+  therefore keeps the documented gap and sizes it from EDGAR data only (`backtest/delisted_gap.py`, results/delisted_gap_2026-11-04.md).
+- Fresh container: venv rebuilt on Python 3.12 from the pinned set; `pytest -q` → 100 passed, 1 skipped (baseline before any change).

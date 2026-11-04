@@ -25,7 +25,7 @@ import gzip
 import json
 import os
 import time
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import pandas as pd
 
@@ -155,6 +155,115 @@ def resolve_events(yfe: List[str], k8: List[Dict[str, str]], end: str, events_fr
                     "edgar_8k_et": m["accepted_at_et"] if m else None, "accession": m["accession"] if m else None,
                     "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates"})
     return sorted(evs, key=lambda e: e["announced_at_et"])
+
+
+# ---------------------------------------------------------------------------
+# Event rules v2 (Session 4; independent review Session 3, P2-1 and P2-2). Rules v1 above stay as pre-registered.
+# ---------------------------------------------------------------------------
+
+MISDATED_MAX_DAYS = 45   # a vendor-only date 4..45 days after an Item 2.02 8-K is the 10-Q date, not the release
+GAP_DAYS = 45            # an Item 2.02 8-K with no event within +-45 days lies in a vendor-series gap
+
+
+def periodic_filings(subs: List[Dict[str, Any]]) -> List[Dict[str, str]]:
+    """Original 10-Q/10-K filings as {form, end, accepted_at} (naive ET), from EDGAR submissions."""
+    from backtest.edgar import to_et
+    out = [{"form": s["form"], "end": s.get("reportDate") or "", "accepted_at": to_et(s["acceptanceDateTime"])}
+           for s in subs if s.get("form") in ("10-Q", "10-K") and s.get("reportDate")]
+    return sorted(out, key=lambda r: (r["accepted_at"], r["end"]))
+
+
+def earnings_8k_events(k8: List[Dict[str, str]], periodic: List[Dict[str, str]]) -> List[Dict[str, str]]:
+    """Item 2.02 8-Ks that look like the quarterly earnings release: for each original 10-Q/10-K (period end R,
+    accepted A), the LATEST Item 2.02 8-K accepted in (R, A] and within 100 days of R. One per reporting period.
+    Removes other Item 2.02 uses (delivery numbers, monthly sales, preliminary results earlier in the window).
+    Identification only (which dates are earnings releases); no outcome is used."""
+    out: Dict[str, Dict[str, str]] = {}
+    for p in periodic:
+        if p.get("form") not in ("10-Q", "10-K") or not p.get("end"):
+            continue
+        R, A = pd.Timestamp(p["end"]), pd.Timestamp(p["accepted_at"])
+        c = [e for e in k8 if R < pd.Timestamp(e["accepted_at_et"]) <= A and (pd.Timestamp(e["accepted_at_et"]) - R).days <= 100]
+        if c:
+            e = max(c, key=lambda e: e["accepted_at_et"])
+            out[e["accession"]] = e
+    return sorted(out.values(), key=lambda e: e["accepted_at_et"])
+
+
+def eight_k_only_time(k8_time: str, prior_vendor_times: List[str]) -> Tuple[str, str]:
+    """Timestamp for an event known only from its 8-K. An 8-K can be accepted after the press release (SCHW ~9h,
+    Session 2), so an after-close acceptance is moved to pre-market of the same day when >= 75% of the issuer's
+    last eight earlier vendor times were pre-market (the issuer convention of the Session 2 review, P0-1). This can
+    only move D earlier (removes information). Without such evidence the acceptance time stands."""
+    prior = prior_vendor_times[-8:]
+    if k8_time[11:16] >= "16:00" and len(prior) >= 4 and sum(p[11:16] < "09:30" for p in prior) / len(prior) >= 0.75:
+        return f"{k8_time[:10]} 07:00", "8-K only; issuer convention: pre-market"
+    return k8_time, "8-K 2.02 only"
+
+
+VENDOR_GAP_DAYS = 60     # ... and no vendor date within +-60 days (a quarter is ~91 days apart)
+
+
+def release_8k_on(all_8k: List[Dict[str, str]], day: str) -> bool:
+    """True if an 8-K that can carry an earnings release (Item 2.02 or 7.01, or exhibits only: 9.01 alone, as GE
+    2020-04-29 and Welltower 2019-02-12 furnished theirs) was accepted on `day` or the calendar day before."""
+    d = pd.Timestamp(day[:10])
+    for e in all_8k:
+        a = pd.Timestamp(e["accepted_at_et"][:10])
+        if 0 <= (d - a).days <= 1:
+            items = {i.strip() for i in str(e.get("items", "")).split(",") if i.strip()}
+            if items & {"2.02", "7.01"} or items == {"9.01"}:
+                return True
+    return False
+
+
+def resolve_events_v2(yfe: List[str], k8: List[Dict[str, str]], all_8k: List[Dict[str, str]],
+                      periodic: List[Dict[str, str]], end: str, events_from: str) -> List[Dict[str, Any]]:
+    """Rules v1 (`resolve_events`, with `k8` = the Item 2.02 8-Ks), then:
+    P2-2  a vendor-only event (no Item 2.02 8-K within +-3 days) is not an earnings date when (a) an earnings 8-K
+          (`earnings_8k_events`) of the issuer was accepted 4..45 days before it and (b) no 8-K that could carry a
+          release was accepted on the vendor date or the day before (`release_8k_on`) — i.e. the vendor date is the
+          10-Q/10-K date (COST 2023-06-01, INTC 2015-04-27, LIN 2020-03-01, BRK.B 2016-05-06). If that 8-K is already
+          an event the vendor date is dropped; otherwise the event is re-timed from the 8-K. Other vendor-only events
+          stay (BRK.B Saturday releases, C/MS without Item 2.02; GE 2020-04-29 and WELL 2019-02-12, whose releases were
+          furnished as 9.01-only 8-Ks while an earlier Item 2.02 8-K carried something else).
+    P2-1  an earnings 8-K with no vendor date within +-60 days and no event within +-45 days lies in a gap of the
+          vendor series (BLK 2009-10..2022-07): it becomes an 8-K-only event, timed by `eight_k_only_time`."""
+    v1 = resolve_events(yfe, k8, end, "0000-00-00")
+    e8 = [e for e in earnings_8k_events(k8, periodic) if e["accepted_at_et"][:10] < end]
+    used = {e["accession"] for e in v1 if e["accession"]}
+    vend = sorted(y for y in yfe if y[:10] < end)
+    out: List[Dict[str, Any]] = []
+    for e in v1:
+        if e["accession"]:
+            out.append(e)
+            continue
+        t = pd.Timestamp(e["vendor_et"])
+        prev = [k for k in e8 if 4 <= (t - pd.Timestamp(k["accepted_at_et"])).total_seconds() / 86400 <= MISDATED_MAX_DAYS]
+        if not prev or release_8k_on(all_8k, e["vendor_et"]):
+            out.append(e)
+            continue
+        k = prev[-1]
+        if k["accession"] in used:
+            continue                                   # duplicate of an existing event (LIN 2020-03-01)
+        used.add(k["accession"])
+        ts, rule = eight_k_only_time(k["accepted_at_et"], [y for y in vend if y < k["accepted_at_et"]])
+        out.append({"announced_at_et": ts[:16], "rule": rule + " (vendor date mis-dated: " + e["vendor_et"] + ")",
+                    "vendor_et": None, "edgar_8k_et": k["accepted_at_et"], "accession": k["accession"],
+                    "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)"})
+    for k in e8:
+        if k["accession"] in used:
+            continue
+        t = pd.Timestamp(k["accepted_at_et"])
+        if any(abs((pd.Timestamp(x["announced_at_et"]) - t).days) <= GAP_DAYS for x in out) or \
+                any(abs((pd.Timestamp(y) - t).days) <= VENDOR_GAP_DAYS for y in vend):
+            continue
+        ts, rule = eight_k_only_time(k["accepted_at_et"], [y for y in vend if y < k["accepted_at_et"]])
+        out.append({"announced_at_et": ts[:16], "rule": rule + " (vendor-series gap)", "vendor_et": None,
+                    "edgar_8k_et": k["accepted_at_et"], "accession": k["accession"],
+                    "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)"})
+        used.add(k["accession"])
+    return sorted((e for e in out if e["announced_at_et"][:10] >= events_from), key=lambda e: e["announced_at_et"])
 
 
 def build(snapshot_id: str, start: str, end: str, events_from: str, only: List[str] = None) -> str:
