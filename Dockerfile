@@ -29,6 +29,11 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy application source code
 COPY . .
 
+# Run as an unprivileged user (audit P1-11)
+RUN useradd --create-home --uid 10001 lumina && chown -R lumina:lumina /app
+USER lumina
+ENV LUMINA_DATA_DIR=/home/lumina/LuminaAI
+
 # Expose Streamlit dashboard port
 EXPOSE 8501
 

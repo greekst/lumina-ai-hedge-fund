@@ -1,3 +1,4 @@
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import json
 from typing import Dict, Any, List, Optional
 from core.state_manager import load_app_settings
@@ -249,7 +250,7 @@ class PortfolioManagerAgent:
             )
         try:
             cfg = load_app_settings()
-            api_key = cfg.get("google_api_key", "")
+            api_key = get_llm_api_key()
             if api_key:
                 from google import genai
                 
@@ -270,7 +271,7 @@ class PortfolioManagerAgent:
                 if regime_info:
                     regime_section = f"\n市場レジーム: {regime_info.get('regime_name')} ({regime_info.get('rationale')})"
 
-                client = genai.Client(api_key=api_key)
+                client = make_genai_client(api_key=api_key)
                 prompt = f"""銘柄: {name}
 総合判定: {action_label} (総合確信度スコア: {overall_score}点){regime_section}
 

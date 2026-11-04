@@ -3054,7 +3054,7 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                         "**To unlock the 3D Causal Knowledge Graph & Supply Chain GraphRAG visualizer:**\n"
                         "Run this 1-line Docker command in your terminal:\n"
                         "```bash\n"
-                        "docker run -d -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/LuminaAI_2026_Secure neo4j:latest\n"
+                        "docker run -d -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 -e NEO4J_AUTH=neo4j/$NEO4J_PASSWORD neo4j:5.26\n"
                         "```\n"
                         "Then refresh this page (F5) to automatically connect."
                     )
@@ -3065,7 +3065,7 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                         "**3D因果ナレッジグラフ＆サプライチェーンGraphRAGを体験したい場合:**\n"
                         "ターミナルで以下のDockerコマンドを1行実行してください：\n"
                         "```bash\n"
-                        "docker run -d -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/LuminaAI_2026_Secure neo4j:latest\n"
+                        "docker run -d -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 -e NEO4J_AUTH=neo4j/$NEO4J_PASSWORD neo4j:5.26\n"
                         "```\n"
                         "起動後にブラウザをリロード（F5）すると自動接続されます。"
                     )
@@ -3633,7 +3633,9 @@ def render_mode_ai_hedge_fund(api_key: str = "", generator = None, target_model:
                         import urllib.request
                         cfg = load_app_settings()
                         wh_url = cfg.get("discord_settings", {}).get("webhook_url", "")
-                        if not wh_url:
+                        if os.getenv("LUMINA_ENABLE_SOCIAL_POSTING", "") != "1":
+                            st.warning("Posting is disabled in this research fork (preview only).")
+                        elif not wh_url:
                             st.warning("Discord Webhook URL is not configured in settings." if lang == "en" else "システム設定でDiscord Webhook URLが未設定です。")
                         else:
                             req = urllib.request.Request(

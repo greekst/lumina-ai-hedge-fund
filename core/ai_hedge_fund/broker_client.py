@@ -9,6 +9,19 @@ from typing import Dict, Any, List, Optional
 from core.ai_hedge_fund.market_data_feed import MarketDataFeed
 from core.ai_hedge_fund.market_session import MarketSession
 
+LIVE_BROKER_REFUSAL = {
+    "success": False,
+    "live_broker_blocked": True,
+    "message": "Live broker execution is disabled in this research fork (paper trading only). "
+               "Set LUMINA_ALLOW_LIVE_BROKER=1 only outside this project's policy.",
+}
+
+
+def live_broker_allowed() -> bool:
+    """Hard rule 1: real-broker order routing is off unless explicitly opted in."""
+    return os.getenv("LUMINA_ALLOW_LIVE_BROKER", "") == "1"
+
+
 def round_price_to_exchange_tick(price: float, is_jp: bool = False) -> float:
     """
     Normalize order limit/stop prices to strictly conform to exchange minimum tick size rules.
@@ -76,7 +89,9 @@ class PaperTradingEngine(BaseBrokerClient):
         self._reflexion_write_queue: "queue.Queue[Dict[str, Any]]" = queue.Queue()
         self._writer_thread: Optional[threading.Thread] = None
         if not db_path:
-            app_data_dir = os.path.join(os.getenv('APPDATA', ''), 'LuminaAI')
+            # LUMINA_DATA_DIR overrides; upstream used %APPDATA% (unset on Linux -> ./LuminaAI in CWD).
+            app_data_dir = os.getenv('LUMINA_DATA_DIR') or os.path.join(
+                os.getenv('APPDATA') or os.path.expanduser('~'), 'LuminaAI')
             os.makedirs(app_data_dir, exist_ok=True)
             self.db_path = os.path.join(app_data_dir, 'hedge_fund_portfolio.db')
         else:
@@ -218,6 +233,13 @@ class PaperTradingEngine(BaseBrokerClient):
             if "version" not in cols:
                 cursor.execute("ALTER TABLE positions ADD COLUMN version INTEGER DEFAULT 1")
 
+            # Transaction-cost columns (fork: fees/slippage were never deducted upstream)
+            cursor.execute("PRAGMA table_info(orders)")
+            o_cols = [r[1] for r in cursor.fetchall()]
+            for col in ("quote_price", "commission", "slippage_cost"):
+                if col not in o_cols:
+                    cursor.execute(f"ALTER TABLE orders ADD COLUMN {col} REAL DEFAULT 0.0")
+
             # Automatic table migration for Phase 2 Cross-Debate & Dynamic MoE
             cursor.execute("PRAGMA table_info(council_records)")
             c_cols = [r[1] for r in cursor.fetchall()]
@@ -355,11 +377,13 @@ class PaperTradingEngine(BaseBrokerClient):
                     "error": "【取引時間外エラー】東京証券取引所は取引時間外です（平日 09:00〜15:30 JST）。実発注API（kabuステーション）準拠のため、成行発注は約定できません。"
                 }
             elif is_eu and not MarketSession.is_eu_open():
+                guard.record_completed(order_ref, is_success=False, error_message="rejected before fill")
                 return {
                     "success": False,
                     "error": "【取引時間外エラー】欧州市場（Euronext/XETRA/LSE）は取引時間外です（平日 16:00〜翌00:30 JST）。成行発注は約定できません。"
                 }
             elif not is_jp and not is_eu and not MarketSession.is_us_open():
+                guard.record_completed(order_ref, is_success=False, error_message="rejected before fill")
                 return {
                     "success": False,
                     "error": "【取引時間外エラー】米国市場（NYSE/NASDAQ）は取引時間外です（日本時間 22:30〜翌05:00 JST）。実発注API（IBKR Client Portal）準拠のため、成行発注は約定できません。"
@@ -376,13 +400,21 @@ class PaperTradingEngine(BaseBrokerClient):
         company_name = stock_data.get("company_name", norm_sym)
         currency = stock_data.get("currency", "JPY" if is_jp else ("EUR" if is_eu else "USD"))
         
-        exec_price = price if price and price > 0 else stock_data.get("current_price", 1000.0)
+        quote_price = float(price if price and price > 0 else stock_data.get("current_price", 1000.0))
         side = side.upper()
-        
-        if quantity <= 0:
-            return {"success": False, "error": "数量は1以上である必要があります"}
 
-        total_cost = exec_price * quantity
+        # Fees & slippage (P0 fix): fill at slipped price, commission added to buys /
+        # subtracted from sell proceeds. total_cost = cash leaving (BUY) or entering (SELL).
+        from core.ai_hedge_fund.cost_model import CostModel
+        try:
+            fill = CostModel.from_env().execute(quote_price, quantity, side)
+        except ValueError as cost_err:
+            guard.record_completed(order_ref, is_success=False, error_message=str(cost_err))
+            return {"success": False, "error": str(cost_err)}
+        exec_price = fill["fill_price"]
+        commission = fill["commission"]
+        slippage_cost = fill["slippage_cost"]
+        total_cost = abs(fill["net_cash_flow"])
         now_str = time.strftime("%Y-%m-%d %H:%M:%S")
 
         with self._db_lock:
@@ -410,7 +442,7 @@ class PaperTradingEngine(BaseBrokerClient):
                     else:
                         target_price = round_price_to_exchange_tick(target_price, is_jp=is_jp)
 
-                    bracket_tag = f"[強制ブラケット逆指値付帯: {stop_loss_price:,.2f} {currency} (-13.0%)]"
+                    bracket_tag = f"[強制ブラケット逆指値付帯: {stop_loss_price:,.2f} {currency} ({(stop_loss_price / exec_price - 1.0) * 100.0:+.1f}%)]"
                     if bracket_tag not in notes:
                         notes = f"{notes} {bracket_tag}".strip()
 
@@ -448,11 +480,13 @@ class PaperTradingEngine(BaseBrokerClient):
                             deducted_amount = cost_in_usd
                             notes = (notes + f" [手持ちドル資産から自動為替決済: ${cost_in_usd:,.2f}]").strip()
                         else:
+                            guard.record_completed(order_ref, is_success=False, error_message="rejected before fill")
                             return {
                                 "success": False,
                                 "error": f"今ある資産（JPY / USD）の残高が不足しています (必要: €{total_cost:,.2f} ≒ ¥{cost_in_jpy:,.0f} または ${cost_in_usd:,.2f}、現在の残高: ¥{jpy_cash:,.0f} / ${usd_cash:,.2f})"
                             }
                     else:
+                        guard.record_completed(order_ref, is_success=False, error_message="rejected before fill")
                         return {
                             "success": False,
                             "error": f"残高不足です (必要: {total_cost:,.2f} {currency}, 現在残高: {current_cash:,.2f} {currency})"
@@ -463,7 +497,7 @@ class PaperTradingEngine(BaseBrokerClient):
                         old_qty = int(pos_row["quantity"])
                         old_avg = float(pos_row["avg_entry_price"])
                         new_qty = old_qty + quantity
-                        new_avg = ((old_qty * old_avg) + total_cost) / new_qty
+                        new_avg = ((old_qty * old_avg) + exec_price * quantity) / new_qty  # fill price basis; fees live in cash
                         old_sl = float(pos_row["stop_loss_price"] or 0.0)
                         # リスクを広げない原則: 既存逆指値と新規逆指値のうち、より高い価格（タイトなストップ）を維持
                         effective_sl = max(old_sl, stop_loss_price)
@@ -481,6 +515,7 @@ class PaperTradingEngine(BaseBrokerClient):
                 elif side == "SELL":
                     if not pos_row or int(pos_row["quantity"]) < quantity:
                         current_held = int(pos_row["quantity"]) if pos_row else 0
+                        guard.record_completed(order_ref, is_success=False, error_message="rejected before fill")
                         return {
                             "success": False,
                             "error": f"保有株数が不足しています (売却希望: {quantity}株, 保有中: {current_held}株)"
@@ -511,9 +546,11 @@ class PaperTradingEngine(BaseBrokerClient):
 
                 # Record order
                 cursor.execute("""
-                    INSERT INTO orders (symbol, company_name, side, quantity, price, currency, status, order_time, notes)
-                    VALUES (?, ?, ?, ?, ?, ?, 'FILLED', ?, ?)
-                """, (norm_sym, company_name, side, quantity, exec_price, currency, now_str, notes))
+                    INSERT INTO orders (symbol, company_name, side, quantity, price, currency, status, order_time, notes,
+                                        quote_price, commission, slippage_cost)
+                    VALUES (?, ?, ?, ?, ?, ?, 'FILLED', ?, ?, ?, ?, ?)
+                """, (norm_sym, company_name, side, quantity, exec_price, currency, now_str, notes,
+                      quote_price, commission, slippage_cost))
                 order_id = cursor.lastrowid
                 conn.commit()
 
@@ -528,6 +565,9 @@ class PaperTradingEngine(BaseBrokerClient):
             "quantity": quantity,
             "executed_price": exec_price,
             "total_amount": total_cost,
+            "quote_price": quote_price,
+            "commission": commission,
+            "slippage_cost": slippage_cost,
             "currency": currency,
             "target_price": target_price if side == "BUY" else None,
             "stop_loss_price": stop_loss_price if side == "BUY" else None,
@@ -1377,6 +1417,8 @@ class KabuStationClient(BaseBrokerClient):
 
     def authenticate(self) -> bool:
         """Fetch kabusapi session token"""
+        if not live_broker_allowed():
+            return False
         try:
             import urllib.request
             import json
@@ -1405,6 +1447,8 @@ class KabuStationClient(BaseBrokerClient):
 
     def place_order(self, symbol: str, side: str, quantity: int, price: Optional[float] = None, order_type: str = "MARKET", notes: str = "", target_price: Optional[float] = None, stop_loss_price: Optional[float] = None) -> Dict[str, Any]:
         """Send order to kabuステーション API"""
+        if not live_broker_allowed():
+            return dict(LIVE_BROKER_REFUSAL)
         return {
             "success": False,
             "message": "auカブコム証券 kabuステーションAPI実発注モード: kabuステーションアプリが起動している必要があります。"
@@ -1531,6 +1575,8 @@ class IBKRClient(BaseBrokerClient):
         return []
 
     def place_order(self, symbol: str, side: str, quantity: int, price: Optional[float] = None, order_type: str = "MARKET", notes: str = "", target_price: Optional[float] = None, stop_loss_price: Optional[float] = None) -> Dict[str, Any]:
+        if not live_broker_allowed():
+            return dict(LIVE_BROKER_REFUSAL)
         ib = self._get_connection()
         if not (ib and ib.isConnected()):
             return {

@@ -215,7 +215,7 @@ Open your browser at `http://localhost:8501`.
 #### 4. (Optional) Run 3D Causal Knowledge Graph with Neo4j
 If running via Option B, you can spin up Neo4j on-demand with:
 ```bash
-docker run -d -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/LuminaAI_2026_Secure neo4j:latest
+docker run -d -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 -e NEO4J_AUTH=neo4j/$NEO4J_PASSWORD neo4j:5.26
 ```
 *(The default credentials in `.env.example` already match this command, so it connects automatically upon browser refresh!)*
 

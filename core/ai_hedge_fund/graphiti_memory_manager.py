@@ -36,7 +36,7 @@ class GraphitiMemoryManager:
         """Fetch Neo4j credentials from environment or defaults"""
         uri = os.environ.get("NEO4J_URI", "bolt://127.0.0.1:7687")
         user = os.environ.get("NEO4J_USER", "neo4j")
-        password = os.environ.get("NEO4J_PASSWORD", "LuminaAI_2026_Secure")
+        password = os.environ.get("NEO4J_PASSWORD", "")  # no hard-coded default (audit P1-11)
         return {"uri": uri, "user": user, "password": password}
 
     @classmethod

@@ -102,7 +102,15 @@ class XPublisher:
             trimmed_chars.append(ch)
         return "".join(trimmed_chars) + "..."
 
+    @staticmethod
+    def posting_enabled() -> bool:
+        """Hard rule 1: social posting is disabled in this research fork."""
+        return os.getenv("LUMINA_ENABLE_SOCIAL_POSTING", "") == "1"
+
     def post_tweet(self, text: str, media_ids: Optional[List[str]] = None) -> Dict[str, Any]:
+        if not self.posting_enabled():
+            return {"status": "error", "posting_disabled": True,
+                    "message": "Social posting is disabled in this research fork (preview only)."}
         if not self.is_configured():
             return {"status": "error", "message": "X API credentials not configured."}
         try:

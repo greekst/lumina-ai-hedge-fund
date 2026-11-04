@@ -6,6 +6,7 @@ Enables independent worker agents (The Seven Legends + CRO) to learn from their
 own investment outcomes without collapsing their role diversity (No Groupthink).
 """
 
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import os
 import sys
 import json
@@ -100,7 +101,7 @@ class ReflexionEngine:
 
         recorded = []
         cfg = load_app_settings()
-        api_key = cfg.get("google_api_key", "")
+        api_key = get_llm_api_key()
 
         for a_dialogue in selected_dialogues:
             agent_id = a_dialogue.get("agent_id", "")
@@ -204,7 +205,7 @@ class ReflexionEngine:
         """Call Gemini 3.7 Flash to generate role-invariant self-reflection"""
         try:
             from google import genai
-            client = genai.Client(api_key=api_key)
+            client = make_genai_client(api_key=api_key)
 
             from core.ai_hedge_fund.agents import ALL_ANALYST_AGENTS
             agent_cls = next((a for a in ALL_ANALYST_AGENTS if a.agent_id == agent_id), None)

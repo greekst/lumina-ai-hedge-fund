@@ -5,6 +5,7 @@ Subjecting current portfolio positions to historical financial shock scenarios
 during market-closed hours (weekends) to stress-test resilience and calibrate defense limits.
 """
 
+from core.llm_mode import get_llm_api_key, make_genai_client  # noqa: F401
 import os
 import time
 import json
@@ -137,7 +138,7 @@ class AdversarialSimulator:
     ) -> Dict[str, Any]:
         """Call Gemini 3.7 Flash with objective shock parameters"""
         cfg = load_app_settings()
-        api_key = cfg.get("google_api_key", "")
+        api_key = get_llm_api_key()
         now_str = time.strftime("%Y-%m-%d %H:%M:%S")
 
         pos_str = "\n".join([
@@ -152,7 +153,7 @@ class AdversarialSimulator:
 
         if api_key:
             try:
-                client = genai.Client(api_key=api_key)
+                client = make_genai_client(api_key=api_key)
                 prompt = f"""あなたはヘッジファンドの最高リスク管理責任者（CRO）兼ストレステスト・クオンツです。
 以下の現在のポートフォリオに対し、市場休場中に歴史的ブラックスワン危機シナリオ4種を適用した極限ストレステストを実施してください。
 
