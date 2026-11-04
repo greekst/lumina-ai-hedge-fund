@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "MSCI Inc.",
+    "ticker": "MSCI"
+   },
+   {
+    "company": "Mastercard Incorporated",
+    "ticker": "MA"
+   },
+   {
+    "company": "Visa Inc.",
+    "ticker": "V"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "3fb020e9543e5ba387fda28b6567725c7d414504b05bc13c5409ef6f278a9fa3",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "dbb03d9a6f983a11698a772b7a5ddf675ac2098e5be4af5d36502caab2bfaad5",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"MSCI\",\n      \"company\": \"MSCI Inc.\"\n    },\n    {\n      \"ticker\": \"MA\",\n      \"company\": \"Mastercard Incorporated\"\n    },\n    {\n      \"ticker\": \"V\",\n      \"company\": \"Visa Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

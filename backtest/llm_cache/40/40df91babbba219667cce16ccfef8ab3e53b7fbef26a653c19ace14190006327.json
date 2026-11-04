@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Meta Platforms, Inc.",
+    "ticker": "META"
+   },
+   {
+    "company": "Netflix, Inc.",
+    "ticker": "NFLX"
+   },
+   {
+    "company": "Alphabet Inc.",
+    "ticker": "GOOGL"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "40df91babbba219667cce16ccfef8ab3e53b7fbef26a653c19ace14190006327",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "c37182a410297c88f0de72ab9ac8f76596e908cf74139c94cccd593d4bb4a736",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"META\",\n      \"company\": \"Meta Platforms, Inc.\"\n    },\n    {\n      \"ticker\": \"NFLX\",\n      \"company\": \"Netflix, Inc.\"\n    },\n    {\n      \"ticker\": \"GOOGL\",\n      \"company\": \"Alphabet Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

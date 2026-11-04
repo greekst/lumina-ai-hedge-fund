@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "The Home Depot, Inc.",
+    "ticker": "HD"
+   },
+   {
+    "company": "Lowe's Companies, Inc.",
+    "ticker": "LOW"
+   },
+   {
+    "company": "NIKE, Inc.",
+    "ticker": "NKE"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "8cf4b822143ec446466817b6e19f663c89223fda930dc35bfea3b302ab934a37",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "d0d550596d1883b9be74f6dcb3ec5da3d2cad8c8b77a1b17884030df5ba24f5b",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"HD\",\n      \"company\": \"The Home Depot, Inc.\"\n    },\n    {\n      \"ticker\": \"LOW\",\n      \"company\": \"Lowe's Companies, Inc.\"\n    },\n    {\n      \"ticker\": \"NKE\",\n      \"company\": \"NIKE, Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "JPMorgan Chase & Co.",
+    "ticker": "JPM"
+   },
+   {
+    "company": "Wells Fargo & Company",
+    "ticker": "WFC"
+   },
+   {
+    "company": "The Goldman Sachs Group, Inc.",
+    "ticker": "GS"
+   }
+  ],
+  "quarter": "Q2",
+  "year": 2022
+ },
+ "key": "dbed03023593fbdc09b9a0a3d8fc5d80dd86d0e90a51f0c4baf1c07155a20061",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "3ce8ec40cca283eb595c150c8d498ee9791af0313f5a6376260e22d71bcb9360",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"JPM\",\n      \"company\": \"JPMorgan Chase & Co.\"\n    },\n    {\n      \"ticker\": \"WFC\",\n      \"company\": \"Wells Fargo & Company\"\n    },\n    {\n      \"ticker\": \"GS\",\n      \"company\": \"The Goldman Sachs Group, Inc.\"\n    }\n  ],\n  \"year\": 2022,\n  \"quarter\": \"Q2\"\n}"
+}

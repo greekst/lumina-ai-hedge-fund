@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Salesforce, Inc.",
+    "ticker": "CRM"
+   },
+   {
+    "company": "Snowflake Inc.",
+    "ticker": "SNOW"
+   },
+   {
+    "company": "Workday, Inc.",
+    "ticker": "WDAY"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "9413c212ac60f3d09e333b2497b656ba91722223651c76a90c492b96b0cb7005",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "ca418473bb131894a17f50f6c8abbedd270736074f8d834bc9d14cd1183ecc78",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"CRM\",\n      \"company\": \"Salesforce, Inc.\"\n    },\n    {\n      \"ticker\": \"SNOW\",\n      \"company\": \"Snowflake Inc.\"\n    },\n    {\n      \"ticker\": \"WDAY\",\n      \"company\": \"Workday, Inc.\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

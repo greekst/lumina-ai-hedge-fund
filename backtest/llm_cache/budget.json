@@ -1,9 +1,11 @@
 {
  "by_purpose": {
+  "diag": 2,
+  "leak:L1": 24,
   "smoke": 2
  },
  "cap": 1500,
- "errors": 1,
- "ok": 1,
- "requests_sent": 2
+ "errors": 6,
+ "ok": 22,
+ "requests_sent": 28
 }

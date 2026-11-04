@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "3M Company",
+    "ticker": "MMM"
+   },
+   {
+    "company": "Caterpillar Inc.",
+    "ticker": "CAT"
+   },
+   {
+    "company": "Emerson Electric Co.",
+    "ticker": "EMR"
+   }
+  ],
+  "quarter": "Q2",
+  "year": 2022
+ },
+ "key": "04bce984735d9f6861935aae76e2f99e57c1e6ddff1465e776d398331b35a4f8",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "48a73247717cb04ebbeed30ed0b2e5d99f247df708147ca435f38740fdec84d4",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"MMM\",\n      \"company\": \"3M Company\"\n    },\n    {\n      \"ticker\": \"CAT\",\n      \"company\": \"Caterpillar Inc.\"\n    },\n    {\n      \"ticker\": \"EMR\",\n      \"company\": \"Emerson Electric Co.\"\n    }\n  ],\n  \"year\": 2022,\n  \"quarter\": \"Q2\"\n}"
+}

@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Eli Lilly and Company",
+    "ticker": "LLY"
+   },
+   {
+    "company": "Vertex Pharmaceuticals",
+    "ticker": "VRTX"
+   },
+   {
+    "company": "Intuitive Surgical",
+    "ticker": "ISRG"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "42d4e4028460eacfcd63e250b3d040d8452abbc9c2a1dcd13d657b427edd6d59",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "938845443c0c04fb6a7bb5010f1be8cefac51d29fee186397a8ae6bc23a1b8e6",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"LLY\",\n      \"company\": \"Eli Lilly and Company\"\n    },\n    {\n      \"ticker\": \"VRTX\",\n      \"company\": \"Vertex Pharmaceuticals\"\n    },\n    {\n      \"ticker\": \"ISRG\",\n      \"company\": \"Intuitive Surgical\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

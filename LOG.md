@@ -142,3 +142,27 @@ entries are left unchanged; this note is the correction.
 - Reproducibility: two full runs, identical output sha256 `5161e20ac61b01ea9fcb1bcf80a7ff614a5d2f26c674ca9d2d25b2947bd39f48`.
 - Tests: 73 passed, 1 skipped (EDGAR-snapshot poison test for JPM/XOM/NVDA incl. sector ETF; rerun digest; manifest hashes).
 - Live Gemini calls used: 2 / 1,500 (1 smoke OK, 1 HTTP 404 — see Phase C).
+
+## 2026-11-04 18:58 UTC — Phase C checkpoint: BLOCKED by the Gemini free-tier quota (partial, exploratory results only)
+- **Model and cutoff.** `gemini-2.5-flash` (documented cutoff January 2025) answered HTTP 404 "no longer available to new users". `gemini-3.5-flash`
+  is documented as deprecated and auto-routed to a newer model, so it was rejected (a silent re-route could change the cutoff). The council
+  code's own `gemini-3.8-flash` has a March 2026 card cutoff with uneven domains, which would leave few held-out events and a fuzzy boundary.
+  **Used: `gemini-3-flash-preview`**, knowledge cutoff **January 2025** per the Google Cloud Vertex AI model page
+  (https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-flash, found by web search; `ai.google.dev` itself is blocked by this
+  sandbox's proxy). Every response's `model_version` is checked against the requested model.
+- Held-out = decision session after 2025-01-31: **640 events** (577 reach the model; 63 are CRO vetoes, which are HOLD in both arms and are not sent).
+  Planned arms: live personas cathie_wood and william_oneil (highest MoE weights; personas dropped before events, as the brief requires) = 1,154 requests.
+- Built: `backtest/anonymise.py` (CO-### code, sector, no ticker/name/price/date/news; level 1 = rounded, level 2 = banded),
+  `backtest/llm_client.py` (prompt-hash cache committed under `backtest/llm_cache/`, hard cap enforced in code, SDK-internal retries
+  disabled so every request is counted), `backtest/live_council.py` (paired live vs mock on identical PIT inputs; council internals are
+  forced to mock so no untracked call is possible). Tests: anonymised block has no identifiers; poisoned-future test on the LLM prompt
+  (levels 1 and 2); cache/budget discipline; LLM numbers cannot reach a decision.
+- **Blocker:** after 20 successful leakage prompts the API returned 429 `GenerateRequestsPerDayPerProjectPerModel-FreeTier`, quota value **20**,
+  retry in ~13 h. At 20/day the run needs ~60 days. Not worked around: other Gemini models have different (later or unknown) cutoffs, which would
+  break the held-out design, and Gemma 4 has no documented cutoff (third-party listings only).
+- **Exploratory leakage result (level 1, 20 of 100 prompts, 20 distinct companies):** the first guess was correct for 5/20 = 25% (Wilson 95% CI 11–47%), and
+  the right company was in the top 3 for 8/20 = 40%. The calendar quarter was guessed correctly 0/20. Level 1 **fails** the 10% threshold even on the partial sample. Level 2 is implemented but unverified.
+  `results/live_council_2026-11-04-sp100_status.md`.
+- My client first misclassified the 429 as per-minute and then as daily from free text. It now parses the violated `quotaId`s.
+- **Live Gemini calls used: 28 / 1,500** (22 OK: 1 smoke, 1 diagnostic, 20 leakage; 6 errors: 1 HTTP 404 on gemini-2.5-flash, 5 HTTP 429).
+- Phase D was started in parallel at 18:50 (fresh subagent, given only the repo path and the brief's instruction).

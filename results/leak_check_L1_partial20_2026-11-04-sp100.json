@@ -1,0 +1,211 @@
+{
+ "level": 1,
+ "n": 20,
+ "n_distinct_tickers": 20,
+ "parse_ok": 1.0,
+ "quarter_rate": 0.0,
+ "rows": [
+  {
+   "decision_date": "2025-10-20",
+   "guess1": "CPRT",
+   "llm_key": "832e272a70f5bdfaf38053c498d9f3fe3373c6d0f887fe26b3f2dad3da907ab2",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "GE",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-01-26",
+   "guess1": "NEE",
+   "llm_key": "9d889e0c1598eb38ff6f7900ee7f4d5cfe6e43c8ea4b2f868626af9f5b4593c8",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "NEE",
+   "top1": 1,
+   "top3": 1
+  },
+  {
+   "decision_date": "2025-10-29",
+   "guess1": "BMY",
+   "llm_key": "b071bbaec29cd88b7bb4970682a100d812a8495ddc4a0a5c5f467b4e150c7044",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "BMY",
+   "top1": 1,
+   "top3": 1
+  },
+  {
+   "decision_date": "2026-01-28",
+   "guess1": "KR",
+   "llm_key": "483779e7a8fd693a19de950554a6d40d543b858df104b924b1c8e0d7831a29c5",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "MO",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2025-11-19",
+   "guess1": "CRM",
+   "llm_key": "9413c212ac60f3d09e333b2497b656ba91722223651c76a90c492b96b0cb7005",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "PANW",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-07-22",
+   "guess1": "MSCI",
+   "llm_key": "3fb020e9543e5ba387fda28b6567725c7d414504b05bc13c5409ef6f278a9fa3",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "BX",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2025-04-23",
+   "guess1": "MMM",
+   "llm_key": "04bce984735d9f6861935aae76e2f99e57c1e6ddff1465e776d398331b35a4f8",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "UNP",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-02-23",
+   "guess1": "LULU",
+   "llm_key": "9ecfe666677dbb4159f8e42d519a5eaca7aff1d1b5553409a8e0741fc4619bfd",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "HD",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-05-04",
+   "guess1": "JNJ",
+   "llm_key": "71829737b1e3d4fb87172d1d792d1f20132d0991b5dd1096a5673f3beff8a68e",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "PFE",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2025-04-22",
+   "guess1": "JPM",
+   "llm_key": "dbed03023593fbdc09b9a0a3d8fc5d80dd86d0e90a51f0c4baf1c07155a20061",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "CB",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2025-02-11",
+   "guess1": "LLY",
+   "llm_key": "42d4e4028460eacfcd63e250b3d040d8452abbc9c2a1dcd13d657b427edd6d59",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "GILD",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-07-28",
+   "guess1": "V",
+   "llm_key": "f9371c6daae79292252f251b8e7837b18013aa41d97b4b6572f388e03c9130c9",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "V",
+   "top1": 1,
+   "top3": 1
+  },
+  {
+   "decision_date": "2025-05-01",
+   "guess1": "CVX",
+   "llm_key": "ed4c23cc235d67417d2bb66ad236104a69dd4c1ed9683e974bd6c7b0c504dfc3",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "XOM",
+   "top1": 0,
+   "top3": 1
+  },
+  {
+   "decision_date": "2025-10-13",
+   "guess1": "LLY",
+   "llm_key": "cbf11ba103579251ed8c25f9faa54be161c3c9f9a83584d94423348ec69c77e9",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "JNJ",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-04-29",
+   "guess1": "MA",
+   "llm_key": "d7bbfeae2a306448d65234befc206e0a923bd66a5525225f0d4d530eb51798d1",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "MA",
+   "top1": 1,
+   "top3": 1
+  },
+  {
+   "decision_date": "2026-05-05",
+   "guess1": "CRWD",
+   "llm_key": "38d0ab424f62f8638c3a47e0fc100017170dc00eb43e450cb693a130cfe99272",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "ANET",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2025-04-29",
+   "guess1": "NKE",
+   "llm_key": "43aba6e2a1ffd1c706d6b8d5ed79c02b62aba1139ae6042d19eedb0ecfb3864c",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "SBUX",
+   "top1": 0,
+   "top3": 1
+  },
+  {
+   "decision_date": "2025-02-26",
+   "guess1": "NVDA",
+   "llm_key": "614ac8f3a11f8bc864ef30825bed61d8ed45868dbf77f110b9cbb12d45439f14",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "NVDA",
+   "top1": 1,
+   "top3": 1
+  },
+  {
+   "decision_date": "2025-02-25",
+   "guess1": "HD",
+   "llm_key": "8cf4b822143ec446466817b6e19f663c89223fda930dc35bfea3b302ab934a37",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "TJX",
+   "top1": 0,
+   "top3": 0
+  },
+  {
+   "decision_date": "2026-04-16",
+   "guess1": "META",
+   "llm_key": "40df91babbba219667cce16ccfef8ab3e53b7fbef26a653c19ace14190006327",
+   "parse_ok": 1,
+   "quarter_hit": 0,
+   "ticker": "NFLX",
+   "top1": 0,
+   "top3": 1
+  }
+ ],
+ "top1_rate": 0.25,
+ "top3_rate": 0.4
+}

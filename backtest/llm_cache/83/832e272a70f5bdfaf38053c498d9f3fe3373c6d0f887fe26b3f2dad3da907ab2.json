@@ -1,0 +1,31 @@
+{
+ "config": {
+  "response_mime_type": "application/json",
+  "temperature": 1.0,
+  "thinking_level": "low"
+ },
+ "json": {
+  "guesses": [
+   {
+    "company": "Copart, Inc.",
+    "ticker": "CPRT"
+   },
+   {
+    "company": "Fastenal Company",
+    "ticker": "FAST"
+   },
+   {
+    "company": "Old Dominion Freight Line",
+    "ticker": "ODFL"
+   }
+  ],
+  "quarter": "Q1",
+  "year": 2024
+ },
+ "key": "832e272a70f5bdfaf38053c498d9f3fe3373c6d0f887fe26b3f2dad3da907ab2",
+ "model": "gemini-3-flash-preview",
+ "model_version": "gemini-3-flash-preview",
+ "prompt_sha256": "0a56514f4a1bd63b07fa6af9bc90b47f6246b21e4084e214a0ff66733cbe4d12",
+ "purpose": "leak:L1",
+ "text": "{\n  \"guesses\": [\n    {\n      \"ticker\": \"CPRT\",\n      \"company\": \"Copart, Inc.\"\n    },\n    {\n      \"ticker\": \"FAST\",\n      \"company\": \"Fastenal Company\"\n    },\n    {\n      \"ticker\": \"ODFL\",\n      \"company\": \"Old Dominion Freight Line\"\n    }\n  ],\n  \"year\": 2024,\n  \"quarter\": \"Q1\"\n}"
+}

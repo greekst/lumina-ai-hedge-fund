@@ -145,12 +145,23 @@ class GeminiCached:
                 m = re.search(r"retry in ([0-9.]+)s|'retryDelay': '([0-9]+)s'", msg)
                 delay = float(next(g for g in m.groups() if g)) if m else 5.0 * (attempt + 1)
                 if any(k in msg for k in ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE", "500", "DEADLINE")):
-                    if "PerDay" in msg or "per day" in msg.lower():
-                        raise RuntimeError(f"Gemini daily quota exhausted: {msg[:300]}") from e
-                    time.sleep(min(90.0, delay + 1.0))
+                    _log_error(msg)
+                    quotas = re.findall(r"'quotaId': '([^']+)'", msg)
+                    if quotas and all("PerDay" in q for q in quotas):
+                        raise RuntimeError(f"Gemini daily quota exhausted: {sorted(set(quotas))}") from e
+                    time.sleep(min(120.0, delay + 2.0))
                     continue
                 raise
         raise RuntimeError(f"Gemini call failed after retries: {str(last_err)[:300]}")
+
+
+def _log_error(msg: str) -> None:
+    """Raw API error text for diagnosis (outside the repo; contains no key)."""
+    d = os.getenv("LUMINA_LLM_ERRLOG_DIR", "")
+    if d:
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "gemini_errors.log"), "a", encoding="utf-8") as fh:
+            fh.write(time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()) + " " + msg + "\n")
 
 
 def _parse(text: str) -> Optional[Dict[str, Any]]:

@@ -232,6 +232,70 @@ def markdown(summary: Dict[str, Any], leak: List[Dict[str, Any]], meta: Dict[str
     return md
 
 
+def wilson(k: int, n: int, z: float = 1.96) -> Tuple[float, float]:
+    if n == 0:
+        return (float("nan"), float("nan"))
+    p = k / n
+    den = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / den
+    h = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / den
+    return (c - h, c + h)
+
+
+def status_report(snap: Snapshot, n_held_out: int, n_need: int) -> str:
+    """Tagged status of Phase C when the live run cannot complete (e.g. API quota)."""
+    from core.reporting.tagged import fact, untagged_numbers
+    sid = snap.snapshot_id
+    as_of = pd.Timestamp(snap.manifest["price_end_exclusive"]).strftime("%Y-%m-%d")
+    b = budget()
+    N = lambda x, src="live-council status": fact(x, src, as_of, decimals=0).render()  # noqa: E731
+    P = lambda x, src: fact(x * 100, src, as_of, unit="%", decimals=1).render()  # noqa: E731
+    L = [f"# Live LLM council — status (snapshot {sid})", "",
+         "**Result: BLOCKED.** The paired live-vs-mock run was not executed. The Gemini API key in this session is on the "
+         "free tier, whose quota for the chosen model is twenty requests per day per model "
+         "(`GenerateRequestsPerDayPerProjectPerModel-FreeTier`, quota value twenty, observed on `2026-11-04`). The planned "
+         "run needs more than a thousand requests. Everything is built, tested and cached; see HANDOFF.md for the command. "
+         "<!-- text-only -->", "",
+         f"Model `{MODEL}` (documented knowledge cutoff January 2025, Google Cloud Vertex AI model page). Held-out rule: "
+         f"decision session after `{MODEL_KNOWLEDGE_CUTOFF}`. <!-- text-only -->", "",
+         "## Held-out sample and budget plan", "",
+         f"- held-out events (last twelve per ticker, D after the cutoff): {N(n_held_out)}",
+         f"- of which reach the model (no CRO veto): {N(n_need)}",
+         f"- planned live personas per event under the cap: cathie_wood and william_oneil (highest MoE weights; "
+         f"personas dropped before events, as the brief requires) -> planned requests {N(2 * n_need)}",
+         f"- Gemini requests sent this session (all purposes, incl. errors): {N(b['requests_sent'])} of cap {N(b['cap'])}",
+         ""]
+    p = os.path.join(RESULTS, f"leak_check_L1_partial20_{sid}.json")
+    if os.path.exists(p):
+        with open(p, encoding="utf-8") as fh:
+            lk = json.load(fh)
+        k1 = sum(r["top1"] for r in lk["rows"])
+        k3 = sum(r["top3"] for r in lk["rows"])
+        lo, hi = wilson(k1, lk["n"])
+        src = f"leak check L1 ({MODEL})"
+        L += ["## Leakage check, anonymisation level one (EXPLORATORY: quota stopped it after twenty of one hundred prompts)", "",
+              f"- prompts answered: {N(lk['n'], src)} (distinct companies: {N(lk['n_distinct_tickers'], src)})",
+              f"- company named correctly as first guess: {N(k1, src)} -> {P(k1 / lk['n'], src)} "
+              f"(Wilson CI {P(lo, src)} to {P(hi, src)}); threshold ten percent",
+              f"- correct company among the three guesses: {N(k3, src)} -> {P(k3 / lk['n'], src)}",
+              f"- calendar quarter guessed correctly: {P(lk['quarter_rate'], src)}",
+              "",
+              "Verdict: level one FAILS the leakage test even on this partial sample (the lower CI bound is above the "
+              "threshold). The model recognises mega-caps from sector plus distinctive ratios (e.g. the only utility, "
+              "the two card networks, a semiconductor leader). Timing does not leak. Level two (banded ratios, "
+              "integer technicals) is implemented and tested (`backtest/anonymise.py`) but its leakage check was not "
+              "run. If level two also fails, the next step is to coarsen the sector (the brief keeps it; with only one "
+              "or two companies in some sectors, sector alone identifies them). <!-- text-only -->", "",
+              "| company (hidden from the model) | model's first guess | in top-3 |", "|---|---|---|"]
+        for r in lk["rows"]:
+            L.append(f"| {r['ticker']} | {r['guess1']} | {'yes' if r['top3'] else 'no'} |")
+    md = "\n".join(L) + "\n"
+    bad = untagged_numbers(md)
+    if bad:
+        raise ValueError(f"untagged numbers: {bad[:5]}")
+    return md
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--snapshot", required=True)
@@ -240,6 +304,7 @@ def main() -> None:
     ap.add_argument("--personas", type=int, default=0, help="number of live personas (0 = fit to budget)")
     ap.add_argument("--reserve", type=int, default=10, help="calls kept in reserve")
     ap.add_argument("--plan", action="store_true", help="print held-out counts and the budget plan only")
+    ap.add_argument("--status-report", action="store_true", help="write results/live_council_<id>_status.md (offline)")
     a = ap.parse_args()
     snap = Snapshot.load(a.snapshot)
     events = held_out_events(snap)
@@ -257,6 +322,12 @@ def main() -> None:
     k = a.personas or max(0, min(len(PERSONA_PRIORITY), left // max(1, len(need))))
     personas = PERSONA_PRIORITY[:k]
     print(f"held-out events {len(events)}, needing LLM {len(need)}, budget left {left} -> personas {k}: {personas}")
+    if a.status_report:
+        path = os.path.join(RESULTS, f"live_council_{snap.snapshot_id}_status.md")
+        with open(path, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(status_report(snap, len(events), len(need)))
+        print("wrote", path)
+        return
     if a.plan or k == 0:
         return
     df = run_council(snap, events, a.level, personas, llm)
