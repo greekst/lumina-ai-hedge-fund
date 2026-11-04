@@ -690,21 +690,21 @@
     "cathie_wood": 75,
     "cis_trader": 85,
     "george_soros": 75,
-    "graham": 20,
-    "michael_burry": 15,
-    "william_oneil": 88
+    "graham": 72,
+    "michael_burry": 75,
+    "william_oneil": 96
    },
    "agent_stances": {
     "buffett": "BULLISH",
     "cathie_wood": "BULLISH",
     "cis_trader": "BULLISH",
     "george_soros": "BULLISH",
-    "graham": "BEARISH",
-    "michael_burry": "BEARISH",
+    "graham": "BULLISH",
+    "michael_burry": "BULLISH",
     "william_oneil": "BULLISH"
    },
-   "council_action": "ACCUMULATE",
-   "council_confidence": 74,
+   "council_action": "BUY",
+   "council_confidence": 81,
    "council_long": 1,
    "cro_veto": 0,
    "factors_only_long": 0,
@@ -2945,8 +2945,8 @@
     "cathie_wood": 65,
     "cis_trader": 71,
     "george_soros": 69,
-    "graham": 56,
-    "michael_burry": 57,
+    "graham": 52,
+    "michael_burry": 54,
     "william_oneil": 73
    },
    "agent_stances": {

@@ -349,8 +349,13 @@ def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
         d[f"{strat}|long_rate"] = float(s["long"].mean()) if len(s) else None
         for h in HORIZONS:
             # selection skill on the sector-relative underlying return (decision-independent outcome)
-            y = (s[f"underlying_ret_{h}"] - s[f"sector_ret_{h}"]).to_numpy()
-            d[f"{strat}|{h}|selection_skill"] = cluster_diff(y, s["long"].to_numpy() == 1, s["month"].to_numpy())
+            y = (s[f"underlying_ret_{h}"] - s[f"sector_ret_{h}"])
+            d[f"{strat}|{h}|selection_skill"] = cluster_diff(y.to_numpy(), s["long"].to_numpy() == 1, s["month"].to_numpy())
+            # Independent review P1-1: in a universe picked by today's size, tickers carry persistent drift, so
+            # long-minus-flat also measures WHICH tickers a strategy likes. Demeaning within ticker (fixed effects)
+            # leaves only the timing of the decision across that ticker's own events.
+            yd = y - y.groupby(s["ticker"]).transform("mean")
+            d[f"{strat}|{h}|selection_skill_fe"] = cluster_diff(yd.to_numpy(), s["long"].to_numpy() == 1, s["month"].to_numpy())
     a = sub[sub.strategy == "council"].set_index(["ticker", "event_no"])
     b = sub[sub.strategy == "factors_only"].set_index(["ticker", "event_no"])
     for h in HORIZONS:
@@ -360,9 +365,12 @@ def _cell(sub: pd.DataFrame) -> Dict[str, Any]:
 
 
 def summarize_cells(df: pd.DataFrame) -> Dict[str, Any]:
-    """Session 2: overall / VIX(D-1) regime / GICS sector cells with iid and month-clustered
-    bootstrap CIs and minimum detectable effects. Clusters = calendar month of the decision date."""
-    df = df.assign(month=df["decision_date"].str[:7])
+    """Session 2: overall / VIX(D-1) regime / GICS sector cells with iid and season-clustered
+    bootstrap CIs and minimum detectable effects. Clusters = calendar quarter of the decision date."""
+    # Clusters = earnings season (calendar quarter of D). Independent review P1-2: calendar months understate
+    # uncertainty (T+20 windows cross month ends; events bunch in Jan/Apr/Jul/Oct, so ~13 seasons, not 36 months).
+    d = pd.to_datetime(df["decision_date"])
+    df = df.assign(month=d.dt.year.astype(str) + "Q" + d.dt.quarter.astype(str))
     res: Dict[str, Any] = {"overall": _cell(df), "by_regime": {}, "by_sector": {}}
     for name, g in sorted(df.groupby("vix_bucket"), key=lambda kv: kv[0]):
         res["by_regime"][name] = _cell(g)
@@ -385,8 +393,8 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
     N = lambda x: _fmt(x, False, src, snap_id, decimals=0)  # noqa: E731  (counts)
     L = [f"# Walk-forward earnings backtest — snapshot {snap_id}", "",
          f"Source alias `{src}` = simulated strategy results computed by backtest/walkforward.py from the frozen snapshot "
-         f"`backtest/snapshots/{snap_id}` (prices: yfinance adjusted; fundamentals: Finnhub as-reported, PIT by acceptedDate; "
-         "events: yfinance earnings dates). <!-- text-only -->", "",
+         f"`backtest/snapshots/{snap_id}` (prices: {manifest['sources'].get('prices', 'n/a')}; fundamentals: "
+         f"{manifest['sources'].get('fundamentals', 'n/a')}; events: {manifest['sources'].get('events', 'n/a')}). <!-- text-only -->", "",
          "Costs: commission and slippage of five bps each per side (long-only). Council runs with LUMINA_LLM_MODE=mock "
          "(deterministic persona rules; no LLM calls). Sharpe: quarterly equal-weight portfolio of event returns, "
          "annualised by sqrt(four). <!-- text-only -->", "",
@@ -398,7 +406,7 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
                  f"{F(m['long_hit_rate'])} | {F(m['avg_net_ret'])} | {F(m['avg_excess_ret'])} | "
                  f"{F(m['sharpe_quarterly_ann'], False)} | {F(m['max_drawdown_quarterly'])} |")
     L += ["", "## Council marginal contribution vs factors-only (paired by event)", "",
-          "| horizon | mean(council − factors) | 95% bootstrap CI low | CI high | share of events where decisions differ |",
+          "| horizon | mean(council − factors) | 95% i.i.d. bootstrap CI low (too narrow, see clustered CIs) | i.i.d. CI high | share of events where decisions differ |",
           "|---|---|---|---|---|"]
     for h, m in summary["council_minus_factors"].items():
         L.append(f"| T+{h} | {F(m['mean_diff'])} | {F(m['ci95_bootstrap'][0])} | {F(m['ci95_bootstrap'][1])} | "
@@ -422,7 +430,7 @@ def summary_markdown(summary: Dict[str, Any], snap_id: str, manifest: Dict[str, 
     return md
 
 
-MIN_CLUSTERS = 8  # below this a cluster bootstrap CI is not reported (unreliable with few clusters)
+MIN_CLUSTERS = 8  # below this many seasons a cluster bootstrap CI is not reported (unreliable)
 
 
 def _ci(F, m: Dict[str, Any], kind: str = "cluster") -> str:
@@ -431,14 +439,15 @@ def _ci(F, m: Dict[str, Any], kind: str = "cluster") -> str:
         return "n/a"
     lo, hi = c.get("lo"), c.get("hi")
     if kind == "cluster" and (c.get("n_clusters") or 0) < MIN_CLUSTERS:
-        return f"{F(m['mean'])} [too few months for a CI]"
+        return f"{F(m['mean'])} [too few seasons for a CI]"
     return f"{F(m['mean'])} [{F(lo)} … {F(hi)}]" if lo is not None else F(m["mean"])
 
 
 def cells_markdown(cells: Dict[str, Any], F, N) -> List[str]:
     L = ["", "## Session 2 — inference with uncertainty", "",
-         "Each cell: mean, then the 95% month-clustered bootstrap CI in brackets (events in the same calendar month "
-         "share market moves and overlapping windows, so i.i.d. CIs would be too narrow). Excess vs sector = net return "
+         "Each cell: mean, then the 95% season-clustered bootstrap CI in brackets (clusters = calendar quarter of D; "
+         "events in one earnings season share market moves and overlapping windows, so i.i.d. CIs would be too narrow; "
+         "correlation within a ticker across seasons is not modelled). Excess vs sector = net return "
          "minus the matching SPDR sector ETF over the same window; a flat (not long) decision has zero excess. "
          "MDE = minimum detectable effect at five percent two-sided and eighty percent power, from the clustered SE. "
          "<!-- text-only -->", "",
@@ -458,18 +467,20 @@ def cells_markdown(cells: Dict[str, Any], F, N) -> List[str]:
         L.append(f"| T+{h} | {N(m['n'])} | {_ci(F, m)} | {F(m['iid']['lo'])} | {F(m['iid']['hi'])} | {F(m['mde80'])} |")
     L += ["", "### Selection skill: do the events a strategy goes long on beat the ones it skips?", "",
           "Mean sector-relative underlying return (stock minus its sector ETF, before costs) of long events minus that "
-          "of flat events. This does not reward being long more often, so it is not inflated by the universe's "
-          "survivorship (today's largest companies outperformed their sectors in the past by construction). "
+          "of flat events. It does not reward being long more often. The pooled version still mixes in WHICH tickers a "
+          "strategy favours (tickers in a universe chosen by today's size carry persistent drift), so the headline is "
+          "the within-ticker version: returns demeaned by ticker, i.e. does the decision time a ticker's own events? "
           "<!-- text-only -->", "",
-          "| strategy / horizon | long rate | longs | flats | long − flat [clustered CI] | MDE |", "|---|---|---|---|---|---|"]
+          "| strategy / horizon | long rate | longs | flats | long − flat, within ticker (fixed effects) [clustered CI] | MDE | long − flat, pooled [clustered CI] |",
+          "|---|---|---|---|---|---|---|"]
     for strat in ("council", "factors_only"):
         for h in HORIZONS:
-            m = o[f"{strat}|{h}|selection_skill"]
-            ci = f"{F(m['mean'])} [{F(m['lo'])} … {F(m['hi'])}]" if m["mean"] is not None else "n/a"
-            L.append(f"| {strat} T+{h} | {F(o[f'{strat}|long_rate'])} | {N(m['n_in'])} | {N(m['n_out'])} | {ci} | {F(m['mde80'])} |")
+            m, fe = o[f"{strat}|{h}|selection_skill"], o[f"{strat}|{h}|selection_skill_fe"]
+            L.append(f"| {strat} T+{h} | {F(o[f'{strat}|long_rate'])} | {N(m['n_in'])} | {N(m['n_out'])} | {_sk(F, fe)} | "
+                     f"{F(fe['mde80'])} | {_sk(F, m)} |")
     for title, key in (("By regime: VIX close on D-1", "by_regime"), ("By GICS sector", "by_sector")):
         L += ["", f"### {title} — T+20", "",
-              "| cell | events | months | buy-and-hold excess vs sector | council excess vs sector | factors-only excess vs sector | council − factors | MDE (council − factors) | council selection skill |",
+              "| cell | events | seasons | buy-and-hold excess vs sector | council excess vs sector | factors-only excess vs sector | council − factors | MDE (council − factors) | council selection skill (within ticker) |",
               "|---|---|---|---|---|---|---|---|---|"]
         for name, c in cells[key].items():
             d = c["council_minus_factors|20"]
@@ -477,7 +488,7 @@ def cells_markdown(cells: Dict[str, Any], F, N) -> List[str]:
             L.append(f"| {name} | {N(c['n_events'])} | {N(nc)} | {_ci(F, c['buy_and_hold|20|excess_sector'])} | "
                      f"{_ci(F, c['council|20|excess_sector'])} | {_ci(F, c['factors_only|20|excess_sector'])} | "
                      f"{_ci(F, d)} | {F(d['mde80']) if nc >= MIN_CLUSTERS else 'n/a'} | "
-                     f"{_sk(F, c['council|20|selection_skill']) if nc >= MIN_CLUSTERS else 'n/a'} |")
+                     f"{_sk(F, c['council|20|selection_skill_fe']) if nc >= MIN_CLUSTERS else 'n/a'} |")
     return L
 
 

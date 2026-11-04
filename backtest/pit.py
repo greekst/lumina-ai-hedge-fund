@@ -197,6 +197,14 @@ def pit_fundamentals(filings: List[Dict[str, Any]], cutoff: pd.Timestamp, price:
     # filing, only if its EPS is not a whole number (some as-reported EPS values are truncated).
     sh_f = [f for f in avail if f.get("diluted_shares")]
     shares, sh_note = (sh_f[-1]["diluted_shares"], "weighted diluted shares") if sh_f else (None, "")
+    # Independent review P1-4: some filers tag share counts in millions (MCD: 718.2). If the same filing's
+    # NI / shares disagrees with its own diluted EPS by >25% and the EPS is not an integer-truncated value,
+    # use NI / EPS from that filing instead (both numbers are from the same accepted filing: no look-ahead).
+    if sh_f:
+        lf = sh_f[-1]
+        e_, n_ = lf.get("eps_diluted"), lf.get("net_income")
+        if e_ and n_ and abs(e_ - round(e_)) > 1e-9 and shares and abs((n_ / shares) / e_ - 1.0) > 0.25:
+            shares, sh_note = n_ / e_, "NI / reported EPS (share count failed sanity check)"
     if shares is None:
         e_f = [f for f in avail if f.get("eps_diluted") and f.get("net_income")
                and abs(f["eps_diluted"] - round(f["eps_diluted"])) > 1e-9]

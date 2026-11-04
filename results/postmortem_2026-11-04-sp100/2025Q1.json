@@ -2945,8 +2945,8 @@
     "cathie_wood": 50,
     "cis_trader": 70,
     "george_soros": 58,
-    "graham": 56,
-    "michael_burry": 57,
+    "graham": 49,
+    "michael_burry": 51,
     "william_oneil": 61
    },
    "agent_stances": {
@@ -4292,26 +4292,26 @@
  {
   "actual": {
    "label": "SOURCED FACT",
-   "ret_1d_pct": -0.4078,
-   "ret_20d_pct": 1.671,
-   "ret_5d_pct": 0.9514,
+   "ret_1d_pct": 5.9155,
+   "ret_20d_pct": 6.9894,
+   "ret_5d_pct": 8.0094,
    "source": "snapshot prices (yfinance adjusted close)",
-   "spy_1d_pct": 0.5621,
-   "spy_20d_pct": 1.6383,
-   "spy_5d_pct": 0.2438
+   "spy_1d_pct": 0.9154,
+   "spy_20d_pct": 2.3277,
+   "spy_5d_pct": 0.2995
   },
-  "announced_at_et": "2025-01-21 16:00",
-  "decision_date": "2025-01-21",
+  "announced_at_et": "2025-01-21 07:00",
+  "decision_date": "2025-01-17",
   "diff": {
-   "abs_move_vs_atr_ratio": 0.2009,
+   "abs_move_vs_atr_ratio": 2.9876,
    "avoided_drawdown": 0,
-   "council_correct_1d": 1,
+   "council_correct_1d": 0,
    "council_correct_20d": 0,
    "council_correct_5d": 0,
-   "factors_correct_1d": 0,
+   "factors_correct_1d": 1,
    "factors_correct_20d": 1,
    "factors_correct_5d": 1,
-   "missed_upside": 0,
+   "missed_upside": 1,
    "stop_breached_20d": 0
   },
   "expected": {
@@ -4321,7 +4321,7 @@
     "cis_trader": 74,
     "george_soros": 53,
     "graham": 20,
-    "michael_burry": 45,
+    "michael_burry": 46,
     "william_oneil": 57
    },
    "agent_stances": {
@@ -4338,7 +4338,7 @@
    "council_long": 0,
    "cro_veto": 0,
    "factors_only_long": 1,
-   "implied_1d_move_pct_from_atr": 2.03,
+   "implied_1d_move_pct_from_atr": 1.98,
    "label": "MODEL ASSUMPTION",
    "veto_reason": ""
   },

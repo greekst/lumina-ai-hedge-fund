@@ -29,7 +29,7 @@ from typing import Any, Dict, List
 import pandas as pd
 
 from backtest.edgar import EdgarClient, EdgarUnavailable, earnings_8k, fundamentals_from_companyfacts
-from backtest.sec_crosscheck import match_8k, resolve_event_time
+from backtest.sec_crosscheck import apply_issuer_convention, match_8k, resolve_event_time
 from backtest.snapshot import SNAP_ROOT, _safe, _sha256, fetch_prices, fetch_splits
 from backtest import universe as U
 
@@ -121,6 +121,7 @@ def build(snapshot_id: str, start: str, end: str, tickers: List[str] = None) -> 
             kept_y.append(y)
             m = match_8k(y, [{"accepted_at_et": e["accepted_at_et"], "accession": e["accession"]} for e in k8])
             ts, rule = resolve_event_time(m["accepted_at_et"] if m else None, y)
+            ts, rule = apply_issuer_convention(ts, rule, y, kept_y[:-1], m["accepted_at_et"] if m else None)
             evs.append({"announced_at_et": ts[:16], "rule": rule, "vendor_et": y,
                         "edgar_8k_et": m["accepted_at_et"] if m else None, "accession": m["accession"] if m else None,
                         "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates"})

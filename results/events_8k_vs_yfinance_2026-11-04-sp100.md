@@ -77,6 +77,16 @@ None. <!-- text-only -->
 | PGR | `2023-08-01 10:00` | n/a | `2023-07-31` | n/a | n/a | `2023-07-31` |
 | PGR | `2023-10-31 08:00` | n/a | `2023-10-30` | n/a | n/a | `2023-10-30` |
 
+## Diagnostic: large sector-relative move on D, small on D+1 (check by hand)
+
+Uses prices after the decision, for auditing only. A hit means the news may already have been public at the close of D (or a market move unrelated to earnings). Threshold: more than five percent on D and under one and a half percent on D+1. <!-- text-only -->
+
+| ticker | event time used (ET) | D | rule | rel. move on D | rel. move on D+1 |
+|---|---|---|---|---|---|
+| AMZN | `2026-10-29 16:00` | `2026-10-29` | vendor (earlier than `8-K`) | -5.00% [SOURCED FACT · snapshot prices (diagnostic), 2026-11-04] | -0.71% [SOURCED FACT · snapshot prices (diagnostic), 2026-11-04] |
+| LLY | `2024-02-06 06:00` | `2024-02-05` | vendor (earlier than `8-K`) | 5.46% [SOURCED FACT · snapshot prices (diagnostic), 2026-11-04] | -1.25% [SOURCED FACT · snapshot prices (diagnostic), 2026-11-04] |
+| PLTR | `2023-02-13 07:00` | `2023-02-10` | issuer convention: pre-market | -5.07% [SOURCED FACT · snapshot prices (diagnostic), 2026-11-04] | -0.40% [SOURCED FACT · snapshot prices (diagnostic), 2026-11-04] |
+
 ## 8-K filings that are not earnings releases (excluded)
 
 | ticker | 8-K accepted (ET) | accession |

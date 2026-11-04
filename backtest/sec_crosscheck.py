@@ -63,6 +63,23 @@ def resolve_event_time(k8_time: Optional[str], vendor_time: Optional[str]) -> Tu
     return None, "none"
 
 
+def apply_issuer_convention(ts: str, rule: str, vendor_time: Optional[str],
+                            prior_vendor_times: List[str], k8_time: Optional[str] = None) -> Tuple[str, str]:
+    """Independent review P0-1: when the vendor time says "after the close" (a 16:00 stamp) AND the 8-K was
+    accepted late, both sources agree on after-close for a release that actually came pre-market (SCHW
+    2025-01-21: 23 of its 25 vendor times are 07:00/08:00; its 8-K always lands ~16:17). If >= 75% of the
+    issuer's last eight EARLIER releases (strictly before this one: point-in-time) were pre-market, treat this
+    one as pre-market too. This can only move D earlier, i.e. remove information."""
+    if not vendor_time or vendor_time[11:16] < "16:00" or ts[11:16] < "16:00" or ts[:10] != vendor_time[:10]:
+        return ts, rule  # only when the vendor claims after-close and nothing earlier on that day contradicts it
+    if k8_time and k8_time[:10] != vendor_time[:10]:
+        return ts, rule  # the 8-K is on another day (e.g. next morning): the vendor date already sets D correctly
+    prior = prior_vendor_times[-8:]
+    if len(prior) >= 4 and sum(p[11:16] < "09:30" for p in prior) / len(prior) >= 0.75:
+        return f"{ts[:10]} 07:00", "issuer convention: pre-market"
+    return ts, rule
+
+
 def resolve_decision_session(sessions: pd.DatetimeIndex, k8_time: Optional[str],
                              vendor_time: Optional[str]) -> Tuple[Optional[pd.Timestamp], str]:
     ts, rule = resolve_event_time(k8_time, vendor_time)

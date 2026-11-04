@@ -44,7 +44,28 @@ def run(snapshot_root: str) -> Dict[str, Any]:
         for k in xc.get(t, {}).get("edgar_2_02", []):
             if k["accession"] not in used and pd.Timestamp(k["accepted_at_et"]) >= start:
                 extra.append({"ticker": t, "edgar_8k_et": k["accepted_at_et"][:16], "accession": k["accession"]})
-    return {"rows": rows, "extra_8k": extra, "fallback_tickers": []}
+    # Diagnostic only (uses post-decision prices; never feeds a decision): a large sector-relative move ON D
+    # with a small one on D+1 suggests the news was already out at D's close.
+    flags = []
+    for t in snap.manifest["tickers"]:
+        etf = (snap.universe.get(t) or {}).get("sector_etf")
+        if not etf:
+            continue
+        px, ex = snap.prices[t]["Close"], snap.prices[etf]["Close"]
+        sessions = snap.sessions(t)
+        for e in snap.events.get(t, []):
+            D = decision_session(sessions, e["announced_at_et"])
+            if D is None or pd.Timestamp(e["announced_at_et"]) < start:
+                continue
+            i = sessions.get_loc(D)
+            if i < 1 or i + 1 >= len(sessions):
+                continue
+            rd = px.iloc[i] / px.iloc[i - 1] - ex.loc[sessions[i]] / ex.loc[sessions[i - 1]]
+            r1 = px.iloc[i + 1] / px.iloc[i] - ex.loc[sessions[i + 1]] / ex.loc[sessions[i]]
+            if abs(rd) > 0.05 and abs(r1) < 0.015:
+                flags.append({"ticker": t, "announced_at_et": e["announced_at_et"], "D": str(D.date()),
+                              "rule": e["rule"], "rel_move_D_pct": round(rd * 100, 2), "rel_move_D1_pct": round(r1 * 100, 2)})
+    return {"rows": rows, "extra_8k": extra, "fallback_tickers": [], "price_flags": flags}
 
 
 def markdown(res: Dict[str, Any], sid: str, run_date: str) -> str:
@@ -79,7 +100,19 @@ def markdown(res: Dict[str, Any], sid: str, run_date: str) -> str:
             L.append(f"| {r['ticker']} | `{r['yfinance_et']}` | {_c(r['edgar_8k_et'])} | {_c(r['D_yfinance'])} | "
                      f"{_c(r['D_8k'])} | {n(r['gap']) if r['gap'] is not None else 'n/a'} | {_c(r['D_used'])} |")
         L.append("")
-    L += ["## 8-K filings that are not earnings releases (excluded)", ""]
+    L += ["## Diagnostic: large sector-relative move on D, small on D+1 (check by hand)", "",
+          "Uses prices after the decision, for auditing only. A hit means the news may already have been public at "
+          "the close of D (or a market move unrelated to earnings). Threshold: more than five percent on D and under "
+          "one and a half percent on D+1. <!-- text-only -->", ""]
+    if res.get("price_flags"):
+        L += ["| ticker | event time used (ET) | D | rule | rel. move on D | rel. move on D+1 |", "|---|---|---|---|---|---|"]
+        for f in res["price_flags"]:
+            p = lambda v: fact(v, "snapshot prices (diagnostic)", run_date, unit="%", decimals=2).render()  # noqa: E731
+            L.append(f"| {f['ticker']} | `{f['announced_at_et']}` | `{f['D']}` | {f['rule'].replace('8-K', '`8-K`')} | "
+                     f"{p(f['rel_move_D_pct'])} | {p(f['rel_move_D1_pct'])} |")
+    else:
+        L.append("None. <!-- text-only -->")
+    L += ["", "## 8-K filings that are not earnings releases (excluded)", ""]
     if res["extra_8k"]:
         L += ["| ticker | 8-K accepted (ET) | accession |", "|---|---|---|"]
         L += [f"| {r['ticker']} | `{r['edgar_8k_et']}` | {_c(r['accession'])} |" for r in res["extra_8k"]]

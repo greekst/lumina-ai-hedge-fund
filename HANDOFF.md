@@ -97,3 +97,67 @@ Council minus factors-only, paired by event, at T+20: +0.90% mean, 95% bootstrap
 5. Bring the legacy report generators into `core/reporting` (tagged), or delete them.
 6. Replace or retire the LightGBM gate. Training it walk-forward on the post-mortem records in `results/postmortem_*` is the natural next experiment, but keep it labelled until it shows out-of-sample skill.
 7. Fix the remaining `unsafe_allow_html` sites and run `gitleaks` over the full history.
+
+---
+
+# Session 2 (2026-11-04) — wider universe, SEC EDGAR, anonymised live-LLM test
+
+Branch `claude/quirky-albattani-qc1wt7`. Timeline and decisions: `LOG.md` (Session 2 section). All numbers below come from committed result files and are tagged in those files.
+
+## The three questions
+
+**1. Does "no edge" hold on a wider universe with sector-neutral benchmarks? — Yes. Still no edge.**
+Source: `results/walkforward_2026-11-04-sp100_summary.md` (snapshot `2026-11-04-sp100`). 100 tickers × last 12 earnings events = 1,183 events, 2023-11..2026-10, 36 calendar months. CIs are 95% bootstrap clustered by earnings season (calendar quarter of D, 12 seasons). The independent review showed that month clusters were too narrow.
+
+| T+20 | long rate | avg net | excess vs SPY | excess vs sector ETF |
+|---|---|---|---|---|
+| council (mock) | 65.8% | +1.74% [+0.99, +2.48] | +0.27% [−0.40, +0.88] | +0.34% [−0.03, +0.69] |
+| factors-only | 43.0% | +1.01% [+0.62, +1.43] | +0.28% [−0.18, +0.71] | +0.23% [−0.05, +0.50] |
+| buy-and-hold | 100% | +3.34% [+2.09, +4.56] | +0.91% [+0.30, +1.50] | +0.97% [+0.72, +1.24] |
+
+- Council − factors-only, paired, T+20: +0.73% [+0.01%, +1.45%] (MDE 1.02%). It looks positive, but the **selection-skill** test says otherwise. Long-event minus flat-event sector-relative return, demeaned within ticker, at T+20: council **−0.00% [−1.50%, +1.54%]** (MDE 2.20%), factors-only −0.00% [−1.01%, +0.91%]. At T+1 and T+5 both are within ±0.31% and their CIs include 0. Neither strategy times a stock's events. The paired gap comes from the council being long more often (66% vs 43%) in a universe selected on past winners (next bullet).
+- **Survivorship:** the universe is today's 100 largest companies, applied to past events. Buy-and-hold beating its sector ETF by about 1% per 20 sessions is that selection effect, not an opportunity. Any exposure-heavy strategy inherits it.
+- By regime (VIX on D-1): <15 has 229 events (9 seasons), 15–25 has 899 (12), >25 has 55 (3 seasons, too few for a CI). Within-ticker council selection skill at T+20: VIX 15–25 +0.41% [−1.16%, +1.82%], VIX<15 −0.28% [−3.67%, +2.78%]. By sector, the cells have 12–326 events; none has a CI that excludes 0 (largest: IT +1.28% [−2.17%, +4.13%]). Materials and Utilities have 12 events each, so no estimate.
+- **Detectable effect:** with this sample the minimum detectable effect (80% power, 5% two-sided) is about 0.25% (T+1) to 1.0% (T+20) for paired strategy differences, and about 0.8–2.2% for selection skill. Sector cells need 3.5–7.5%. A real edge smaller than about 1% per event would not be visible.
+- Reproducibility: two full runs, identical sha256 `f5735aab…` (after the Phase D fixes).
+
+**2. Does a live LLM council add anything over the deterministic persona rules? — Not answered. The run is blocked by the API quota.**
+Source: `results/live_council_2026-11-04-sp100_status.md`.
+- Design (built and tested, not executed): model `gemini-3-flash-preview`, documented knowledge cutoff January 2025 (Google Cloud Vertex AI model page). Held-out = decision session after 2025-01-31, which gives **640 events** (577 reach the model; CRO vetoes are HOLD either way). Inputs are anonymised (code CO-###, sector, no ticker/name/price/date/news). The live and mock arms see identical PIT inputs, and the only difference is the stance of two live personas (cathie_wood, william_oneil). Personas are dropped before events to fit the 1,500-call cap: 1,154 requests are planned.
+- Blocker: this key is on the free tier, and `gemini-3-flash-preview` allows **20 requests per day** (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`).
+- **Exploratory leakage check** (level-1 anonymisation, 20 of 100 prompts before the quota hit): the model named the hidden company as its first guess for **25%** (Wilson CI 11–47%; threshold 10%) and in its top 3 for 40%. It never guessed the quarter. So **level-1 anonymisation fails**: sector plus distinctive ratios identify mega-caps. Level 2 (banded ratios) is implemented but unverified.
+- Gemini calls used this session: **28 / 1,500**.
+
+**3. Do SEC EDGAR primary filings agree with Finnhub? — Yes for every value Finnhub has. EDGAR is more complete and more precise, and the harness now uses it.**
+Source: `results/sec_vs_finnhub.md` (Session 1's 10 tickers, 1,533 values compared by accession number).
+- 77 values differ by more than 1%. 73 are Finnhub diluted EPS truncated to whole numbers, and 4 are a different XBRL concept for PG net income. **0 are unexplained.** Missing values: EDGAR 0, Finnhub 128. Acceptance timestamps: 0 disagreements.
+- Earnings dates: 238/240 yfinance events give the same decision session as the 8-K. On the full universe (`results/events_8k_vs_yfinance_2026-11-04-sp100.md`): 2,285/2,339 match, 33 are off by one session, 0 by more.
+- Re-running Session 1's 10 tickers on EDGAR data changes 3 of 120 council decisions. Council − factors-only goes from +0.90% to +1.01%; the conclusion does not change.
+
+## Bugs found and fixed this session (both P0 class, look-ahead)
+1. **Filings cutoff** was the announcement time, while entry is at the close of D. For pre-market releases, an overnight filing could leak. It is now `min(announcement, 16:00 ET on D)`. Session 1 was unaffected (0 events). The new test fails on the old code.
+2. **8-K as the sole event timestamp** (the brief's literal instruction) would be look-ahead. SCHW's 8-K is accepted about 9 hours after its 07:00 release every quarter, and BRK.B's 1–4 sessions after a Saturday release. Item 2.02 also covers non-earnings disclosures (TSLA deliveries, COST monthly sales, preliminary results). Rule now: yfinance identifies earnings dates, each is matched to an 8-K within ±3 days, and the **earlier** timestamp wins.
+3. Data traps fixed: AMZN trailing-twelve-month columns in 10-Qs (YTD capped by fiscal period); XOM (2026) and BLK (2024) holding-company re-registrations (predecessor CIKs merged).
+
+## Independent review (Phase D)
+A fresh subagent that had not seen the work audited `backtest/` and the new data paths. Its report is saved verbatim with responses in `results/independent_review.md`.
+- **P0 (fixed):** a pre-market release could still be placed after the close when the vendor stamp is "16:00" and the 8-K is late (SCHW 2025-01-21, +5.9% on D). Fixed with a point-in-time issuer timing convention; 6 events moved earlier. Results rerun.
+- **P1 fixed:** ticker drift in selection skill (now within-ticker, which turns the council's −0.73% into −0.00%); month clusters were too narrow (now 12 earnings seasons); MCD share count tagged in millions (sanity check).
+- **P1 open:** survivorship from today's universe (needs a PIT universe); YoY growth across spin-offs (GE) uses the originally reported prior year.
+- **P2:** source labels and the CI label are fixed. Sharpe/drawdown aggregation, stops not simulated, some stale or null fundamentals and the many-cells problem are documented.
+- None of the fixes changes an answer above.
+
+## What I would test next
+1. **Finish question 2 on a paid Gemini tier** (≈1,250 requests; or keep the free tier for ~60 days). First run the level-2 leakage check (100 prompts). If it is still above 10%, coarsen the sector, then run the council:
+   `LUMINA_LLM_MODE=live python -m backtest.live_council --snapshot backtest/snapshots/2026-11-04-sp100 --leak-check 100 --level 2`, then
+   `LUMINA_LLM_MODE=live python -m backtest.live_council --snapshot backtest/snapshots/2026-11-04-sp100 --level 2`. Cached responses are replayed free.
+2. **Point-in-time universe:** get historical S&P 100 membership (or build the universe from market caps *as of each event date* using EDGAR shares outstanding × price) to remove the survivorship bias that dominates the level effects above.
+3. Fix review P1-5: compute YoY growth from the prior-period comparative inside the current filing (spin-offs, restatements). Add two-way clustering (season × ticker).
+4. More events per name (e.g. all events since 2015 with a longer price history) to bring the selection-skill MDE below 1%.
+5. Pre-register one primary hypothesis (selection skill at T+5, say) before looking at new data. This session reports many cells; treat any single significant cell as noise.
+
+## Blocked / not done
+- Official S&P 100 list (network policy, provider 403s, Bright Data inactive) → documented proxy universe.
+- Live LLM council (Gemini free-tier quota 20/day) → harness ready, partial leakage check only.
+- `ai.google.dev` unreachable from this sandbox → model cutoffs taken from web search of Google's pages (sources in LOG.md).
+- GitHub Actions still not verified on the fork (Session 1 note stands).

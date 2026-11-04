@@ -102,7 +102,7 @@ entries are left unchanged; this note is the correction.
 - Tests: 60 passed, 1 skipped (`tests/test_edgar.py`: 7 offline tests).
 - Live Gemini calls used: 0.
 
-## 2026-11-04 18:42 UTC — Phase B checkpoint (wider universe, sector-neutral benchmark)
+## 2026-11-04 18:41 UTC — Phase B checkpoint (wider universe, sector-neutral benchmark)
 - **Universe = S&P 100 *proxy*, not the official list.** The official constituent list was unreachable from this sandbox: en.wikipedia.org,
   spglobal.com, ssga.com and ishares.com were refused by the network policy; Finnhub `/index/constituents` and `/etf/holdings` (REST and MCP
   connector) returned 403; Yahoo index components returned 401; Bright Data said "customer is not active"; web search gave only top-10 holdings.
@@ -143,7 +143,7 @@ entries are left unchanged; this note is the correction.
 - Tests: 73 passed, 1 skipped (EDGAR-snapshot poison test for JPM/XOM/NVDA incl. sector ETF; rerun digest; manifest hashes).
 - Live Gemini calls used: 2 / 1,500 (1 smoke OK, 1 HTTP 404 — see Phase C).
 
-## 2026-11-04 18:58 UTC — Phase C checkpoint: BLOCKED by the Gemini free-tier quota (partial, exploratory results only)
+## 2026-11-04 18:51 UTC — Phase C checkpoint: BLOCKED by the Gemini free-tier quota (partial, exploratory results only)
 - **Model and cutoff.** `gemini-2.5-flash` (documented cutoff January 2025) answered HTTP 404 "no longer available to new users". `gemini-3.5-flash`
   is documented as deprecated and auto-routed to a newer model, so it was rejected (a silent re-route could change the cutoff). The council
   code's own `gemini-3.8-flash` has a March 2026 card cutoff with uneven domains, which would leave few held-out events and a fuzzy boundary.
@@ -165,4 +165,22 @@ entries are left unchanged; this note is the correction.
   `results/live_council_2026-11-04-sp100_status.md`.
 - My client first misclassified the 429 as per-minute and then as daily from free text. It now parses the violated `quotaId`s.
 - **Live Gemini calls used: 28 / 1,500** (22 OK: 1 smoke, 1 diagnostic, 20 leakage; 6 errors: 1 HTTP 404 on gemini-2.5-flash, 5 HTTP 429).
-- Phase D was started in parallel at 18:50 (fresh subagent, given only the repo path and the brief's instruction).
+- Phase D was started in parallel at ~18:47 (fresh subagent, given only the repo path and the brief's instruction).
+
+## 2026-11-04 19:07 UTC — Phase D checkpoint (independent review)
+- Fresh general-purpose subagent, started ~18:47 UTC, given only the repo path and the brief's instruction verbatim. It changed no files.
+  Its report is saved verbatim, with responses, in `results/independent_review.md`.
+- **P0-1 (fixed):** a pre-market release could still land after the close when the vendor stamp is "16:00" and the 8-K is late
+  (SCHW 2025-01-21: +5.92% on D, 8-K 16:17:50). Fix: point-in-time issuer convention (`apply_issuer_convention`). If the vendor says after-close,
+  the 8-K is on the same day, and at least 75% of the issuer's last eight earlier releases were pre-market, the release is treated as pre-market.
+  6 events moved one session earlier: SCHW ×2, plus PLTR ×3 and MCD ×1 (time-switching issuers; conservative). Two rule drafts were rejected
+  along the way: the first treated "16:00" as a placeholder (54 events, wrong for after-close issuers); the second also fired on
+  evening-vendor/next-morning-8-K cases. A price diagnostic was added to the event report (3 flags, each checked against its 8-K: no timing error).
+- **P1 fixed:** (1) selection skill is now within-ticker (fixed effects): council T+20 goes from −0.73% to −0.00% [−1.50%, +1.54%]; (2) clusters are now earnings
+  seasons (12), not months (36): council − factors T+20 CI goes from [+0.17%, +1.32%] to [+0.01%, +1.45%]; (3) share-count sanity check (MCD tags shares in millions).
+  **P1 open:** survivorship (needs a PIT universe); YoY growth across spin-offs. **P2:** source labels and the i.i.d.-CI label fixed; the rest documented.
+- Reruns: sp100 walk-forward twice, identical sha256 `f5735aab38bfac3513372436d01f9d12b0d2534605791c93fa2ef5c81a8cdd01`. Session 1 snapshot rerun:
+  `929fe3f3…`, stable; 0/360 decisions changed (digest differs from Session 1's only through new output columns). Event cross-check and live-council
+  status regenerated. No answer to the three questions changed.
+- Tests: 75 passed, 1 skipped.
+- Live Gemini calls used: 28 / 1,500 (unchanged).

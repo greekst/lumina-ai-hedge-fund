@@ -10534,9 +10534,9 @@
   },
   {
    "accession": "0000063908-26-000032",
-   "announced_at_et": "2026-02-11 16:00",
+   "announced_at_et": "2026-02-11 07:00",
    "edgar_8k_et": "2026-02-11 16:02:36",
-   "rule": "vendor (earlier than 8-K)",
+   "rule": "issuer convention: pre-market",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2026-02-11 16:00"
   },
@@ -14310,25 +14310,25 @@
   },
   {
    "accession": "0001321655-23-000005",
-   "announced_at_et": "2023-02-13 16:00",
+   "announced_at_et": "2023-02-13 07:00",
    "edgar_8k_et": "2023-02-13 16:12:10",
-   "rule": "vendor (earlier than 8-K)",
+   "rule": "issuer convention: pre-market",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2023-02-13 16:00"
   },
   {
    "accession": "0001321655-23-000042",
-   "announced_at_et": "2023-05-08 16:00",
+   "announced_at_et": "2023-05-08 07:00",
    "edgar_8k_et": "2023-05-08 16:08:36",
-   "rule": "vendor (earlier than 8-K)",
+   "rule": "issuer convention: pre-market",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2023-05-08 16:00"
   },
   {
    "accession": "0001321655-23-000086",
-   "announced_at_et": "2023-08-07 16:00",
+   "announced_at_et": "2023-08-07 07:00",
    "edgar_8k_et": "2023-08-07 16:07:02",
-   "rule": "vendor (earlier than 8-K)",
+   "rule": "issuer convention: pre-market",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2023-08-07 16:00"
   },
@@ -15288,9 +15288,9 @@
   },
   {
    "accession": "0000316709-23-000022",
-   "announced_at_et": "2023-04-17 16:00",
+   "announced_at_et": "2023-04-17 07:00",
    "edgar_8k_et": "2023-04-17 16:17:04",
-   "rule": "vendor (earlier than 8-K)",
+   "rule": "issuer convention: pre-market",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2023-04-17 16:00"
   },
@@ -15344,9 +15344,9 @@
   },
   {
    "accession": "0000316709-25-000005",
-   "announced_at_et": "2025-01-21 16:00",
+   "announced_at_et": "2025-01-21 07:00",
    "edgar_8k_et": "2025-01-21 16:17:50",
-   "rule": "vendor (earlier than 8-K)",
+   "rule": "issuer convention: pre-market",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2025-01-21 16:00"
   },

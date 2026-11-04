@@ -90,3 +90,30 @@ def test_missing_user_agent_refuses_network(tmp_path):
 def test_rel_diff():
     assert rel_diff(100.0, 101.0) == pytest.approx(0.0099, abs=1e-4)
     assert rel_diff(0.0, 0.0) == 0.0
+
+
+def test_issuer_convention_catches_late_8k_plus_placeholder_vendor_time():
+    """Review P0-1 (SCHW 2025-01-21): vendor 16:00 and 8-K 16:17 both say after-close, but the issuer always
+    releases pre-market. Only prior events are used (point-in-time)."""
+    from backtest.sec_crosscheck import apply_issuer_convention
+    prior = ["2024-04-15 08:00", "2024-07-16 07:00", "2024-10-15 07:00", "2024-01-17 07:00"]
+    ts, rule = apply_issuer_convention("2025-01-21 16:00", "vendor", "2025-01-21 16:00", sorted(prior), "2025-01-21 16:17:50")
+    assert ts == "2025-01-21 07:00" and rule.startswith("issuer")
+    s = pd.bdate_range("2025-01-13", "2025-01-31")
+    assert resolve_decision_session(s, None, ts)[0] == pd.Timestamp("2025-01-20")
+    # an after-close issuer is left alone; so is an evening vendor stamp with a next-morning 8-K
+    after = ["2024-04-15 16:00", "2024-07-16 16:00", "2024-10-15 16:00", "2024-01-17 16:00"]
+    assert apply_issuer_convention("2025-01-21 16:00", "v", "2025-01-21 16:00", after, "2025-01-21 16:05:00")[1] == "v"
+    assert apply_issuer_convention("2023-04-19 20:00", "v", "2023-04-19 20:00", prior, "2023-04-20 06:56:56")[1] == "v"
+    # never fires on the future: with no prior history nothing changes
+    assert apply_issuer_convention("2025-01-21 16:00", "v", "2025-01-21 16:00", [], None)[1] == "v"
+
+
+def test_share_count_in_millions_is_caught():
+    """Review P1-4 (MCD tags weighted diluted shares in millions)."""
+    from backtest.pit import pit_fundamentals
+    f = [dict(start="2024-01-01", end="2024-12-31", accepted_at="2025-02-20 08:00", form="10-K",
+              net_income=8_200e6, eps_diluted=11.39, diluted_shares=720.0, equity=10_000e6)]
+    out = pit_fundamentals(f, pd.Timestamp("2025-03-01"), price=290.0)
+    assert out["pe_trailing"] == pytest.approx(290.0 / 11.39, rel=1e-3)
+    assert "sanity" in out["_tags"]["pe_trailing"]["source"]

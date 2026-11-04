@@ -1240,7 +1240,7 @@
     "cathie_wood": 90,
     "cis_trader": 85,
     "george_soros": 95,
-    "graham": 52,
+    "graham": 20,
     "michael_burry": 15,
     "william_oneil": 96
    },
@@ -1249,12 +1249,12 @@
     "cathie_wood": "BULLISH",
     "cis_trader": "BULLISH",
     "george_soros": "BULLISH",
-    "graham": "NEUTRAL",
+    "graham": "BEARISH",
     "michael_burry": "BEARISH",
     "william_oneil": "BULLISH"
    },
    "council_action": "BUY",
-   "council_confidence": 77,
+   "council_confidence": 75,
    "council_long": 1,
    "cro_veto": 0,
    "factors_only_long": 0,
@@ -2972,23 +2972,23 @@
  {
   "actual": {
    "label": "SOURCED FACT",
-   "ret_1d_pct": 2.7443,
-   "ret_20d_pct": 0.7764,
-   "ret_5d_pct": 1.2066,
+   "ret_1d_pct": -0.8467,
+   "ret_20d_pct": 0.3242,
+   "ret_5d_pct": 0.589,
    "source": "snapshot prices (yfinance adjusted close)",
-   "spy_1d_pct": -1.5449,
-   "spy_20d_pct": -3.743,
-   "spy_5d_pct": -1.081
+   "spy_1d_pct": -0.0231,
+   "spy_20d_pct": -2.2814,
+   "spy_5d_pct": -0.8423
   },
-  "announced_at_et": "2026-02-11 16:00",
-  "decision_date": "2026-02-11",
+  "announced_at_et": "2026-02-11 07:00",
+  "decision_date": "2026-02-10",
   "diff": {
-   "abs_move_vs_atr_ratio": 1.8055,
+   "abs_move_vs_atr_ratio": 0.5721,
    "avoided_drawdown": 0,
-   "council_correct_1d": 0,
+   "council_correct_1d": 1,
    "council_correct_20d": 0,
    "council_correct_5d": 0,
-   "factors_correct_1d": 1,
+   "factors_correct_1d": 0,
    "factors_correct_20d": 1,
    "factors_correct_5d": 1,
    "missed_upside": 0,
@@ -3000,8 +3000,8 @@
     "cathie_wood": 48,
     "cis_trader": 71,
     "george_soros": 57,
-    "graham": 56,
-    "michael_burry": 57,
+    "graham": 48,
+    "michael_burry": 50,
     "william_oneil": 60
    },
    "agent_stances": {
@@ -3014,11 +3014,11 @@
     "william_oneil": "NEUTRAL"
    },
    "council_action": "HOLD",
-   "council_confidence": 57,
+   "council_confidence": 56,
    "council_long": 0,
    "cro_veto": 0,
    "factors_only_long": 1,
-   "implied_1d_move_pct_from_atr": 1.52,
+   "implied_1d_move_pct_from_atr": 1.48,
    "label": "MODEL ASSUMPTION",
    "veto_reason": ""
   },
