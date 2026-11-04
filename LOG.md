@@ -215,3 +215,47 @@ Branch: `claude/kind-rubin-ahzsge` (assigned by the harness). Mock LLM mode thro
   a function that fails the test if called. A new test drives the live path through a fake client (request counted, response cached, replay free).
   The old code fails the updated test with no key; the new code passes.
 - Local env: fresh `.venv` on Python 3.12 with the pinned set. `pytest -q` → 76 passed, 1 skipped.
+
+## 2026-11-04 19:53 UTC — Phase A result
+- CI run 41900979973 on `claude/kind-rubin-ahzsge` (commit 0fd8b6c): **all four jobs green** (secrets, test 3.12, test 3.13, ui-smoke).
+
+## 2026-11-04 21:17 UTC — Phase B checkpoint: point-in-time universe built and frozen
+- **Membership rule** (`backtest/pit_universe.py`, decided inside the harness): on decision session D, an event counts if its company
+  ranks in the top 100 US-listed domestic filers (10-K/10-Q) by market cap at the close of D-1. Cap = PIT share count (latest
+  periodic filing accepted before 16:00 ET on D-1) x split factor x split-adjusted close of D-1 (BRK.B x 1500, Class A equivalents).
+  Share count per filing: dei cover value if within 0.8–1.25x of the same filing's weighted count; else weighted diluted (or basic,
+  or BasicAndDiluted for loss-makers); else NI / diluted EPS; last resort (Visa: everything per class) public float / close on the float date.
+- **Data-quality guards, each found on real errors and each PIT-safe (only past filings used):**
+  NI/EPS only overrides a weighted count for order-of-magnitude unit errors (WFC 2020Q1 EPS 0.01 gave 65B shares; BA, CRWD rounded EPS);
+  a share count > 3x away from the last accepted one waits for confirmation by the next filing (one-off tags such as WTTR);
+  cap > 10x latest public float -> not rankable that day (ADS-ratio junk AKTX; banks tagging shares x1000: NKSH, LOB, GRC, PEBK),
+  waived only if the float looks tagged in thousands AND the share count is confirmed by two tags (Duke Energy 2023);
+  with no float and a single-tag count, cap > 100x total assets -> not rankable (RRBI 2019; removes nothing else from any top-110).
+  Excluded as not common stock: commodity/crypto trusts (SIC 6221: GLD, BITW), MLP units (EPD, CQP, SPH), preferred-only listings (CTA.PA, CRD.A).
+- **Candidate pool** (`backtest/universe/pit/candidates.json`, inputs frozen with sha256): (1) every S&P 500 member on any date since
+  2014-01-01 (fja05680/sp500 historical components, 784 tickers, 175 without a current listing); (2) every NYSE/Nasdaq/CBOE-listed
+  company with >= 100M shares in any EDGAR frame; screened by frames shares x yfinance month-end closes (rank <= 200 at any quarter end
+  2014Q1–2026Q3); (3) every listed company ranked <= 150 by dei:EntityPublicFloat in any year (needs no prices; caught Visa and MercadoLibre,
+  which the share-based screen missed). Screen bugs found and fixed on the way: sparse Q4 frames put small caps at rank 1; frames hold
+  split-restated values (AAPL 2020 4x). 569 candidates -> 564 in the snapshot with prices + EDGAR data, 44 flagged (list in universe.json).
+- **Ticker changes / share classes / re-registrations:** one entry per CIK; renamed companies keep full Yahoo history under the current
+  ticker (FB->META etc.). Dual classes: GOOGL, FOXA, NWSA, BRK.B, LEN, BF.B, HEI. Predecessor CIKs merged: XOM, BLK, AVGO (Avago, Broadcom Ltd),
+  DIS (TWDC Enterprises 18), CI (old Cigna), MDT (Medtronic Inc), GOOGL (Google Inc), MRVL (Bermuda parent). Mergers of two operating
+  companies (DowDuPont, Linde/Praxair, DXC) are not merged: those companies enter when the new registrant files.
+- **Known gaps (no price history: Yahoo keeps none for delisted tickers; Stooq/Nasdaq/Tiingo/Polygon/AlphaVantage/stockanalysis blocked
+  by the network policy; Finnhub candles 403; a Bright Data scrape was refused by the permission classifier and not pursued):**
+  Allergan, Celgene, Walgreens Boots Alliance, Time Warner, Dow Chemical, Express Scripts, Monsanto, Anadarko, Shire, EMC, Time Warner
+  Cable, Reynolds American, Aetna, Raytheon, Activision, Alexion, Kraft Foods Group, Precision Castparts, DirecTV, Yahoo, Discover,
+  Pioneer, Covidien, Kenvue (all found by the public-float completeness check). Bias: these are mostly acquisitions, which end with a
+  takeover premium, so their absence biases buy-and-hold slightly DOWN, not up. Full table: `results/pit_universe_2026-11-04.md`.
+- Membership: 196 distinct companies were top-100 at some quarter end since 2014-06; 96 of them are not in today's top 100
+  (e.g. CMCSA, PYPL, NKE, MMM, UPS, ZM, MRNA, SNOW; full list and quarter-by-quarter turnover in the report). Cross-check vs Finnhub market caps of
+  Session 2's 100 names on 2026-11-03: 98 within 0.8–1.25x; BX and IBKR differ by definition (Up-C: Finnhub adds LP units).
+- **Snapshot `backtest/snapshots/2026-11-04-pit`** (63 MB, gzipped CSV/JSON, 1,709 files, sha256 manifest): prices 2013-01..2026-11 for
+  564 candidates + SPY, ^VIX, 11 sector ETFs; EDGAR fundamentals since 2012 incl. same-filing prior-year comparatives (for P1-5);
+  PIT share counts and public floats; events since 2014-06. A second build from cache gives an identical manifest.
+- **Poisoned-future tests** (`tests/test_pit_snapshot.py`): every candidate's prices from D on, share counts accepted at/after 16:00 on
+  D-1 and filings after the announcement are poisoned on three busy days (2016, 2020, 2024): ranks, event set and all decision-time
+  columns unchanged. Meta-tests: the detector FAILS for a harness that ranks at D instead of D-1 and for one that sees share counts
+  18 hours early. Session 2 regression: sp100 walk-forward rerun with the modified harness reproduces sha256 `f5735aab…`.
+- Tests: 91 passed, 1 skipped.
