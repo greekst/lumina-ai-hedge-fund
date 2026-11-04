@@ -22689,6 +22689,14 @@
    "vendor_et": "2022-07-19 16:00"
   },
   {
+   "accession": "0001104659-22-109686",
+   "announced_at_et": "2022-10-18 07:00",
+   "edgar_8k_et": "2022-10-18 16:02:38",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2022-11-09 13:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
+  },
+  {
    "accession": "0001104659-23-004237",
    "announced_at_et": "2023-01-17 16:00",
    "edgar_8k_et": "2023-01-17 16:01:40",
@@ -26231,6 +26239,14 @@
    "rule": "8-K 2.02 (earlier)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2016-02-27 08:00"
+  },
+  {
+   "accession": "0001193125-16-571365",
+   "announced_at_et": "2016-05-02 07:00",
+   "edgar_8k_et": "2016-05-02 08:30:33",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2016-05-06 16:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
   },
   {
    "accession": null,
@@ -29910,6 +29926,30 @@
    "vendor_et": "2016-09-08 18:00"
   },
   {
+   "accession": "0001144204-16-132509",
+   "announced_at_et": "2016-11-08 07:00",
+   "edgar_8k_et": "2016-11-08 19:10:07",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001144204-17-006754",
+   "announced_at_et": "2017-02-08 07:00",
+   "edgar_8k_et": "2017-02-08 16:31:38",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001144204-17-025811",
+   "announced_at_et": "2017-05-10 07:00",
+   "edgar_8k_et": "2017-05-10 08:16:05",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
    "accession": "0001144204-17-050438",
    "announced_at_et": "2017-09-28 08:00",
    "edgar_8k_et": "2017-09-28 17:08:07",
@@ -30068,6 +30108,14 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2022-05-10 16:00"
+  },
+  {
+   "accession": "0001437749-22-023176",
+   "announced_at_et": "2022-09-28 07:00",
+   "edgar_8k_et": "2022-09-28 16:06:18",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
   },
   {
    "accession": "0001437749-23-023162",
@@ -36113,6 +36161,14 @@
   }
  ],
  "CLSK": [
+  {
+   "accession": "0001078782-14-001805",
+   "announced_at_et": "2014-10-06 07:00",
+   "edgar_8k_et": "2014-10-06 14:19:13",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
   {
    "accession": "0001663577-19-000425",
    "announced_at_et": "2019-12-16 17:00",
@@ -42284,6 +42340,14 @@
    "vendor_et": "2023-03-02 16:00"
   },
   {
+   "accession": "0000909832-23-000025",
+   "announced_at_et": "2023-05-25 07:00",
+   "edgar_8k_et": "2023-05-25 16:22:40",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2023-06-01 06:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
+  },
+  {
    "accession": "0000909832-23-000038",
    "announced_at_et": "2023-09-26 16:00",
    "edgar_8k_et": "2023-09-26 16:37:40",
@@ -42306,6 +42370,14 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2024-03-07 16:00"
+  },
+  {
+   "accession": "0000909832-24-000026",
+   "announced_at_et": "2024-05-30 07:00",
+   "edgar_8k_et": "2024-05-30 16:26:46",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2024-06-06 06:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
   },
   {
    "accession": "0000909832-24-000043",
@@ -43990,6 +44062,62 @@
    "vendor_et": "2021-10-27 16:00"
   },
   {
+   "accession": "0001683168-22-001012",
+   "announced_at_et": "2022-02-15 07:00",
+   "edgar_8k_et": "2022-02-15 07:59:21",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-22-002793",
+   "announced_at_et": "2022-04-19 07:00",
+   "edgar_8k_et": "2022-04-19 11:07:11",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-22-005119",
+   "announced_at_et": "2022-07-26 07:00",
+   "edgar_8k_et": "2022-07-26 10:41:47",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-22-007474",
+   "announced_at_et": "2022-11-09 07:00",
+   "edgar_8k_et": "2022-11-09 21:05:38",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-23-001505",
+   "announced_at_et": "2023-03-15 07:00",
+   "edgar_8k_et": "2023-03-15 11:51:24",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-23-005233",
+   "announced_at_et": "2023-08-03 07:00",
+   "edgar_8k_et": "2023-08-03 10:22:09",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-24-005151",
+   "announced_at_et": "2024-07-30 07:00",
+   "edgar_8k_et": "2024-07-30 19:03:46",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
    "accession": "0001683168-24-007530",
    "announced_at_et": "2024-10-31 19:06",
    "edgar_8k_et": "2024-10-31 19:06:50",
@@ -44036,6 +44164,22 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2026-03-10 16:00"
+  },
+  {
+   "accession": "0001683168-26-005950",
+   "announced_at_et": "2026-08-04 07:00",
+   "edgar_8k_et": "2026-08-04 17:13:27",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001683168-26-008042",
+   "announced_at_et": "2026-10-23 07:00",
+   "edgar_8k_et": "2026-10-23 14:40:17",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
   }
  ],
  "CQP": [
@@ -49771,6 +49915,22 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2019-08-05 16:00"
+  },
+  {
+   "accession": "0001193125-19-286973",
+   "announced_at_et": "2019-11-07 07:00",
+   "edgar_8k_et": "2019-11-07 12:05:04",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
+   "accession": "0001193125-20-034302",
+   "announced_at_et": "2020-02-13 07:00",
+   "edgar_8k_et": "2020-02-13 08:01:49",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
   },
   {
    "accession": "0001193125-20-135642",
@@ -72149,6 +72309,14 @@
    "vendor_et": "2015-04-23 15:00"
   },
   {
+   "accession": "0001171843-15-004050",
+   "announced_at_et": "2015-07-24 07:00",
+   "edgar_8k_et": "2015-07-24 08:43:53",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
    "accession": "0001171843-15-005683",
    "announced_at_et": "2015-10-22 16:00",
    "edgar_8k_et": "2015-10-23 11:16:19",
@@ -72283,6 +72451,14 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2019-10-24 16:00"
+  },
+  {
+   "accession": "0001193125-20-019682",
+   "announced_at_et": "2020-01-30 07:00",
+   "edgar_8k_et": "2020-01-30 16:33:33",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
   },
   {
    "accession": "0001564590-20-019275",
@@ -73531,6 +73707,14 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2017-11-09 16:00"
+  },
+  {
+   "accession": "0001104659-18-003186",
+   "announced_at_et": "2018-01-22 07:00",
+   "edgar_8k_et": "2018-01-22 08:19:38",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2018-03-01 07:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
   },
   {
    "accession": "0001560385-18-000017",
@@ -87328,6 +87512,14 @@
    "vendor_et": "2022-05-02 16:00"
   },
   {
+   "accession": "0000216085-22-000016",
+   "announced_at_et": "2022-08-03 07:00",
+   "edgar_8k_et": "2022-08-03 11:20:02",
+   "rule": "8-K only; pre-market of acceptance day (vendor-series gap)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (no vendor date; rules v2 P2-1)",
+   "vendor_et": null
+  },
+  {
    "accession": "0000216085-22-000020",
    "announced_at_et": "2022-11-01 16:00",
    "edgar_8k_et": "2022-11-02 13:15:14",
@@ -89730,6 +89922,14 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2023-11-08 16:00"
+  },
+  {
+   "accession": "0001628280-24-012541",
+   "announced_at_et": "2024-03-21 07:00",
+   "edgar_8k_et": "2024-03-21 16:27:07",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2024-04-01 13:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
   },
   {
    "accession": "0001628280-24-022878",
@@ -192150,6 +192350,14 @@
    "rule": "vendor (earlier than 8-K)",
    "source": "earlier of SEC EDGAR 8-K Item 2.02 acceptance and yfinance.get_earnings_dates",
    "vendor_et": "2021-02-25 16:00"
+  },
+  {
+   "accession": "0001104659-21-057717",
+   "announced_at_et": "2021-04-29 07:00",
+   "edgar_8k_et": "2021-04-29 16:54:50",
+   "rule": "8-K only; pre-market of acceptance day (vendor date mis-dated: 2021-05-10 12:00)",
+   "source": "SEC EDGAR 8-K Item 2.02 acceptance (vendor date replaced, rules v2 P2-2)",
+   "vendor_et": null
   },
   {
    "accession": "0001647088-21-000060",

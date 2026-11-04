@@ -202,15 +202,28 @@ def eight_k_only_time(k8_time: str) -> Tuple[str, str]:
 MAX_8K_LAG_RATE = 0.10   # issuer filter for 8-K-only events
 
 
+def _d_bus(ts: str) -> "np.datetime64":
+    """Decision day for an announcement on the business-day calendar (weekends only; no holiday list — a session
+    calendar is not available when events are built): after 16:00 -> that day (rolled back to a business day),
+    otherwise the business day strictly before it. Mirrors `pit.decision_session`."""
+    import numpy as np
+    d = np.datetime64(ts[:10])
+    if ts[11:16] >= "16:00":
+        return np.busday_offset(d, 0, roll="backward")
+    return np.busday_offset(d, -1, roll="forward")
+
+
 def eight_k_lag_ok(v1_events: List[Dict[str, Any]]) -> bool:
     """True if the issuer's own 8-Ks are timely: among its events where vendor date and Item 2.02 8-K agree (>= 4),
-    at most 10% have the 8-K accepted on a later calendar day than the release. Issuers whose 8-Ks trail by days
-    (BBWI, CCB) get no 8-K-only events. A data-quality property of the issuer's filing habit, not an outcome."""
+    timing from the 8-K alone (`eight_k_only_time`) would give a LATER decision day than the event in at most 10%.
+    Issuers whose 8-Ks trail by days (BBWI, CCB, URG) get no 8-K-only events. A next-morning 8-K after an after-close
+    release (COST) is not late: it gives the same decision day. A data-quality property of the issuer's filing habit,
+    not an outcome."""
     m = [e for e in v1_events if e.get("vendor_et") and e.get("edgar_8k_et")]
     if len(m) < 4:
         return False
-    late = sum(e["edgar_8k_et"][:10] > e["announced_at_et"][:10] for e in m)
-    return late / len(m) <= MAX_8K_LAG_RATE
+    late = sum(_d_bus(eight_k_only_time(e["edgar_8k_et"])[0]) > _d_bus(e["announced_at_et"]) for e in m)
+    return bool(late / len(m) <= MAX_8K_LAG_RATE)
 
 
 VENDOR_GAP_DAYS = 60     # ... and no vendor date within +-60 days (a quarter is ~91 days apart)

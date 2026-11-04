@@ -239,3 +239,13 @@ def test_reaction_detector_fails_if_8k_only_events_are_one_session_late(eight_k_
     """Meta-test: the same events, deliberately timed one session late (the leak this path could have)."""
     s, ev = eight_k_only
     assert _reaction_ratio(s, ev, shift=1) > 1.0
+
+
+def test_next_morning_8k_after_after_close_release_is_timely():
+    """COST pattern: release 21:00, 8-K 06:07 next morning -> same decision day, so the issuer passes the filter."""
+    from backtest.snapshot_pit import eight_k_lag_ok
+    ev = [{"vendor_et": f"2016-0{m}-0{d} 21:00", "announced_at_et": f"2016-0{m}-0{d} 21:00",
+           "edgar_8k_et": f"2016-0{m}-0{d + 1} 06:07:00"} for m, d in ((3, 2), (5, 4), (7, 6), (9, 7))]
+    assert eight_k_lag_ok(ev)
+    late = [dict(e, announced_at_et=e["announced_at_et"][:11] + "07:00") for e in ev]   # pre-market release, 8-K next day
+    assert not eight_k_lag_ok(late)

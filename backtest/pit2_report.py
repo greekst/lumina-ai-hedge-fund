@@ -159,16 +159,17 @@ def markdown(res: Dict[str, Any]) -> str:
     t8 = va["timing_8k_only_vs_truth"]
     tot = t8["same_D"] + t8["earlier_D"] + t8["later_D"]
     rp = va["release_pick"]
-    L += ["", "## Validation of the new event path (ground truth: events where the vendor date and an Item 2.02 8-K agree)", "",
+    L += ["", "## Validation of the new event path (ground truth: events where the vendor date and an earnings-item (two point zero two) `8-K` agree)", "",
           "Before the rule was fixed, timing from the raw acceptance time was checked the same way and put D one session late in "
           "357 of 22,869 such events (1.6%); pre-market of the acceptance day alone, 103 (0.45%). The rule below adds the issuer "
-          "filter. Ground truth here is the earlier of the two sources, so vendor placeholder times (12:00) count against the 8-K. <!-- text-only -->", "",
-          f"- If those events (issuers passing the filter) had been timed from the 8-K alone: same decision session {N(t8['same_D'])}, earlier {N(t8['earlier_D'])}, "
-          f"LATER (would be look-ahead) {N(t8['later_D'])} of {N(tot)} ({P(t8['later_D'] / tot if tot else 0, 'derived')}). "
-          + ("Examples: " + "; ".join(t8["later_examples"]) + ". <!-- text-only -->" if t8["later_examples"] else ""),
-          f"- Release identification: the matched release is the 8-K that `earnings_8k_events` picks for its period in "
-          f"{N(rp['correct'])} cases; another Item 2.02 8-K is picked in {N(rp['other_8k_picked'])}.",
-          f"- Item 2.02 lists, frozen (`{OLD}` build) vs fresh EDGAR submissions: {N(len(res['item_202_mismatch']))} companies differ "
+          "filter. Ground truth here is the earlier of the two sources, so vendor placeholder times (12:00) count against the `8-K`. <!-- text-only -->", "",
+          f"- If those events (issuers passing the filter) had been timed from the `8-K` alone: same decision session {N(t8['same_D'])}, earlier {N(t8['earlier_D'])}, "
+          f"LATER (would be look-ahead) {N(t8['later_D'])} of {N(tot)} ({P(t8['later_D'] / tot if tot else 0, 'derived')}).",
+          ("- Examples of LATER (event, then `8-K` acceptance): " + "; ".join(t8["later_examples"]) + ". <!-- text-only -->"
+           if t8["later_examples"] else "- No LATER cases. <!-- text-only -->"),
+          f"- Release identification: the matched release is the `8-K` that `earnings_8k_events` picks for its period in "
+          f"{N(rp['correct'])} cases; another earnings-item (two point zero two) `8-K` is picked in {N(rp['other_8k_picked'])}.",
+          f"- Earnings-item lists, frozen (base build of the previous session) vs fresh EDGAR submissions: {N(len(res['item_202_mismatch']))} companies differ "
           "(rules v1 matching keeps the frozen list, so v1 events are reproduced exactly).", ""]
     L += ["## Events added / removed per company (whole event file, decision dates since 2014-06)", "",
           "| company | added | removed |", "|---|---|---|"]
