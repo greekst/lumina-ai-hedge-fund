@@ -99,6 +99,10 @@ class GeminiCached:
         return dict(rec, cached=False)
 
     def _call(self, system: str, prompt: str, purpose: str):
+        # Budget gate first: an exhausted budget must refuse before any key, SDK or network access.
+        b = budget()
+        if b["requests_sent"] >= b["cap"]:
+            raise BudgetExceeded(f"Gemini budget exhausted ({b['requests_sent']}/{b['cap']})")
         from google import genai
         from google.genai import types
         if self._client is None:

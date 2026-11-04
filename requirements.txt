@@ -1,19 +1,18 @@
 # ==========================================
 # Lumina Capital (research fork): pinned runtime dependencies
-# Pinned for reproducibility (audit P1-10). Python >= 3.10.
-# Packages that dropped 3.10 carry an environment-marker fallback.
+# Pinned for reproducibility (audit P1-10). Supported: Python >= 3.12 (Session 3).
+# Several pins (scipy 1.18.1, streamlit 1.66.1, ...) require Python >= 3.12/3.11, so
+# 3.10/3.11 are no longer supported; one pin set, no environment-marker fallbacks.
 # Optional/heavy integrations live in requirements-optional.txt.
 # ==========================================
 
 # Core application & UI
 streamlit==1.66.1
 pandas==2.3.3
-numpy==2.3.5; python_version >= "3.11"
-numpy==2.2.6; python_version < "3.11"
+numpy==2.3.5
 python-dotenv==1.2.4
 plotly==7.1.0
-matplotlib==3.11.2; python_version >= "3.11"
-matplotlib==3.10.7; python_version < "3.11"
+matplotlib==3.11.2
 
 # Financial data feeds
 yfinance==1.8.0
@@ -21,12 +20,9 @@ requests==2.34.2
 
 # ML & quant analytics
 lightgbm==4.7.0
-scikit-learn==1.9.1; python_version >= "3.11"
-scikit-learn==1.7.2; python_version < "3.11"
-scipy==1.18.1; python_version >= "3.11"
-scipy==1.15.3; python_version < "3.11"
-networkx==3.7; python_version >= "3.11"
-networkx==3.4.2; python_version < "3.11"
+scikit-learn==1.9.1
+scipy==1.18.1
+networkx==3.7
 
 # LLM orchestration (Gemini via google-genai; LUMINA_LLM_MODE=mock needs no key)
 google-genai==2.34.0

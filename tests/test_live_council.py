@@ -64,6 +64,13 @@ def test_poisoned_future_cannot_change_the_llm_prompt(level):
 
 
 def test_cache_replays_offline_and_budget_cap_is_enforced(tmp_path, monkeypatch):
+    """Fully offline: no GEMINI_API_KEY, and any attempt to build a real client fails the test."""
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    import google.genai as _genai
+
+    def _no_client(*a, **k):
+        raise AssertionError("test must not construct a real Gemini client")
+    monkeypatch.setattr(_genai, "Client", _no_client)
     monkeypatch.setattr(LC, "CACHE_DIR", str(tmp_path))
     monkeypatch.setattr(LC, "BUDGET_FILE", str(tmp_path / "budget.json"))
     g = LC.GeminiCached(allow_live=False)
@@ -88,3 +95,29 @@ def test_live_numbers_cannot_reach_the_decision():
     r = sanitize_agent_output({"stance": "bullish", "score": 3})
     assert r["score"] == STANCE_SCORE["BULLISH"] and r["llm_raw_score"] == 3
     assert sanitize_agent_output({"stance": "TO THE MOON", "score": 100})["score"] == STANCE_SCORE["NEUTRAL"]
+
+
+def test_live_call_with_fake_client_counts_budget(tmp_path, monkeypatch):
+    """A fake client exercises the live path offline: the request is counted and the response cached."""
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.setattr(LC, "CACHE_DIR", str(tmp_path))
+    monkeypatch.setattr(LC, "BUDGET_FILE", str(tmp_path / "budget.json"))
+    monkeypatch.setattr(LC, "MIN_INTERVAL_S", 0.0)
+
+    class _Res:
+        text = '{"stance": "BEARISH"}'
+        model_version = LC.EXPECTED_VERSION_PREFIX
+
+    class _Models:
+        def generate_content(self, **kw):
+            return _Res()
+
+    class _Fake:
+        models = _Models()
+    g = LC.GeminiCached(allow_live=True)
+    g._client = _Fake()
+    r = g.generate("sys", "p", "t")
+    assert r["json"]["stance"] == "BEARISH" and not r["cached"]
+    assert LC.budget()["requests_sent"] == 1 and LC.budget()["ok"] == 1
+    assert g.generate("sys", "p", "t")["cached"]                         # replay, no second request
+    assert LC.budget()["requests_sent"] == 1

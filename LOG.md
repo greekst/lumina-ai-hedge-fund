@@ -194,3 +194,24 @@ entries are left unchanged; this note is the correction.
 - **Final live Gemini count: 28 / 1,500** (22 OK, 6 errors).
 - Time check: Session 2 LOG entries 17:42, 17:55, 18:41, 18:51, 19:05 and 19:08 vs commits 17:55:28, 18:41:52, 18:51:09 and 19:05:26. Two entries were
   first written ahead of the commit and corrected (noted in the Phase C and Phase D entries' history).
+
+---
+
+# Session 3 (2026-11-04) — CI, point-in-time universe, longer history, pre-registered H1
+
+Branch: `claude/kind-rubin-ahzsge` (assigned by the harness). Mock LLM mode throughout; no live LLM calls.
+
+## 2026-11-04 19:51 UTC — Phase A: fix CI
+- Failing run inspected: run 41899352628 (main, merge of PR 2). Four jobs failed: `test (3.10)` (`streamlit==1.66.1` needs ≥3.11),
+  `test (3.11)` and `ui-smoke` (`scipy==1.18.1` needs ≥3.12), `test (3.12)` (`test_cache_replays_offline_and_budget_cap_is_enforced`:
+  `GEMINI_API_KEY not set`).
+- **Choice: support Python 3.12+ only.** Justification: the alternative (per-version marker fallbacks for 3.10/3.11) already existed for
+  numpy/scipy/etc. and still broke, because every new upstream release can drop an old interpreter; it doubles the pin set and the two halves
+  are never tested against the same backtest digest. One pin set on ≥3.12 is simpler and keeps results reproducible. Changes:
+  `requirements.txt` (markers removed, header notes ≥3.12), CI matrix `["3.12", "3.13"]` (3.13 resolution checked with
+  `pip install --dry-run --python-version 3.13 --only-binary=:all:`), `ui-smoke` on 3.12, README badge, `AGENTS.md`, Dockerfile `python:3.12-slim`.
+- **Live-council test made offline:** the root cause was ordering. `GeminiCached._call` built the client (needing the key) before checking the budget.
+  The budget gate now runs first, before any key, SDK or network access. The test removes `GEMINI_API_KEY` and replaces `google.genai.Client` with
+  a function that fails the test if called. A new test drives the live path through a fake client (request counted, response cached, replay free).
+  The old code fails the updated test with no key; the new code passes.
+- Local env: fresh `.venv` on Python 3.12 with the pinned set. `pytest -q` → 76 passed, 1 skipped.
