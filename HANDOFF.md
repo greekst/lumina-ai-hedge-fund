@@ -279,7 +279,8 @@ calls**. Every number below comes from a committed, tagged result file named nex
 - **H1, rerun exactly as pre-registered on a cleaner base (only the snapshot id changed): S = +0.08%, one-sided lower bound −0.45%,
   CI [−0.58%, +0.70%], p = 0.40, n = 4,692. Not rejected — the same answer as Session 3 (+0.07%, −0.41%, n = 4,661).** Still no edge.
 - No delisted-price source was available, so the survivorship gap from delisted companies remains: an estimated 84 top-100 events
-  (1.8%), partial upper bound 159 (3.3%), mostly 2015–2019, direction unknown.
+  (1.8%), partial upper bound 159 (3.3%), mostly 2015–2019, direction unknown. **Decision (2026-11-05): delisted companies stay
+  excluded; the provider route (EODHD) is documented as the future fix (LOG.md).**
 
 ## 1. Data added (Phase A)
 
@@ -333,8 +334,10 @@ survivorship gap is the delisted companies only (section 1); H1 is within-ticker
 
 ## 5. Open items
 
-1. **Delisted prices** (CRSP/Norgate/EODHD or similar) to close the gap — add the host and the key as a network secret; then add the
-   34 gap companies (+21CF, VMware) to the pool and rerun H1 unchanged on a new snapshot id.
+1. **Delisted companies: excluded by decision (2026-11-05, owner).** The universe keeps only companies with a current listing (all 564
+   in pit2 have one); the cost is ~84 events (1.8%, partial upper bound 3.3%), see results/delisted_gap_2026-11-04.md. Future fix if
+   revisited: EODHD (allow `eodhd.com`, key as env var, probe the ~36 gap companies first), fallback Sharadar; steps in LOG.md
+   (2026-11-05 13:15 entry). Then add the gap companies to the pool and rerun H1 unchanged on a new snapshot id.
 2. Split whitelist (spin-offs as ratio 1; DD 2019-06 and HLT 2017 = 1/3) and rebuilt adjusted Close (review P2-1/P2-2).
 3. 8-K-only after-close timing per issuer habit, and re-validate the issuer-convention rule on D+1 vs D+2 reactions (review P2-3).
 4. Still open from Session 3: point-in-time GICS; Up-C share classes; stops not simulated; legacy untagged report surfaces; the live

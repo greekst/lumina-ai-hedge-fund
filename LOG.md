@@ -396,3 +396,18 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
   or posting code). Live LLM calls: 0.
 - **GitHub Actions on `claude/serene-johnson-hofeqi`: run 41937894208 (commit 58b398e) green on all four jobs.**
 - Branch ready for a PR into `main`.
+
+## 2026-11-05 13:15 UTC — Decision: delisted companies stay excluded (owner's choice)
+- **Decision (by the owner):** companies that were later delisted are removed from the universe as the accepted approach for now,
+  instead of buying a delisted-price source. This is pre-registered exclusion 3 in HYPOTHESIS.md, so H1 is unaffected.
+- **Checked, no data change needed:** all 564 companies in `2026-11-04-pit2` have a current listing (SEC company_tickers_exchange);
+  none was delisted. Results and snapshots are unchanged.
+- **Known cost of this choice** (results/delisted_gap_2026-11-04.md): about 84 top-100 events missing from the H1 window (1.8%),
+  partial upper bound 159 (3.3%), plus 21st Century Fox (~16, reviewer estimate) and VMware (unquantified). Mostly 2015–2019. Each is
+  replaced by the event of a company just outside the top 100. Direction of the bias unknown; within-ticker H1 largely immune.
+- **Future solution, if this is revisited:** EODHD (hosted REST API; delisted tickers in every package per EODHD; end-of-day plan
+  listed from ~$20/month; check the tier). Steps: allow `eodhd.com`; add the key as an env var such as `EODHD_API_KEY` (EODHD takes the
+  key as a URL parameter, so a header-injected network secret may not work; unverified); probe coverage for the ~36 gap companies first
+  (one coverage gap before 1997 was reported elsewhere; we need 2013+); match reused tickers to EDGAR CIKs by name and dates; add them to
+  the candidate pool; build a new snapshot id; rerun H1 unchanged. Fallback: Sharadar on Nasdaq Data Link (survivorship-free, stable
+  IDs; price and personal-use licence unconfirmed). Not suitable here: Norgate (desktop updater, no hosted API), CRSP (WRDS access).
