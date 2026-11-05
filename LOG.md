@@ -464,3 +464,11 @@ Phase C (pre-registration) is committed.
   lag < 1 refused; decision t earned only on t+2.
 - Mutation checks on the real engine (reverted): window shifted to t+1 → 8 tests fail; execution at lag 0 → 8 fail; S-score peeking at r[t+1] → 9 fail.
 - No strategy return, P&L, Sharpe or hit rate was computed on real ETF data (the only data read in this phase was coverage metadata).
+
+## 2026-11-05 19:01 UTC — Phase C: H2 pre-registered
+- `HYPOTHESIS_H2.md` committed and pushed as **610fb6fcda557471e757a1f1658c5e2be6acef83** (before any real-data run; no real strategy return existed at this point).
+  One primary factor model (xs, justified in the file), M = 60, thresholds 1.25 / 0.50 / 3.5, half-life ≤ 30, 10 bps per side, lag 1, sample 2013-04-01 .. 2026-11-03 (n = 3,421),
+  XLRE enters 2016-04-21 (first clean 61-bar window), XLC on its 61st bar; stationary bootstrap, mean block 20, 10,000 reps, seed 20261105; reject iff p05 > 0.
+  MDE from assumptions only: Sharpe ≈ 0.83 a year (0.78/1.30/2.08 bp a day for assumed daily vol 0.15/0.25/0.40%). Economic threshold 1 bp a day.
+- Known wording slip in the committed file (cannot be edited above the line): the block-length sentence says "longer than the expected holding period ... is not claimed" —
+  meaning only that 20 days is a month-scale choice and is not argued to exceed the holding period.
