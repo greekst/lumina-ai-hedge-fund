@@ -422,3 +422,27 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
     honest test bench for TradingAgents, (4) forward test of the options phase-transition screener, (5) deep value screen (needs
     delisted data), (6) macro regime overlay (exploratory). None started; any one is pre-registered first, as H1 was.
 - The repo stays the source of truth (LOG.md, HANDOFF.md, HYPOTHESIS.md, results/); the Drive docs are summaries and may lag.
+
+# Session 5 — Avellaneda–Lee sector-ETF statistical arbitrage (H2)
+
+Branch `claude/elegant-sagan-vh8d9x`. Mock LLM mode, **no LLM calls**. Rule 6 of the brief: no strategy return/P&L/Sharpe/hit rate on real ETF data until
+Phase C (pre-registration) is committed.
+
+## 2026-11-05 18:55 UTC — Phase A: data check (coverage only, no returns)
+- Source: frozen snapshot `backtest/snapshots/2026-11-04-pit2` (read-only; untouched). Files `prices/<T>.csv.gz`; columns
+  `date, Open, High, Low, Close, Volume, CloseSplitAdj`. Manifest: prices from yfinance `auto_adjust=False`; **`Close` (and OHLC) are scaled to
+  Adj Close, i.e. split- AND dividend-adjusted (total return) with today's factors; `CloseSplitAdj` is split-adjusted only.** Returns from
+  `Close` are total returns; `CloseSplitAdj` is not used. **Volume is present** for all 12 series.
+- Coverage (all 12 series have 0 NaN Close, 0 duplicate dates, 0 rows with High<Low or non-positive price, max calendar gap 4 days = weekends/holidays;
+  all 12 share exactly the XLK trading calendar from their own first date, so no missing sessions):
+
+| ticker | first | last | rows |
+|---|---|---|---|
+| XLK, XLF, XLV, XLE, XLY, XLP, XLI, XLU, XLB, SPY | 2013-01-02 | 2026-11-03 | 3,481 each |
+| XLRE | 2015-10-08 | 2026-11-03 | 2,784 |
+| XLC | 2018-06-19 | 2026-11-03 | 2,106 |
+
+- Volume quirks: XLRE has 5 zero-volume sessions (2015-10-14, 2015-11-25, 2015-11-27, 2015-12-07, 2016-01-25; stale-price days right after launch);
+  XLC's minimum volume is 16,600 (launch week). All other ETFs have volume > 1.6M every day. `^VIX` is in the snapshot (`_VIX.csv.gz`).
+- Last session in the data is 2026-11-03 (snapshot `price_end_exclusive` 2026-11-04). No new data needed; nothing was downloaded.
+- Consequence for the universe rule (fixed in Phase C): an ETF enters only when its trailing window of M+1 bars is complete and has no zero-volume bar.
