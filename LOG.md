@@ -411,3 +411,14 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
   (one coverage gap before 1997 was reported elsewhere; we need 2013+); match reused tickers to EDGAR CIKs by name and dates; add them to
   the candidate pool; build a new snapshot id; rerun H1 unchanged. Fallback: Sharadar on Nasdaq Data Link (survivorship-free, stable
   IDs; price and personal-use licence unconfirmed). Not suitable here: Norgate (desktop updater, no hosted API), CRSP (WRDS access).
+
+## 2026-11-05 18:17 UTC — Session 4 merged; project docs in Google Drive
+- Session 4 merged into `main` by the owner: [PR #4](https://github.com/greekst/lumina-ai-hedge-fund/pull/4) (merge commit 904d687).
+- **Google Drive folder "Trading Agents → Lumina"** (created 2026-11-05) holds three Google Docs for reading outside the repo:
+  - *Lumina — Work Log*: all four sessions, the GitHub work (PRs #1–#3; #4 merged after the doc was written), key results, open items.
+  - *Lumina — Repo Overview & Operating Guide*: what the repo is, the hard rules, folder map, setup and run commands, how a session works.
+  - *Lumina — Project Ideas from the Trading Agents Research*: six candidate projects drawn from the research in the Trading Agents
+    folder, in suggested order — (1) sector ETF stat-arb (Avellaneda–Lee), (2) quarter-end rebalancing flows, (3) Lumina as an
+    honest test bench for TradingAgents, (4) forward test of the options phase-transition screener, (5) deep value screen (needs
+    delisted data), (6) macro regime overlay (exploratory). None started; any one is pre-registered first, as H1 was.
+- The repo stays the source of truth (LOG.md, HANDOFF.md, HYPOTHESIS.md, results/); the Drive docs are summaries and may lag.
