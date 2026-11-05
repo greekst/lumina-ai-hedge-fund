@@ -342,4 +342,4 @@ survivorship gap is the delisted companies only (section 1); H1 is within-ticker
 5. H1 is settled at "no within-ticker selection skill ≥ ~1% at T+5". A new question needs a different signal, pre-registered first.
 
 ## Final checks
-See the last LOG.md entry (tests, UI smoke, legacy suite, rerun digests, secret scan, CI run on the branch).
+pytest 131 passed, 1 skipped · UI smoke 1 passed · legacy 19/19 · H1 rerun `8337e6b5…` and Session 3 `ccabc089…` reproduced in fresh directories · manifests verify, frozen snapshots untouched · secret scan OK · CI run 41937894208 (58b398e) green on all four jobs. Details: last LOG.md entry.

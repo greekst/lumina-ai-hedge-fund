@@ -386,3 +386,13 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
 - CI: runs on 1ca98af..5c33527 failed the flake8 F821 check (`np` in a string annotation in `snapshot_pit.py`); fixed in ce48f64
   (module-level import; snapshot rebuild unchanged). The reviewer's "other process" note refers to that fix.
 - HANDOFF.md: Session 4 section added.
+
+## 2026-11-05 00:07 UTC — Session 4 final
+- Final checks (23:59–00:07 UTC, on 58b398e): pytest **131 passed, 1 skipped** (incl. poisoned-future + leak meta-tests on all three PIT
+  snapshots and the 17 pit2 tests); UI smoke 1 passed; legacy suite 19/19 (zero-cost env). Fresh-directory reruns: Session 4 H1
+  `8337e6b5…` (fourth identical run incl. the reviewer's), Session 3 pre-registered H1 `ccabc089…` (unchanged). Manifests of
+  `2026-11-04`, `-sp100`, `-pit`, `-pit-r1` verify; the two frozen PIT snapshots have no diff since the Session 3 merge; pit2 rebuilds
+  byte-identically. Secret scan of all tracked files OK. Only `backtest/`, `tests/`, docs and results changed (no kill-switch, broker
+  or posting code). Live LLM calls: 0.
+- **GitHub Actions on `claude/serene-johnson-hofeqi`: run 41937894208 (commit 58b398e) green on all four jobs.**
+- Branch ready for a PR into `main`.
