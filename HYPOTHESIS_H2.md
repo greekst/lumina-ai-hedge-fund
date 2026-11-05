@@ -119,3 +119,19 @@ Run separately after the primary result is recorded. Every item below is explora
 ---
 
 RESULTS (appended after the run)
+
+Run 2026-11-05 (UTC), the exact command above, twice in parallel plus a third time into `results/`: identical output sha256
+`be176bb077c879614ada660b2fe82bac8d653e94be7ae650c688d1417fbb6168` (all three). Full tagged report: `results/etf_statarb_2026-11-04-pit2_h2_summary.md`
+(values there carry `[SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]`; the exploratory block is in `results/etf_statarb_2026-11-04-pit2_h2_explore.json`).
+
+- Sample: 3,421 trading days, 2013-04-01 to 2026-11-03; 1,176 position entries; in the market on 98.3% of days.
+- **Mean daily net return = −1.70 bp** (−4.28% a year on the unit-gross capital base; daily SD 36.6 bp); one-sided 95% lower bound (5th percentile) **−2.67 bp**;
+  two-sided 95% CI [−2.87 bp, −0.50 bp]; one-sided bootstrap p = 0.997; bootstrap SE 0.60 bp. Net annualised Sharpe −0.74.
+- **Decision: H0 is not rejected.** The entire interval lies below zero: net of costs the strategy lost money over the sample. The economic threshold (1 bp a day) is not met.
+- Costs decide it: gross mean +1.11 bp a day (gross Sharpe 0.48; gross 95% CI [−0.12, +2.36] bp, one-sided p 0.037 — exploratory), cost drag 2.81 bp a day (7.1% a year) from a daily
+  turnover of 28.1% of gross exposure (about 71 times a year). The gross edge would pay a cost of about 4.0 bp per side, against the registered 10 bp.
+- Realised MDE 1.91 bp a day (Sharpe 0.83 a year, as registered). Strategy return and costs are unchanged by the choice of bootstrap block (block 5: lower bound −2.70 bp; block 60: −2.66 bp).
+- Exploratory (not evidence; defined before the run): PCA K = 3 net −2.32 bp (CI [−3.11, −1.50]); trading-time variant net −2.45 bp; net beta to SPY 0.04 (corr 0.10); by year the net mean is
+  negative in 11 of 14 calendar years, by VIX regime negative at VIX < 15 and 15–25 (CIs below zero) and +3.0 bp at VIX > 25 (CI [−1.45, +8.02] bp, 393 days); the
+  threshold grid (12 cells) and lookback grid (M = 40, 60, 90) are all net-negative, the least negative being open 2.0 (fewest trades) and M = 90 (lowest turnover) — consistent with
+  cost being the binding constraint, and not a selection of a winner.
