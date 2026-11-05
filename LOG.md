@@ -446,3 +446,21 @@ Phase C (pre-registration) is committed.
   XLC's minimum volume is 16,600 (launch week). All other ETFs have volume > 1.6M every day. `^VIX` is in the snapshot (`_VIX.csv.gz`).
 - Last session in the data is 2026-11-03 (snapshot `price_end_exclusive` 2026-11-04). No new data needed; nothing was downloaded.
 - Consequence for the universe rule (fixed in Phase C): an ETF enters only when its trailing window of M+1 bars is complete and has no zero-volume bar.
+
+## 2026-11-05 18:59 UTC — Phase B: engine and tests (synthetic data only)
+- `backtest/etf_statarb.py` (deterministic, vectorised over days and ETFs): trailing M-return windows → time-series demean + vol scaling →
+  factor projection `eps = Y (I − V V')` (xs: flat V = cross-sectional demeaning; pca: top-K correlation eigenvectors) → cumulative residual →
+  OLS AR(1) (κ, m, σ_eq, half-life) → S-score → state machine → inverse-residual-vol weights on the ETF hedge portfolios, gross exactly 1.0.
+  Execution: decision at close t, trade at close t+1, earns day t+2; cost 10 bps per side on |Δweight| (5 commission + 5 slippage,
+  `CostModel` defaults; the $1 commission minimum is irrelevant to a proportional model). Stationary bootstrap (Politis–Romano) and MDE helpers.
+- Design decisions written down before any real return exists: exit is direction-aware (a long closes when s > −0.50, a short when s < +0.50 — covers |s| < 0.50 and
+  overshoot); stop at adverse |s| ≥ 3.5 blocks re-entry until |s| < 1.25; entry only when 1.25 < |s| < 3.5; a position whose ETF becomes untradable is closed;
+  hedge weights are recomputed daily (so turnover includes re-hedging — charged).
+- The CLI refuses to run unless `HYPOTHESIS_H2.md` is tracked and clean in git (rule 6 guard).
+- Tests (`tests/test_etf_statarb.py`, 27, synthetic only): gross ≤ 1.0000001 and = 1 when positioned; xs residuals sum to 0 every day; b ≥ 1 / long half-life ⇒ zero position
+  (also an explosive-residual series through the full engine); state-machine table; universe entry (full clean window); a synthetic OU panel earns (Sharpe > 2, bootstrap rejects);
+  five random-walk panels do not (net t < 2, mean < 0, costs charged); poisoned-future (scramble all prices/volumes after t: targets ≤ t, positions ≤ t+1, S-scores, hedge
+  matrices unchanged) for xs, pca and the trading-time variant; same-close shock test; meta-tests: the detector fails for a same-close variant and for a window that includes t+1;
+  lag < 1 refused; decision t earned only on t+2.
+- Mutation checks on the real engine (reverted): window shifted to t+1 → 8 tests fail; execution at lag 0 → 8 fail; S-score peeking at r[t+1] → 9 fail.
+- No strategy return, P&L, Sharpe or hit rate was computed on real ETF data (the only data read in this phase was coverage metadata).
