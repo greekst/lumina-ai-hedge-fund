@@ -135,3 +135,9 @@ Run 2026-11-05 (UTC), the exact command above, twice in parallel plus a third ti
   negative in 11 of 14 calendar years, by VIX regime negative at VIX < 15 and 15–25 (CIs below zero) and +3.0 bp at VIX > 25 (CI [−1.45, +8.02] bp, 393 days); the
   threshold grid (12 cells) and lookback grid (M = 40, 60, 90) are all net-negative, the least negative being open 2.0 (fewest trades) and M = 90 (lowest turnover) — consistent with
   cost being the binding constraint, and not a selection of a winner.
+
+Corrections after the independent review (results/independent_review_session5.md; the decision is unchanged, no P0): (1) the gross mean +1.11 bp is a point estimate whose
+two-sided CI [−0.12, +2.36] bp includes zero — read "gross edge" above as "gross point estimate, not distinguishable from zero", and "costs decide it" as "at the registered cost the
+net mean is negative"; at an assumed 2 / 5 / 10 bp per side the net mean is +0.55 / −0.29 / −1.70 bp (exploratory, exact). (2) The strategy is an Avellaneda–Lee-*style* variant (cross-sectional
+demeaning, symmetric 0.50 exit, 3.5 stop, inverse-residual-volatility weights, ETF-on-ETF); "no edge" refers to this variant. (3) The realised bootstrap SE (0.60 bp) is below the registered
+inflated one (0.77 bp), so the realised MDE is about 1.5 bp a day (Sharpe 0.65) rather than 1.91 bp (0.83).

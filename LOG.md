@@ -480,3 +480,8 @@ Phase C (pre-registration) is committed.
 - Exploratory (labelled): PCA K=3 net −2.32 bp; trading time −2.45 bp; SPY beta 0.04; net negative in 11/14 years and VIX<25; VIX>25 +3.0 bp (CI includes 0); all 12 threshold cells
   and M = 40/60/90 net-negative; block 5/60 do not change the decision. Tagged report `results/etf_statarb_2026-11-04-pit2_h2_summary.md` (validated by test_report_tagging).
 - Nothing was tuned after seeing the result. Next: Phase E (independent review).
+
+## 2026-11-05 19:10 UTC — Phase E: independent review, fixes, handoff
+- Fresh general-purpose subagent given the repo path, a housekeeping line and the brief's instruction verbatim; it changed no tracked file. **No P0.** Report + responses:
+  `results/independent_review_session5.md`. Fixes (report-side only; the registered output digest `be176bb0…` is unchanged): registration/manifest checks in the report, gross wording, "variant" wording,
+  cost sensitivity (net +0.55 / −0.29 / −1.70 bp at 2/5/10 bp per side), realised-SE MDE, indicative-only labels. Corrections appended below the RESULTS line of HYPOTHESIS_H2.md. HANDOFF.md: Session 5 section.

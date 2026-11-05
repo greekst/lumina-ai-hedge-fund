@@ -346,3 +346,34 @@ survivorship gap is the delisted companies only (section 1); H1 is within-ticker
 
 ## Final checks
 pytest 131 passed, 1 skipped · UI smoke 1 passed · legacy 19/19 · H1 rerun `8337e6b5…` and Session 3 `ccabc089…` reproduced in fresh directories · manifests verify, frozen snapshots untouched · secret scan OK · CI run 41937894208 (58b398e) green on all four jobs. Details: last LOG.md entry.
+
+---
+
+# Session 5 (2026-11-05) — H2: Avellaneda–Lee sector-ETF statistical arbitrage
+
+Branch `claude/elegant-sagan-vh8d9x`. Timeline: `LOG.md` (Session 5). Mock LLM mode, **0 LLM calls**, no new data (frozen snapshot `2026-11-04-pit2`, untouched).
+Numbers below come from `HYPOTHESIS_H2.md` (RESULTS) and the tagged `results/etf_statarb_2026-11-04-pit2_h2_summary.md`.
+
+## Bottom line
+- **H2 is not rejected — and the strategy lost money net of costs.** Pre-registered (commit 610fb6f, before any real-data run): mean daily net return **−1.70 bp**, one-sided 95% lower bound −2.67 bp,
+  CI [−2.87, −0.50] bp, p = 0.997, net Sharpe −0.74, n = 3,421 days (2013-04-01..2026-11-03), 1,176 entries. Exact command reproduced byte-identically (digest `be176bb0…`).
+- Gross (pre-cost) point estimate +1.11 bp/day (Sharpe 0.48) but **its CI [−0.12, +2.36] includes zero** — not an edge. Turnover is 28% of gross a day (daily re-hedge), costing 2.81 bp/day at 10 bp per side.
+  Exact cost sensitivity: net +0.55 / −0.29 / −1.70 bp at 2 / 5 / 10 bp per side. No cost level turns this into evidence of an edge.
+- Exploratory (labelled): PCA K=3 −2.32 bp; trading time −2.45 bp; SPY beta 0.04; net negative in 11/14 years; all 12 threshold cells and M = 40/60/90 net-negative; block 5/60 do not matter.
+  The strategy is an Avellaneda–Lee-*style* variant; "no edge" is for this variant.
+
+## What was built
+- `backtest/etf_statarb.py` (engine, bootstrap, CLI that refuses to run unless HYPOTHESIS_H2.md is committed), `backtest/etf_statarb_report.py` (tagged report + exploratory block +
+  registration/manifest checks), `tests/test_etf_statarb.py` (27 synthetic tests: invariants, OU makes money, random walk does not, poisoned-future on S-scores/hedges/positions for xs/pca/trading-time,
+  same-close shock test, meta-tests that the detectors fail for a same-close variant and a t+1 window, mutation checks on the real engine).
+- Rules kept: signal at close t, trade at close t+1, earn t+2; costs 10 bp per side on turnover; one primary factor model fixed with a written justification; nothing tuned after the result.
+
+## Independent review (`results/independent_review_session5.md`, verbatim + responses)
+No P0. P1-1 (run guard only checks the file is committed; no hash pinning) — report now verifies prereg-above-line, engine file and price manifest; the engine guard is left as is to keep the registered digest. P1-2 and P2-3
+wording fixed (gross not distinguishable from zero; "variant"). Added: cost sensitivity, realised-SE MDE (1.5 bp/day, Sharpe 0.65 vs registered 1.91 / 0.83). Sub-sample bootstraps flagged as indicative only.
+
+## Open items / next
+1. If a lower-cost or lower-turnover design is wanted, it is a different strategy and needs its own pre-registration (hedge ratios frozen at entry, wider bands, longer M — the M = 90 and open = 2.0 cells hint turnover is the constraint, which is *not* a result to chase).
+2. Not modelled: borrow, financing, impact, fund-composition changes (2016-09, 2018-06, 2023-03).
+3. The guard in `etf_statarb.prereg_committed` is an accident guard, not tamper proof; consider pinning the pre-registration commit and engine hash in the CLI for any future one-shot test.
+4. Other ideas from the Drive note remain unstarted (quarter-end flows, TradingAgents test bench, ...); each is pre-registered first.

@@ -162,6 +162,12 @@
       "sharpe": -1.602651937
     }
   },
+  "cost_sens": {
+    "0": 0.0001111487579,
+    "10": -0.0001697929612,
+    "2": 5.496041408e-05,
+    "5": -2.932210165e-05
+  },
   "grid_open_close": {
     "1.0|0.25": {
       "breakeven_bps_side": 1.638087805,
@@ -356,6 +362,10 @@
       "se_mean": 8.375853715e-05
     }
   },
+  "mde_boot_se": {
+    "mde_mean": 0.0001498913938,
+    "mde_sharpe_ann": 0.6496937621
+  },
   "mde_realised": {
     "mde_mean": 0.0001906871538,
     "mde_sharpe_ann": 0.8265201303,
@@ -436,5 +446,10 @@
     "p05": -0.0003472072988,
     "sharpe": -0.9945330734,
     "turnover": 0.2917758374
+  },
+  "verification": {
+    "engine_unchanged_since_engine_commit": true,
+    "prereg_above_line_intact": true,
+    "snapshot_prices_match_manifest": true
   }
 }

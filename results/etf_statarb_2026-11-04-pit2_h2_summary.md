@@ -1,6 +1,8 @@
 # Session 5 Phase D — pre-registered H2 first, then exploratory results
 
-Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). Snapshot `2026-11-04-pit2` (frozen, untouched). Mean daily net return of the Avellaneda–Lee sector-ETF strategy, primary factor model cross-sectional demeaning. <!-- text-only -->
+Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). Snapshot `2026-11-04-pit2` (frozen, untouched). Mean daily net return of the Avellaneda–Lee-style sector-ETF strategy (a specific variant: cross-sectional demeaning of standardised returns, symmetric 0.50 exit, 3.5 stop, inverse-residual-volatility weights, ETF-on-ETF); "no edge" applies to this variant, not to every Avellaneda–Lee implementation. <!-- text-only -->
+
+Registration check run with this report: pre-registration above the RESULTS line identical to its commit, engine unchanged since its commit, snapshot price files match the manifest (yes). <!-- text-only -->
 
 ## H2 (confirmatory)
 
@@ -10,8 +12,9 @@ Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). S
 - **Decision: do not reject H0.** The fifth percentile is not above zero; here the whole interval lies below zero, so the strategy lost money net of costs. <!-- text-only -->
 - Annualised Sharpe (net) -0.74 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]; economic threshold 1.00bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] a day: not met. <!-- text-only -->
 - Turnover (sum of |weight change|) 28.09% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] of gross exposure per day (70.8 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] times a year); share of days in the market 98.33% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05].
-- Cost drag 2.81bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day (7.08% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a year) against a gross (pre-cost) mean of 1.11bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day (gross Sharpe 0.48 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]). Break-even cost: the gross edge would just pay a cost of 3.96bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] per side, against the assumed 10bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05].
-- Realised MDE (one-sided, eighty percent power; inflation 1.50 [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] assumed): 1.91bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day, i.e. an annualised Sharpe of 0.83 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. Pre-registered MDE grid by assumed daily volatility: 0.15% [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] → 0.78bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05], 0.25% [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] → 1.30bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05], 0.40% [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] → 2.08bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05].
+- Cost drag 2.81bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day (7.08% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a year) against a gross (pre-cost) point estimate of 1.11bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day (gross Sharpe 0.48 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]); the gross mean is not distinguishable from zero (CI in the exploratory block). If it were real, it would just pay a cost of 3.96bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] per side, against the assumed 10bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05].
+- Cost sensitivity (exact, cost is linear in turnover; the registered per-side cost is an assumption, likely conservative for liquid sector funds at the close but with borrow, financing and impact omitted): net mean at 0bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] per side 1.11bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], net mean at 2bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] per side 0.55bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], net mean at 5bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] per side -0.29bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], net mean at 10bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] per side -1.70bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. <!-- sensitivity, exploratory -->
+- Realised MDE (one-sided, eighty percent power; registered variance inflation 1.50 [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] assumed): 1.91bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day, i.e. an annualised Sharpe of 0.83 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. Using the realised bootstrap SE instead (the registered inflation proved conservative): 1.50bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day, Sharpe 0.65 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. Pre-registered MDE grid by assumed daily volatility: 0.15% [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] → 0.78bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05], 0.25% [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] → 1.30bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05], 0.40% [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05] → 2.08bp [MODEL ASSUMPTION · HYPOTHESIS_H2.md, 2026-11-05].
 - Maximum drawdown of the additive equity curve -58.48% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. Max drawdown is descriptive only.
 - Reproducibility: the exact registered command run twice gave identical output digests; this report recomputes the primary mean as -1.70bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. <!-- text-only -->
 
@@ -19,7 +22,7 @@ Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). S
 
 ### Gross (pre-cost) result
 
-- Mean gross daily return 1.11bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], ninety-five percent CI [-0.12bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], 2.36bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]], one-sided p 0.0371 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], Sharpe 0.48 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05].
+- Gross point estimate 1.11bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] a day — **not distinguishable from zero** (two-sided CI includes zero; the one-sided p is exploratory and not corrected for the number of cells shown). Ninety-five percent CI [-0.12bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], 2.36bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]], one-sided p 0.0371 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], Sharpe 0.48 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05].
 
 ### Factor model: PCA with K = 3 versus cross-sectional demeaning
 
@@ -38,7 +41,7 @@ Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). S
 
 - Net-return beta to SPY (same-day OLS) 0.036 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05], correlation 0.104 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]; gross-return beta 0.036 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05]. Mean net weight of the held book 0.009 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] (the book is factor-hedged against the standardised-return factor, not dollar-neutral).
 
-### By calendar year
+### By calendar year (day-level bootstrap; descriptive, about forty cells are shown so some will look notable by chance)
 
 | year | days | net mean | gross mean | Sharpe | CI low | CI high |
 |---|---|---|---|---|---|---|
@@ -57,7 +60,7 @@ Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). S
 | 2025 | 250 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 1.40bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 4.52bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 0.60 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -2.48bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 5.27bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] |
 | 2026 | 211 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -4.82bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -2.38bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -1.60 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -10.98bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 1.72bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] |
 
-### By VIX regime (VIX close on the decision date, two sessions before the P&L day)
+### By VIX regime (VIX close on the decision date, two sessions before the P&L day; the interval resamples selected, non-adjacent days, so it is only indicative)
 
 | regime | days | net mean | gross mean | Sharpe | CI low | CI high |
 |---|---|---|---|---|---|---|
@@ -82,7 +85,7 @@ Pre-registration: HYPOTHESIS_H2.md (commit 610fb6f, before any real-data run). S
 | 2.0 / 0.5 | -0.66bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 0.81bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -0.30 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 14.69% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 338 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] |
 | 2.0 / 0.75 | -1.16bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 0.38bp [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | -0.56 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 15.44% [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] | 346 [SOURCED FACT · etf-statarb 2026-11-04-pit2 h2, 2026-11-05] |
 
-### Lookback sensitivity (all else fixed)
+### Lookback sensitivity (all else fixed; each M starts its sample M−60 sessions earlier or later, and all cells share one history)
 
 | M | net mean | gross mean | net Sharpe | turnover | entries |
 |---|---|---|---|---|---|
