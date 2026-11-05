@@ -485,3 +485,8 @@ Phase C (pre-registration) is committed.
 - Fresh general-purpose subagent given the repo path, a housekeeping line and the brief's instruction verbatim; it changed no tracked file. **No P0.** Report + responses:
   `results/independent_review_session5.md`. Fixes (report-side only; the registered output digest `be176bb0…` is unchanged): registration/manifest checks in the report, gross wording, "variant" wording,
   cost sensitivity (net +0.55 / −0.29 / −1.70 bp at 2/5/10 bp per side), realised-SE MDE, indicative-only labels. Corrections appended below the RESULTS line of HYPOTHESIS_H2.md. HANDOFF.md: Session 5 section.
+
+## 2026-11-05 19:19 UTC — Session 5 final
+- Final checks on b4546ca: pytest **158 passed, 1 skipped**; UI smoke 1 passed; registered H2 command rerun in a fresh clone → digest `be176bb0…6168` (identical, 4th run); secret scan of all tracked files OK;
+  frozen snapshots untouched; kill switches, brokers and posting code untouched; live LLM calls 0.
+- **GitHub Actions on `claude/elegant-sagan-vh8d9x`: run 42091388825 (b4546ca) green.** Branch ready for a PR into `main`.
