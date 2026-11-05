@@ -472,3 +472,11 @@ Phase C (pre-registration) is committed.
   MDE from assumptions only: Sharpe ≈ 0.83 a year (0.78/1.30/2.08 bp a day for assumed daily vol 0.15/0.25/0.40%). Economic threshold 1 bp a day.
 - Known wording slip in the committed file (cannot be edited above the line): the block-length sentence says "longer than the expected holding period ... is not claimed" —
   meaning only that 20 days is a month-scale choice and is not argued to exceed the holding period.
+
+## 2026-11-05 19:04 UTC — Phase D: H2 run exactly as registered
+- Exact command (HYPOTHESIS_H2.md) run twice in parallel and a third time into `results/`: identical digest **be176bb0…6168** (csv + summary json). Report digest `18f7c42f…` (twice).
+- **H2: mean daily net return −1.70 bp, one-sided lower bound −2.67 bp, CI [−2.87, −0.50] bp, p = 0.997, net Sharpe −0.74, n = 3,421 days; not rejected (the whole CI is below zero).**
+  Turnover 28.1% of gross a day (~71×/yr), cost drag 2.81 bp/day (7.1%/yr) vs gross +1.11 bp/day (Sharpe 0.48); break-even cost ≈ 4.0 bp per side vs 10 bp assumed; 1,176 entries.
+- Exploratory (labelled): PCA K=3 net −2.32 bp; trading time −2.45 bp; SPY beta 0.04; net negative in 11/14 years and VIX<25; VIX>25 +3.0 bp (CI includes 0); all 12 threshold cells
+  and M = 40/60/90 net-negative; block 5/60 do not change the decision. Tagged report `results/etf_statarb_2026-11-04-pit2_h2_summary.md` (validated by test_report_tagging).
+- Nothing was tuned after seeing the result. Next: Phase E (independent review).
