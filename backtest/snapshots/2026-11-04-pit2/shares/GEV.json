@@ -1,0 +1,121 @@
+{
+ "ciks": [
+  1996810
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2025-02-06 07:00:42",
+   "as_of": "2024-06-28",
+   "value": 47100000000.0
+  },
+  {
+   "accepted_at": "2026-01-29 16:16:47",
+   "as_of": "2025-06-30",
+   "value": 144000000000.0
+  }
+ ],
+ "rules": "v2",
+ "shares": [
+  {
+   "accepted_at": "2024-04-30 06:40:05",
+   "accn": "0001996810-24-000008",
+   "as_of": "2024-04-26",
+   "assets": 47872000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares (unchecked: no weighted count in filing)",
+   "shares": 274085523.0
+  },
+  {
+   "accepted_at": "2024-07-24 06:36:18",
+   "accn": "0001996810-24-000067",
+   "as_of": "2024-07-17",
+   "assets": 48052000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 274802034.0
+  },
+  {
+   "accepted_at": "2024-10-23 06:36:16",
+   "accn": "0001996810-24-000083",
+   "as_of": "2024-10-16",
+   "assets": 50853000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 275652970.0
+  },
+  {
+   "accepted_at": "2025-02-06 07:00:42",
+   "accn": "0001996810-25-000011",
+   "as_of": "2025-01-15",
+   "assets": 51485000000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 275900754.0
+  },
+  {
+   "accepted_at": "2025-04-23 06:22:38",
+   "accn": "0001996810-25-000073",
+   "as_of": "2025-03-31",
+   "assets": 51559000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 272934744.0
+  },
+  {
+   "accepted_at": "2025-07-23 06:23:29",
+   "accn": "0001996810-25-000133",
+   "as_of": "2025-06-30",
+   "assets": 53078000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 272223940.0
+  },
+  {
+   "accepted_at": "2025-10-22 06:38:59",
+   "accn": "0001996810-25-000160",
+   "as_of": "2025-09-30",
+   "assets": 54398000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 271320459.0
+  },
+  {
+   "accepted_at": "2026-01-29 16:16:47",
+   "accn": "0001996810-26-000015",
+   "as_of": "2025-12-31",
+   "assets": 63016000000.0,
+   "form": "10-K",
+   "method": "dei cover shares",
+   "shares": 269529464.0
+  },
+  {
+   "accepted_at": "2026-04-22 06:27:20",
+   "accn": "0001996810-26-000064",
+   "as_of": "2026-03-31",
+   "assets": 75612000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 268719995.0
+  },
+  {
+   "accepted_at": "2026-07-22 06:27:25",
+   "accn": "0001996810-26-000148",
+   "as_of": "2026-06-30",
+   "assets": 80800000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 266333581.0
+  },
+  {
+   "accepted_at": "2026-10-28 06:19:15",
+   "accn": "0001996810-26-000163",
+   "as_of": "2026-09-30",
+   "assets": 86220000000.0,
+   "form": "10-Q",
+   "method": "dei cover shares",
+   "shares": 264677066.0
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "GEV"
+}

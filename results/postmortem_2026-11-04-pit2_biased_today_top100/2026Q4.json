@@ -1,0 +1,57 @@
+[
+ {
+  "actual": {
+   "label": "SOURCED FACT",
+   "ret_1d_pct": 15.7768,
+   "ret_20d_pct": 33.8019,
+   "ret_5d_pct": 7.2367,
+   "source": "snapshot prices (yfinance adjusted close)",
+   "spy_1d_pct": 0.1783,
+   "spy_20d_pct": 1.2693,
+   "spy_5d_pct": 1.9131
+  },
+  "announced_at_et": "2026-10-01 06:00",
+  "decision_date": "2026-09-30",
+  "diff": {
+   "abs_move_vs_atr_ratio": 4.0043,
+   "avoided_drawdown": 0,
+   "council_correct_1d": 1,
+   "council_correct_20d": 1,
+   "council_correct_5d": 1,
+   "factors_correct_1d": 0,
+   "factors_correct_20d": 0,
+   "factors_correct_5d": 0,
+   "missed_upside": 0,
+   "stop_breached_20d": 0
+  },
+  "expected": {
+   "agent_scores": {
+    "buffett": 89,
+    "cathie_wood": 59,
+    "cis_trader": 85,
+    "george_soros": 64,
+    "graham": 26,
+    "michael_burry": 55,
+    "william_oneil": 80
+   },
+   "agent_stances": {
+    "buffett": "BULLISH",
+    "cathie_wood": "NEUTRAL",
+    "cis_trader": "BULLISH",
+    "george_soros": "NEUTRAL",
+    "graham": "BEARISH",
+    "michael_burry": "CAUTION",
+    "william_oneil": "BULLISH"
+   },
+   "council_action": "ACCUMULATE",
+   "council_confidence": 68,
+   "council_long": 1,
+   "cro_veto": 0,
+   "factors_only_long": 0,
+   "implied_1d_move_pct_from_atr": 3.94,
+   "label": "MODEL ASSUMPTION",
+   "veto_reason": ""
+  },
+  "ticker": "ACN"
+ }
+]

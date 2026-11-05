@@ -321,3 +321,93 @@ Source: `results/pit_vs_biased_2026-11-04.md` (tagged). Window D in 2023-10-09..
   Session 2 merge (`git diff 5529c83` on those files is empty). Live LLM calls this session: 0.
 - **GitHub Actions on `claude/kind-rubin-ahzsge`: run 41923015186 (commit ccb9c89) green on all four jobs** (secrets, test 3.12, test 3.13, ui-smoke).
 - Branch ready for a PR into `main`.
+
+---
+
+# Session 4 (2026-11-04) — one clean data base, H1 rerun unchanged
+
+Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode throughout; no live LLM calls.
+
+## 2026-11-04 22:44 UTC — Start; Phase A: no delisted-price provider
+- Environment checked (presence only): `GEMINI_API_KEY`, `FINNHUB_API_KEY`, `FRED_API_KEY`, `SEC_USER_AGENT` set. **No delisted-price
+  provider was added**: no further API keys, no network secrets on the environment, and the allowed hosts are unchanged (Yahoo, SEC,
+  FRED, Hugging Face, Finnhub, Gemini). Yahoo keeps no history for delisted tickers; Finnhub candles are 403 on this plan. Phase A
+  therefore keeps the documented gap and sizes it from EDGAR data only (`backtest/delisted_gap.py`, results/delisted_gap_2026-11-04.md).
+- Fresh container: venv rebuilt on Python 3.12 from the pinned set; `pytest -q` → 100 passed, 1 skipped (baseline before any change).
+
+## 2026-11-04 23:00 UTC — Phase A result: delisted gap sized from EDGAR (no prices)
+- `results/delisted_gap_2026-11-04.md`: 28 gap companies (public-float top 150 in some year, no current listing, plausible float).
+  Lost top-100 events in the H1 window, estimated from the latest public float vs the PIT 100th-largest cap on the float date:
+  **82 (1.7%)**, upper bound (150th-largest) **147 (3.1%)**, against 4,661 H1 events. Concentrated 2015Q2–2019Q3 (up to ~11 per
+  season, ~10% of a season); near zero since 2020. Largest: Shire 11, Celgene 10, Allergan 8, Walgreens 8, Monsanto 8, Time Warner 7.
+- No delisted company could be added to the candidate pool (no prices). Direction of the bias stays unknown.
+
+## 2026-11-04 23:28 UTC — Phase B: new base snapshot `2026-11-04-pit2`; Phase C: H1 rerun
+- **Snapshot** (`backtest/snapshot_pit2.py`, change report `results/pit2_changes_2026-11-04.md`): self-contained (no `base` key),
+  `rank_rules: v2`, `event_rules: v2`. Prices, fundamentals, splits and vendor event lists copied byte-for-byte from `2026-11-04-pit`
+  and v2 share counts from `2026-11-04-pit-r1`, each verified against its frozen manifest (both frozen snapshots untouched). New data
+  path `filings/<T>.json` (SEC EDGAR submissions: every 8-K with items, original 10-Q/10-K with period end; 1,197 requests at 5/s,
+  cached). The frozen Item 2.02 lists equal fresh EDGAR for all 564 companies. Rebuild from cache byte-identical (manifest `8fbf7d7c…`).
+- **Event rules v2** (`snapshot_pit.resolve_events_v2`), decided by inspecting the 45 vendor-only events of the Phase D sample and
+  EDGAR filing lists (not by any return):
+  P2-2: a vendor-only date 4–45 days after the period's earnings 8-K is the 10-Q/10-K date unless a release-type 8-K (2.02/7.01, or
+  9.01 alone) was filed that day or the day before → re-timed from the 8-K or dropped (COST ×2, INTC, KHC, PGR, CCL, USB, BRK.B
+  2016-05, MRNA, DELL re-timed; LIN 2020-03-01 dropped; GE 2020-04-29 and WELL 2019-02-12 kept: their releases were 9.01-only 8-Ks
+  while an earlier 2.02 8-K was something else). P2-1: an earnings 8-K with no vendor date within ±60 days and no event within ±45
+  days fills a vendor gap (BLK 2014–2022: 32 events; OXY's 2023-01-04 preliminary 8-K correctly not added).
+  8-K-only timing = pre-market of the acceptance day; only for issuers whose 8-Ks are timely (≤10% would give a later decision day
+  on their vendor-and-8-K events). Validation on 22,571 such events: 0.19% would be one session late (raw acceptance time: 1.6%).
+- **Provenance:** the first pit2 build (95d2385, manifest `38efcb28…`) measured timeliness in calendar days, which wrongly dropped
+  COST's re-timed events (next-morning 8-Ks after 21:00 releases). Fixed before any review (1ca98af); the first-version H1 run
+  (`dddfa071…`, S +0.08%, lower bound −0.45%) is recorded in HYPOTHESIS.md; same decision.
+- **Tests:** `tests/test_pit2_snapshot.py` (17: rule cases from the real ones, manifest/identity, offline event rebuild byte-identical,
+  "event ≤ each source", reaction-day detector on 8-K-only events of top-150 companies: |r(D)|/|r(D+1)| 0.33, and its meta-test fails
+  the leak when those events are shifted one session late: 2.05). Poisoned-future + leak meta-tests now also run on pit2 with a fourth
+  day (2017-01-12, BLK 8-K-only event): 30 passed.
+- Known, pre-existing, harmless for H1: DELL prices before 2018-12-28 are the DVMT tracking stock (DELL never ranks top 100 then).
+- **Phase B on the new data** (`results/pit_vs_biased_2026-11-04-pit2.md`; digests B `a47d6d9e…`, C `7c35c029…`): buy-and-hold excess
+  vs sector ETF T+20: biased B +0.96% [+0.63, +1.33] → PIT C +0.12% [−0.20, +0.43]; C/B = 0.12 (Session 3: 0.12). Council
+  within-ticker selection skill T+5 in C: −0.02%.
+- **Phase C — H1 rerun, exact pre-registered command, snapshot id only** (two runs in parallel 23:15–23:24 UTC, identical sha256
+  `8337e6b5…`; `results/h1_rerun_2026-11-04-pit2.md`): **S = +0.08%, lower bound −0.45%, CI [−0.58%, +0.70%], p = 0.396,
+  n = 4,692 / 47 seasons / 188 tickers. Not rejected.** Session 3: +0.07%, −0.41%, n = 4,661. Exploratory: FE slope +0.10%, W = 0.78,
+  MDE 0.79% (S units) / 1.01% (effect units). H1 sample change: +64 events (BLK 30, COP 13, ...), −33 (RPAY 7, SHW 2, ...).
+  **Nothing changed in substance.**
+- **Remaining survivorship gap:** the delisted companies only (Phase A: ~82 events, ≤147, 1.7–3.1%, mostly 2015–2019); direction unknown.
+
+## 2026-11-04 23:58 UTC — Phase D: independent review, fixes, handoff
+- Fresh general-purpose subagent started ~23:29 UTC (after the Phase C commits), given only the repo path, venv/test/offline-rebuild
+  hints, a scratch dir, the SEC rate limit, "change no repo files, no live LLM calls", and the brief's instruction verbatim. Report saved
+  verbatim with responses: `results/independent_review_session4.md`. It reproduced the H1 rerun digest `8337e6b5…` and the snapshot.
+- **No P0.** P1-1 (delisted-gap search incomplete; "upper bound" not one): fixed in `delisted_gap.find_gaps` — estimate 84 events (1.8%),
+  partial upper bound 159 (3.3%), plus 21CF/VMware not findable by a float screen (supersedes the Phase A figures 82/147 above).
+  P2-5 labels fixed. P2-1..P2-4 (spin-offs as splits, adjusted-Close artifacts, early pre-market timing, event identification using later
+  filings) open and disclosed; the reviewer's measured effects move S to at most +0.091%, never changing the decision. No rerun needed.
+- CI: runs on 1ca98af..5c33527 failed the flake8 F821 check (`np` in a string annotation in `snapshot_pit.py`); fixed in ce48f64
+  (module-level import; snapshot rebuild unchanged). The reviewer's "other process" note refers to that fix.
+- HANDOFF.md: Session 4 section added.
+
+## 2026-11-05 00:07 UTC — Session 4 final
+- Final checks (23:59–00:07 UTC, on 58b398e): pytest **131 passed, 1 skipped** (incl. poisoned-future + leak meta-tests on all three PIT
+  snapshots and the 17 pit2 tests); UI smoke 1 passed; legacy suite 19/19 (zero-cost env). Fresh-directory reruns: Session 4 H1
+  `8337e6b5…` (fourth identical run incl. the reviewer's), Session 3 pre-registered H1 `ccabc089…` (unchanged). Manifests of
+  `2026-11-04`, `-sp100`, `-pit`, `-pit-r1` verify; the two frozen PIT snapshots have no diff since the Session 3 merge; pit2 rebuilds
+  byte-identically. Secret scan of all tracked files OK. Only `backtest/`, `tests/`, docs and results changed (no kill-switch, broker
+  or posting code). Live LLM calls: 0.
+- **GitHub Actions on `claude/serene-johnson-hofeqi`: run 41937894208 (commit 58b398e) green on all four jobs.**
+- Branch ready for a PR into `main`.
+
+## 2026-11-05 13:15 UTC — Decision: delisted companies stay excluded (owner's choice)
+- **Decision (by the owner):** companies that were later delisted are removed from the universe as the accepted approach for now,
+  instead of buying a delisted-price source. This is pre-registered exclusion 3 in HYPOTHESIS.md, so H1 is unaffected.
+- **Checked, no data change needed:** all 564 companies in `2026-11-04-pit2` have a current listing (SEC company_tickers_exchange);
+  none was delisted. Results and snapshots are unchanged.
+- **Known cost of this choice** (results/delisted_gap_2026-11-04.md): about 84 top-100 events missing from the H1 window (1.8%),
+  partial upper bound 159 (3.3%), plus 21st Century Fox (~16, reviewer estimate) and VMware (unquantified). Mostly 2015–2019. Each is
+  replaced by the event of a company just outside the top 100. Direction of the bias unknown; within-ticker H1 largely immune.
+- **Future solution, if this is revisited:** EODHD (hosted REST API; delisted tickers in every package per EODHD; end-of-day plan
+  listed from ~$20/month; check the tier). Steps: allow `eodhd.com`; add the key as an env var such as `EODHD_API_KEY` (EODHD takes the
+  key as a URL parameter, so a header-injected network secret may not work; unverified); probe coverage for the ~36 gap companies first
+  (one coverage gap before 1997 was reported elsewhere; we need 2013+); match reused tickers to EDGAR CIKs by name and dates; add them to
+  the candidate pool; build a new snapshot id; rerun H1 unchanged. Fallback: Sharadar on Nasdaq Data Link (survivorship-free, stable
+  IDs; price and personal-use licence unconfirmed). Not suitable here: Norgate (desktop updater, no hosted API), CRSP (WRDS access).

@@ -1,0 +1,158 @@
+{
+ "ciks": [
+  1726173
+ ],
+ "public_float": [
+  {
+   "accepted_at": "2019-02-25 07:35:39",
+   "as_of": "2018-06-30",
+   "value": 257082107000.0
+  },
+  {
+   "accepted_at": "2020-02-24 07:01:44",
+   "as_of": "2019-06-30",
+   "value": 137552014000.0
+  },
+  {
+   "accepted_at": "2021-03-01 06:41:53",
+   "as_of": "2020-06-30",
+   "value": 88264442.0
+  },
+  {
+   "accepted_at": "2021-03-31 17:31:36",
+   "as_of": "2020-06-30",
+   "value": 88264442.0
+  },
+  {
+   "accepted_at": "2022-02-28 06:32:24",
+   "as_of": "2021-06-30",
+   "value": 173487448.0
+  },
+  {
+   "accepted_at": "2022-03-31 16:46:25",
+   "as_of": "2021-06-30",
+   "value": 173487448.0
+  },
+  {
+   "accepted_at": "2023-02-27 06:12:11",
+   "as_of": "2022-06-30",
+   "value": 125207808.0
+  },
+  {
+   "accepted_at": "2023-03-31 17:19:45",
+   "as_of": "2022-06-30",
+   "value": 125207808.0
+  },
+  {
+   "accepted_at": "2024-02-26 06:30:34",
+   "as_of": "2023-06-30",
+   "value": 201503586.0
+  },
+  {
+   "accepted_at": "2024-03-29 16:26:29",
+   "as_of": "2023-06-30",
+   "value": 201503586.0
+  },
+  {
+   "accepted_at": "2025-03-03 06:11:32",
+   "as_of": "2024-06-30",
+   "value": 190530762.0
+  },
+  {
+   "accepted_at": "2026-03-02 06:32:21",
+   "as_of": "2025-06-30",
+   "value": 267698652.0
+  },
+  {
+   "accepted_at": "2026-03-31 16:16:05",
+   "as_of": "2025-06-30",
+   "value": 267698652.0
+  }
+ ],
+ "rules": "v2",
+ "shares": [
+  {
+   "accepted_at": "2019-02-25 07:35:39",
+   "accn": "0001193805-19-000242",
+   "as_of": "2019-02-25",
+   "assets": null,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 346995.8309490722
+  },
+  {
+   "accepted_at": "2020-02-24 07:01:44",
+   "accn": "0001193805-20-000256",
+   "as_of": "2020-02-24",
+   "assets": null,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 343213.92532795155
+  },
+  {
+   "accepted_at": "2020-11-09 08:40:57",
+   "accn": "0001193805-20-001399",
+   "as_of": "2020-11-03",
+   "assets": 983601000.0,
+   "form": "10-Q",
+   "method": "dei cover shares (unchecked: no weighted count in filing)",
+   "shares": 206864.0
+  },
+  {
+   "accepted_at": "2021-03-01 06:41:53",
+   "accn": "0001628280-21-003517",
+   "as_of": "2021-03-01",
+   "assets": 1017968000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 335664.78795158456
+  },
+  {
+   "accepted_at": "2022-02-28 06:32:24",
+   "accn": "0001726173-22-000004",
+   "as_of": "2022-02-28",
+   "assets": 894807000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 317249.396405258
+  },
+  {
+   "accepted_at": "2023-02-27 06:12:11",
+   "accn": "0001726173-23-000009",
+   "as_of": "2023-02-27",
+   "assets": 828474000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 298035.9303732663
+  },
+  {
+   "accepted_at": "2024-02-26 06:30:34",
+   "accn": "0001726173-24-000004",
+   "as_of": "2024-02-26",
+   "assets": 849422000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 289978.3629742994
+  },
+  {
+   "accepted_at": "2025-03-03 06:11:32",
+   "accn": "0001726173-25-000003",
+   "as_of": "2025-03-03",
+   "assets": 866133000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 279479.5539033457
+  },
+  {
+   "accepted_at": "2026-03-02 06:32:21",
+   "accn": "0001628280-26-012987",
+   "as_of": "2026-03-02",
+   "assets": 1025383000.0,
+   "form": "10-K",
+   "method": "net income / diluted EPS",
+   "shares": 260586.68149589875
+  }
+ ],
+ "source": "SEC EDGAR companyfacts dei/us-gaap; PIT key = acceptanceDateTime",
+ "ticker": "BH"
+}

@@ -9,6 +9,8 @@ Columns (same decision-date window as Session 2, 2023-10-09 .. 2026-09-30):
   C  point-in-time universe: an event counts only if its company was in the top 100 at the close of D-1
 
   python -m backtest.compare_universes            # writes results/pit_vs_biased_2026-11-04.md/.json
+  python -m backtest.compare_universes --snapshot 2026-11-04-pit2   # Session 4: B and C on the new base snapshot
+                                                  # -> results/pit_vs_biased_2026-11-04-pit2.md/.json
 """
 
 from __future__ import annotations
@@ -23,11 +25,20 @@ from backtest import walkforward as wf
 from backtest.pit import Snapshot
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PIT = os.path.join(ROOT, "backtest", "snapshots", "2026-11-04-pit")
 WINDOW = ("2023-10-09", "2026-09-30")
 
 
-def runs(out_dir: str = wf.RESULTS_DIR) -> Dict[str, Any]:
+def _snap_id() -> str:
+    import sys
+    return sys.argv[sys.argv.index("--snapshot") + 1] if "--snapshot" in sys.argv else "2026-11-04-pit"
+
+
+def _root(sid: str) -> str:
+    return os.path.join(ROOT, "backtest", "snapshots", sid)
+
+
+def runs(out_dir: str = wf.RESULTS_DIR, sid: str = "2026-11-04-pit") -> Dict[str, Any]:
+    PIT = _root(sid)
     snap = Snapshot.load(PIT)
     last = str(snap.sessions("SPY")[-1].date())
     res = {}
@@ -38,6 +49,7 @@ def runs(out_dir: str = wf.RESULTS_DIR) -> Dict[str, Any]:
     with open(os.path.join(ROOT, "results", "walkforward_2026-11-04-sp100_summary.json"), encoding="utf-8") as fh:
         res["A"] = {"summary": json.load(fh), "rows": None}
     res["_last_session"] = last
+    res["_sid"] = sid
     return res
 
 
@@ -54,8 +66,9 @@ ROWS = [  # (label, cell key, kind)
 
 def markdown(res: Dict[str, Any]) -> str:
     from core.reporting.tagged import untagged_numbers
-    srcs = {"A": "wf-backtest 2026-11-04-sp100", "B": "wf-backtest 2026-11-04-pit_biased_today_top100",
-            "C": "wf-backtest 2026-11-04-pit_pit_s2window"}
+    sid = res.get("_sid", "2026-11-04-pit")
+    srcs = {"A": "wf-backtest 2026-11-04-sp100", "B": f"wf-backtest {sid}_biased_today_top100",
+            "C": f"wf-backtest {sid}_pit_s2window"}
 
     def F(x, k, pct=True, dec=2):
         return wf._fmt(x, pct, srcs[k], "2026-11-04", decimals=dec)
@@ -77,6 +90,13 @@ def markdown(res: Dict[str, Any]) -> str:
          "universe: an event counts only if its company was in the top hundred by market cap at the close of D-1. "
          "B versus C isolates the universe effect on identical data. <!-- text-only -->", "",
          "| | A: Session 2 (biased) | B: today's top hundred, Session 3 data (biased) | C: point-in-time |", "|---|---|---|---|"]
+    if sid != "2026-11-04-pit":
+        L[0] += f" (snapshot {sid})"
+        L = [x.replace("recomputed on the Session 3 data", f"recomputed on snapshot {sid}")
+             .replace("today's top hundred, Session 3 data (biased)", "today's top hundred, new base snapshot (biased)") for x in L]
+        L.insert(3, f"Session 4: columns B and C use snapshot `{sid}` (ranking rules v2 and event rules v2 in the base; same prices as "
+                    "`2026-11-04-pit`). Column A is unchanged. <!-- text-only -->")
+        L.insert(4, "")
     ov = {k: res[k]["summary"]["cells"]["overall"] for k in "ABC"}
     L.append("| events | " + " | ".join(wf._fmt(ov[k]["n_events"], False, srcs[k], "2026-11-04", decimals=0) for k in "ABC") + " |")
     L.append("| tickers with events | " + " | ".join(
@@ -107,20 +127,21 @@ def markdown(res: Dict[str, Any]) -> str:
     return md
 
 
-def from_files() -> Dict[str, Any]:
-    res = {}
-    for k, name in (("A", "2026-11-04-sp100"), ("B", "2026-11-04-pit_biased_today_top100"), ("C", "2026-11-04-pit_pit_s2window")):
+def from_files(sid: str = "2026-11-04-pit") -> Dict[str, Any]:
+    res = {"_sid": sid}
+    for k, name in (("A", "2026-11-04-sp100"), ("B", f"{sid}_biased_today_top100"), ("C", f"{sid}_pit_s2window")):
         with open(os.path.join(ROOT, "results", f"walkforward_{name}_summary.json"), encoding="utf-8") as fh:
             res[k] = {"summary": json.load(fh)}
-    res["_last_session"] = str(Snapshot.load(PIT).sessions("SPY")[-1].date())
+    res["_last_session"] = str(Snapshot.load(_root(sid)).sessions("SPY")[-1].date())
     return res
 
 
 def main() -> None:
     import sys
-    res = from_files() if "--from-files" in sys.argv else runs()
+    sid = _snap_id()
+    res = from_files(sid) if "--from-files" in sys.argv else runs(sid=sid)
     md = markdown(res)
-    out = os.path.join(ROOT, "results", "pit_vs_biased_2026-11-04.md")
+    out = os.path.join(ROOT, "results", "pit_vs_biased_2026-11-04" + ("" if sid == "2026-11-04-pit" else f"-{sid.split('-')[-1]}") + ".md")
     with open(out, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(md)
     with open(out.replace(".md", ".json"), "w", encoding="utf-8", newline="\n") as fh:

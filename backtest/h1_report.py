@@ -7,6 +7,7 @@ Reads only the outputs of the pre-registered command (HYPOTHESIS.md):
 Writes results/h1_phaseD_2026-11-04.md / .json.
 
   python -m backtest.h1_report
+  python -m backtest.h1_report --snapshot 2026-11-04-pit2   # Session 4 Phase C rerun -> results/h1_rerun_2026-11-04-pit2.md
 """
 
 from __future__ import annotations
@@ -26,6 +27,14 @@ TAG = "2026-11-04-pit_phaseD"
 SRC = f"wf-backtest {TAG}"
 AS_OF = "2026-11-04"
 SEEN_FROM = "2023-10-09"   # Phase B window start (seen before pre-registration)
+BASE_SID = "2026-11-04-pit"
+SID = BASE_SID
+
+
+def configure(sid: str) -> None:
+    """Session 4: the same report for the pre-registered command run on another snapshot (only the id changes)."""
+    global TAG, SRC, SID
+    SID, TAG, SRC = sid, f"{sid}_phaseD", f"wf-backtest {sid}_phaseD"
 
 
 def skill(df: pd.DataFrame, strat: str, h: int) -> Dict[str, Any]:
@@ -70,6 +79,11 @@ def build() -> Dict[str, Any]:
     out["pre_seen_n"] = int((pre.strategy == "council").sum())
     out["overall"] = o
     out["fe"] = fe_slope(df)
+    if SID != BASE_SID:   # Session 4: the Session 3 pre-registered run, for the comparison table
+        with open(os.path.join(ROOT, "results", f"walkforward_{BASE_SID}_phaseD_summary.json"), encoding="utf-8") as fh:
+            ps = json.load(fh)["cells"]["overall"]
+        out["prev"] = {"h1": ps["council|5|selection_skill_fe_2way"],
+                       "fe": fe_slope(pd.read_csv(os.path.join(ROOT, "results", f"walkforward_{BASE_SID}_phaseD.csv")))}
     out["by_regime"] = summ["cells"]["by_regime"]
     out["by_sector"] = summ["cells"]["by_sector"]
     return out
@@ -88,7 +102,13 @@ def markdown(r: Dict[str, Any]) -> str:
     reject = h["p05"] is not None and h["p05"] > 0
     L = ["# Phase D — pre-registered H1 first, then exploratory results", "",
          "Pre-registration: HYPOTHESIS.md (committed before this run). Snapshot `2026-11-04-pit`, point-in-time top-hundred "
-         "universe, mock council, YoY growth from the same filing's prior-year comparative. <!-- text-only -->", "",
+         "universe, mock council, YoY growth from the same filing's prior-year comparative. <!-- text-only -->", ""]
+    if SID != BASE_SID:
+        L = [f"# Session 4 Phase C — H1 rerun on snapshot `{SID}`, pre-registered command unchanged except the snapshot id", "",
+             "Pre-registration: HYPOTHESIS.md (Session 3; nothing above its RESULTS line changed). Snapshot `" + SID + "`: ranking rules v2 "
+             "and event rules v2 folded into a new base (results/pit2_changes_2026-11-04.md). Same prices as the Session 3 run. "
+             "<!-- text-only -->", ""]
+    L += [
          "## H1 (confirmatory): within-ticker selection skill of the council at T+5", "",
          f"- Sample: {N(r['n_events'])} events, decision dates `{r['date_range'][0]}` to `{r['date_range'][1]}`, "
          f"{N(h['n_c1'])} earnings seasons, {N(h['n_c2'])} tickers; council long on {N(h['n_in'])}, flat on {N(h['n_out'])}.",
@@ -106,7 +126,27 @@ def markdown(r: Dict[str, Any]) -> str:
          f"{N(r['fe']['tickers_all_one_side'], 'derived from ' + SRC)} tickers are all-long or all-flat. The ticker fixed-effects "
          f"slope is {F(r['fe']['slope'], src='derived from ' + SRC)}. In those effect units the MDE is about the reported MDE "
          f"divided by W, i.e. close to one percent, not the reported figure.",
-         "", "## Exploratory (not confirmatory; many cells, expect some false positives)", "",
+         ]
+    if SID != BASE_SID:   # Session 4 (review P1-4): MDE in effect units, stated next to S's own MDE
+        L.append(f"- MDE in within-ticker effect units (MDE / W): "
+                 f"{F(h['mde80_one_sided'] / r['fe']['W'] if r['fe']['W'] else None, src='derived from ' + SRC)}.")
+    if SID != BASE_SID and r.get("prev"):
+        p, pf = r["prev"]["h1"], r["prev"]["fe"]
+        ps = "wf-backtest 2026-11-04-pit_phaseD"
+        L += ["", "## Compared with the Session 3 pre-registered run (snapshot `2026-11-04-pit`)", "",
+              "| | Session 3 (`2026-11-04-pit`) | Session 4 (`" + SID + "`) |", "|---|---|---|",
+              f"| events / seasons / tickers | {N(p['n_in'] + p['n_out'], ps)} / {N(p['n_c1'], ps)} / {N(p['n_c2'], ps)} | "
+              f"{N(h['n_in'] + h['n_out'])} / {N(h['n_c1'])} / {N(h['n_c2'])} |",
+              f"| S | {F(p['mean'], src=ps)} | {F(h['mean'])} |",
+              f"| one-sided lower bound (p05) | {F(p['p05'], src=ps)} | {F(h['p05'])} |",
+              f"| two-sided 95% CI | [{F(p['lo'], src=ps)}, {F(p['hi'], src=ps)}] | [{F(h['lo'])}, {F(h['hi'])}] |",
+              f"| one-sided p | {F(p['p_one_sided'], False, 3, ps)} | {F(h['p_one_sided'], False, 3)} |",
+              f"| decision | {'reject' if (p['p05'] or 0) > 0 else 'not rejected'} | {'reject' if reject else 'not rejected'} |",
+              f"| fixed-effects slope (exploratory) | {F(pf['slope'], src='derived from ' + ps)} | {F(r['fe']['slope'], src='derived from ' + SRC)} |",
+              f"| W | {F(pf['W'], False, 2, 'derived from ' + ps)} | {F(r['fe']['W'], False, 2, 'derived from ' + SRC)} |",
+              f"| MDE, S units / effect units | {F(p['mde80_one_sided'], src=ps)} / {F(p['mde80_one_sided'] / pf['W'], src='derived from ' + ps)} | "
+              f"{F(h['mde80_one_sided'])} / {F(h['mde80_one_sided'] / r['fe']['W'] if r['fe']['W'] else None, src='derived from ' + SRC)} |"]
+    L += ["", "## Exploratory (not confirmatory; many cells, expect some false positives)", "",
          "### Within-ticker selection skill, all horizons (two-way clustered)", "",
          "| strategy / horizon | S | 95% CI low | 95% CI high | one-sided lower bound | longs | flats |", "|---|---|---|---|---|---|---|"]
     o = r["overall"]
@@ -149,12 +189,16 @@ def markdown(r: Dict[str, Any]) -> str:
 
 
 def main() -> None:
+    import sys
+    if "--snapshot" in sys.argv:
+        configure(sys.argv[sys.argv.index("--snapshot") + 1])
     r = build()
-    out = os.path.join(ROOT, "results", "h1_phaseD_2026-11-04")
+    out = os.path.join(ROOT, "results", "h1_phaseD_2026-11-04" if SID == BASE_SID else f"h1_rerun_{SID}")
     with open(out + ".md", "w", encoding="utf-8", newline="\n") as fh:
         fh.write(markdown(r))
     with open(out + ".json", "w", encoding="utf-8", newline="\n") as fh:
-        json.dump({k: r[k] for k in ("h1", "h1_season_only", "run", "n_events", "date_range", "n_seasons", "pre_seen", "pre_seen_n")},
+        json.dump({k: r[k] for k in ("h1", "h1_season_only", "run", "n_events", "date_range", "n_seasons", "pre_seen", "pre_seen_n")
+                   + (("fe", "prev") if SID != BASE_SID else ())},
                   fh, indent=1, sort_keys=True, default=lambda x: None if isinstance(x, float) and not np.isfinite(x) else x)
     print("written", out + ".md")
 

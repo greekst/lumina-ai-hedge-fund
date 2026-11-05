@@ -118,3 +118,20 @@ S as defined above is attenuated. It equals W x (a weighted average of within-ti
 sample (46 of 190 tickers are all-long or all-flat and add only to the denominators). In those effect units the realised MDE is
 about 0.98% (not 0.76%) and the pre-registered "about 1.0%" corresponds to about 1.3%. The ticker fixed-effects slope is +0.09%
 (exploratory). So the non-rejection means "no evidence of a within-ticker effect of about 1% or more at T+5".
+
+Session 4 rerun (2026-11-04 UTC; the exact command above with ONLY the snapshot id changed to `2026-11-04-pit2`, nothing above the
+RESULTS line edited). The new base snapshot folds in ranking rules v2 (review P1-1..P1-3) and event rules v2 (review P2-1: 8-K-only
+events in vendor-series gaps, e.g. BLK 2015-2022; P2-2: vendor-only 10-Q/10-K dates re-timed or dropped); prices are byte-identical
+to `2026-11-04-pit`. Exclusion 3 still applies: no delisted-price source was available (estimated 84 lost events, partial upper bound 159 after the review fix;
+results/delisted_gap_2026-11-04.md). Two runs started in parallel at 23:15 UTC on the final snapshot (manifest sha256 `8fbf7d7c…`):
+identical output sha256 `8337e6b57c733c879bb27733c6a49b2d3f1da8a40403cea409649245b7977371`. Tagged report: `results/h1_rerun_2026-11-04-pit2.md`.
+
+- Sample: 4,692 events, D from 2015-01-13 to 2026-09-30, 47 seasons, 188 tickers; council long 3,169, flat 1,523.
+- **S = +0.08%**; one-sided 95% lower bound **−0.45%**; two-sided 95% CI [−0.58%, +0.70%]; one-sided bootstrap p = 0.396;
+  SE 0.32%; MDE (one-sided, 80% power) 0.79% in S units, 1.01% in within-ticker effect units (W = 0.78).
+- **Decision: H0 is not rejected** — the same decision as the Session 3 run (S +0.07%, lower bound −0.41%). Nothing material changed.
+- Exploratory: ticker fixed-effects slope +0.10%; season-only CI [−0.29%, +0.46%].
+- Provenance: a first version of `2026-11-04-pit2` (manifest `38efcb28…`, committed in 95d2385) used a stricter 8-K timeliness
+  filter measured in calendar days. It was replaced (commit 1ca98af) before any review, after the change report showed it wrongly
+  dropped COST's re-timed events. The run on that first version (sha256 `dddfa071…`, 4,689 events) gave S = +0.08%, lower bound
+  −0.45%, CI [−0.57%, +0.70%], p = 0.397: the same decision. The rule change was not chosen by its effect on S.
