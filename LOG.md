@@ -422,3 +422,71 @@ Branch: `claude/serene-johnson-hofeqi` (assigned by the harness). Mock LLM mode 
     honest test bench for TradingAgents, (4) forward test of the options phase-transition screener, (5) deep value screen (needs
     delisted data), (6) macro regime overlay (exploratory). None started; any one is pre-registered first, as H1 was.
 - The repo stays the source of truth (LOG.md, HANDOFF.md, HYPOTHESIS.md, results/); the Drive docs are summaries and may lag.
+
+# Session 5 — Avellaneda–Lee sector-ETF statistical arbitrage (H2)
+
+Branch `claude/elegant-sagan-vh8d9x`. Mock LLM mode, **no LLM calls**. Rule 6 of the brief: no strategy return/P&L/Sharpe/hit rate on real ETF data until
+Phase C (pre-registration) is committed.
+
+## 2026-11-05 18:55 UTC — Phase A: data check (coverage only, no returns)
+- Source: frozen snapshot `backtest/snapshots/2026-11-04-pit2` (read-only; untouched). Files `prices/<T>.csv.gz`; columns
+  `date, Open, High, Low, Close, Volume, CloseSplitAdj`. Manifest: prices from yfinance `auto_adjust=False`; **`Close` (and OHLC) are scaled to
+  Adj Close, i.e. split- AND dividend-adjusted (total return) with today's factors; `CloseSplitAdj` is split-adjusted only.** Returns from
+  `Close` are total returns; `CloseSplitAdj` is not used. **Volume is present** for all 12 series.
+- Coverage (all 12 series have 0 NaN Close, 0 duplicate dates, 0 rows with High<Low or non-positive price, max calendar gap 4 days = weekends/holidays;
+  all 12 share exactly the XLK trading calendar from their own first date, so no missing sessions):
+
+| ticker | first | last | rows |
+|---|---|---|---|
+| XLK, XLF, XLV, XLE, XLY, XLP, XLI, XLU, XLB, SPY | 2013-01-02 | 2026-11-03 | 3,481 each |
+| XLRE | 2015-10-08 | 2026-11-03 | 2,784 |
+| XLC | 2018-06-19 | 2026-11-03 | 2,106 |
+
+- Volume quirks: XLRE has 5 zero-volume sessions (2015-10-14, 2015-11-25, 2015-11-27, 2015-12-07, 2016-01-25; stale-price days right after launch);
+  XLC's minimum volume is 16,600 (launch week). All other ETFs have volume > 1.6M every day. `^VIX` is in the snapshot (`_VIX.csv.gz`).
+- Last session in the data is 2026-11-03 (snapshot `price_end_exclusive` 2026-11-04). No new data needed; nothing was downloaded.
+- Consequence for the universe rule (fixed in Phase C): an ETF enters only when its trailing window of M+1 bars is complete and has no zero-volume bar.
+
+## 2026-11-05 18:59 UTC — Phase B: engine and tests (synthetic data only)
+- `backtest/etf_statarb.py` (deterministic, vectorised over days and ETFs): trailing M-return windows → time-series demean + vol scaling →
+  factor projection `eps = Y (I − V V')` (xs: flat V = cross-sectional demeaning; pca: top-K correlation eigenvectors) → cumulative residual →
+  OLS AR(1) (κ, m, σ_eq, half-life) → S-score → state machine → inverse-residual-vol weights on the ETF hedge portfolios, gross exactly 1.0.
+  Execution: decision at close t, trade at close t+1, earns day t+2; cost 10 bps per side on |Δweight| (5 commission + 5 slippage,
+  `CostModel` defaults; the $1 commission minimum is irrelevant to a proportional model). Stationary bootstrap (Politis–Romano) and MDE helpers.
+- Design decisions written down before any real return exists: exit is direction-aware (a long closes when s > −0.50, a short when s < +0.50 — covers |s| < 0.50 and
+  overshoot); stop at adverse |s| ≥ 3.5 blocks re-entry until |s| < 1.25; entry only when 1.25 < |s| < 3.5; a position whose ETF becomes untradable is closed;
+  hedge weights are recomputed daily (so turnover includes re-hedging — charged).
+- The CLI refuses to run unless `HYPOTHESIS_H2.md` is tracked and clean in git (rule 6 guard).
+- Tests (`tests/test_etf_statarb.py`, 27, synthetic only): gross ≤ 1.0000001 and = 1 when positioned; xs residuals sum to 0 every day; b ≥ 1 / long half-life ⇒ zero position
+  (also an explosive-residual series through the full engine); state-machine table; universe entry (full clean window); a synthetic OU panel earns (Sharpe > 2, bootstrap rejects);
+  five random-walk panels do not (net t < 2, mean < 0, costs charged); poisoned-future (scramble all prices/volumes after t: targets ≤ t, positions ≤ t+1, S-scores, hedge
+  matrices unchanged) for xs, pca and the trading-time variant; same-close shock test; meta-tests: the detector fails for a same-close variant and for a window that includes t+1;
+  lag < 1 refused; decision t earned only on t+2.
+- Mutation checks on the real engine (reverted): window shifted to t+1 → 8 tests fail; execution at lag 0 → 8 fail; S-score peeking at r[t+1] → 9 fail.
+- No strategy return, P&L, Sharpe or hit rate was computed on real ETF data (the only data read in this phase was coverage metadata).
+
+## 2026-11-05 19:01 UTC — Phase C: H2 pre-registered
+- `HYPOTHESIS_H2.md` committed and pushed as **610fb6fcda557471e757a1f1658c5e2be6acef83** (before any real-data run; no real strategy return existed at this point).
+  One primary factor model (xs, justified in the file), M = 60, thresholds 1.25 / 0.50 / 3.5, half-life ≤ 30, 10 bps per side, lag 1, sample 2013-04-01 .. 2026-11-03 (n = 3,421),
+  XLRE enters 2016-04-21 (first clean 61-bar window), XLC on its 61st bar; stationary bootstrap, mean block 20, 10,000 reps, seed 20261105; reject iff p05 > 0.
+  MDE from assumptions only: Sharpe ≈ 0.83 a year (0.78/1.30/2.08 bp a day for assumed daily vol 0.15/0.25/0.40%). Economic threshold 1 bp a day.
+- Known wording slip in the committed file (cannot be edited above the line): the block-length sentence says "longer than the expected holding period ... is not claimed" —
+  meaning only that 20 days is a month-scale choice and is not argued to exceed the holding period.
+
+## 2026-11-05 19:04 UTC — Phase D: H2 run exactly as registered
+- Exact command (HYPOTHESIS_H2.md) run twice in parallel and a third time into `results/`: identical digest **be176bb0…6168** (csv + summary json). Report digest `18f7c42f…` (twice).
+- **H2: mean daily net return −1.70 bp, one-sided lower bound −2.67 bp, CI [−2.87, −0.50] bp, p = 0.997, net Sharpe −0.74, n = 3,421 days; not rejected (the whole CI is below zero).**
+  Turnover 28.1% of gross a day (~71×/yr), cost drag 2.81 bp/day (7.1%/yr) vs gross +1.11 bp/day (Sharpe 0.48); break-even cost ≈ 4.0 bp per side vs 10 bp assumed; 1,176 entries.
+- Exploratory (labelled): PCA K=3 net −2.32 bp; trading time −2.45 bp; SPY beta 0.04; net negative in 11/14 years and VIX<25; VIX>25 +3.0 bp (CI includes 0); all 12 threshold cells
+  and M = 40/60/90 net-negative; block 5/60 do not change the decision. Tagged report `results/etf_statarb_2026-11-04-pit2_h2_summary.md` (validated by test_report_tagging).
+- Nothing was tuned after seeing the result. Next: Phase E (independent review).
+
+## 2026-11-05 19:10 UTC — Phase E: independent review, fixes, handoff
+- Fresh general-purpose subagent given the repo path, a housekeeping line and the brief's instruction verbatim; it changed no tracked file. **No P0.** Report + responses:
+  `results/independent_review_session5.md`. Fixes (report-side only; the registered output digest `be176bb0…` is unchanged): registration/manifest checks in the report, gross wording, "variant" wording,
+  cost sensitivity (net +0.55 / −0.29 / −1.70 bp at 2/5/10 bp per side), realised-SE MDE, indicative-only labels. Corrections appended below the RESULTS line of HYPOTHESIS_H2.md. HANDOFF.md: Session 5 section.
+
+## 2026-11-05 19:19 UTC — Session 5 final
+- Final checks on b4546ca: pytest **158 passed, 1 skipped**; UI smoke 1 passed; registered H2 command rerun in a fresh clone → digest `be176bb0…6168` (identical, 4th run); secret scan of all tracked files OK;
+  frozen snapshots untouched; kill switches, brokers and posting code untouched; live LLM calls 0.
+- **GitHub Actions on `claude/elegant-sagan-vh8d9x`: run 42091388825 (b4546ca) green.** Branch ready for a PR into `main`.
